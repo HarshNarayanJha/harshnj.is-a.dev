@@ -1,3 +1,37 @@
 <template>
-  <Hero />
+  <section id="hero" class="mb-20 py-8">
+    <Hero />
+    <Card class="w-9/12 m-auto my-8">
+      <template #image>
+        <img
+          src="~/assets/img/me.png"
+          class="w-52 border-t-2 border-s-2 border-slate-200/50 dark:border-slate-600/50 rounded-[3.8rem] rounded-br-3xl"
+          alt="picture of the website owner" />
+      </template>
+      <template #title>Hello</template>
+      <template #text>Welcome to my WIP website.</template>
+    </Card>
+  </section>
+
+  <section id="projects" class="mb-20 py-8 px-40">
+    <h1 class="text-4xl font-bold"># Projects&nbsp;&nbsp;🛠</h1>
+    <div class="grid grid-cols-3 py-10">
+      <Card
+        v-for="_ in [1, 2, 3, 4, 5]"
+        :horizontal="false"
+        class="w-96 my-4 mx-8"
+        :tags="['Vuejs', 'SocketIO', 'Javascript']">
+        <template #image>
+          <img
+            src="https://images.pexels.com/photos/2034373/pexels-photo-2034373.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=1"
+            alt="Thumbnail for project 1"
+            class="w-full border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50 rounded-2xl" />
+        </template>
+        <template #title>Echo - Notepad</template>
+        <template #text>
+          Realtime private notepad for you and your friends to write in sync
+        </template>
+      </Card>
+    </div>
+  </section>
 </template>

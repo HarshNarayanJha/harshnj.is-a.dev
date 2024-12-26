@@ -3,13 +3,14 @@ useHead({
   title: 'Harsh Narayan Jha',
   script: [
     {
-      innerHTML: "document.addEventListener('keydown', e => {\
+      innerHTML:
+        "document.addEventListener('keydown', e => {\
         if (e.shiftKey && e.key === 'D') {\
           document.documentElement.classList.toggle('dark')\
         }\
-      })"
-    }
-  ]
+      })",
+    },
+  ],
 })
 
 useSeoMeta({
@@ -20,8 +21,11 @@ useSeoMeta({
 })
 </script>
 <template>
-  <div class="min-h-svh min-w-full bg-slate-50 text-neutral-800 dark:bg-gray-950 dark:text-slate-100">
-    <Navbar />
-    <NuxtPage />
-  </div>
+  <Body class="bg-slate-50 text-neutral-800 dark:bg-gray-950 dark:text-slate-100">
+    <div
+      class="min-h-svh min-w-full bg-slate-50 text-neutral-800 dark:bg-gray-950 dark:text-slate-100">
+      <Navbar />
+      <NuxtPage />
+    </div>
+  </Body>
 </template>
