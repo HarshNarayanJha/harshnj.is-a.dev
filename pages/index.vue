@@ -5,17 +5,21 @@
       <template #image>
         <img
           src="~/assets/img/me.png"
-          class="w-52 border-t-2 border-s-2 border-slate-200/50 dark:border-slate-600/50 rounded-[3.8rem] rounded-br-3xl"
-          alt="picture of the website owner" />
+          class="w-52 aspect-square border-t-2 border-s-2 border-slate-200/50 dark:border-slate-600/50 rounded-[3.8rem] rounded-br-3xl -rotate-6 origin-top-right"
+          alt="picture of the website owner"
+          style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)" />
       </template>
-      <template #title>Hello</template>
-      <template #text>Welcome to my WIP website.</template>
+      <template #title>Hey</template>
+      <template #text>
+        This is my little island on the internet.I design it, develop it, plan it, program it, code
+        it, and enjoy making it.
+      </template>
     </Card>
   </section>
 
   <section id="projects" class="mb-20 py-8 px-40">
     <h1 class="text-4xl font-bold"># Projects&nbsp;&nbsp;🛠</h1>
-    <div class="grid grid-cols-3 py-10">
+    <div class="grid grid-cols-3 py-10 px-15">
       <Card
         v-for="_ in [1, 2, 3, 4, 5]"
         :horizontal="false"

@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'p-6 flex items-start justify-start gap-8 bg-white dark:bg-gray-900 border-2 border-slate-300/50 dark:border-zinc-800/50 shadow-md shadow-slate-200/50 dark:shadow-slate-800/50 hover:shadow-md rounded-lg hover:rounded-xl',
+      'p-4 flex items-start justify-start gap-8 bg-white dark:bg-gray-900 border-2 border-slate-300/50 dark:border-zinc-800/50 shadow-md shadow-slate-200/50 dark:shadow-slate-800/50 hover:shadow-md rounded-lg hover:rounded-xl',
       horizontal ? 'flex-row' : 'flex-col',
     ]">
     <div id="leading-image">
