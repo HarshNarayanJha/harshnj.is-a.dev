@@ -9,10 +9,14 @@
           alt="picture of the website owner"
           style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)" />
       </template>
-      <template #title>Hey</template>
+      <template #title>
+        <div class="text-4xl font-semibold">Hey</div>
+      </template>
       <template #text>
-        This is my little island on the internet.I design it, develop it, plan it, program it, code
-        it, and enjoy making it.
+        <div class="mt-2 text-lg">
+          This is my little island on the internet. I design it, develop it, plan it, program it,
+          code it, and enjoy making it.
+        </div>
       </template>
     </Card>
   </section>
@@ -31,9 +35,13 @@
             alt="Thumbnail for project 1"
             class="w-full border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50 rounded-2xl" />
         </template>
-        <template #title>Echo - Notepad</template>
+        <template #title>
+          <div class="text-2xl font-semibold">Echo - Notepad</div>
+        </template>
         <template #text>
-          Realtime private notepad for you and your friends to write in sync
+          <div class="mt-2 text-lg">
+            Realtime private notepad for you and your friends to write in sync
+          </div>
         </template>
       </Card>
     </div>
