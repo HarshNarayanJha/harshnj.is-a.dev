@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const education = await queryContent('/education').findOne()
-console.log(education.body)
+const work = await queryContent('/work').findOne()
 </script>
 
 <template>
@@ -44,6 +44,7 @@ console.log(education.body)
       <Card
         v-for="_ in [1, 2, 3, 4, 5]"
         :horizontal="false"
+        :bg="`bg-stone-50 dark:bg-gray-800`"
         class="w-96 my-4 mx-8"
         :tags="['Vuejs', 'SocketIO', 'Javascript']">
         <template #image>
@@ -88,7 +89,9 @@ console.log(education.body)
       <Card class="w-full my-4 mx-8 relative" v-for="edu in education.body">
         <template #image>
           <div class="absolute -left-10 top-1/2 w-28 h-0.5 bg-zinc-400 opacity-40"></div>
-          <img :src="edu.img" class="w-48 rounded-full border-2 border-stone-300 dark:border-stone-700 p-1" />
+          <img
+            :src="edu.img"
+            class="w-48 rounded-full border-2 border-stone-300 dark:border-stone-700 p-1" />
         </template>
 
         <template #title>
@@ -101,6 +104,53 @@ console.log(education.body)
         <template #text>
           <p class="leading-tight text-justify">
             {{ edu.text }}
+          </p>
+        </template>
+      </Card>
+    </div>
+  </section>
+
+  <div class="wave-divider bg-stone-100 dark:bg-gray-900">
+    <svg
+      data-name="Layer 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none">
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        class="fill-slate-50 dark:fill-gray-950"></path>
+    </svg>
+  </div>
+
+  <section id="work" class="py-8 px-40 bg-stone-100 dark:bg-gray-900">
+    <h1 class="text-4xl font-bold"># Work&nbsp;&nbsp; 🏢</h1>
+    <p class="mb-4 mt-8 font-medium">
+      Don't have any real work experience yet. Care to give me one?, I won't disappoint you...
+    </p>
+    <div class="container flex flex-col-reverse items-end relative py-8 px-8">
+      <div class="absolute right-0 top-8 h-full w-4 rounded-full bg-sky-400"></div>
+
+      <Card
+        :bg="`bg-stone-50 dark:bg-gray-800`"
+        class="w-full my-4 mx-8 relative"
+        v-for="wrk in work.body">
+        <template #image>
+          <div class="absolute -right-10 top-1/2 w-28 h-0.5 bg-zinc-400 opacity-40"></div>
+          <img
+            :src="wrk.img"
+            class="w-48 rounded-full border-2 border-stone-300 dark:border-stone-700 p-1" />
+        </template>
+
+        <template #title>
+          <h3 class="font-semibold text-2xl">{{ wrk.name }}</h3>
+          <h4 class="font-normal text-[1.1rem] mb-1">{{ wrk.loc }}</h4>
+
+          <h4 class="font-semibold text-sm mb-4">{{ wrk.dur }}</h4>
+        </template>
+
+        <template #text>
+          <p class="leading-tight text-justify">
+            {{ wrk.text }}
           </p>
         </template>
       </Card>
