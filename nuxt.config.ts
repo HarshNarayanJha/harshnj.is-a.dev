@@ -21,5 +21,9 @@ export default defineNuxtConfig({
     "~/assets/main.css"
   ],
 
-  modules: ["@nuxtjs/tailwindcss", "nuxt-feather-icons"]
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "nuxt-feather-icons",
+    "@nuxt/content"
+  ]
 })
