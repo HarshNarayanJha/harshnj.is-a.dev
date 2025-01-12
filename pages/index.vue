@@ -1,3 +1,8 @@
+<script setup lang="ts">
+const education = await queryContent('/education').findOne()
+console.log(education.body)
+</script>
+
 <template>
   <section id="hero" class="py-8 bg-slate-50 dark:bg-gray-950">
     <Hero />
@@ -74,24 +79,31 @@
   <section id="education" class="py-8 px-40 bg-slate-50 dark:bg-gray-950">
     <h1 class="text-4xl font-bold"># Education&nbsp;&nbsp;📚</h1>
 
-    <p class="mb-4 mt-8 font-medium">Not been to a lot of places, but been to the best places.</p>
-    <div class="container flex flex-col-reverse relative">
-      <div class="absolute left-0 top-0 h-full w-3 rounded-full bg-green-400"></div>
+    <p class="mb-4 mt-8 font-medium">
+      Not been to a lot of places, but for sure to the best places.
+    </p>
+    <div class="container flex flex-col-reverse relative py-8 px-8">
+      <div class="absolute left-0 top-8 h-full w-4 rounded-full bg-green-400"></div>
 
-      <div class="bg-sky-600 p-4 rounded-xl my-4 w-96 ml-8 shadow-md text-sky-50">
-        <h3 class="font-semibold text-lg mb-1">First School Ever</h3>
-        <p class="leading-tight text-justify">Rose Public School - Laheriasarai, Darbhanga</p>
-      </div>
+      <Card class="w-full my-4 mx-8 relative" v-for="edu in education.body">
+        <template #image>
+          <div class="absolute -left-10 top-1/2 w-28 h-0.5 bg-zinc-400 opacity-40"></div>
+          <img :src="edu.img" class="w-48 rounded-full border-2 border-stone-300 dark:border-stone-700 p-1" />
+        </template>
 
-      <div class="bg-sky-600 p-4 rounded-xl my-4 w-96 ml-8 shadow-md text-sky-50">
-        <h3 class="font-semibold text-lg mb-1">Then a new School</h3>
-        <p class="leading-tight text-justify">Kendriya Vidyalaya No. 1, AFS, Darbhanga</p>
-      </div>
+        <template #title>
+          <h3 class="font-semibold text-2xl">{{ edu.name }}</h3>
+          <h4 class="font-normal text-[1.1rem] mb-1">{{ edu.loc }}</h4>
 
-      <div class="bg-sky-600 p-4 rounded-xl my-4 w-96 ml-8 shadow-md text-sky-50">
-        <h3 class="font-semibold text-lg mb-1">Currently at</h3>
-        <p class="leading-tight text-justify">Birla Institute of Technology</p>
-      </div>
+          <h4 class="font-semibold text-sm mb-4">{{ edu.dur }}</h4>
+        </template>
+
+        <template #text>
+          <p class="leading-tight text-justify">
+            {{ edu.text }}
+          </p>
+        </template>
+      </Card>
     </div>
   </section>
 </template>

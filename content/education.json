@@ -1,0 +1,23 @@
+[
+  {
+    "img": "/_nuxt/assets/img/rps.png",
+    "name": "Rose Public School",
+    "loc": "Laheriasarai, Darbhanga, Bihar, India",
+    "dur": "2009-2015",
+    "text": "The first ever school of my life, did not last long enough but sparked my interest in Science. I will write something more about it when I remember..."
+  },
+  {
+    "img": "/_nuxt/assets/img/kv.png",
+    "name": "Kendriya Vidyalaya No. 1 AFS Darbhanga",
+    "loc": "Air Force Station, Darbhanga, Bihar, India",
+    "dur": "2016-2023",
+    "text": "The other half of my school journey. Not a single regret joining this school. Best 6 years of my life, from making the best friends to learning the best thing, the art of programming!"
+  },
+  {
+    "img": "/_nuxt/assets/img/bit.png",
+    "name": "Birla Institute of Technology",
+    "loc": "Deoghar, Jharkhand, India",
+    "dur": "2024-2027",
+    "text": "The college life, simple 4 years clearing the course and improving my skills day by day."
+  }
+]
