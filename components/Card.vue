@@ -2,8 +2,9 @@
   <div class="p-2 border border-slate-900/15 dark:border-zinc-400/15 rounded-lg">
     <div
       :class="[
-        'p-4 flex items-start justify-start gap-8 bg-white dark:bg-gray-900 border-2 border-slate-300/50 dark:border-zinc-800/50 rounded-lg',
+        'p-4 flex items-start justify-start gap-8 border-2 border-slate-300/50 dark:border-zinc-800/50 rounded-lg',
         horizontal ? 'flex-row' : 'flex-col',
+        bg || 'bg-white dark:bg-gray-900',
       ]">
       <div id="leading-image">
         <slot name="image" />
@@ -30,6 +31,10 @@ export default {
     horizontal: {
       type: Boolean,
       default: true,
+    },
+    bg: {
+      type: String,
+      default: '',
     },
     tags: {
       type: Array[String],
