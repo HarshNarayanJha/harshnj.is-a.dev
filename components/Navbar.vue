@@ -3,10 +3,11 @@
     class="w-full sticky top-0 backdrop-blur-sm bg-gradient-to-b from-slate-200 dark:from-slate-950"
     style="mask: linear-gradient(black 55%, transparent)">
     <nav
-      class="w-4/5 m-auto p-4 pt-8 grid grid-cols-3 grid-rows-1 place-content-stretch place-items-center">
-      <div class="place-self-start"></div>
-      <p class="place-self-center text-xl font-bold opacity-85 tracking-wide">harshnj.is-a.dev</p>
-      <div class="place-self-end space-x-4">
+      class="w-full m-auto p-4 pt-8 grid grid-cols-5 grid-rows-1 place-content-stretch place-items-center">
+      <p class="place-self-center col-start-3 text-xl font-bold opacity-85 tracking-wide">
+        harshnj.is-a.dev
+      </p>
+      <div class="place-self-end col-span-1 space-x-4">
         <button
           title="Toggle Theme"
           aria-title="Toggle Theme"
@@ -14,8 +15,8 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
-            width="1.8em"
-            height="1.8em"
+            width="1.7em"
+            height="1.7em"
             class="inline-flex"
             fill="currentColor"
             viewBox="0 0 32 32">
@@ -37,6 +38,12 @@
           <CodeIcon class="inline-block" />
         </a>
       </div>
+      <button
+        class="place-self-center col-span-1 px-4 py-1 bg-transparent bg-gradient-to-b from-transparent to-slate-200 dark:to-slate-900 rounded-xl border-2 border-slate-500 border-opacity-40">
+        <a href="/resume.md" title="download my resume" download> <DownloadIcon class="inline" /></a>
+        <span class="text-xl mx-2 font-mono opacity-25">|</span>
+        <a href="/resume.md" target="_blank" title="open resume in new tab"> RESUME </a>
+      </button>
     </nav>
   </header>
 </template>
