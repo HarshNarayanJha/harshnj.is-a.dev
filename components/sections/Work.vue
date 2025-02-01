@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const work = await queryContent('/work').findOne()
+const work = await queryCollection('work').first()
 </script>
 
 <template>
@@ -13,7 +13,7 @@ const work = await queryContent('/work').findOne()
     <Card
       :bg="`bg-stone-50 dark:bg-gray-800`"
       class="w-full my-4 mx-8 relative"
-      v-for="wrk in work.body">
+      v-for="wrk in work.data">
       <template #image>
         <div class="absolute -right-10 top-1/2 w-28 h-0.5 bg-zinc-400 opacity-40"></div>
         <img

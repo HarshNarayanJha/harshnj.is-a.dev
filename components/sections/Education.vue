@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const education = await queryContent('/education').findOne()
+const education = await queryCollection('education').first()
 </script>
 
 <template>
@@ -9,7 +9,7 @@ const education = await queryContent('/education').findOne()
   <div class="container flex flex-col-reverse relative py-8 px-8">
     <div class="absolute left-0 top-8 h-full w-4 rounded-full bg-green-400"></div>
 
-    <Card class="w-full my-4 mx-8 relative" v-for="edu in education.body">
+    <Card class="w-full my-4 mx-8 relative" v-for="edu in education.data">
       <template #image>
         <div class="absolute -left-10 top-1/2 w-28 h-0.5 bg-zinc-400 opacity-40"></div>
         <img
