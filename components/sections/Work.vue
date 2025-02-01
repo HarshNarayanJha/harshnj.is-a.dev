@@ -10,7 +10,7 @@ const work = await queryCollection('work').first()
   <div class="container flex flex-col-reverse items-end relative py-8 px-8">
     <div class="absolute right-0 top-8 h-full w-4 rounded-full bg-sky-400"></div>
 
-    <Card
+    <WorkCard
       :bg="`bg-stone-50 dark:bg-gray-800`"
       class="w-full my-4 mx-8 relative"
       v-for="wrk in work.data">
@@ -33,6 +33,6 @@ const work = await queryCollection('work').first()
           {{ wrk.text }}
         </p>
       </template>
-    </Card>
+    </WorkCard>
   </div>
 </template>

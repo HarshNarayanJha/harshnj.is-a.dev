@@ -4,10 +4,9 @@ const project = await queryCollection('project').first()
 
 <template>
   <h1 class="text-4xl font-bold"># Projects&nbsp;&nbsp;🛠</h1>
-  <div class="grid grid-cols-3 py-10 px-15">
-    <Card
+  <div class="flex flex-wrap md:flex-row flex-col py-10 px-15">
+    <ProjectCard
       v-for="proj in project.data"
-      :horizontal="false"
       :bg="`bg-stone-50 dark:bg-gray-800`"
       class="w-96 my-4 mx-8"
       :tags="proj.tags">
@@ -15,7 +14,7 @@ const project = await queryCollection('project').first()
         <img
           :src="proj.img"
           :alt="proj.name"
-          class="w-full border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50 rounded-2xl" />
+          class="border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50 rounded-2xl" />
       </template>
       <template #title>
         <div class="text-2xl font-semibold">{{ proj.name }}</div>
@@ -25,6 +24,6 @@ const project = await queryCollection('project').first()
           {{ proj.text }}
         </div>
       </template>
-    </Card>
+    </ProjectCard>
   </div>
 </template>
