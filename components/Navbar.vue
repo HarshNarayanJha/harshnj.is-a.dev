@@ -40,9 +40,11 @@
       </div>
       <button
         class="place-self-center col-span-1 px-4 py-1 bg-transparent bg-gradient-to-b from-transparent to-slate-200 dark:to-slate-900 rounded-xl border-2 border-slate-500 border-opacity-40">
-        <a href="/resume.md" title="download my resume" download> <DownloadIcon class="inline" /></a>
+        <a href="/Resume_Simple.pdf" title="download my resume" download>
+          <DownloadIcon class="inline" />
+        </a>
         <span class="text-xl mx-2 font-mono opacity-25">|</span>
-        <a href="/resume.md" target="_blank" title="open resume in new tab"> RESUME </a>
+        <a href="/Resume_Simple.pdf" target="_blank" title="open resume in new tab"> RESUME </a>
       </button>
     </nav>
   </header>

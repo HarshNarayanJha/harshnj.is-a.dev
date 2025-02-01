@@ -11,7 +11,7 @@ const education = await queryCollection('education').first()
 
     <Card class="w-full my-4 mx-8 relative" v-for="edu in education.data">
       <template #image>
-        <div class="absolute -left-10 top-1/2 w-28 h-0.5 bg-zinc-400 opacity-40"></div>
+        <!-- <div class="absolute -left-10 top-1/2 w-28 h-0.5 bg-zinc-400 opacity-40"></div> -->
         <img
           :src="edu.img"
           class="w-48 rounded-full border-2 border-stone-300 dark:border-stone-700 p-1" />

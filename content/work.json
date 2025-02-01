@@ -1,18 +1,3 @@
 {
-  "data": [
-    {
-      "img": "...",
-      "name": "Searching...",
-      "loc": "Anywhere feasible",
-      "dur": "Not started yet",
-      "text": "Yes, I am looking for a job, care to take a look at my resume?"
-    },
-    {
-      "img": "...",
-      "name": "Self-Employed Full Time Student",
-      "loc": "In my Laptop",
-      "dur": "2016-Today",
-      "text": "Yes, I am doing a secret job, employed by myself in my own company doing my own job earning my own salary, wait no...?"
-    }
-  ]
+  "data": []
 }

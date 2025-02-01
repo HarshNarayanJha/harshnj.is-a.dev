@@ -8,9 +8,9 @@
 
     <button
       class="w-fit px-6 py-2 bg-transparent rounded-xl border-2 border-slate-500 border-opacity-40 shadow-2xl shadow-slate-600/75">
-      <a href="/resume.md" title="download my resume" download> <DownloadIcon class="inline" /></a>
+      <a href="/Resume.pdf" title="download my resume" download> <DownloadIcon class="inline" /></a>
       <span class="text-2xl mx-2 font-mono opacity-25">|</span>
-      <a href="/resume.md" target="_blank" title="open resume in new tab"> GET MY <b>RESUME</b> </a>
+      <a href="/Resume.pdf" target="_blank" title="open resume in new tab"> GET MY <b>RESUME</b> </a>
     </button>
   </div>
   <div class="wave-divider bg-zinc-200 dark:bg-gray-900">
