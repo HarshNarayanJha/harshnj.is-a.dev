@@ -31,6 +31,19 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/tailwindcss",
     "nuxt-feather-icons",
-    "@nuxt/content"
-  ]
+    "@nuxt/content",
+    "@nuxtjs/color-mode"
+  ],
+
+  colorMode: {
+    preference: 'system',
+    fallback: 'light',
+    hid: 'nuxt-color-mode-script',
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    classPrefix: '',
+    classSuffix: '',
+    storage: 'localStorage',
+    storageKey: 'nuxt-color-mode'
+  }
 })

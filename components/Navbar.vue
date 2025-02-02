@@ -1,3 +1,11 @@
+<script setup>
+const colorMode = useColorMode()
+
+const toggleColorMode = () => {
+  colorMode.preference = colorMode.preference == 'light' ? 'dark' : 'light'
+}
+</script>
+
 <template>
   <header
     class="w-full md:sticky md:top-0 md:backdrop-blur-sm bg-gradient-to-b from-slate-200 dark:from-slate-950"
@@ -8,10 +16,7 @@
         harshnj.is-a.dev
       </p>
       <div class="md:place-self-end md:col-span-1 space-x-4">
-        <button
-          title="Toggle Theme"
-          aria-title="Toggle Theme"
-          onclick="document.documentElement.classList.toggle('dark');">
+        <button title="Toggle Theme" aria-title="Toggle Theme" @click="toggleColorMode">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
