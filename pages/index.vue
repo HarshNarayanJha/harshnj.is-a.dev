@@ -5,7 +5,7 @@
     <Card class="w-11/12 md:w-9/12 mx-auto my-8">
       <template #image>
         <img
-          src="~/assets/img/me.png"
+          src="/img/me.png"
           class="w-40 md:w-52 aspect-square border-2 border-slate-200/50 dark:border-slate-600/50 rounded-[3.8rem] rounded-br-3xl -rotate-6 hover:-rotate-[18deg] transition"
           alt="picture of the website owner"
           style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)" />

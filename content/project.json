@@ -1,28 +1,28 @@
 {
   "data": [
     {
-      "img": "/_nuxt/assets/img/instasolve.png",
+      "img": "/img/instasolve.png",
       "name": "Instasolve",
       "url": "http://github.com/HarshNarayanJha/Insta-Solve",
       "text": "A mobile app that helps students learn new things and solve their doubts.",
       "tags": ["Flutter", "Dart", "Hive", "REST APIs", "Google Gemini"]
     },
     {
-      "img": "/_nuxt/assets/img/codestats.png",
+      "img": "/img/codestats.png",
       "name": "Code::Stats Client",
       "url": "https://github.com/HarshNarayanJha/codestats_client",
       "text": "A sleek mobile client for viewing your Code::Stats analytics and tracking your coding journey.",
       "tags": ["Flutter", "Dart", "REST APIs"]
     },
     {
-      "img": "/_nuxt/assets/img/pyqnow.png",
+      "img": "/img/pyqnow.png",
       "name": "PYQNow",
       "url": "https://pyqnow.netlify.app",
       "text": "A web app that helps students to quickly open Past Year Question papers, without wasting time and focus on solving papers right before the exam.",
       "tags": ["VueJS", "JSON", "Netlify"]
     },
     {
-      "img": "/_nuxt/assets/img/inkd-insults.png",
+      "img": "/img/inkd-insults.png",
       "name": "Ink'd Insults",
       "url": "http://harshnj.is-a.dev/inkd-insults/",
       "text": "Love your handwriting? Or hate it? Check out what AI thinks about your handwriting!",
