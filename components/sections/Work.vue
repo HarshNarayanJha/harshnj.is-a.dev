@@ -3,12 +3,12 @@ const work = await queryCollection('work').first()
 </script>
 
 <template>
-  <h1 class="text-4xl font-bold"># Work&nbsp;&nbsp; 🏢</h1>
-  <p class="mb-4 mt-8 font-medium">
+  <h1 class="font-bold mb-8 text-4xl md:text-5xl">Work&nbsp;&nbsp; 🏢</h1>
+  <p class="mb-4 mt-8 font-medium text-[1rem]">
     Don't have any real work experience yet. Care to give me one?, I won't disappoint you...
   </p>
-  <div class="container flex flex-col-reverse items-end relative py-8 px-8">
-    <div class="absolute right-0 top-8 h-full w-4 rounded-full bg-sky-400"></div>
+  <div class="container flex flex-col-reverse items-end relative py-8 px-4 md:px-8">
+    <div class="absolute right-0 top-8 h-full w-2 md:w-4 rounded-full bg-sky-400"></div>
 
     <WorkCard
       :bg="`bg-stone-50 dark:bg-gray-800`"

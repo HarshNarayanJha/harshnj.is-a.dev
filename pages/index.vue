@@ -1,19 +1,20 @@
 <template>
-  <section id="hero" class="py-8 bg-slate-50 dark:bg-gray-950">
+  <section id="hero" class="p-4 md:p-8 bg-slate-50 dark:bg-gray-950">
     <SectionsHero />
-    <Card class="w-9/12 m-auto my-8">
+
+    <Card class="w-11/12 md:w-9/12 mx-auto my-8">
       <template #image>
         <img
           src="~/assets/img/me.png"
-          class="w-52 aspect-square border-t-2 border-s-2 border-slate-200/50 dark:border-slate-600/50 rounded-[3.8rem] rounded-br-3xl -rotate-6 origin-top-right"
+          class="w-40 md:w-52 aspect-square border-2 border-slate-200/50 dark:border-slate-600/50 rounded-[3.8rem] rounded-br-3xl -rotate-6 hover:-rotate-[18deg] transition"
           alt="picture of the website owner"
           style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)" />
       </template>
       <template #title>
-        <div class="text-4xl font-semibold">Hey</div>
+        <div class="text-3xl md:text-4xl font-bold">Hey</div>
       </template>
       <template #text>
-        <div class="mt-2 text-lg">
+        <div class="mt-2">
           This is my little island on the internet. I design it, develop it, plan it, program it,
           code it, and enjoy making it.
         </div>
@@ -33,7 +34,7 @@
     </svg>
   </div>
 
-  <section id="projects" class="py-8 px-40 bg-stone-100 dark:bg-gray-900">
+  <section id="projects" class="p-8 md:p-40 bg-stone-100 dark:bg-gray-900">
     <SectionsProjects />
   </section>
 
@@ -49,7 +50,7 @@
     </svg>
   </div>
 
-  <section id="education" class="py-8 px-40 bg-slate-50 dark:bg-gray-950">
+  <section id="education" class="p-8 md:p-40 bg-slate-50 dark:bg-gray-950">
     <SectionsEducation />
   </section>
 
@@ -65,7 +66,7 @@
     </svg>
   </div>
 
-  <section id="work" class="py-8 px-40 bg-stone-100 dark:bg-gray-900">
+  <section id="work" class="p-8 md:p-40 bg-stone-100 dark:bg-gray-900">
     <SectionsWork />
   </section>
 
@@ -81,7 +82,7 @@
     </svg>
   </div>
 
-  <section id="footer" class="pt-8 px-40 bg-slate-50 dark:bg-gray-950">
+  <section id="footer" class="pt-8 md:px-40 bg-slate-50 dark:bg-gray-950">
     <Footer />
   </section>
 </template>

@@ -3,13 +3,13 @@ const education = await queryCollection('education').first()
 </script>
 
 <template>
-  <h1 class="text-4xl font-bold mb-8 sm:text-5xl"># Education&nbsp;&nbsp;📚</h1>
+  <h1 class="font-bold mb-8 text-4xl md:text-5xl">Education&nbsp;&nbsp;📚</h1>
 
-  <p class="mb-4 mt-8 font-medium text-lg">
+  <p class="mb-4 mt-8 font-medium text-[1rem]">
     Not been to a lot of places, but for sure to the best places.
   </p>
-  <div class="container flex flex-col-reverse relative py-8 px-4 sm:px-8 mx-auto">
-    <div class="absolute left-0 top-8 h-full w-2 sm:w-4 rounded-full bg-green-400"></div>
+  <div class="container flex flex-col-reverse relative py-8 px-4 md:px-8 mx-auto">
+    <div class="absolute left-0 top-8 h-full w-2 md:w-4 rounded-full bg-green-400"></div>
 
     <EducationCard
       class="w-full my-4 mx-4 sm:mx-8 relative transition-all hover:scale-102"
@@ -19,7 +19,7 @@ const education = await queryCollection('education').first()
           :src="edu.img"
           :alt="edu.name"
           loading="lazy"
-          class="w-32 sm:w-48 rounded-full border-2 border-stone-300 dark:border-stone-700 hover:border-green-500 hover:border-4 p-1 transition-transform hover:scale-105" />
+          class="w-48 rounded-full border-2 border-stone-300 dark:border-stone-700 hover:border-green-500 hover:border-4 p-1 transition-transform hover:scale-105" />
       </template>
 
       <template #title>

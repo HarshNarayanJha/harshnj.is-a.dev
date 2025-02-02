@@ -1,13 +1,13 @@
 <template>
   <header
-    class="w-full sticky top-0 backdrop-blur-sm bg-gradient-to-b from-slate-200 dark:from-slate-950"
-    style="mask: linear-gradient(black 55%, transparent)">
+    class="w-full md:sticky md:top-0 md:backdrop-blur-sm bg-gradient-to-b from-slate-200 dark:from-slate-950"
+    style="mask: linear-gradient(black 80%, transparent)">
     <nav
-      class="w-full m-auto p-4 pt-8 grid grid-cols-5 grid-rows-1 place-content-stretch place-items-center">
-      <p class="place-self-center col-start-3 text-xl font-bold opacity-85 tracking-wide">
+      class="w-full m-auto p-2 md:p-4 pt-8 flex flex-col md:grid md:grid-cols-5 md:grid-rows-1 space-y-4 md:space-y-[unset] place-content-stretch place-items-center">
+      <p class="md:place-self-center md:col-start-3 text-xl font-bold opacity-85 tracking-wide">
         harshnj.is-a.dev
       </p>
-      <div class="place-self-end col-span-1 space-x-4">
+      <div class="md:place-self-end md:col-span-1 space-x-4">
         <button
           title="Toggle Theme"
           aria-title="Toggle Theme"
@@ -39,7 +39,7 @@
         </a>
       </div>
       <button
-        class="place-self-center col-span-1 px-4 py-1 bg-transparent bg-gradient-to-b from-transparent to-slate-200 dark:to-slate-900 rounded-xl border-2 border-slate-500 border-opacity-40">
+        class="place-self-center md:col-span-1 px-4 py-1 bg-transparent bg-gradient-to-b from-transparent to-slate-200 dark:to-slate-900 rounded-xl border-2 border-slate-500 border-opacity-40">
         <a href="/Resume_Simple.pdf" title="download my resume" download>
           <DownloadIcon class="inline" />
         </a>
