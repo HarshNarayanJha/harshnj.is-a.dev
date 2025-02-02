@@ -1,12 +1,12 @@
 <template>
   <main class="w-full h-[50svh] flex flex-col justify-start items-center text-center mt-24 md:mt-[15em] p-8">
     <div
-      class="absolute top-0 bottom-0 m-auto bg-teal-500 opacity-30 md:opacity-20 w-4/6 md:w-2/6 aspect-square rounded-full blur-[96px]"></div>
+      class="absolute top-0 bottom-0 m-auto bg-teal-500 opacity-30 md:opacity-20 w-4/6 md:w-2/6 aspect-square rounded-full blur-xl md:blur-[96px]"></div>
     <h1
       class="mt-30 z-10 text-7xl md:text-8xl py-4 md:backdrop-blur-sm font-mono font-black tracking-tighter bg-gradient-to-r bg-clip-text text-transparent from-zinc-200 via-slate-600 via-40% dark:from-stone-700 dark:via-zinc-200 dark:via-30% dark:to-zinc-50"
       style="mask: linear-gradient(transparent, black 15%, black 85%, transparent)">
       This is
-      <span class="bg-gradient-to-r from-green-500 to-sky-500 text-transparent bg-clip-text drop-shadow-[0_0_8px_lightblue] dark:drop-shadow-[0_0_8px_black]">
+      <span class="bg-gradient-to-r from-green-500 to-sky-500 text-transparent bg-clip-text md:drop-shadow-[0_0_8px_lightblue] dark:drop-shadow-[0_0_8px_black]">
         Harsh Narayan Jha
       </span>
     </h1>
