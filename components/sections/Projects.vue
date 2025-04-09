@@ -3,7 +3,7 @@ const project = await queryCollection('project').first()
 </script>
 
 <template>
-  <h1 class="text-4xl font-bold mb-8 sm:text-5xl">Projects&nbsp;&nbsp;🛠</h1>
+  <h1 class="text-4xl font-bold mb-8 sm:text-5xl ps-16">Projects&nbsp;&nbsp;🛠</h1>
   <div class="flex flex-wrap md:flex-row flex-col py-10 px-15 justify-center">
     <ProjectCard
       v-for="proj in project.data"

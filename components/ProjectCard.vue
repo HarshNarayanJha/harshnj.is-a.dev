@@ -5,7 +5,7 @@
         'p-4 flex flex-col items-start justify-start h-full gap-4 sm:gap-8 border-2 border-slate-300/50 dark:border-zinc-800/50 rounded-lg md:drop-shadow-lg',
         bg || 'bg-white dark:bg-gray-900',
       ]">
-      <div id="leading-image" class="flex-1 mx-auto">
+      <div id="leading-image" class="flex-1 mx-auto h-full flex flex-col place-content-center">
         <slot name="image" />
       </div>
       <div id="text-content" class="mt-2 sm:mt-4 w-full">

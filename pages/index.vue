@@ -34,7 +34,7 @@
     </svg>
   </div>
 
-  <section id="projects" class="p-8 md:p-40 bg-stone-100 dark:bg-gray-900">
+  <section id="projects" class="p-8 md:p-16 bg-stone-100 dark:bg-gray-900">
     <SectionsProjects />
   </section>
 

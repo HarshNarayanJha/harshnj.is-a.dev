@@ -1,6 +1,13 @@
 {
   "data": [
     {
+      "img": "/img/smartmed.png",
+      "name": "SmartMed",
+      "url": "https://smartmed-wli7.onrender.com/",
+      "text": "A web application that helps doctors manage their patients, readings and reports with the help of AI, providing personalized insights and recommendations.",
+      "tags": ["Next.js", "Supabase", "Google Gemini", "Prisma", "Tailwind"]
+    },
+    {
       "img": "/img/instasolve.png",
       "name": "Instasolve",
       "url": "http://github.com/HarshNarayanJha/Insta-Solve",
@@ -39,14 +46,21 @@
       "img": "...",
       "name": "School Management",
       "url": "http://github.com/HarshNarayanJha/School-Management-Project",
-      "text": "The de-facto School Management Project, with features like Marks entry and Result Card generation. A collaborative project with my Sir!",
+      "text": "The de-facto School Management Project, with features like Marks entry and Result Card generation. A collaborative project with my Abhijeet Sir!",
       "tags": ["Django", "Python", "Django REST API", "PythonAnywhere"]
     },
     {
-      "img": "...",
+      "img": "/img/frostbyte.png",
+      "name": "Frostbyte",
+      "url": "https://harshnarayanjha.itch.io/frostbyte",
+      "text": "My Submission for 1-Bit #5 Game Jam ",
+      "tags": ["Godot", "Game Development", "Game Design"]
+    },
+    {
+      "img": "/img/arcane-quest.png",
       "name": "Arcane Quest",
       "url": "https://harshnarayanjha.itch.io/arcane-quest",
-      "text": "My Submission for GitHub GameOff 2024 ",
+      "text": "My Submission for GitHub GameOff 2024",
       "tags": ["Godot", "Game Development", "Game Design"]
     },
     {
