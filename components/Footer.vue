@@ -39,7 +39,7 @@
         <p class="text-center text-sm md:text-base">
           &copy; 2025 Harsh Narayan Jha.
           <br />
-          <span class="text-xs md:text-sm"> Built with NuxtJs </span>
+          <span class="text-xs md:text-sm"> Built with Nuxt </span>
         </p>
       </div>
     </div>
