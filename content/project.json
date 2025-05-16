@@ -10,7 +10,7 @@
     {
       "img": "/img/instasolve.png",
       "name": "Instasolve",
-      "url": "http://github.com/HarshNarayanJha/Insta-Solve",
+      "url": "https://github.com/HarshNarayanJha/Insta-Solve",
       "text": "A mobile app that helps students learn new things and solve their doubts.",
       "tags": ["Flutter", "Dart", "Hive", "REST APIs", "Google Gemini"]
     },
@@ -31,7 +31,7 @@
     {
       "img": "/img/inkd-insults.png",
       "name": "Ink'd Insults",
-      "url": "http://harshnj.is-a.dev/inkd-insults/",
+      "url": "https://harshnj.is-a.dev/inkd-insults/",
       "text": "Love your handwriting? Or hate it? Check out what AI thinks about your handwriting!",
       "tags": ["VueJS", "Shadcn", "Typescript", "Tailwind", "Google Gemini"]
     },
@@ -45,7 +45,7 @@
     {
       "img": "",
       "name": "School Management",
-      "url": "http://github.com/HarshNarayanJha/School-Management-Project",
+      "url": "https://github.com/HarshNarayanJha/School-Management-Project",
       "text": "The de-facto School Management Project, with features like Marks entry and Result Card generation. A collaborative project with my Abhijeet Sir!",
       "tags": ["Django", "Python", "Django REST API", "PythonAnywhere"]
     },
@@ -66,6 +66,7 @@
     {
       "img": "https://images.pexels.com/photos/2034373/pexels-photo-2034373.jpeg?auto=compress&cs=tinysrgb&w=400&dpr=1",
       "name": "Echo - Notepad",
+      "url": "https://echo-notepad.netlify.app",
       "text": "Realtime private notepad for you and your friends to write in sync",
       "tags": ["Vuejs", "SocketIO", "Javascript"]
     }

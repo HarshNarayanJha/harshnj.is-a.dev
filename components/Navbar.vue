@@ -1,21 +1,67 @@
-<script setup>
+<script setup lang="ts">
+import { animate, stagger } from 'animejs'
+import { useAnime, useAnimeController } from 'v-anime'
+
 const colorMode = useColorMode()
 
 const toggleColorMode = () => {
   colorMode.preference = colorMode.preference === 'light' ? 'dark' : 'light'
 }
+
+const root = ref(null)
+const scope = ref(null)
+
+const navbarAnimation = () => {
+  animate('#nav-lead', {
+    translateY: [{ from: -50, ease: 'outCubic', duration: 300, delay: 100 }],
+    opacity: [{ from: 0, ease: 'outCubic', duration: 200, delay: 100 }],
+  })
+
+  animate('#nav-links svg', {
+    rotate: [
+      {
+        from: 360,
+        ease: 'outCubic',
+        duration: 500,
+        delay: stagger(100, { start: 500, ease: 'outQuad' }),
+      },
+    ],
+    scale: [
+      {
+        from: 0,
+        ease: 'outCubic',
+        duration: 500,
+        delay: stagger(100, { start: 500, ease: 'outQuad' }),
+      },
+    ],
+    opacity: [
+      {
+        from: 0,
+        ease: 'outCubic',
+        duration: 500,
+        delay: stagger(100, { start: 500, ease: 'outQuad' }),
+      },
+    ],
+  })
+}
+
+useAnime({
+  root: root,
+  scope: scope,
+  animeFunctions: [navbarAnimation],
+})
 </script>
 
 <template>
   <header
     class="w-full md:sticky md:top-0 md:backdrop-blur-sm bg-gradient-to-b from-slate-200 dark:from-slate-950"
-    style="mask: linear-gradient(black 80%, transparent)">
+    style="mask: linear-gradient(black 80%, transparent)" ref="root">
     <nav
       class="w-full m-auto p-2 md:p-4 pt-8 flex flex-col md:grid md:grid-cols-5 md:grid-rows-1 space-y-4 md:space-y-[unset] place-content-stretch place-items-center">
-      <p class="md:place-self-center md:col-start-3 text-xl font-bold opacity-85 tracking-wide">
+      <p id="nav-lead" class="md:place-self-center md:col-start-3 text-xl font-bold opacity-85 tracking-wide">
         harshnj.is-a.dev
       </p>
-      <div class="md:place-self-end md:col-span-1 space-x-4">
+      <div id="nav-links" class="md:place-self-end md:col-span-1 space-x-4">
         <button title="Toggle Theme" aria-title="Toggle Theme" @click="toggleColorMode">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,9 +90,9 @@ const toggleColorMode = () => {
         </a>
       </div>
       <button
-        class="place-self-center md:col-span-1 px-4 py-1 bg-transparent bg-gradient-to-b from-transparent to-neutral-200 dark:to-neutral-900 rounded-xl border-2 border-neutral-500 border-opacity-40">
+        class="place-self-center md:col-span-1 px-4 py-1 bg-transparent bg-gradient-to-b from-transparent to-neutral-200 dark:to-neutral-900 rounded-xl border-2 border-neutral-500 border-opacity-40 group">
         <a href="/Resume_Simple.pdf" title="download my resume" download>
-          <DownloadIcon class="inline" />
+          <DownloadIcon class="inline translate-y-0 group-hover:translate-y-1 transition-transform duration-200" />
         </a>
         <span class="text-xl mx-2 font-mono opacity-25">|</span>
         <a href="/Resume_Simple.pdf" target="_blank" title="open resume in new tab"> RESUME </a>

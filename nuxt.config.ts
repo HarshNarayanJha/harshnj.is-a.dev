@@ -31,7 +31,6 @@ export default defineNuxtConfig({
     'nuxt-feather-icons',
     '@nuxt/content',
     '@nuxtjs/color-mode',
-    '@hypernym/nuxt-anime',
   ],
 
   colorMode: {

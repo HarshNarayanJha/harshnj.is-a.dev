@@ -7,9 +7,9 @@
     </p>
 
     <button
-      class="w-fit px-4 md:px-6 py-2 bg-transparent rounded-xl border-2 border-slate-500 border-opacity-40 shadow-md hover:shadow-lg transition-shadow">
+      class="w-fit px-4 md:px-6 py-2 bg-transparent rounded-xl border-2 border-slate-500 border-opacity-40 shadow-md hover:shadow-lg transition-shadow group">
       <a href="/Resume.pdf" title="download my resume" download class="text-sm md:text-base">
-        <DownloadIcon class="inline w-4 h-4 md:w-5 md:h-5" />
+        <DownloadIcon class="inline w-4 h-4 md:w-5 md:h-5 translate-y-0 group-hover:translate-y-1 transition-transform duration-200" />
       </a>
       <span class="text-xl md:text-2xl mx-2 font-mono opacity-25">|</span>
       <a
