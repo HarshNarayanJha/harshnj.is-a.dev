@@ -1,5 +1,7 @@
 # harshnj.is-a.dev
 
+[🔗 Visit](https://harshnj.is-a.dev)
+
 Nuxt project for my personal website.
 
 This is just the repo for source.
