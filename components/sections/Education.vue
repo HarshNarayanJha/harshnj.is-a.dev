@@ -9,10 +9,10 @@ const education = await queryCollection('education').first()
     Not been to a lot of places, but for sure to the best places.
   </p>
   <div class="container flex flex-col-reverse relative py-8 px-4 md:px-8 mx-auto">
-    <div class="absolute left-0 top-8 h-full w-2 md:w-4 rounded-full bg-green-400"></div>
+    <div class="absolute left-0 top-8 h-full w-1 md:w-2 rounded-full bg-green-400"></div>
 
     <EducationCard
-      class="w-full my-4 mx-4 sm:mx-8 relative transition-all hover:scale-102"
+      class="w-full my-4 mx-4 sm:mx-4 relative transition-all hover:scale-102"
       v-for="edu in education.data">
       <template #image>
         <img

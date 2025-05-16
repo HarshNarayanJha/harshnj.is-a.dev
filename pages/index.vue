@@ -1,22 +1,21 @@
 <template>
-  <section id="hero" class="p-4 md:p-8 bg-slate-50 dark:bg-gray-950">
+  <section id="hero" class="p-4 md:p-8 bg-gray-50 dark:bg-gray-950">
     <SectionsHero />
 
     <Card class="w-11/12 md:w-9/12 mx-auto my-8">
       <template #image>
         <img
           src="/img/me.png"
-          class="w-40 md:w-52 aspect-square border-2 border-slate-200/50 dark:border-slate-600/50 rounded-[3.8rem] rounded-br-3xl -rotate-6 hover:-rotate-[18deg] transition"
+          class="w-40 md:w-52 aspect-square border-2 border-slate-200/50 dark:border-slate-700/50 rounded-[3.8rem] rounded-br-3xl -rotate-6 hover:-rotate-[18deg] transition"
           alt="picture of the website owner"
           style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)" />
       </template>
       <template #title>
-        <div class="text-3xl md:text-4xl font-bold">Hey</div>
+        <div class="text-3xl md:text-4xl font-bold">Hello There</div>
       </template>
       <template #text>
         <div class="mt-2">
-          This is my little island on the internet. I design it, develop it, plan it, program it,
-          code it, and enjoy making it.
+          Welcome to my plot on the internet. This is where I showcase myself, in an elegant way.
         </div>
       </template>
     </Card>

@@ -2,7 +2,7 @@
 const colorMode = useColorMode()
 
 const toggleColorMode = () => {
-  colorMode.preference = colorMode.preference == 'light' ? 'dark' : 'light'
+  colorMode.preference = colorMode.preference === 'light' ? 'dark' : 'light'
 }
 </script>
 
@@ -44,7 +44,7 @@ const toggleColorMode = () => {
         </a>
       </div>
       <button
-        class="place-self-center md:col-span-1 px-4 py-1 bg-transparent bg-gradient-to-b from-transparent to-slate-200 dark:to-slate-900 rounded-xl border-2 border-slate-500 border-opacity-40">
+        class="place-self-center md:col-span-1 px-4 py-1 bg-transparent bg-gradient-to-b from-transparent to-neutral-200 dark:to-neutral-900 rounded-xl border-2 border-neutral-500 border-opacity-40">
         <a href="/Resume_Simple.pdf" title="download my resume" download>
           <DownloadIcon class="inline" />
         </a>

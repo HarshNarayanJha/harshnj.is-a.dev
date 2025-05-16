@@ -8,10 +8,10 @@ const work = await queryCollection('work').first()
     Here are some highlights of my professional experience and the impactful work I've done so far.
   </p>
   <div class="container flex flex-col-reverse items-end relative py-8 px-4 md:px-8">
-    <div class="absolute right-0 top-8 h-full w-2 md:w-4 rounded-full bg-sky-400"></div>
+    <div class="absolute right-0 top-8 h-full w-1 md:w-2 rounded-full bg-sky-400"></div>
 
     <WorkCard
-      :bg="`bg-stone-50 dark:bg-gray-800`"
+      :bg="`bg-stone-50 dark:bg-gray-950`"
       class="w-full my-4 mx-8 relative"
       v-for="wrk in work.data">
       <template #image>

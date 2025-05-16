@@ -7,7 +7,7 @@ const project = await queryCollection('project').first()
   <div class="flex flex-wrap md:flex-row flex-col py-10 px-15 justify-center">
     <ProjectCard
       v-for="proj in project.data"
-      :bg="`bg-stone-50 dark:bg-gray-800`"
+      :bg="`bg-stone-50 dark:bg-gray-950`"
       class="w-full md:w-96 my-4 m-auto md:mx-8"
       :tags="proj.tags">
       <template #image>
@@ -26,7 +26,7 @@ const project = await queryCollection('project').first()
       </template>
       <template #button>
         <a :href="proj.url" target="_blank">
-          <button class="w-full bg-cyan-500 dark:bg-slate-700 py-2 rounded-md font-semibold">
+          <button class="w-full text-white bg-sky-500 dark:bg-sky-600 py-2 rounded-md font-semibold">
             Explore
           </button>
         </a>

@@ -14,6 +14,7 @@
       class="z-10 md:backdrop-blur py-4 text-xl md:text-2xl opacity-90 font-semibold mt-4 md:mt-8 text-slate-700 dark:text-slate-300 animate-pulse"
       style="mask: linear-gradient(transparent, black 25%, black 75%, transparent)">
       Developer <br />
+      Problem Solver <br />
       Open-Source contributor <br />
     </h2>
   </main>

@@ -35,11 +35,11 @@
 
   <div class="bg-zinc-200 dark:bg-gray-900">
     <div class="flex justify-center items-center pb-8 md:pb-12">
-      <div class="text-zinc-500">
+      <div class="text-zinc-400">
         <p class="text-center text-sm md:text-base">
-          &copy; 2024 Harsh Narayan Jha.
+          &copy; 2025 Harsh Narayan Jha.
           <br />
-          <span class="text-xs md:text-sm"> Built with Vue.js & Nuxt </span>
+          <span class="text-xs md:text-sm"> Built with NuxtJs </span>
         </p>
       </div>
     </div>
