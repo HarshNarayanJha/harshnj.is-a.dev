@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { resolve } from "path";
-import { defineNuxtConfig } from "nuxt/config";
+import { resolve } from 'node:path'
+import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -9,30 +9,29 @@ export default defineNuxtConfig({
   router: {
     options: {
       strict: true,
-      sensitive: true
-    }
+      sensitive: true,
+    },
   },
 
   app: {
     head: {
       charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1'
-    }
+      viewport: 'width=device-width, initial-scale=1',
+    },
   },
 
   alias: {
-    "@": resolve(__dirname, "/")
+    '@': resolve(__dirname, '/'),
   },
 
-  css: [
-    "~/assets/css/tailwind.css"
-  ],
+  css: ['~/assets/css/tailwind.css'],
 
   modules: [
-    "@nuxtjs/tailwindcss",
-    "nuxt-feather-icons",
-    "@nuxt/content",
-    "@nuxtjs/color-mode"
+    '@nuxtjs/tailwindcss',
+    'nuxt-feather-icons',
+    '@nuxt/content',
+    '@nuxtjs/color-mode',
+    '@hypernym/nuxt-anime',
   ],
 
   colorMode: {
@@ -44,6 +43,9 @@ export default defineNuxtConfig({
     classPrefix: '',
     classSuffix: '',
     storage: 'localStorage',
-    storageKey: 'nuxt-color-mode'
-  }
+    storageKey: 'nuxt-color-mode',
+  },
+  anime: {
+    composables: true,
+  },
 })

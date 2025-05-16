@@ -36,14 +36,14 @@
       "tags": ["VueJS", "Shadcn", "Typescript", "Tailwind", "Google Gemini"]
     },
     {
-      "img": "...",
+      "img": "",
       "name": "Placement Prediction",
       "url": "https://placement-classify.streamlit.app/",
       "text": "This project aims to predict college placements based on various factors. ",
       "tags": ["Machine Learning", "Neural Networks", "Prediction", "Classification"]
     },
     {
-      "img": "...",
+      "img": "",
       "name": "School Management",
       "url": "http://github.com/HarshNarayanJha/School-Management-Project",
       "text": "The de-facto School Management Project, with features like Marks entry and Result Card generation. A collaborative project with my Abhijeet Sir!",
