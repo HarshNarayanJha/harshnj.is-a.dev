@@ -13,6 +13,10 @@ export default defineNuxtConfig({
     },
   },
 
+  generate: {
+  	noJekyll: true
+  },
+
   app: {
     head: {
       charset: 'utf-8',
