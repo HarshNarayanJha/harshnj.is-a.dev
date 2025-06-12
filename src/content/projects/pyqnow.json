@@ -1,0 +1,7 @@
+{
+  "img": "../../img/pyqnow.png",
+  "name": "PYQNow",
+  "url": "https://pyqnow.netlify.app",
+  "text": "A web app that helps students to quickly open Past Year Question papers, without wasting time and focus on solving papers right before the exam.",
+  "tags": ["VueJS", "JSON", "Netlify"]
+}

@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "../ProjectCard.vue";
+import { Image } from "astro:assets";
+
+const projects = await getCollection("projects");
+---
+
+<h1 class="text-4xl font-bold mb-8 sm:text-5xl ps-16">Projects&nbsp;&nbsp;🛠</h1>
+<div class="flex flex-wrap md:flex-row flex-col py-10 px-15 justify-center">
+    {
+        projects.map((proj) => (
+            <ProjectCard
+                bg={"bg-stone-50 dark:bg-gray-950"}
+                class="w-full md:w-96 my-4 m-auto md:mx-8"
+                tags={proj.data.tags}
+            >
+                <Image
+                    src={proj.data.img}
+                    alt={`${proj.data.name}'s Image`}
+                    inferSize={true}
+                    class="border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50 rounded-2xl"
+                    slot="image"
+                />
+                <div class="text-2xl font-semibold" slot="title">
+                    {proj.data.name}
+                </div>
+                <div class="mt-2 text-[1rem]" slot="text">
+                    {proj.data.text}
+                </div>
+                <a href={proj.data.url} target="_blank" slot="button">
+                    <button class="w-full text-white bg-sky-500 dark:bg-sky-600 py-2 rounded-md font-semibold">
+                        Explore
+                    </button>
+                </a>
+            </ProjectCard>
+        ))
+    }
+</div>

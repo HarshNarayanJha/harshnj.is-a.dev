@@ -1,0 +1,64 @@
+---
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import "../styles/global.css";
+
+import { getImage } from "astro:assets";
+import faviconSrc from "../img/logo.png";
+import faviconSvgSrc from "../img/logo.svg";
+
+const appleTouchIcon = await getImage({
+    src: faviconSrc,
+    width: 180,
+    height: 180,
+    format: "png",
+});
+const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" });
+
+const title = "Harsh Narayan Jha";
+const description = "Harsh Narayan Jha's Personal Portfolio";
+const ogTitle = "Harsh Narayan Jha";
+const ogDescription = "Harsh Narayan Jha's Personal Portfolio";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
+        <link rel="apple-touch-icon" href={appleTouchIcon.src} />
+
+        <meta name="generator" content={Astro.generator} />
+
+        <title>{title}</title>
+
+        <meta name="description" content={description} />
+
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={ogDescription} />
+
+        <script>
+            if (
+                localStorage.theme === "dark" ||
+                (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ) {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+        </script>
+    </head>
+    <body class="bg-slate-50 text-neutral-800 dark:bg-gray-950 dark:text-slate-100">
+        <div class="min-h-svh min-w-full">
+            <Navbar />
+
+            <slot />
+
+            <section id="footer" class="pt-8 md:px-40 bg-slate-50 dark:bg-gray-950">
+                <Footer />
+            </section>
+        </div>
+    </body>
+</html>

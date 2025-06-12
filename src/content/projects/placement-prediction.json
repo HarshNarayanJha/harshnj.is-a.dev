@@ -1,0 +1,7 @@
+{
+  "img": "https://placehold.net/default.png",
+  "name": "Placement Prediction",
+  "url": "https://placement-classify.streamlit.app/",
+  "text": "This project aims to predict college placements based on various factors. ",
+  "tags": ["Machine Learning", "Neural Networks", "Prediction", "Classification"]
+}

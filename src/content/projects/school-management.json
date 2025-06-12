@@ -1,0 +1,7 @@
+{
+  "img": "https://placehold.net/default.png",
+  "name": "School Management",
+  "url": "https://github.com/HarshNarayanJha/School-Management-Project",
+  "text": "The de-facto School Management Project, with features like Marks entry and Result Card generation. A collaborative project with my Abhijeet Sir!",
+  "tags": ["Django", "Python", "Django REST API", "PythonAnywhere"]
+}
