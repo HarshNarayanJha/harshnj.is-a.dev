@@ -16,13 +16,16 @@ import ColorModeToggle from "./ColorModeToggle.astro"
     <div id="nav-links" class="space-x-4 md:col-span-1 md:place-self-end">
       <ColorModeToggle />
       <a href="https://github.com/HarshNarayanJha" target="_blank">
-        <Icon name={"logos/github"} class={"inline-block"} size={24} />
+        <Icon name="logos/github" class="inline-block" size={24} />
+        <snan class="sr-only">Github</snan>
       </a>
       <a href="https://linkedin.com/in/HarshNarayanJha" target="_blank">
-        <Icon name={"logos/linkedin"} class={"inline-block"} size={24} />
+        <Icon name="logos/linkedin" class="inline-block" size={24} />
+        <span class="sr-only">Linkedin</span>
       </a>
       <a href="https://leetcode.com/u/HarshNarayanJha" target="_blank">
-        <Icon name={"logos/leetcode"} class={"inline-block"} size={24} />
+        <Icon name="logos/leetcode" class="inline-block" size={24} />
+        <span class="sr-only">Leetcode</span>
       </a>
     </div>
     <button
@@ -30,10 +33,11 @@ import ColorModeToggle from "./ColorModeToggle.astro"
     >
       <a href="/Resume_Simple.pdf" title="download my resume" download>
         <Icon
-          name={"download"}
+          name="download"
           size={24}
           class="inline translate-y-0 transition-transform duration-200 group-hover:translate-y-1"
         />
+        <span class="sr-only">Download Resume</span>
       </a>
       <span class="mx-2 font-mono text-xl opacity-25">|</span>
       <a href="/Resume_Simple.pdf" target="_blank" title="open resume in new tab"> RESUME </a>

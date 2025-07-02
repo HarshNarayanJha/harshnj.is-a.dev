@@ -2,6 +2,7 @@
   "img": "../../img/inkd-insults.png",
   "name": "Ink'd Insults",
   "url": "https://harshnj.is-a.dev/inkd-insults/",
+  "github": "https://github.com/HarshNarayanJha/inkd-insults",
   "text": "Love your handwriting? Or hate it? Check out what AI thinks about your handwriting!",
   "tags": [
     "VueJS",

@@ -1,7 +1,7 @@
 {
   "img": "../../img/placeholder.png",
   "name": "School Management",
-  "url": "https://github.com/HarshNarayanJha/School-Management-Project",
+  "github": "https://github.com/HarshNarayanJha/School-Management-Project",
   "text": "The de-facto School Management Project, with features like Marks entry and Result Card generation. A collaborative project with my Abhijeet Sir!",
   "tags": [
     "Django",

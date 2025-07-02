@@ -6,11 +6,6 @@ import { Image } from "astro:assets"
 const works = await getCollection("works")
 ---
 
-<h1 class="mb-2 ps-8 text-4xl font-bold sm:text-5xl md:mb-8 md:ps-16">Work&nbsp;&nbsp; 🏢</h1>
-
-<p class="mt-2 mb-4 ps-8 text-[1rem] font-medium md:mt-8 md:ps-16">
-  Here are some highlights of my professional experience and the impactful work I've done so far.
-</p>
 <div class="relative container flex flex-col items-end px-8 py-8 md:px-15 md:py-10">
   <div class="absolute top-8 right-2 h-full w-2 rounded-full bg-sky-400 md:w-2"></div>
 
@@ -23,7 +18,9 @@ const works = await getCollection("works")
           <h3 class="text-2xl font-semibold">{work.data.name}</h3>
           <h4 class="mb-4 text-[0.8rem] font-normal">{work.data.location}</h4>
 
-          <h4 class="mb-4 text-sm font-semibold">{work.data.duration}</h4>
+          <h4 class="mb-4 text-sm font-semibold">
+            {work.data.fromTo} ({work.data.duration})
+          </h4>
         </Fragment>
 
         <p class="mb-8 text-justify leading-tight" slot="text">

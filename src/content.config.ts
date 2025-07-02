@@ -20,6 +20,7 @@ const works = defineCollection({
 			name: z.string(),
 			location: z.string(),
 			duration: z.string(),
+			fromTo: z.string(),
 			text: z.string(),
 		}),
 });
@@ -31,6 +32,7 @@ const projects = defineCollection({
 			img: image(),
 			name: z.string(),
 			url: z.string().optional(),
+			github: z.string().optional(),
 			text: z.string(),
 			tags: z.array(z.string()),
 		}),

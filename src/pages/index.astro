@@ -18,15 +18,31 @@ import me from "../img/me.png"
       <Image
         src={me}
         class="aspect-square w-40 -rotate-6 rounded-[3.8rem] rounded-br-3xl border-2 border-slate-200/50 transition hover:-rotate-[18deg] md:w-52 dark:border-slate-700/50"
-        alt="picture of the website owner"
+        alt="website owner"
         style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)"
+        loading={"eager"}
         slot="image"
       />
       <div class="text-3xl font-bold md:text-4xl" slot="title">Hello There</div>
-      <div class="mt-2" slot="text">
-        Welcome to my plot on the internet. This is where I showcase myself, in an elegant way.
+      <div class="prose prose-lg dark:prose-invert mt-2" slot="text">
+        I like building things from the basic principles, and also play with the latest technologies and hack around
+        them. I like to work in the App, Web and Game ecosystems.
       </div>
     </Card>
+  </section>
+
+  <!-- something must exists here -->
+
+  <section id="featured-posts" class="px-2 py-8 md:p-16">
+    <h2 class="mb-2 ps-8 text-4xl font-bold sm:text-5xl md:mb-8 md:ps-16">
+      Featured
+      <span
+        class="bg-teal-500 bg-gradient-to-r from-teal-500 via-cyan-300 via-50% to-sky-500 bg-clip-text text-transparent"
+      >
+        Posts
+      </span>
+    </h2>
+    <!-- Featured Posts here -->
   </section>
 
   <div class="wave-divider bg-stone-100 dark:bg-gray-900">
@@ -37,7 +53,18 @@ import me from "../img/me.png"
     </svg>
   </div>
 
-  <section id="projects" class="bg-stone-100 px-2 py-8 md:p-16 dark:bg-gray-900">
+  <section id="featured-projects" class="bg-stone-100 px-2 py-8 md:p-16 dark:bg-gray-900">
+    <div class="mb-2 ps-8 md:mb-8 md:ps-16">
+      <h1 class="text-4xl font-bold sm:text-5xl">
+        Exciting
+        <span
+          class="bg-sky-500 bg-gradient-to-r from-sky-500 via-cyan-300 via-50% to-green-500 bg-clip-text text-transparent"
+        >
+          Projects
+        </span>
+      </h1>
+      <p class="prose dark:prose-invert mt-2">Small selection of the projects I have worked on.</p>
+    </div>
     <Projects />
   </section>
 
@@ -49,9 +76,10 @@ import me from "../img/me.png"
     </svg>
   </div>
 
-  <section id="education" class="bg-slate-50 px-2 py-8 md:p-40 dark:bg-gray-950">
+  <!-- Move to about -->
+  <!-- <section id="education" class="bg-slate-50 px-2 py-8 md:p-40 dark:bg-gray-950">
     <Education />
-  </section>
+  </section> -->
 
   <div class="wave-divider bg-stone-100 dark:bg-gray-900">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -62,6 +90,12 @@ import me from "../img/me.png"
   </div>
 
   <section id="work" class="bg-stone-100 px-2 py-8 md:p-40 dark:bg-gray-900">
+    <div class="mb-2 ps-8 md:mb-8 md:ps-16">
+      <h1 class="text-4xl font-bold sm:text-5xl">Experiences</h1>
+      <p class="prose dark:prose-invert mt-2 text-[1rem] font-medium">
+        Here are some highlights of my professional experience and the impactful work I've done so far.
+      </p>
+    </div>
     <Work />
   </section>
 

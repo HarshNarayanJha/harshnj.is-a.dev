@@ -2,19 +2,22 @@
 import { getCollection } from "astro:content"
 import ProjectCard from "../ProjectCard.astro"
 import { Image } from "astro:assets"
+import { Icon } from "astro-icon/components"
 
 const projects = await getCollection("projects")
 ---
 
-<h1 class="mb-2 ps-8 text-4xl font-bold sm:text-5xl md:mb-8 md:ps-16">Projects&nbsp;&nbsp;🛠</h1>
 <div class="flex flex-col flex-wrap justify-center px-8 py-2 md:flex-row md:px-15 md:py-10">
   {
     projects.map((proj) => (
       <ProjectCard bg={"bg-stone-50 dark:bg-gray-950"} class="m-auto my-4 w-full md:mx-8 md:w-96" tags={proj.data.tags}>
         <Image
           src={proj.data.img}
-          alt={`${proj.data.name}'s Image`}
-          class="rounded-2xl border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50"
+          alt={proj.data.name}
+          class:list={[
+            "rounded-2xl border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50",
+            proj.data.img.src.includes("placeholder") && "dark:invert",
+          ]}
           slot="image"
         />
         <div class="text-2xl font-semibold" slot="title">
@@ -23,9 +26,50 @@ const projects = await getCollection("projects")
         <div class="mt-2 text-[1rem]" slot="text">
           {proj.data.text}
         </div>
-        <a href={proj.data.url} target="_blank" slot="button">
-          <button class="w-full rounded-md bg-sky-500 py-2 font-semibold text-white dark:bg-sky-600">Explore</button>
-        </a>
+        <div class="grid w-full grid-cols-2 gap-2" slot="button">
+          {proj.data.url ? (
+            <a href={proj.data.url} target="_blank">
+              <button
+                class:list={[
+                  "w-full cursor-pointer rounded-md bg-teal-500/50 py-2 font-semibold text-white outline outline-offset-2 outline-teal-500/25 dark:bg-teal-500/50 dark:outline-teal-600/50",
+                  "transition-all hover:scale-95 hover:outline-offset-4",
+                ]}
+                tabindex="-1"
+              >
+                View Live
+              </button>
+            </a>
+          ) : (
+            <button
+              class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
+              tabindex="-1"
+              title="Not yet Live!"
+              disabled
+            >
+              Not yet Live!
+            </button>
+          )}
+          {proj.data.github ? (
+            <a href={proj.data.github} target="_blank">
+              <button
+                class="w-full cursor-pointer rounded-md bg-neutral-500 py-2 font-semibold text-white dark:bg-neutral-600"
+                tabindex="-1"
+              >
+                View Source
+                <Icon name="logos/github" class="inline" />
+              </button>
+            </a>
+          ) : (
+            <button
+              class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
+              tabindex="-1"
+              title="Not Public"
+              disabled
+            >
+              Not Public
+            </button>
+          )}
+        </div>
       </ProjectCard>
     ))
   }

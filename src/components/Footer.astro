@@ -10,20 +10,18 @@ import { Icon } from "astro-icon/components"
     Grab my Resume and contact me. Let's create something Amazing together!
   </p>
 
-  <button
-    class="border-opacity-40 group w-fit rounded-xl border-2 border-slate-500 bg-transparent px-4 py-2 shadow-md transition-shadow hover:shadow-lg md:px-6"
-  >
-    <a href="/Resume.pdf" title="download my resume" download class="text-sm md:text-base">
+  <a href="/Resume.pdf" title="download my resume" download class="text-sm md:text-base">
+    <button
+      class="border-opacity-40 group w-fit cursor-pointer rounded-xl border-2 border-slate-500 bg-transparent px-4 py-2 shadow-md transition-shadow hover:shadow-lg md:px-6"
+    >
       <Icon
         name="download"
         class="inline h-4 w-4 translate-y-0 transition-transform duration-200 group-hover:translate-y-1 md:h-5 md:w-5"
       />
-    </a>
-    <span class="mx-2 font-mono text-xl opacity-25 md:text-2xl">|</span>
-    <a href="/Resume.pdf" target="_blank" title="open resume in new tab" class="text-sm md:text-base">
-      GET MY <b>RESUME</b>
-    </a>
-  </button>
+      <span class="mx-2 font-mono text-xl opacity-25 md:text-2xl">|</span>
+      <span>GET MY <b>RESUME</b></span>
+    </button>
+  </a>
 </div>
 <div class="wave-divider bg-zinc-200 dark:bg-gray-900">
   <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
