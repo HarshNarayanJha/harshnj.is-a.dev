@@ -3,5 +3,9 @@
   "name": "Arcane Quest",
   "url": "https://harshnarayanjha.itch.io/arcane-quest",
   "text": "My Submission for GitHub GameOff 2024",
-  "tags": ["Godot", "Game Development", "Game Design"]
+  "tags": [
+    "Godot",
+    "Game Development",
+    "Game Design"
+  ]
 }

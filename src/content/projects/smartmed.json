@@ -3,5 +3,11 @@
   "name": "SmartMed",
   "url": "https://smartmed-wli7.onrender.com/",
   "text": "A web application that helps doctors manage their patients, readings and reports with the help of AI, providing personalized insights and recommendations.",
-  "tags": ["Next.js", "Supabase", "Google Gemini", "Prisma", "Tailwind"]
+  "tags": [
+    "Next.js",
+    "Supabase",
+    "Google Gemini",
+    "Prisma",
+    "Tailwind"
+  ]
 }

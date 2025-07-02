@@ -1,42 +1,42 @@
 ---
-import { Icon } from "astro-icon/components";
-import ColorModeToggle from "./ColorModeToggle.astro";
+import { Icon } from "astro-icon/components"
+import ColorModeToggle from "./ColorModeToggle.astro"
 ---
 
 <header
-    class="w-full md:sticky md:top-0 md:backdrop-blur-sm bg-gradient-to-b from-slate-200 dark:from-slate-950"
-    style="mask: linear-gradient(black 80%, transparent)"
+  class="z-10 w-full bg-gradient-to-b from-slate-200 md:sticky md:top-0 md:backdrop-blur-sm dark:from-slate-950"
+  style="mask: linear-gradient(black 80%, transparent)"
 >
-    <nav
-        class="w-full m-auto p-2 md:p-4 pt-8 flex flex-col md:grid md:grid-cols-5 md:grid-rows-1 space-y-4 md:space-y-[unset] place-content-stretch place-items-center"
+  <nav
+    class="m-auto flex w-full flex-col place-content-stretch place-items-center space-y-4 p-2 pt-8 md:grid md:grid-cols-5 md:grid-rows-1 md:space-y-[unset] md:p-4"
+  >
+    <p id="nav-lead" class="text-xl font-bold tracking-wide opacity-85 md:col-start-3 md:place-self-center">
+      <a href="/"> harshnj.is-a.dev </a>
+    </p>
+    <div id="nav-links" class="space-x-4 md:col-span-1 md:place-self-end">
+      <ColorModeToggle />
+      <a href="https://github.com/HarshNarayanJha" target="_blank">
+        <Icon name={"logos/github"} class={"inline-block"} size={24} />
+      </a>
+      <a href="https://linkedin.com/in/HarshNarayanJha" target="_blank">
+        <Icon name={"logos/linkedin"} class={"inline-block"} size={24} />
+      </a>
+      <a href="https://leetcode.com/u/HarshNarayanJha" target="_blank">
+        <Icon name={"logos/leetcode"} class={"inline-block"} size={24} />
+      </a>
+    </div>
+    <button
+      class="border-opacity-40 group place-self-center rounded-xl border-2 border-neutral-500 bg-transparent bg-gradient-to-b from-transparent to-neutral-200 px-4 py-1 md:col-span-1 dark:to-neutral-900"
     >
-        <p id="nav-lead" class="md:place-self-center md:col-start-3 text-xl font-bold opacity-85 tracking-wide">
-            <a href="/"> harshnj.is-a.dev </a>
-        </p>
-        <div id="nav-links" class="md:place-self-end md:col-span-1 space-x-4">
-            <ColorModeToggle />
-            <a href="https://github.com/HarshNarayanJha" target="_blank">
-                <Icon name={"logos/github"} class={"inline-block"} size={24} />
-            </a>
-            <a href="https://linkedin.com/in/HarshNarayanJha" target="_blank">
-                <Icon name={"logos/linkedin"} class={"inline-block"} size={24} />
-            </a>
-            <a href="https://leetcode.com/u/HarshNarayanJha" target="_blank">
-                <Icon name={"logos/leetcode"} class={"inline-block"} size={24} />
-            </a>
-        </div>
-        <button
-            class="place-self-center md:col-span-1 px-4 py-1 bg-transparent bg-gradient-to-b from-transparent to-neutral-200 dark:to-neutral-900 rounded-xl border-2 border-neutral-500 border-opacity-40 group"
-        >
-            <a href="/Resume_Simple.pdf" title="download my resume" download>
-                <Icon
-                    name={"download"}
-                    size={24}
-                    class="inline translate-y-0 group-hover:translate-y-1 transition-transform duration-200"
-                />
-            </a>
-            <span class="text-xl mx-2 font-mono opacity-25">|</span>
-            <a href="/Resume_Simple.pdf" target="_blank" title="open resume in new tab"> RESUME </a>
-        </button>
-    </nav>
+      <a href="/Resume_Simple.pdf" title="download my resume" download>
+        <Icon
+          name={"download"}
+          size={24}
+          class="inline translate-y-0 transition-transform duration-200 group-hover:translate-y-1"
+        />
+      </a>
+      <span class="mx-2 font-mono text-xl opacity-25">|</span>
+      <a href="/Resume_Simple.pdf" target="_blank" title="open resume in new tab"> RESUME </a>
+    </button>
+  </nav>
 </header>

@@ -3,5 +3,11 @@
   "name": "Instasolve",
   "url": "https://github.com/HarshNarayanJha/Insta-Solve",
   "text": "A mobile app that helps students learn new things and solve their doubts.",
-  "tags": ["Flutter", "Dart", "Hive", "REST APIs", "Google Gemini"]
+  "tags": [
+    "Flutter",
+    "Dart",
+    "Hive",
+    "REST APIs",
+    "Google Gemini"
+  ]
 }

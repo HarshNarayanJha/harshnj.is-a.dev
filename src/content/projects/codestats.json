@@ -3,5 +3,9 @@
   "name": "Code::Stats Client",
   "url": "https://github.com/HarshNarayanJha/codestats_client",
   "text": "A sleek mobile client for viewing your Code::Stats analytics and tracking your coding journey.",
-  "tags": ["Flutter", "Dart", "REST APIs"]
+  "tags": [
+    "Flutter",
+    "Dart",
+    "REST APIs"
+  ]
 }
