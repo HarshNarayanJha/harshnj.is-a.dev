@@ -10,7 +10,13 @@ import ColorModeToggle from "./ColorModeToggle.astro"
   <nav
     class="m-auto flex w-full flex-col place-content-stretch place-items-center space-y-4 p-2 pt-8 md:grid md:grid-cols-5 md:grid-rows-1 md:space-y-[unset] md:p-4"
   >
-    <p id="nav-lead" class="text-xl font-bold tracking-wide opacity-85 md:col-start-3 md:place-self-center">
+    <div class="flex flex-row gap-4 md:col-span-2 md:place-self-center">
+      <a href="/blog">Blog</a>
+      <a href="/projects">Projects</a>
+      <a href="/snippets">Snippets</a>
+      <a href="/about">About</a>
+    </div>
+    <p id="nav-lead" class="text-xl font-bold tracking-wide opacity-85 md:place-self-center">
       <a href="/"> harshnj.is-a.dev </a>
     </p>
     <div id="nav-links" class="space-x-4 md:col-span-1 md:place-self-end">

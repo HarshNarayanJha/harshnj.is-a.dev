@@ -51,14 +51,14 @@ const ogDescription = "Harsh Narayan Jha's Personal Portfolio"
     </script>
   </head>
   <body class="bg-slate-50 text-neutral-800 dark:bg-gray-950 dark:text-slate-100">
+    <Navbar />
+
     <div class="min-h-svh min-w-full">
-      <Navbar />
-
       <slot />
-
-      <section id="footer" class="bg-slate-50 pt-8 md:px-40 dark:bg-gray-950">
-        <Footer />
-      </section>
     </div>
+
+    <section id="footer" class="bg-slate-50 pt-8 md:px-40 dark:bg-gray-950">
+      <Footer />
+    </section>
   </body>
 </html>
