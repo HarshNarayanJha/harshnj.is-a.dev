@@ -1,6 +1,6 @@
 {
   "$schema": "../../../.astro/collections/projects.schema.json",
-  "img": "../../img/smartmed.png",
+  "img": "smartmed.png",
   "name": "SmartMed",
   "url": "https://smartmed-wli7.onrender.com/",
   "github": "https://github.com/HarshNarayanJha/smartmed",

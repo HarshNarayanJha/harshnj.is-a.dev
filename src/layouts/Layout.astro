@@ -17,10 +17,15 @@ const appleTouchIcon = await getImage({
 })
 const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" })
 
-const title = "Harsh Narayan Jha"
-const description = "Harsh Narayan Jha's Personal Portfolio"
-const ogTitle = "Harsh Narayan Jha"
-const ogDescription = "Harsh Narayan Jha's Personal Portfolio"
+interface Props {
+  title?: string
+  description?: string
+}
+
+const { title = "Harsh Narayan Jha", description = "Harsh Narayan Jha's Personal Portfolio" } = Astro.props
+
+const ogTitle = title
+const ogDescription = description
 ---
 
 <!doctype html>
@@ -41,7 +46,7 @@ const ogDescription = "Harsh Narayan Jha's Personal Portfolio"
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
 
-    <!-- <ClientRouter /> -->
+    <!-- <ClientRouter fallback="swap" /> -->
 
     <script is:inline>
       function applyTheme() {

@@ -1,6 +1,6 @@
 {
   "$schema": "../../../.astro/collections/projects.schema.json",
-  "img": "../../img/placeholder.png",
+  "img": "placeholder.png",
   "name": "Placement Prediction",
   "url": "https://placement-classify.streamlit.app/",
   "github": "https://github.com/HarshNarayanJha/placement_prediction",

@@ -8,6 +8,21 @@
     "dist"
   ],
   "compilerOptions": {
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@images/*": [
+        "src/img/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ]
+    }
   }
 }

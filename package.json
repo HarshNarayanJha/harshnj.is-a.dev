@@ -11,7 +11,7 @@
   "dependencies": {
     "@astrojs/svelte": "^7.1.0",
     "@tailwindcss/vite": "^4.1.10",
-    "astro": "^5.9.2",
+    "astro": "5.11.0",
     "astro-icon": "^1.1.5",
     "svelte": "^5.34.1",
     "tailwindcss": "^4.1.10",

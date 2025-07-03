@@ -1,17 +1,21 @@
 ---
-import Layout from "../../layouts/Layout.astro"
 import { getCollection } from "astro:content"
 import { Image } from "astro:assets"
 import { Icon } from "astro-icon/components"
-import BlogCard from "../../components/BlogCard.astro"
-import placeholderImage from "../../img/placeholder.png"
+
+import Layout from "@layouts/Layout.astro"
+import BlogCard from "@components/cards/BlogCard.astro"
+import placeholderImage from "@images/placeholder.png"
 
 const blogs = (await getCollection("blogs", ({ data }) => data.isPublished && data.pubDate)).sort(
   (a, b) => b.data.pubDate!.valueOf() - a.data.pubDate!.valueOf(),
 )
+
+const title = "Blog | Harsh Narayan Jha"
+const description = "Harsh Narayan Jha's Blogs"
 ---
 
-<Layout>
+<Layout title={title} description={description}>
   <section class="mx-auto h-auto w-full max-w-7xl px-4 py-16 md:px-16 md:py-28">
     <Icon name="write" class="m-2 ms-0" size={24} />
     <h2 class="text-5xl font-semibold">Blog</h2>

@@ -1,12 +1,16 @@
 ---
 import Layout from "./Layout.astro"
-import TransparentDivider from "../components/reusable/TransparentDivider.svelte"
 import { Image } from "astro:assets"
 
+import TransparentDivider from "@components/reusable/TransparentDivider.svelte"
+
 const { frontmatter } = Astro.props
+
+const title = `${frontmatter.title} | Harsh Narayn Jha's Blog`
+const description = frontmatter.description
 ---
 
-<Layout>
+<Layout title={title} description={description}>
   <main class="prose dark:prose-invert mx-auto h-auto max-w-6xl px-4 py-16 md:px-16 md:py-28">
     {frontmatter.image && <Image src={frontmatter.image} alt={frontmatter.title} class="w-full" />}
 

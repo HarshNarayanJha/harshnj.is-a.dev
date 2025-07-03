@@ -1,6 +1,6 @@
 {
   "$schema": "../../../.astro/collections/projects.schema.json",
-  "img": "../../img/frostbyte.png",
+  "img": "frostbyte.png",
   "name": "Frostbyte",
   "url": "https://harshnarayanjha.itch.io/frostbyte",
   "github": "https://github.com/HarshNarayanJha/frostbyte",

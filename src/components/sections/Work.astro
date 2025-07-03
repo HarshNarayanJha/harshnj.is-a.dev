@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content"
-import WorkCard from "../WorkCard.astro"
 import { Image } from "astro:assets"
+
+import WorkCard from "@components/cards/WorkCard.astro"
 
 const works = await getCollection("works")
 ---

@@ -1,6 +1,6 @@
 {
   "$schema": "../../../.astro/collections/projects.schema.json",
-  "img": "../../img/pyqnow.png",
+  "img": "pyqnow.png",
   "name": "PYQNow",
   "url": "https://pyqnow.netlify.app",
   "github": "https://github.com/HarshNarayanJha/pyqnow",

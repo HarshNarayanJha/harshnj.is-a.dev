@@ -1,6 +1,6 @@
 {
   "$schema": "../../../.astro/collections/projects.schema.json",
-  "img": "../../img/arcane-quest.png",
+  "img": "arcane-quest.png",
   "name": "Arcane Quest",
   "url": "https://harshnarayanjha.itch.io/arcane-quest",
   "github": "https://github.com/HarshNarayanJha/arcane-quest",

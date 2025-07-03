@@ -1,16 +1,15 @@
 ---
 import { Image } from "astro:assets"
-import Card from "../components/Card.astro"
-import Education from "../components/sections/Education.astro"
-import Hero from "../components/sections/Hero.astro"
-import FeaturedProjects from "../components/sections/FeaturedProjects.astro"
-import FeaturedBlogs from "../components/sections/FeaturedBlogs.astro"
-import Work from "../components/sections/Work.astro"
-import Layout from "../layouts/Layout.astro"
-
-import me from "../img/me.png"
-import FeaturedTestimonials from "../components/sections/FeaturedTestimonials.astro"
 import { Icon } from "astro-icon/components"
+
+import Layout from "@layouts/Layout.astro"
+import Card from "@components/cards/Card.astro"
+import Hero from "@components/sections/Hero.astro"
+import FeaturedBlogs from "@components/sections/FeaturedBlogs.astro"
+import FeaturedProjects from "@components/sections/FeaturedProjects.astro"
+import FeaturedTestimonials from "@components/sections/FeaturedTestimonials.astro"
+import Work from "@components/sections/Work.astro"
+import me from "@images/me.png"
 ---
 
 <Layout>
@@ -34,7 +33,7 @@ import { Icon } from "astro-icon/components"
     </Card>
   </section>
 
-  <!-- something must exists here -->
+  <!-- something must exist here -->
 
   <section id="featured-posts" class="px-2 py-8 md:p-32">
     <div class="mb-2 ps-2 md:mb-8 md:ps-16">

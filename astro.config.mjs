@@ -7,9 +7,9 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [svelte(), icon()],
+  integrations: [svelte(), icon()],
 
-	vite: {
-		plugins: [tailwindcss()],
-	},
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

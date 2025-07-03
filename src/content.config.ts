@@ -17,7 +17,7 @@ const works = defineCollection({
   type: "data",
   schema: ({ image }) =>
     z.object({
-      img: image(),
+      img: z.preprocess(val => `@images/work/${val}`, image()),
       name: z.string(),
       location: z.string(),
       duration: z.string(),
@@ -30,7 +30,7 @@ const projects = defineCollection({
   type: "data",
   schema: ({ image }) =>
     z.object({
-      img: image(),
+      img: z.preprocess(val => `@images/projects/${val}`, image()),
       name: z.string(),
       url: z.string().optional(),
       github: z.string().optional(),
@@ -65,9 +65,8 @@ const blogs = defineCollection({
       pubDate: z.date().optional(),
       description: z.string().max(70),
       author: z.string(),
-      image: image().optional(),
+      image: z.preprocess(val => `@images/blogs/${val}`, image()).optional(),
       tags: z.array(z.string())
-
     })
 })
 

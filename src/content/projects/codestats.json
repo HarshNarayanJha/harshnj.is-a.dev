@@ -1,6 +1,6 @@
 {
   "$schema": "../../../.astro/collections/projects.schema.json",
-  "img": "../../img/codestats.png",
+  "img": "codestats.png",
   "name": "Code::Stats Client",
   "github": "https://github.com/HarshNarayanJha/codestats_client",
   "text": "A sleek mobile client for viewing your Code::Stats analytics and tracking your coding journey.",

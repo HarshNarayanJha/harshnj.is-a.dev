@@ -1,14 +1,18 @@
 ---
 import { Image } from "astro:assets"
 import { getCollection } from "astro:content"
-import Layout from "../../layouts/Layout.astro"
 import { Icon } from "astro-icon/components"
-import ProjectCard from "../../components/ProjectCard.astro"
+
+import Layout from "@layouts/Layout.astro"
+import ProjectCard from "@components/cards/ProjectCard.astro"
 
 const projects = await getCollection("projects")
+
+const title = "Projects | Harsh Narayan Jha"
+const description = "Harsh Narayan Jha's Projects"
 ---
 
-<Layout>
+<Layout title={title} description={description}>
   <section class="h-auto w-full px-4 py-16 md:px-16 md:py-28">
     <div class="mx-auto text-center">
       <Icon name="project" class="m-2 inline" size={24} />

@@ -1,6 +1,6 @@
 {
   "$schema": "../../../.astro/collections/projects.schema.json",
-  "img": "../../img/placeholder.png",
+  "img": "placeholder.png",
   "name": "Echo - Notepad",
   "url": "https://echo-notepad.netlify.app",
   "github": "https://github.com/HarshNarayanJha/echo-server",

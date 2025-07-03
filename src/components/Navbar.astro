@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components"
-import ColorModeToggle from "./ColorModeToggle.astro"
+import ColorModeToggle from "@components/ColorModeToggle.astro"
 ---
 
 <header
@@ -11,6 +11,7 @@ import ColorModeToggle from "./ColorModeToggle.astro"
     class="m-auto flex w-full flex-col place-content-stretch place-items-center space-y-4 p-2 pt-8 md:grid md:grid-cols-5 md:grid-rows-1 md:p-6"
   >
     <div class="flex flex-row gap-4 md:col-span-2 md:place-self-center">
+      <a href="/" class="font-medium">Home</a>
       <a href="/blog" class="font-medium">Blog</a>
       <a href="/projects" class="font-medium">Projects</a>
       <a href="/snippets" class="font-medium">Snippets</a>

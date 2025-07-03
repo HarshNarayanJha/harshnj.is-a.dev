@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content"
-import BlogCard from "../BlogCard.astro"
 import { Image } from "astro:assets"
-import { Icon } from "astro-icon/components"
-import placeholderImage from "../../img/placeholder.png"
+
+import placeholderImage from "@images/placeholder.png"
+import BlogCard from "@components/cards/BlogCard.astro"
 
 const featuredBlogs = (
   await getCollection("blogs", ({ data }) => data.isPublished === true && data.pubDate !== undefined)
@@ -20,7 +20,7 @@ const featuredBlogs = (
           {blog.data.image ? (
             <Image src={blog.data.image} alt={blog.data.title} width={150} slot="image" />
           ) : (
-            <Image src={placeholderImage} alt="blog image placeholder" width={200} />
+            <Image src={placeholderImage} alt="blog image placeholder" width={200} class="dark:invert" />
           )}
           <div slot="title">
             <p class="prose dark:prose-invert">

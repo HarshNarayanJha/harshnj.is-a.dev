@@ -1,12 +1,16 @@
 ---
 import { Icon } from "astro-icon/components"
-import Layout from "../layouts/Layout.astro"
 import { getCollection } from "astro:content"
 
+import Layout from "@layouts/Layout.astro"
+
 const experiences = (await getCollection("experiences")).sort((a, b) => b.data.start.valueOf() - a.data.start.valueOf())
+
+const title = "About Me | Harsh Narayan Jha"
+const description = "Harsh Narayan Jha's About Page"
 ---
 
-<Layout>
+<Layout title={title} description={description}>
   <section class="h-auto w-full px-4 py-16 md:px-16 md:py-28">
     <div class="mx-auto text-center">
       <Icon name="about" class="m-2 inline" size={24} />

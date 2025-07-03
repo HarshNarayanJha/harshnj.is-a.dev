@@ -1,8 +1,9 @@
 ---
 import { getCollection } from "astro:content"
-import ProjectCard from "../ProjectCard.astro"
 import { Image } from "astro:assets"
 import { Icon } from "astro-icon/components"
+
+import ProjectCard from "@components/cards/ProjectCard.astro"
 
 const featuredProjects = await getCollection("projects", ({ data }) => data.featured)
 ---
