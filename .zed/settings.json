@@ -9,6 +9,13 @@
         "!biome",
         "..."
       ]
+    },
+    "TypeScript": {
+      "language_servers": [
+        "!biome",
+        "..."
+      ],
+      "formatter": "language_server"
     }
   }
 }

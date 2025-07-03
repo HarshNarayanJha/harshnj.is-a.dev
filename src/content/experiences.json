@@ -1,0 +1,60 @@
+{
+  "experiences": [
+    {
+      "id": 1,
+      "start": "2000-01-01",
+      "end": "3000-01-01",
+      "role": "Student",
+      "type": "education",
+      "level": 1,
+      "at": "Rose Public School",
+      "location": "Darbhanga, Bihar, India",
+      "description": "Studied at this school for about 6 years",
+      "points": [
+        "Did"
+      ]
+    },
+    {
+      "id": 2,
+      "start": "2016-06-01",
+      "end": "2023-03-01",
+      "role": "Student",
+      "type": "education",
+      "level": 1,
+      "at": "Kendriya Vidyalaya No. 1",
+      "location": "AFS Darbhanga, Bihar, India",
+      "description": "Another 6 years in this school. This school is part of the Kendriya Vidyalaya Sangathan, which is a network of schools across India under the National Government. There are more than 1200 schools in the network, and about 3 outside India. Passed with > 90% score",
+      "points": [
+        "Did"
+      ]
+    },
+    {
+      "id": 3,
+      "start": "2023-09-05",
+      "end": "PRESENT",
+      "role": "Student",
+      "type": "education",
+      "level": 2,
+      "at": "Birla Institute of Technology",
+      "location": "Deoghar, Jharkhand, India",
+      "description": "Pursuing a Bachelor's degree in Computer Science and Engineering at BIT. 4 years of college. Performing well with > 8.0 CGPA",
+      "points": [
+        "Did"
+      ]
+    },
+    {
+      "id": 4,
+      "start": "2025-03-05",
+      "end": "2025-07-05",
+      "role": "SDE Intern",
+      "type": "work",
+      "level": 1,
+      "at": "CoRider",
+      "location": "Banglore - Remote",
+      "description": "Hired as an backend software engineer at CoRider and worked for 4 months. Helped the company a lot.",
+      "points": [
+        "Did"
+      ]
+    }
+  ]
+}

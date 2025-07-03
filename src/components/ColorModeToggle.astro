@@ -45,5 +45,12 @@
     localStorage.setItem("theme", isDark ? "dark" : "light")
   }
 
-  document.getElementById("themeToggle")?.addEventListener("click", toggleColorMode)
+  const addEventListener = () => {
+    document.getElementById("themeToggle")?.addEventListener("click", toggleColorMode)
+  }
+
+  document.addEventListener("astro:after-swap", () => {
+    addEventListener()
+  })
+  addEventListener()
 </script>

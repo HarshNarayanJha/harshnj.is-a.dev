@@ -1,10 +1,18 @@
 ---
+import { Icon } from "astro-icon/components"
 import Layout from "../layouts/Layout.astro"
+import { getCollection } from "astro:content"
+
+const experiences = (await getCollection("experiences")).sort((a, b) => b.data.start.valueOf() - a.data.start.valueOf())
 ---
 
 <Layout>
   <section class="h-auto w-full px-4 py-16 md:px-16 md:py-28">
-    <h2 class="text-center text-4xl font-semibold">About Me</h2>
+    <div class="mx-auto text-center">
+      <Icon name="about" class="m-2 inline" size={24} />
+      <h2 class="text-center text-4xl font-semibold">About Me</h2>
+    </div>
+
     <div class="prose dark:prose-invert prose-lg mx-auto mt-16 md:mt-32">
       <div class="not-prose">
         <h1 class="text-3xl font-bold text-neutral-950 dark:text-white">Harsh Narayan Jha</h1>
@@ -33,48 +41,47 @@ import Layout from "../layouts/Layout.astro"
   </section>
 
   <section id="about-experiences" class="h-auto w-full px-4 py-32 md:px-16">
-    <h3 class="text-center text-2xl font-semibold">Experiences</h3>
+    <div class="mx-auto text-center">
+      <Icon name="work" class="m-2 inline" size={24} />
+      <h3 class="text-center text-2xl font-semibold">Experiences</h3>
+    </div>
 
     <div class="prose dark:prose-invert mx-auto mt-16 flex max-w-none flex-col gap-8 md:px-40">
-      <div class="grid grid-cols-1 gap-0 md:grid-cols-[1fr_3fr] md:gap-16">
-        <p>March 2025 - July 2025</p>
-        <div>
-          <h4>SDE Intern</h4>
-          <p>CoRider - Banglore, Remote</p>
-          <p>Hired as an backend software engineer at CoRider and worked for 4 months. Helped the company a lot.</p>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 gap-0 md:grid-cols-[1fr_3fr] md:gap-16">
-        <p>2023-2027</p>
-        <div>
-          <h4>Student</h4>
-          <p>Birla Institute of Technology - Deoghar, Jharkhand, India</p>
-          <p>
-            Pursuing a Bachelor's degree in Computer Science and Engineering at BIT. 4 years of college. Performing well
-            with &gt;8.0 CGPA
-          </p>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 gap-0 md:grid-cols-[1fr_3fr] md:gap-16">
-        <p>2016-2023</p>
-        <div>
-          <h4>Student</h4>
-          <p>Kendriya Vidyalaya No. 1 - AFS, Darbhanga, Bihar, India</p>
-          <p>
-            Another 6 years in this school. This school is part of the Kendriya Vidyalaya Sangathan, which is a network
-            of schools across India under the National Government. There are more than 1200 schools in the network, and
-            about 3 outside India. Passed with &gt;90% score
-          </p>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 gap-0 md:grid-cols-[1fr_3fr] md:gap-16">
-        <p>2000-3000</p>
-        <div>
-          <h4>Student</h4>
-          <p>Rose Public School - Darbhanga, Bihar, India</p>
-          <p>Studied at this school for about 6 years</p>
-        </div>
-      </div>
+      {
+        experiences.map((exp) => {
+          return (
+            <div class="grid grid-cols-1 gap-0 md:grid-cols-[1fr_3fr] md:gap-16">
+              <p class="justify-self-end font-mono">
+                {exp.data.start.toLocaleDateString("en-IN", { month: "short", year: "numeric" })} -{" "}
+                {exp.data.end === "PRESENT"
+                  ? "PRESENT"
+                  : exp.data.end.toLocaleDateString("en-IN", { month: "short", year: "numeric" })}
+              </p>
+              <div>
+                <h4>
+                  {Array(exp.data.level)
+                    .fill(0)
+                    .map(() => (
+                      <Icon name={`exp/${exp.data.type}`} class="inline" size={18} />
+                    ))}
+                  {exp.data.role}
+                </h4>
+                <p>
+                  <span class="font-semibold">{exp.data.at}</span>
+                  &mdash;
+                  <span class="italic">{exp.data.location}</span>
+                </p>
+                <p>{exp.data.description}</p>
+                <ul>
+                  {exp.data.points.map((pt) => (
+                    <li>{pt}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )
+        })
+      }
     </div>
   </section>
 </Layout>

@@ -1,42 +1,60 @@
 import { defineCollection, z } from "astro:content";
+import { file } from "astro/loaders";
 
 const educations = defineCollection({
-	type: "data",
-	schema: ({ image }) =>
-		z.object({
-			img: image(),
-			name: z.string(),
-			location: z.string(),
-			duration: z.string(),
-			text: z.string(),
-		}),
+  type: "data",
+  schema: ({ image }) =>
+    z.object({
+      img: image(),
+      name: z.string(),
+      location: z.string(),
+      duration: z.string(),
+      text: z.string(),
+    }),
 });
 
 const works = defineCollection({
-	type: "data",
-	schema: ({ image }) =>
-		z.object({
-			img: image(),
-			name: z.string(),
-			location: z.string(),
-			duration: z.string(),
-			fromTo: z.string(),
-			text: z.string(),
-		}),
+  type: "data",
+  schema: ({ image }) =>
+    z.object({
+      img: image(),
+      name: z.string(),
+      location: z.string(),
+      duration: z.string(),
+      fromTo: z.string(),
+      text: z.string(),
+    }),
 });
 
 const projects = defineCollection({
-	type: "data",
-	schema: ({ image }) =>
-		z.object({
-			img: image(),
-			name: z.string(),
-			url: z.string().optional(),
-			github: z.string().optional(),
-			text: z.string(),
-			tags: z.array(z.string()),
-			featured: z.boolean().default(false),
-		}),
+  type: "data",
+  schema: ({ image }) =>
+    z.object({
+      img: image(),
+      name: z.string(),
+      url: z.string().optional(),
+      github: z.string().optional(),
+      text: z.string(),
+      tags: z.array(z.string()),
+      featured: z.boolean().default(false),
+    }),
 });
 
-export const collections = { projects, educations, works };
+const experiences = defineCollection({
+  loader: file("src/content/experiences.json", { parser: (text) => JSON.parse(text).experiences }),
+  schema: () =>
+    z.object({
+      id: z.number().int().positive(),
+      start: z.coerce.date(),
+      end: z.coerce.date().or(z.literal("PRESENT")),
+      role: z.string(),
+      type: z.enum(["work", "education"]),
+      level: z.number().int().positive(),
+      at: z.string(),
+      location: z.string(),
+      description: z.string(),
+      points: z.array(z.string()),
+    }),
+});
+
+export const collections = { projects, educations, works, experiences };
