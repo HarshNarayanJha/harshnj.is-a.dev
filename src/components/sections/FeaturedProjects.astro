@@ -10,7 +10,7 @@ const featuredProjects = await getCollection("projects", ({ data }) => data.feat
 <div class="flex flex-col flex-wrap justify-center px-4 py-2 md:flex-row md:px-4 md:py-4">
   {
     featuredProjects.map((proj) => (
-      <ProjectCard bg="bg-stone-50 dark:bg-gray-950" class="m-auto my-4 w-full md:mx-8 md:w-96">
+      <ProjectCard class="m-auto my-4 w-full md:mx-8 md:w-96">
         <Image
           src={proj.data.img}
           alt={proj.data.name}

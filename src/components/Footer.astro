@@ -1,29 +1,8 @@
 ---
 import { Icon } from "astro-icon/components"
+import TransparentDivider from "../components/reusable/TransparentDivider.svelte"
 ---
 
-<!-- <hr class="h-1 w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent" /> -->
-<div
-  class="my-10 flex min-h-[50svh] w-full flex-col place-items-center content-center justify-center space-y-8 p-4 text-center md:my-20 md:space-y-16 md:px-15 md:py-10"
->
-  <h1 class="text-4xl font-bold md:text-6xl lg:text-8xl">Ready to Work With Me?</h1>
-  <p class="px-4 text-lg font-medium md:px-0 md:text-2xl">
-    Grab my Resume and contact me. Let's create something Amazing together!
-  </p>
-
-  <a href="/Resume.pdf" title="download my resume" download class="text-sm md:text-base">
-    <button
-      class="border-opacity-40 group w-fit cursor-pointer rounded-xl border-2 border-slate-500/50 bg-transparent px-4 py-2 shadow-md transition-shadow hover:shadow-lg md:px-6"
-    >
-      <Icon
-        name="download"
-        class="inline h-4 w-4 translate-y-0 transition-transform duration-200 group-hover:translate-y-1 md:h-5 md:w-5"
-      />
-      <span class="mx-2 font-mono text-xl opacity-25 md:text-2xl">|</span>
-      <span>GET MY <b>RESUME</b></span>
-    </button>
-  </a>
-</div>
 <!-- <div class="wave-divider bg-zinc-200 dark:bg-gray-900">
   <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
     <path
@@ -31,67 +10,75 @@ import { Icon } from "astro-icon/components"
       class="fill-slate-50 dark:fill-gray-950"></path>
   </svg>
 </div> -->
+<TransparentDivider />
 
-<hr />
-
-<div class="">
-  <div
-    class="grid grid-cols-1 grid-rows-[1fr_2fr_1fr] gap-8 px-4 py-8 pb-16 md:grid-cols-[1fr_2fr_1fr] md:grid-rows-1 md:px-32"
-  >
-    <div class="prose dark:prose-invert">
-      <h3>Harsh Narayan Jha</h3>
-      <p class="prose-sm leading-5">Let's create something amazing together</p>
-      <div class="flex flex-row gap-2">
-        <a
-          href="https://github.com/HarshNarayanJha"
-          target="_blank"
-          class="cursor-newtab text-gray-800/50 dark:text-gray-300/50"
-        >
-          <Icon name="logos/github" size={20} />
-        </a>
-        <a href="#" class="cursor-newtab text-gray-800/50 dark:text-gray-300/50">
-          <Icon name="logos/linkedin" size={20} />
-        </a>
-        <a href="#" class="cursor-newtab text-gray-800/50 dark:text-gray-300/50">
-          <Icon name="logos/linkedin" size={20} />
-        </a>
-        <a href="#" class="cursor-newtab text-gray-800/50 dark:text-gray-300/50">
-          <Icon name="logos/linkedin" size={20} />
-        </a>
-      </div>
-    </div>
-    <div class="grid grid-cols-3 gap-4 text-sm">
-      <ul class="space-y-2">
-        <li>Home</li>
-        <li>Blog</li>
-        <li>Projects</li>
-        <li>Snippets</li>
-        <li>About</li>
-      </ul>
-      <ul class="space-y-2">
-        <li>Code::Stats</li>
-      </ul>
-      <ul class="space-y-2">
-        <li>Notes</li>
-        <li>RSS</li>
-      </ul>
-    </div>
-    <div class="prose dark:prose-invert">
-      <h4>Subscribe to my newsletter</h4>
-      <p class="prose-sm prose-gray leading-5">Whenever I post something, no spam!</p>
-      <button> Subscribe Now </button>
+<div
+  class="grid grid-cols-1 grid-rows-[1fr_2fr_1fr] gap-8 px-4 py-8 pb-16 md:grid-cols-[1fr_2fr_1fr] md:grid-rows-1 md:px-32"
+>
+  <div class="prose dark:prose-invert">
+    <h3>Harsh Narayan Jha</h3>
+    <p class="prose-sm leading-5">Let's create something amazing together</p>
+    <div class="flex flex-row gap-2">
+      <a
+        href="https://github.com/HarshNarayanJha"
+        target="_blank"
+        class="cursor-newtab text-gray-800/50 dark:text-gray-300/50"
+      >
+        <Icon name="logos/github" size={20} />
+      </a>
+      <a href="#" class="cursor-newtab text-gray-800/50 dark:text-gray-300/50">
+        <Icon name="logos/linkedin" size={20} />
+      </a>
+      <a href="#" class="cursor-newtab text-gray-800/50 dark:text-gray-300/50">
+        <Icon name="logos/linkedin" size={20} />
+      </a>
+      <a href="#" class="cursor-newtab text-gray-800/50 dark:text-gray-300/50">
+        <Icon name="logos/linkedin" size={20} />
+      </a>
     </div>
   </div>
-
-  <hr />
-
-  <!-- <hr class="my-4 h-1 w-full bg-gradient-to-r from-transparent via-gray-200/25 to-transparent" /> -->
-
-  <div class="flex items-center justify-center py-8 md:py-4">
-    <p class="prose dark:prose-invert prose-zinc/50 prose-sm text-center">
-      Copyright &copy; 2025 Harsh Narayan Jha. All rights reserved.
-      <br />
-      <span class="text-xs md:text-sm"> Built with Astro &nbsp; 🚀 </span>
-    </p>
+  <div class="grid grid-cols-3 gap-4 text-sm">
+    <ul class="space-y-2">
+      <li class="mb-2 text-gray-700/50 dark:text-gray-200/50">Main Stuff</li>
+      <li>
+        <a href="/"> Home </a>
+      </li>
+      <li>
+        <a href="/blog"> Blog </a>
+      </li>
+      <li>Projects</li>
+      <li>Snippets</li>
+      <li>
+        <a href="/about"> About </a>
+      </li>
+    </ul>
+    <ul class="space-y-2">
+      <li class="mb-2 text-gray-700/50 dark:text-gray-200/50">My Accounts</li>
+      <li>
+        <a href="https://codestats.net/users/harshnj" target="_blank" class="cursor-newtab"> Code::Stats </a>
+      </li>
+      <li>
+        <a href="https://codestats.net/user/harshnj" target="_blank" class="cursor-newtab"> TryHackMe </a>
+      </li>
+    </ul>
+    <ul class="space-y-2">
+      <li>Notes</li>
+      <li>RSS</li>
+    </ul>
   </div>
+  <div class="prose dark:prose-invert">
+    <h4>Subscribe to my newsletter</h4>
+    <p class="prose-sm prose-gray leading-5">Whenever I post something, no spam!</p>
+    <button> Subscribe Now </button>
+  </div>
+</div>
+
+<TransparentDivider widthClass="md:w-1/2 mx-auto" />
+
+<div class="flex items-center justify-center py-8 md:py-4">
+  <p class="prose dark:prose-invert prose-zinc/50 prose-sm text-center">
+    Copyright &copy; 2025 Harsh Narayan Jha. All rights reserved.
+    <br />
+    <span class="text-xs md:text-sm"> Built with Astro &nbsp; 🚀 </span>
+  </p>
 </div>

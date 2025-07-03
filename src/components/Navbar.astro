@@ -8,7 +8,7 @@ import ColorModeToggle from "./ColorModeToggle.astro"
   style="mask: linear-gradient(black 80%, transparent)"
 >
   <nav
-    class="m-auto flex w-full flex-col place-content-stretch place-items-center space-y-4 p-2 pt-8 md:grid md:grid-cols-5 md:grid-rows-1 md:space-y-[unset] md:p-4"
+    class="m-auto flex w-full flex-col place-content-stretch place-items-center space-y-4 p-2 pt-8 md:grid md:grid-cols-5 md:grid-rows-1 md:p-6"
   >
     <div class="flex flex-row gap-4 md:col-span-2 md:place-self-center">
       <a href="/blog">Blog</a>
@@ -16,10 +16,10 @@ import ColorModeToggle from "./ColorModeToggle.astro"
       <a href="/snippets">Snippets</a>
       <a href="/about">About</a>
     </div>
-    <p id="nav-lead" class="text-xl font-bold tracking-wide opacity-85 md:place-self-center">
+    <p id="nav-lead" class="text-xl font-bold tracking-wide opacity-85 md:place-self-center md:self-center">
       <a href="/"> harshnj.is-a.dev </a>
     </p>
-    <div id="nav-links" class="space-x-4 md:col-span-1 md:place-self-end">
+    <div id="nav-links" class="space-x-4 md:col-span-1 md:place-self-end md:self-center">
       <ColorModeToggle />
       <a href="https://github.com/HarshNarayanJha" target="_blank">
         <Icon name="logos/github" class="inline-block" size={24} />
@@ -35,7 +35,7 @@ import ColorModeToggle from "./ColorModeToggle.astro"
       </a>
     </div>
     <button
-      class="border-opacity-40 group place-self-center rounded-xl border-2 border-neutral-500 bg-transparent bg-gradient-to-b from-transparent to-neutral-200 px-4 py-1 md:col-span-1 dark:to-neutral-900"
+      class="border-opacity-40 group place-self-center self-center rounded-xl border-2 border-neutral-500 bg-transparent bg-gradient-to-b from-transparent to-neutral-200 px-4 py-1 md:col-span-1 dark:to-neutral-900"
     >
       <a href="/Resume_Simple.pdf" title="download my resume" download>
         <Icon
