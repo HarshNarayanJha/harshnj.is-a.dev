@@ -1,12 +1,11 @@
 ---
-interface ProjectCardProps {
+interface Props {
   bg: string
   tags: string[]
   class: string
 }
 
-// @ts-ignore: TODO: fix ts in astro
-const { bg = "", tags = [], class: className, ...rest }: ProjectCardProps = Astro.props
+const { bg = "", tags = [], class: className, ...rest } = Astro.props
 ---
 
 <div class:list={["rounded-lg border border-slate-900/15 p-2 dark:border-zinc-400/15", className]} {...rest}>

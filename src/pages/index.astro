@@ -3,11 +3,12 @@ import { Image } from "astro:assets"
 import Card from "../components/Card.astro"
 import Education from "../components/sections/Education.astro"
 import Hero from "../components/sections/Hero.astro"
-import Projects from "../components/sections/Projects.astro"
+import FeaturedProjects from "../components/sections/FeaturedProjects.astro"
 import Work from "../components/sections/Work.astro"
 import Layout from "../layouts/Layout.astro"
 
 import me from "../img/me.png"
+import FeaturedTestimonials from "../components/sections/FeaturedTestimonials.astro"
 ---
 
 <Layout>
@@ -34,7 +35,7 @@ import me from "../img/me.png"
   <!-- something must exists here -->
 
   <section id="featured-posts" class="px-2 py-8 md:p-16">
-    <h2 class="mb-2 ps-8 text-4xl font-bold sm:text-5xl md:mb-8 md:ps-16">
+    <h2 class="mb-2 ps-2 text-4xl font-bold sm:text-5xl md:mb-8 md:ps-16">
       Featured
       <span
         class="bg-teal-500 bg-gradient-to-r from-teal-500 via-cyan-300 via-50% to-sky-500 bg-clip-text text-transparent"
@@ -53,8 +54,8 @@ import me from "../img/me.png"
     </svg>
   </div>
 
-  <section id="featured-projects" class="bg-stone-100 px-2 py-8 md:p-16 dark:bg-gray-900">
-    <div class="mb-2 ps-8 md:mb-8 md:ps-16">
+  <section id="featured-projects" class="w-full bg-stone-100 px-2 py-8 md:p-16 dark:bg-gray-900">
+    <div class="mb-2 ps-2 md:mb-8 md:ps-16">
       <h1 class="text-4xl font-bold sm:text-5xl">
         Exciting
         <span
@@ -65,7 +66,7 @@ import me from "../img/me.png"
       </h1>
       <p class="prose dark:prose-invert mt-2">Small selection of the projects I have worked on.</p>
     </div>
-    <Projects />
+    <FeaturedProjects />
   </section>
 
   <div class="wave-divider bg-slate-50 dark:bg-gray-950">
@@ -75,6 +76,15 @@ import me from "../img/me.png"
         class="fill-stone-100 dark:fill-gray-900"></path>
     </svg>
   </div>
+
+  <!-- add testimonials -->
+
+  <section id="testimonials" class="bg-slate-50 px-2 py-8 md:p-24 dark:bg-gray-950">
+    <div class="mx-auto mb-2 md:mb-8">
+      <h1 class="text-center font-[handwriting] text-3xl">Hear about me</h1>
+    </div>
+    <FeaturedTestimonials />
+  </section>
 
   <!-- Move to about -->
   <!-- <section id="education" class="bg-slate-50 px-2 py-8 md:p-40 dark:bg-gray-950">
@@ -90,7 +100,7 @@ import me from "../img/me.png"
   </div>
 
   <section id="work" class="bg-stone-100 px-2 py-8 md:p-40 dark:bg-gray-900">
-    <div class="mb-2 ps-8 md:mb-8 md:ps-16">
+    <div class="mb-2 ps-2 md:mb-8 md:ps-16">
       <h1 class="text-4xl font-bold sm:text-5xl">Experiences</h1>
       <p class="prose dark:prose-invert mt-2 text-[1rem] font-medium">
         Here are some highlights of my professional experience and the impactful work I've done so far.

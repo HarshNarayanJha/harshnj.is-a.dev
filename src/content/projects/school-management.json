@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../.astro/collections/projects.schema.json",
   "img": "../../img/placeholder.png",
   "name": "School Management",
   "github": "https://github.com/HarshNarayanJha/School-Management-Project",

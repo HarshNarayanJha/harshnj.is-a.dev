@@ -6,8 +6,8 @@ import { Image } from "astro:assets"
 const works = await getCollection("works")
 ---
 
-<div class="relative container flex flex-col items-end px-8 py-8 md:px-15 md:py-10">
-  <div class="absolute top-8 right-2 h-full w-2 rounded-full bg-sky-400 md:w-2"></div>
+<div class="relative container flex flex-col items-center px-8 py-8 md:px-15 md:py-10">
+  <!-- <div class="absolute top-8 right-2 h-full w-2 rounded-full bg-sky-400 md:w-2"></div> -->
 
   {
     works.map((work) => (
@@ -23,7 +23,7 @@ const works = await getCollection("works")
           </h4>
         </Fragment>
 
-        <p class="mb-8 text-justify leading-tight" slot="text">
+        <p class="prose dark:prose-invert mb-8 text-justify leading-6" slot="text">
           {work.data.text}
         </p>
       </WorkCard>

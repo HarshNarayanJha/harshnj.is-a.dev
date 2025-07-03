@@ -4,12 +4,12 @@ import ProjectCard from "../ProjectCard.astro"
 import { Image } from "astro:assets"
 import { Icon } from "astro-icon/components"
 
-const projects = await getCollection("projects")
+const featuredProjects = await getCollection("projects", ({ data }) => data.featured)
 ---
 
-<div class="flex flex-col flex-wrap justify-center px-8 py-2 md:flex-row md:px-15 md:py-10">
+<div class="flex flex-col flex-wrap justify-center px-4 py-2 md:flex-row md:px-4 md:py-4">
   {
-    projects.map((proj) => (
+    featuredProjects.map((proj) => (
       <ProjectCard bg={"bg-stone-50 dark:bg-gray-950"} class="m-auto my-4 w-full md:mx-8 md:w-96" tags={proj.data.tags}>
         <Image
           src={proj.data.img}
@@ -23,7 +23,7 @@ const projects = await getCollection("projects")
         <div class="text-2xl font-semibold" slot="title">
           {proj.data.name}
         </div>
-        <div class="mt-2 text-[1rem]" slot="text">
+        <div class="prose dark:prose-invert mt-2 text-[1rem] leading-6" slot="text">
           {proj.data.text}
         </div>
         <div class="grid w-full grid-cols-2 gap-2" slot="button">
@@ -73,4 +73,12 @@ const projects = await getCollection("projects")
       </ProjectCard>
     ))
   }
+</div>
+<div class="mt-8 text-center">
+  <a
+    href="/projects"
+    class="prose dark:prose-invert underline underline-offset-2 transition-colors duration-300 hover:text-gray-700 dark:hover:text-gray-100"
+  >
+    See more projects &gtdot;
+  </a>
 </div>

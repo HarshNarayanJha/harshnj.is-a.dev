@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components"
 ---
 
+<!-- <hr class="h-1 w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent" /> -->
 <div
   class="my-10 flex min-h-[50svh] w-full flex-col place-items-center content-center justify-center space-y-8 p-4 text-center md:my-20 md:space-y-16 md:px-15 md:py-10"
 >
@@ -32,13 +33,61 @@ import { Icon } from "astro-icon/components"
 </div>
 
 <div class="bg-zinc-200 dark:bg-gray-900">
-  <div class="flex items-center justify-center pb-8 md:pb-12">
-    <div class="text-zinc-500">
-      <p class="text-center text-sm md:text-base">
-        &copy; 2025 Harsh Narayan Jha.
-        <br />
-        <span class="text-xs md:text-sm"> Built with Astro &nbsp; 🚀 </span>
-      </p>
+  <div
+    class="grid grid-cols-1 grid-rows-[1fr_2fr_1fr] gap-8 px-4 py-8 pb-16 md:grid-cols-[1fr_2fr_1fr] md:grid-rows-1 md:px-32"
+  >
+    <div class="prose dark:prose-invert">
+      <h3>Harsh Narayan Jha</h3>
+      <p class="prose-sm leading-5">Let's create something amazing together</p>
+      <div class="flex flex-row gap-2">
+        <a
+          href="https://github.com/HarshNarayanJha"
+          target="_blank"
+          class="cursor-newtab text-gray-800/50 dark:text-gray-300/50"
+        >
+          <Icon name="logos/github" size={20} />
+        </a>
+        <a href="#" class="cursor-newtab text-gray-800/50 dark:text-gray-300/50">
+          <Icon name="logos/linkedin" size={20} />
+        </a>
+        <a href="#" class="cursor-newtab text-gray-800/50 dark:text-gray-300/50">
+          <Icon name="logos/linkedin" size={20} />
+        </a>
+        <a href="#" class="cursor-newtab text-gray-800/50 dark:text-gray-300/50">
+          <Icon name="logos/linkedin" size={20} />
+        </a>
+      </div>
     </div>
+    <div class="grid grid-cols-3 gap-4 text-sm">
+      <ul class="space-y-2">
+        <li>Home</li>
+        <li>Blog</li>
+        <li>Projects</li>
+        <li>Snippets</li>
+        <li>About</li>
+      </ul>
+      <ul class="space-y-2">
+        <li>Code::Stats</li>
+      </ul>
+      <ul class="space-y-2">
+        <li>Notes</li>
+        <li>RSS</li>
+      </ul>
+    </div>
+    <div class="prose dark:prose-invert">
+      <h4>Subscribe to my newsletter</h4>
+      <p class="prose-sm prose-gray leading-5">Whenever I post something, no spam!</p>
+      <button> Subscribe Now </button>
+    </div>
+  </div>
+
+  <!-- <hr class="my-4 h-1 w-full bg-gradient-to-r from-transparent via-gray-200/25 to-transparent" /> -->
+
+  <div class="flex items-center justify-center py-8 md:py-4">
+    <p class="prose dark:prose-invert prose-zinc/50 prose-sm text-center">
+      Copyright &copy; 2025 Harsh Narayan Jha. All rights reserved.
+      <br />
+      <span class="text-xs md:text-sm"> Built with Astro &nbsp; 🚀 </span>
+    </p>
   </div>
 </div>

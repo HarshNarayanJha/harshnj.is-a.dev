@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../.astro/collections/projects.schema.json",
   "img": "../../img/inkd-insults.png",
   "name": "Ink'd Insults",
   "url": "https://harshnj.is-a.dev/inkd-insults/",

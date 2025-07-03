@@ -1,8 +1,10 @@
 {
+  "$schema": "../../../.astro/collections/projects.schema.json",
   "img": "../../img/instasolve.png",
   "name": "Instasolve",
   "github": "https://github.com/HarshNarayanJha/Insta-Solve",
   "text": "A mobile app that helps students learn new things and solve their doubts.",
+  "featured": true,
   "tags": [
     "Flutter",
     "Dart",
