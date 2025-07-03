@@ -10,7 +10,7 @@ const featuredProjects = await getCollection("projects", ({ data }) => data.feat
 <div class="flex flex-col flex-wrap justify-center px-4 py-2 md:flex-row md:px-4 md:py-4">
   {
     featuredProjects.map((proj) => (
-      <ProjectCard bg={"bg-stone-50 dark:bg-gray-950"} class="m-auto my-4 w-full md:mx-8 md:w-96" tags={proj.data.tags}>
+      <ProjectCard bg="bg-stone-50 dark:bg-gray-950" class="m-auto my-4 w-full md:mx-8 md:w-96">
         <Image
           src={proj.data.img}
           alt={proj.data.name}
@@ -20,11 +20,19 @@ const featuredProjects = await getCollection("projects", ({ data }) => data.feat
           ]}
           slot="image"
         />
-        <div class="text-2xl font-semibold" slot="title">
+        <h3 class="text-2xl font-semibold" slot="title">
           {proj.data.name}
-        </div>
-        <div class="prose dark:prose-invert mt-2 text-[1rem] leading-6" slot="text">
-          {proj.data.text}
+        </h3>
+        <div class="mt-2" slot="text">
+          <p class="prose dark:prose-invert text-[1rem] leading-6">{proj.data.text}</p>
+
+          <div class="my-4 flex flex-wrap gap-2">
+            {proj.data.tags.map((tag) => (
+              <span class="rounded-md border border-dashed border-green-500 bg-emerald-300/15 px-1 font-mono text-xs font-medium text-green-600 sm:px-3 sm:text-sm dark:bg-emerald-800/25 dark:text-emerald-100">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
         <div class="grid w-full grid-cols-2 gap-2" slot="button">
           {proj.data.url ? (

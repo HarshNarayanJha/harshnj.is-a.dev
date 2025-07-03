@@ -1,11 +1,10 @@
 ---
 interface Props {
   bg: string
-  tags: string[]
   class: string
 }
 
-const { bg = "", tags = [], class: className, ...rest } = Astro.props
+const { bg = "", class: className, ...rest } = Astro.props
 ---
 
 <div class:list={["rounded-lg border border-slate-900/15 p-2 dark:border-zinc-400/15", className]} {...rest}>
@@ -23,18 +22,6 @@ const { bg = "", tags = [], class: className, ...rest } = Astro.props
       <slot name="text" />
     </div>
 
-    <div class="flex flex-wrap gap-2">
-      {
-        tags.map((tag) => (
-          <span
-            v-for="tag in tags"
-            class="rounded-md border border-dashed border-green-500 bg-emerald-300/15 px-1 font-mono text-xs font-medium text-green-600 sm:px-3 sm:text-sm dark:bg-emerald-800/25 dark:text-emerald-100"
-          >
-            {tag}
-          </span>
-        ))
-      }
-    </div>
     <div class="w-full">
       <slot name="button" />
     </div>
