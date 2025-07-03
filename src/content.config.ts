@@ -42,19 +42,33 @@ const projects = defineCollection({
 
 const experiences = defineCollection({
   loader: file("src/content/experiences.json", { parser: (text) => JSON.parse(text).experiences }),
-  schema: () =>
-    z.object({
-      id: z.number().int().positive(),
-      start: z.coerce.date(),
-      end: z.coerce.date().or(z.literal("PRESENT")),
-      role: z.string(),
-      type: z.enum(["work", "education"]),
-      level: z.number().int().positive(),
-      at: z.string(),
-      location: z.string(),
-      description: z.string(),
-      points: z.array(z.string()),
-    }),
+  schema: z.object({
+    id: z.number().int().positive(),
+    start: z.coerce.date(),
+    end: z.coerce.date().or(z.literal("PRESENT")),
+    role: z.string(),
+    type: z.enum(["work", "education"]),
+    level: z.number().int().positive(),
+    at: z.string(),
+    location: z.string(),
+    description: z.string(),
+    points: z.array(z.string()),
+  }),
 });
 
-export const collections = { projects, educations, works, experiences };
+const blogs = defineCollection({
+  type: "content",
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      isPublished: z.boolean().default(false),
+      pubDate: z.date().optional(),
+      description: z.string().max(70),
+      author: z.string(),
+      image: image().optional(),
+      tags: z.array(z.string())
+
+    })
+})
+
+export const collections = { projects, educations, works, experiences, blogs };

@@ -1,10 +1,50 @@
 ---
 import Layout from "../../layouts/Layout.astro"
+import { getCollection } from "astro:content"
+import { Image } from "astro:assets"
+import { Icon } from "astro-icon/components"
+import BlogCard from "../../components/BlogCard.astro"
+import placeholderImage from "../../img/placeholder.png"
+
+const blogs = (await getCollection("blogs", ({ data }) => data.isPublished && data.pubDate)).sort(
+  (a, b) => b.data.pubDate!.valueOf() - a.data.pubDate!.valueOf(),
+)
 ---
 
 <Layout>
-  <section class="h-auto w-full px-4 py-16 md:px-16 md:py-28">
-    <h2 class="text-6xl font-semibold">Blog</h2>
+  <section class="mx-auto h-auto w-full max-w-7xl px-4 py-16 md:px-16 md:py-28">
+    <Icon name="write" class="m-2 ms-0" size={24} />
+    <h2 class="text-5xl font-semibold">Blog</h2>
     <p class="mt-4 text-gray-900/50 dark:text-gray-50/50">Stuff I write sometimes about the things I do.</p>
+
+    <div class="mx-auto mt-16 flex max-w-4xl flex-col items-center justify-start gap-2 px-4">
+      {
+        blogs.map((blog) => (
+          <a href={`/blog/${blog.slug}`} class="w-full">
+            <BlogCard class="w-full">
+              {blog.data.image ? (
+                <Image src={blog.data.image} alt={blog.data.title} width={150} slot="image" />
+              ) : (
+                <Image src={placeholderImage} alt="blog image placeholder" width={200} />
+              )}
+              <div slot="title">
+                <p class="prose dark:prose-invert">
+                  {blog.data.pubDate!.toLocaleDateString("en-IN", { dateStyle: "long" })}
+                </p>
+                <h3 class="mt-2 text-3xl font-semibold">{blog.data.title}</h3>
+              </div>
+              <div class="prose dark:prose-invert mt-2 h-full" slot="text">
+                <p class="">{blog.data.description}</p>
+                <div class="mt-8 flex flex-row justify-start">
+                  {blog.data.tags.map((tag) => (
+                    <kbd>#{tag}</kbd>
+                  ))}
+                </div>
+              </div>
+            </BlogCard>
+          </a>
+        ))
+      }
+    </div>
   </section>
 </Layout>

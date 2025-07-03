@@ -1,12 +1,20 @@
 ---
 interface Props {
   class: string
+  enableHoverScale?: boolean
   [key: string]: any
 }
 
-const { class: className, ...rest } = Astro.props
+const { class: className, enableHoverScale = false, ...rest } = Astro.props
 ---
 
-<div class:list={["rounded-lg border-1 border-slate-600/25 p-2 dark:border-zinc-400/25", className]} {...rest}>
+<div
+  class:list={[
+    "rounded-lg border-1 border-slate-600/25 p-2 transition-transform dark:border-zinc-400/25",
+    className,
+    enableHoverScale && "hover:scale-[101%]",
+  ]}
+  {...rest}
+>
   <slot />
 </div>

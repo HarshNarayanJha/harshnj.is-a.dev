@@ -1,0 +1,27 @@
+---
+import Layout from "./Layout.astro"
+import TransparentDivider from "../components/reusable/TransparentDivider.svelte"
+import { Image } from "astro:assets"
+
+const { frontmatter } = Astro.props
+---
+
+<Layout>
+  <main class="prose dark:prose-invert mx-auto h-auto max-w-6xl px-4 py-16 md:px-16 md:py-28">
+    {frontmatter.image && <Image src={frontmatter.image} alt={frontmatter.title} class="w-full" />}
+
+    <h1 class="mt-4 text-4xl md:text-5xl">{frontmatter.title}</h1>
+    <p class="leading-6">
+      {frontmatter.description}
+    </p>
+
+    <div class="mt-12 md:mt-24">
+      <h3 class="font-medium">{frontmatter.author}</h3>
+      <p class="prose-sm">{frontmatter.pubDate.toLocaleDateString("en-IN", { dateStyle: "long" })}</p>
+    </div>
+
+    <TransparentDivider />
+
+    <slot />
+  </main>
+</Layout>

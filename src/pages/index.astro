@@ -4,6 +4,7 @@ import Card from "../components/Card.astro"
 import Education from "../components/sections/Education.astro"
 import Hero from "../components/sections/Hero.astro"
 import FeaturedProjects from "../components/sections/FeaturedProjects.astro"
+import FeaturedBlogs from "../components/sections/FeaturedBlogs.astro"
 import Work from "../components/sections/Work.astro"
 import Layout from "../layouts/Layout.astro"
 
@@ -35,16 +36,19 @@ import { Icon } from "astro-icon/components"
 
   <!-- something must exists here -->
 
-  <section id="featured-posts" class="px-2 py-8 md:p-16">
-    <h2 class="mb-2 ps-2 text-4xl font-bold sm:text-5xl md:mb-8 md:ps-16">
-      Featured
-      <span
-        class="bg-teal-500 bg-gradient-to-r from-teal-500 via-cyan-300 via-50% to-sky-500 bg-clip-text text-transparent"
-      >
-        Posts
-      </span>
-    </h2>
-    <!-- Featured Posts here -->
+  <section id="featured-posts" class="px-2 py-8 md:p-32">
+    <div class="mb-2 ps-2 md:mb-8 md:ps-16">
+      <h2 class="text-4xl font-bold sm:text-5xl">
+        Featured
+        <span
+          class="bg-teal-500 bg-gradient-to-r from-teal-500 via-cyan-300 via-50% to-sky-500 bg-clip-text text-transparent"
+        >
+          Blogs
+        </span>
+      </h2>
+      <p class="prose dark:prose-invert mt-2">Some of my top writings.</p>
+    </div>
+    <FeaturedBlogs />
   </section>
 
   <!-- <div class="wave-divider bg-stone-100 dark:bg-gray-900">
@@ -55,7 +59,7 @@ import { Icon } from "astro-icon/components"
     </svg>
   </div> -->
 
-  <section id="featured-projects" class="w-full px-2 py-8 md:p-16">
+  <section id="featured-projects" class="w-full px-2 py-8 md:p-32">
     <div class="mb-2 ps-2 md:mb-8 md:ps-16">
       <h1 class="text-4xl font-bold sm:text-5xl">
         Exciting
@@ -101,7 +105,7 @@ import { Icon } from "astro-icon/components"
     </svg>
   </div> -->
 
-  <section id="work" class="px-2 py-8 md:p-16">
+  <section id="work" class="px-2 py-8 md:p-32">
     <div class="mb-2 ps-2 md:mb-8 md:ps-16">
       <h1 class="text-4xl font-bold sm:text-5xl">Experiences</h1>
       <p class="prose dark:prose-invert mt-2 text-[1rem] font-medium">

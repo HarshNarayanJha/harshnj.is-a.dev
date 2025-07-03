@@ -16,10 +16,10 @@ const projects = await getCollection("projects")
       <p class="mt-2 text-center text-gray-900/50 dark:text-gray-50/50">A showcase that I am proud of.</p>
     </div>
 
-    <div class="mx-auto mt-8 grid grid-cols-1 place-content-center justify-items-center gap-1 lg:grid-cols-3">
+    <div class="mx-auto mt-8 grid max-w-6xl grid-cols-1 place-content-center justify-items-center gap-8 lg:grid-cols-3">
       {
         projects.map((proj) => (
-          <ProjectCard class="m-auto my-4 w-full md:mx-8 md:w-auto">
+          <ProjectCard class="m-auto my-4 w-full md:mx-8 md:w-full">
             <Image
               src={proj.data.img}
               alt={proj.data.name}

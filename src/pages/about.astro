@@ -10,7 +10,7 @@ const experiences = (await getCollection("experiences")).sort((a, b) => b.data.s
   <section class="h-auto w-full px-4 py-16 md:px-16 md:py-28">
     <div class="mx-auto text-center">
       <Icon name="about" class="m-2 inline" size={24} />
-      <h2 class="text-center text-4xl font-semibold">About Me</h2>
+      <h2 class="mt-4 text-center text-4xl font-semibold">About Me</h2>
     </div>
 
     <div class="prose dark:prose-invert prose-lg mx-auto mt-16 md:mt-32">
@@ -43,7 +43,7 @@ const experiences = (await getCollection("experiences")).sort((a, b) => b.data.s
   <section id="about-experiences" class="h-auto w-full px-4 py-32 md:px-16">
     <div class="mx-auto text-center">
       <Icon name="work" class="m-2 inline" size={24} />
-      <h3 class="text-center text-2xl font-semibold">Experiences</h3>
+      <h3 class="mt-4 text-center text-2xl font-semibold">Experiences</h3>
     </div>
 
     <div class="prose dark:prose-invert mx-auto mt-16 flex max-w-none flex-col gap-8 md:px-40">
@@ -51,7 +51,7 @@ const experiences = (await getCollection("experiences")).sort((a, b) => b.data.s
         experiences.map((exp) => {
           return (
             <div class="grid grid-cols-1 gap-0 md:grid-cols-[1fr_3fr] md:gap-16">
-              <p class="justify-self-end font-mono">
+              <p class="font-mono md:justify-self-end">
                 {exp.data.start.toLocaleDateString("en-IN", { month: "short", year: "numeric" })} -{" "}
                 {exp.data.end === "PRESENT"
                   ? "PRESENT"
