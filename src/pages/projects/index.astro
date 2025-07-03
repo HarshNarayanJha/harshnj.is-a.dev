@@ -1,0 +1,96 @@
+---
+import { Image } from "astro:assets"
+import { getCollection } from "astro:content"
+import Layout from "../../layouts/Layout.astro"
+import { Icon } from "astro-icon/components"
+import ProjectCard from "../../components/ProjectCard.astro"
+
+const projects = await getCollection("projects")
+---
+
+<Layout>
+  <section class="h-auto w-full px-4 py-16 md:px-16 md:py-28">
+    <div class="mx-auto text-center">
+      <Icon name="project" class="m-2 inline" size={24} />
+      <h2 class="mt-4 text-center text-4xl font-semibold">Selected Projects</h2>
+      <p class="mt-2 text-center text-gray-900/50 dark:text-gray-50/50">A showcase that I am proud of.</p>
+    </div>
+
+    <div class="mx-auto mt-8 grid grid-cols-1 place-content-center justify-items-center gap-1 lg:grid-cols-3">
+      {
+        projects.map((proj) => (
+          <ProjectCard class="m-auto my-4 w-full md:mx-8 md:w-auto">
+            <Image
+              src={proj.data.img}
+              alt={proj.data.name}
+              class:list={[
+                "rounded-2xl border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50",
+                proj.data.img.src.includes("placeholder") && "dark:invert",
+              ]}
+              slot="image"
+            />
+            <h3 class="text-2xl font-semibold" slot="title">
+              {proj.data.name}
+            </h3>
+            <div class="mt-2" slot="text">
+              <p class="prose dark:prose-invert text-[1rem] leading-6">{proj.data.text}</p>
+
+              <div class="my-4 flex flex-wrap gap-2">
+                {proj.data.tags.map((tag) => (
+                  <span class="rounded-md border border-dashed border-green-500 bg-emerald-300/15 px-1 font-mono text-xs font-medium text-green-600 sm:px-3 sm:text-sm dark:bg-emerald-800/25 dark:text-emerald-100">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div class="grid w-full grid-cols-2 gap-2" slot="button">
+              {proj.data.url ? (
+                <a href={proj.data.url} target="_blank">
+                  <button
+                    class:list={[
+                      "w-full cursor-pointer rounded-md bg-teal-500/50 py-2 font-semibold text-white outline outline-offset-2 outline-teal-500/25 dark:bg-teal-500/50 dark:outline-teal-600/50",
+                      "transition-all hover:scale-95 hover:outline-offset-4",
+                    ]}
+                    tabindex="-1"
+                  >
+                    View Live
+                    <Icon name="eye" class="inline" />
+                  </button>
+                </a>
+              ) : (
+                <button
+                  class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
+                  tabindex="-1"
+                  title="Not yet Live!"
+                  disabled
+                >
+                  Not yet Live!
+                </button>
+              )}
+              {proj.data.github ? (
+                <a href={proj.data.github} target="_blank">
+                  <button
+                    class="w-full cursor-pointer rounded-md bg-neutral-500 py-2 font-semibold text-white dark:bg-neutral-600"
+                    tabindex="-1"
+                  >
+                    View Source
+                    <Icon name="logos/github" class="inline" />
+                  </button>
+                </a>
+              ) : (
+                <button
+                  class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
+                  tabindex="-1"
+                  title="Not Public"
+                  disabled
+                >
+                  Not Public
+                </button>
+              )}
+            </div>
+          </ProjectCard>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
