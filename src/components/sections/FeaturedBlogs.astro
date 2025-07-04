@@ -4,6 +4,7 @@ import { Image } from "astro:assets"
 
 import placeholderImage from "@images/placeholder.png"
 import BlogCard from "@components/cards/BlogCard.astro"
+import { formatDate } from "~/utils"
 
 const featuredBlogs = (
   await getCollection("blogs", ({ data }) => data.isPublished === true && data.pubDate !== undefined)
@@ -20,21 +21,25 @@ const featuredBlogs = (
           {blog.data.image ? (
             <Image src={blog.data.image} alt={blog.data.title} width={150} slot="image" />
           ) : (
-            <Image src={placeholderImage} alt="blog image placeholder" width={200} class="dark:invert" />
+            <Image src={placeholderImage} alt="blog image placeholder" width={150} class="dark:invert" slot="image" />
           )}
-          <div slot="title">
-            <p class="prose dark:prose-invert">
-              {blog.data.pubDate!.toLocaleDateString("en-IN", { dateStyle: "long" })}
-            </p>
-            <h3 class="mt-2 text-3xl font-semibold">{blog.data.title}</h3>
-          </div>
-          <div class="prose dark:prose-invert mt-2 h-full" slot="text">
-            <p class="">{blog.data.description}</p>
-            <div class="mt-8 flex flex-row justify-start">
-              {blog.data.tags.map((tag) => (
-                <kbd>#{tag}</kbd>
-              ))}
-            </div>
+
+          <time class="prose dark:prose-invert prose-sm" datetime={blog.data.pubDate?.toISOString()} slot="date">
+            {blog.data.pubDate ? formatDate(blog.data.pubDate) : "A long time ago"}
+          </time>
+
+          <h3 class="text-3xl font-semibold" slot="title">
+            {blog.data.title}
+          </h3>
+
+          <p class="prose dark:prose-invert mt-2 truncate" slot="text">
+            {blog.data.description}
+          </p>
+
+          <div class="prose dark:prose-invert items-center justify-start" slot="tags">
+            {blog.data.tags.map((tag) => (
+              <kbd>#{tag}</kbd>
+            ))}
           </div>
         </BlogCard>
       </a>

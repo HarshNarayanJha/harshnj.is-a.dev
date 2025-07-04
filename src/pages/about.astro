@@ -1,9 +1,11 @@
 ---
+import { Image } from "astro:assets"
 import { Icon } from "astro-icon/components"
 import { getCollection } from "astro:content"
 
 import Layout from "@layouts/Layout.astro"
 import TransparentBorder from "@components/reusable/TransparentBorder.astro"
+import { formatMonth } from "~/utils"
 
 const experiences = (await getCollection("experiences")).sort((a, b) => b.data.start.valueOf() - a.data.start.valueOf())
 
@@ -15,14 +17,15 @@ const description = "Harsh Narayan Jha's About Page"
   <section class="h-auto w-full px-4 py-16 md:px-16 md:py-28">
     <div class="mx-auto text-center">
       <Icon name="about" class="m-2 inline" size={24} />
-      <h2 class="mt-4 text-center text-4xl font-semibold">About Me</h2>
+      <h2 class="mt-2 text-center text-4xl font-semibold">About Me</h2>
     </div>
 
-    <div class="prose dark:prose-invert prose-lg mx-auto mt-16 md:mt-32">
-      <div class="not-prose">
-        <h1 class="text-3xl font-bold text-neutral-950 dark:text-white">Harsh Narayan Jha</h1>
-        <p class="">Student at Birla Institute of Technology</p>
-      </div>
+    <div class="prose dark:prose-invert prose-lg prose-neutral mx-auto mt-16 md:mt-32">
+      <h1 class="not-prose text-3xl font-bold text-neutral-950 dark:text-white">Harsh Narayan Jha</h1>
+      <p class="mt-1 flex flex-row gap-1">
+        <Icon name="exp/education" size={24} class="inline-block" />
+        <span> Student at Birla Institute of Technology </span>
+      </p>
 
       <p>
         Hi There! I am Harsh, and I like to build things. I am currently a student at Birla Institute of Technology,
@@ -48,41 +51,54 @@ const description = "Harsh Narayan Jha's About Page"
   <section id="about-experiences" class="h-auto w-full px-4 py-16 md:px-16">
     <div class="mx-auto text-center">
       <Icon name="work" class="m-2 inline" size={24} />
-      <h3 class="mt-4 text-center text-2xl font-semibold">Experiences</h3>
+      <h3 class="mt-2 text-center text-2xl font-semibold">Experiences</h3>
     </div>
 
-    <div class="prose dark:prose-invert mx-auto mt-16 flex max-w-none flex-col gap-8 md:px-12 lg:px-40">
+    <div class="mx-auto mt-16 flex flex-col gap-8 md:px-12 lg:px-40">
       {
         experiences.map((exp) => {
           return (
             <TransparentBorder class="p-4 md:border-0">
-              <div class="grid grid-cols-1 gap-0 md:grid-cols-[1fr_3fr] md:gap-16">
-                <p class="font-mono md:justify-self-end">
-                  {exp.data.start.toLocaleDateString("en-IN", { month: "short", year: "numeric" })} -{" "}
-                  {exp.data.end === "PRESENT"
-                    ? "PRESENT"
-                    : exp.data.end.toLocaleDateString("en-IN", { month: "short", year: "numeric" })}
+              <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-[1fr_2fr] md:gap-16">
+                <p class="prose dark:prose-invert prose-neutral mt-0 font-mono md:self-start md:justify-self-end">
+                  {formatMonth(exp.data.start)} - {exp.data.end === "PRESENT" ? "PRESENT" : formatMonth(exp.data.end)}
                 </p>
-                <div>
-                  <h4>
+                <div class="md:self-start md:justify-self-start">
+                  <div class="md:md-0 mt-2 flex flex-row items-center gap-1">
                     {Array(exp.data.level)
                       .fill(0)
                       .map(() => (
-                        <Icon name={`exp/${exp.data.type}`} class="inline" size={18} />
+                        <Icon name={`exp/${exp.data.type}`} class="inline-block" size={24} />
                       ))}
-                    {exp.data.role}
-                  </h4>
-                  <p>
-                    <span class="font-semibold">{exp.data.at}</span>
+                    <h4 class="inline-block font-semibold">{exp.data.role}</h4>
+                  </div>
+                  <p class="mt-2 flex flex-row flex-wrap items-center gap-2 md:mt-2">
+                    {exp.data.logo && (
+                      <Image src={exp.data.logo} alt={exp.data.at} width={28} class="inline-block h-7 w-7 rounded-md" />
+                    )}
+                    {exp.data.link ? (
+                      <a
+                        href={exp.data.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="cursor-newtab font-medium hover:underline"
+                      >
+                        {exp.data.at}
+                      </a>
+                    ) : (
+                      <span class="font-medium">{exp.data.at}</span>
+                    )}
                     &mdash;
                     <span class="italic">{exp.data.location}</span>
                   </p>
-                  <p>{exp.data.description}</p>
-                  <ul>
-                    {exp.data.points.map((pt) => (
-                      <li>{pt}</li>
-                    ))}
-                  </ul>
+                  <div class="prose dark:prose-invert prose-neutral">
+                    <p class="mt-4">{exp.data.description}</p>
+                    <ul class="">
+                      {exp.data.points.map((pt) => (
+                        <li>{pt}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </TransparentBorder>

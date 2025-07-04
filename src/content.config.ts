@@ -1,30 +1,7 @@
 import { defineCollection, z } from "astro:content";
 import { file } from "astro/loaders";
 
-const educations = defineCollection({
-  type: "data",
-  schema: ({ image }) =>
-    z.object({
-      img: image(),
-      name: z.string(),
-      location: z.string(),
-      duration: z.string(),
-      text: z.string(),
-    }),
-});
 
-const works = defineCollection({
-  type: "data",
-  schema: ({ image }) =>
-    z.object({
-      img: z.preprocess(val => `@images/work/${val}`, image()),
-      name: z.string(),
-      location: z.string(),
-      duration: z.string(),
-      fromTo: z.string(),
-      text: z.string(),
-    }),
-});
 
 const projects = defineCollection({
   type: "data",
@@ -42,7 +19,7 @@ const projects = defineCollection({
 
 const experiences = defineCollection({
   loader: file("src/content/experiences.json", { parser: (text) => JSON.parse(text).experiences }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     id: z.number().int().positive(),
     start: z.coerce.date(),
     end: z.coerce.date().or(z.literal("PRESENT")),
@@ -50,6 +27,8 @@ const experiences = defineCollection({
     type: z.enum(["work", "education"]),
     level: z.number().int().positive(),
     at: z.string(),
+    logo: z.preprocess(val => `@images/work/${val}`, image()).optional(),
+    link: z.string().optional(),
     location: z.string(),
     description: z.string(),
     points: z.array(z.string()),
@@ -70,4 +49,4 @@ const blogs = defineCollection({
     })
 })
 
-export const collections = { projects, educations, works, experiences, blogs };
+export const collections = { projects, experiences, blogs };

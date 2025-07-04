@@ -1,8 +1,0 @@
-{
-  "img": "corider.png",
-  "name": "CoRider",
-  "location": "Work From Home",
-  "duration": "4 Months",
-  "fromTo": "March - July 2025",
-  "text": "Developed REST APIs in Flask framework using MongoDB, managing CRUD operations, data validation, and performance optimization. Collaborated with front-end team while writing clean, maintainable Python code with proper documentation and unit tests."
-}

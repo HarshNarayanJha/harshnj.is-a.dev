@@ -3,29 +3,34 @@ import Layout from "./Layout.astro"
 import { Image } from "astro:assets"
 
 import TransparentDivider from "@components/reusable/TransparentDivider.svelte"
+import type { CollectionEntry } from "astro:content"
+import { formatDate } from "~/utils"
 
-const { frontmatter } = Astro.props
+type Props = CollectionEntry<"blogs">["data"]
 
-const title = `${frontmatter.title} | Harsh Narayn Jha's Blog`
-const description = frontmatter.description
+const { title: blogTitle, description, image, author, pubDate } = Astro.props
+
+const title = `${blogTitle} | Harsh Narayan Jha's Blog`
 ---
 
 <Layout title={title} description={description}>
-  <main class="prose dark:prose-invert mx-auto h-auto max-w-6xl px-4 py-16 md:px-16 md:py-28">
-    {frontmatter.image && <Image src={frontmatter.image} alt={frontmatter.title} class="w-full" />}
+  <main class="mx-auto h-auto max-w-6xl px-4 py-16 md:px-8 md:py-16">
+    {image && <Image src={image} alt={blogTitle} class="w-full" />}
 
-    <h1 class="mt-4 text-4xl md:text-5xl">{frontmatter.title}</h1>
-    <p class="leading-6">
-      {frontmatter.description}
+    <h1 class="mt-4 text-4xl font-black md:text-6xl">{blogTitle}</h1>
+    <p class="prose dark:prose-invert mt-4 md:max-w-9/12">
+      {description}
     </p>
 
-    <div class="mt-12 md:mt-24">
-      <h3 class="font-medium">{frontmatter.author}</h3>
-      <p class="prose-sm">{frontmatter.pubDate.toLocaleDateString("en-IN", { dateStyle: "long" })}</p>
+    <div class="mt-4 md:mt-12">
+      <h3 class="font-medium">{author}</h3>
+      <p class="prose-sm">{pubDate ? formatDate(pubDate) : "A long time ago"}</p>
     </div>
 
     <TransparentDivider />
 
-    <slot />
+    <div class="prose dark:prose-invert prose-img:rounded-xl prose-neutral prose-emerald prose-lg md:max-w-9/12">
+      <slot />
+    </div>
   </main>
 </Layout>

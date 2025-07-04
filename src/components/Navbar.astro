@@ -9,6 +9,12 @@ const navLinks = [
   { name: "Snippets", path: "/snippets" },
   { name: "About", path: "/about" },
 ]
+
+const socialLinks = [
+  { name: "Github", path: "https://github.com/HarshNarayanJha", icon: "logos/github" },
+  { name: "Linkedin", path: "https://linkedin.com/in/HarshNarayanJha", icon: "logos/linkedin" },
+  { name: "Leetcode", path: "https://leetcode.com/u/HarshNarayanJha", icon: "logos/leetcode" },
+]
 ---
 
 <header
@@ -19,9 +25,9 @@ const navLinks = [
   ]}
 >
   <nav
-    class="m-auto hidden w-full place-content-stretch place-items-center p-2 md:grid md:grid-cols-5 md:grid-rows-1 md:p-6"
+    class="m-auto hidden w-full place-content-center place-items-center p-2 md:grid md:grid-cols-3 md:grid-rows-1 md:p-6"
   >
-    <div class="flex flex-row gap-4 md:col-span-2 md:place-self-center">
+    <div class="flex flex-row gap-4">
       {
         navLinks.map((link) => (
           <a href={link.path} class="font-medium">
@@ -30,25 +36,21 @@ const navLinks = [
         ))
       }
     </div>
-    <p id="nav-lead" class="text-xl font-bold tracking-wide opacity-85 md:place-self-center md:self-center">
+    <p id="nav-lead" class="text-xl font-bold tracking-wide opacity-85">
       <a href="/"> harshnj.is-a.dev </a>
     </p>
-    <div id="nav-links" class="flex flex-row space-x-4 md:col-span-1 md:place-self-end md:self-center">
+    <div id="nav-links" class="flex flex-row space-x-4">
       <ColorModeToggle />
-      <a href="https://github.com/HarshNarayanJha" target="_blank">
-        <Icon name="logos/github" class="inline-block" size={24} />
-        <snan class="sr-only">Github</snan>
-      </a>
-      <a href="https://linkedin.com/in/HarshNarayanJha" target="_blank">
-        <Icon name="logos/linkedin" class="inline-block" size={24} />
-        <span class="sr-only">Linkedin</span>
-      </a>
-      <a href="https://leetcode.com/u/HarshNarayanJha" target="_blank">
-        <Icon name="logos/leetcode" class="inline-block" size={24} />
-        <span class="sr-only">Leetcode</span>
-      </a>
+      {
+        socialLinks.map((link) => (
+          <a href={link.path} target="_blank">
+            <Icon name={link.icon} class="inline-block" size={24} />
+            <span class="sr-only">{link.name}</span>
+          </a>
+        ))
+      }
     </div>
-    <button
+    <!-- <button
       class="border-opacity-40 group place-self-center self-center rounded-xl border-2 border-neutral-500 bg-transparent bg-gradient-to-b from-transparent to-neutral-200 px-4 py-1 md:col-span-1 dark:to-neutral-900"
     >
       <a href="/Resume_Simple.pdf" title="download my resume" download>
@@ -61,7 +63,7 @@ const navLinks = [
       </a>
       <span class="mx-2 font-mono text-xl opacity-25">|</span>
       <a href="/Resume_Simple.pdf" target="_blank" title="open resume in new tab"> RESUME </a>
-    </button>
+    </button> -->
   </nav>
 
   <div class="grid w-full grid-cols-[1fr_2fr_1fr] items-center px-4 md:hidden">
@@ -98,7 +100,18 @@ const navLinks = [
         }
       </div>
 
-      <button
+      <div id="nav-links" class="mt-6 flex flex-row space-x-4">
+        {
+          socialLinks.map((social) => (
+            <a href={social.path} target="_blank">
+              <Icon name={social.icon} class="inline-block" size={24} />
+              <span class="sr-only">{social.name}</span>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- <button
         class="border-opacity-40 group my-2 rounded-xl border-2 border-neutral-500 bg-transparent bg-gradient-to-b from-transparent to-neutral-200 px-4 py-1 md:col-span-1 dark:to-neutral-900"
       >
         <a href="/Resume_Simple.pdf" title="download my resume" download>
@@ -111,7 +124,7 @@ const navLinks = [
         </a>
         <span class="mx-2 font-mono text-xl opacity-25">|</span>
         <a href="/Resume_Simple.pdf" target="_blank" title="open resume in new tab"> RESUME </a>
-      </button>
+      </button> -->
     </div>
   </div>
 </header>
