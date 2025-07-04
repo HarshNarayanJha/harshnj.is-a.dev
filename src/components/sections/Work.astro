@@ -11,7 +11,7 @@ const works = await getCollection("works")
   {
     works.map((work) => (
       <WorkCard class="mx-auto my-4">
-        <Image src={work.data.img} alt={`${work.data.name}'s Logo`} class="w-48 p-1" slot="image" />
+        <Image src={work.data.img} alt={`${work.data.name}'s Logo`} class="p-1" slot="image" />
 
         <Fragment slot="title">
           <h3 class="text-2xl font-semibold">{work.data.name}</h3>

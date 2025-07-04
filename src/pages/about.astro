@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components"
 import { getCollection } from "astro:content"
 
 import Layout from "@layouts/Layout.astro"
+import TransparentBorder from "@components/reusable/TransparentBorder.astro"
 
 const experiences = (await getCollection("experiences")).sort((a, b) => b.data.start.valueOf() - a.data.start.valueOf())
 
@@ -40,49 +41,51 @@ const description = "Harsh Narayan Jha's About Page"
       </p>
 
       <p>Here are some of the things I enjoy</p>
-      <!-- Icons here -->
+      <div class="h-28 w-full rounded-md bg-gray-200/50"></div>
     </div>
   </section>
 
-  <section id="about-experiences" class="h-auto w-full px-4 py-32 md:px-16">
+  <section id="about-experiences" class="h-auto w-full px-4 py-16 md:px-16">
     <div class="mx-auto text-center">
       <Icon name="work" class="m-2 inline" size={24} />
       <h3 class="mt-4 text-center text-2xl font-semibold">Experiences</h3>
     </div>
 
-    <div class="prose dark:prose-invert mx-auto mt-16 flex max-w-none flex-col gap-8 md:px-40">
+    <div class="prose dark:prose-invert mx-auto mt-16 flex max-w-none flex-col gap-8 md:px-12 lg:px-40">
       {
         experiences.map((exp) => {
           return (
-            <div class="grid grid-cols-1 gap-0 md:grid-cols-[1fr_3fr] md:gap-16">
-              <p class="font-mono md:justify-self-end">
-                {exp.data.start.toLocaleDateString("en-IN", { month: "short", year: "numeric" })} -{" "}
-                {exp.data.end === "PRESENT"
-                  ? "PRESENT"
-                  : exp.data.end.toLocaleDateString("en-IN", { month: "short", year: "numeric" })}
-              </p>
-              <div>
-                <h4>
-                  {Array(exp.data.level)
-                    .fill(0)
-                    .map(() => (
-                      <Icon name={`exp/${exp.data.type}`} class="inline" size={18} />
-                    ))}
-                  {exp.data.role}
-                </h4>
-                <p>
-                  <span class="font-semibold">{exp.data.at}</span>
-                  &mdash;
-                  <span class="italic">{exp.data.location}</span>
+            <TransparentBorder class="p-4 md:border-0">
+              <div class="grid grid-cols-1 gap-0 md:grid-cols-[1fr_3fr] md:gap-16">
+                <p class="font-mono md:justify-self-end">
+                  {exp.data.start.toLocaleDateString("en-IN", { month: "short", year: "numeric" })} -{" "}
+                  {exp.data.end === "PRESENT"
+                    ? "PRESENT"
+                    : exp.data.end.toLocaleDateString("en-IN", { month: "short", year: "numeric" })}
                 </p>
-                <p>{exp.data.description}</p>
-                <ul>
-                  {exp.data.points.map((pt) => (
-                    <li>{pt}</li>
-                  ))}
-                </ul>
+                <div>
+                  <h4>
+                    {Array(exp.data.level)
+                      .fill(0)
+                      .map(() => (
+                        <Icon name={`exp/${exp.data.type}`} class="inline" size={18} />
+                      ))}
+                    {exp.data.role}
+                  </h4>
+                  <p>
+                    <span class="font-semibold">{exp.data.at}</span>
+                    &mdash;
+                    <span class="italic">{exp.data.location}</span>
+                  </p>
+                  <p>{exp.data.description}</p>
+                  <ul>
+                    {exp.data.points.map((pt) => (
+                      <li>{pt}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
+            </TransparentBorder>
           )
         })
       }

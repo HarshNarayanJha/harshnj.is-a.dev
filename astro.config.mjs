@@ -8,6 +8,9 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   integrations: [svelte(), icon()],
+  server: {
+    allowedHosts: ["harshnj-garuda.tailf85ff4.ts.net"]
+  },
 
   vite: {
     plugins: [tailwindcss()],

@@ -5,6 +5,7 @@ import "../styles/global.css"
 
 import { getImage } from "astro:assets"
 import { ClientRouter } from "astro:transitions"
+import { ThemeScript } from "astro-theme-toggle"
 
 import faviconSrc from "../img/logo.png"
 import faviconSvgSrc from "../img/logo.svg"
@@ -46,9 +47,15 @@ const ogDescription = description
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
 
-    <ClientRouter fallback="swap" />
+    <script type="module" is:inline>
+      if (!("anchorName" in document.documentElement.style)) {
+        import("https://unpkg.com/@oddbird/css-anchor-positioning")
+      }
+    </script>
 
-    <script is:inline>
+    <!-- <ClientRouter fallback="swap" /> -->
+
+    <!-- <script is:inline>
       function applyTheme() {
         if (
           localStorage.theme === "dark" ||
@@ -62,7 +69,9 @@ const ogDescription = description
 
       document.addEventListener("astro:after-swap", applyTheme)
       applyTheme()
-    </script>
+    </script> -->
+
+    <ThemeScript />
   </head>
   <body class="bg-slate-50 text-neutral-800 dark:bg-gray-950 dark:text-slate-100">
     <Navbar />
