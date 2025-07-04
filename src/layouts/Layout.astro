@@ -47,29 +47,7 @@ const ogDescription = description
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
 
-    <script type="module" is:inline>
-      if (!("anchorName" in document.documentElement.style)) {
-        import("https://unpkg.com/@oddbird/css-anchor-positioning")
-      }
-    </script>
-
     <!-- <ClientRouter fallback="swap" /> -->
-
-    <!-- <script is:inline>
-      function applyTheme() {
-        if (
-          localStorage.theme === "dark" ||
-          (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-          document.documentElement.classList.add("dark")
-        } else {
-          document.documentElement.classList.remove("dark")
-        }
-      }
-
-      document.addEventListener("astro:after-swap", applyTheme)
-      applyTheme()
-    </script> -->
 
     <ThemeScript />
   </head>

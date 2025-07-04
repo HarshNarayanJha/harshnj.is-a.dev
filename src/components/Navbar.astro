@@ -64,17 +64,22 @@ const navLinks = [
     </button>
   </nav>
 
-  <div class="flex w-full flex-row items-center justify-between px-4 md:hidden">
+  <div class="grid w-full grid-cols-[1fr_2fr_1fr] items-center px-4 md:hidden">
     <button
       id="navbar-toggle"
       class:list={[
         "rounded-md border border-b-0 border-gray-500/50 border-t-gray-700/35 bg-sky-50/50 px-2 py-1 shadow-sm dark:border-gray-300/20 dark:border-t-gray-100/35 dark:bg-gray-900/50",
+        "justify-self-start",
       ]}
     >
-      Menu
+      <Icon name="menu" size={20} />
     </button>
 
-    <ColorModeToggle class="my-4" />
+    <p class="justify-self-center text-xl font-bold tracking-wide opacity-85">
+      <a href="/"> harshnj.is-a.dev </a>
+    </p>
+
+    <ColorModeToggle class="my-4 justify-self-end" />
 
     <div
       id="navbar-menu"
@@ -114,8 +119,12 @@ const navLinks = [
 <style>
   #navbar-menu {
     transition:
-      opacity 0.2s ease-in-out,
-      display 0.2s ease-in-out allow-discrete;
+      opacity 0.2s ease-out,
+      display 0.2s ease-out allow-discrete;
+  }
+
+  #navbar-menu.hidden {
+    transition: none;
   }
 
   @starting-style {
