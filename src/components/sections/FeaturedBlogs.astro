@@ -19,9 +19,21 @@ const featuredBlogs = (
       <a href={`/blog/${blog.slug}`} class="w-full">
         <BlogCard class="w-full">
           {blog.data.image ? (
-            <Image src={blog.data.image} alt={blog.data.title} width={150} slot="image" />
+            <Image
+              src={blog.data.image}
+              alt={blog.data.title}
+              width={150}
+              slot="image"
+              class="rounded-2xl border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50"
+            />
           ) : (
-            <Image src={placeholderImage} alt="blog image placeholder" width={150} class="dark:invert" slot="image" />
+            <Image
+              src={placeholderImage}
+              alt="blog image placeholder"
+              width={150}
+              class="rounded-2xl border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50 dark:invert"
+              slot="image"
+            />
           )}
 
           <time class="prose dark:prose-invert prose-sm" datetime={blog.data.pubDate?.toISOString()} slot="date">
@@ -32,7 +44,7 @@ const featuredBlogs = (
             {blog.data.title}
           </h3>
 
-          <p class="prose dark:prose-invert mt-2 truncate" slot="text">
+          <p class="prose dark:prose-invert mt-2 line-clamp-4 md:line-clamp-2" slot="text">
             {blog.data.description}
           </p>
 

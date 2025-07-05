@@ -26,7 +26,7 @@ const works = (await getCollection("experiences", ({ data }) => data.type == "wo
           </h4>
         </Fragment>
 
-        <p class="prose dark:prose-invert my-4 text-justify leading-6" slot="text">
+        <p class="prose dark:prose-invert my-4 line-clamp-4 text-justify leading-6 md:line-clamp-2" slot="text">
           {work.data.description}
         </p>
       </WorkCard>
