@@ -7,7 +7,7 @@ const projects = defineCollection({
   type: "data",
   schema: ({ image }) =>
     z.object({
-      img: z.preprocess(val => `@images/projects/${val}`, image()),
+      img: z.preprocess(val => `@/img/projects/${val}`, image()),
       name: z.string(),
       url: z.string().optional(),
       github: z.string().optional(),
@@ -27,7 +27,7 @@ const experiences = defineCollection({
     type: z.enum(["work", "education"]),
     level: z.number().int().positive(),
     at: z.string(),
-    logo: z.preprocess(val => `@images/work/${val}`, image()).optional(),
+    logo: z.preprocess(val => `@/img/work/${val}`, image()).optional(),
     link: z.string().optional(),
     location: z.string(),
     description: z.string(),
@@ -44,7 +44,7 @@ const blogs = defineCollection({
       pubDate: z.date().optional(),
       description: z.string().max(70),
       author: z.string(),
-      image: z.preprocess(val => `@images/blogs/${val}`, image()).optional(),
+      image: z.preprocess(val => `@/img/blogs/${val}`, image()).optional(),
       tags: z.array(z.string())
     })
 })

@@ -3,8 +3,8 @@ import { Image } from "astro:assets"
 import { getCollection } from "astro:content"
 import { Icon } from "astro-icon/components"
 
-import Layout from "@layouts/Layout.astro"
-import ProjectCard from "@components/cards/ProjectCard.astro"
+import Layout from "@/layouts/Layout.astro"
+import ProjectCard from "@/components/cards/ProjectCard.astro"
 
 const projects = await getCollection("projects")
 

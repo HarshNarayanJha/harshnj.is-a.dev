@@ -3,8 +3,8 @@ import { Image } from "astro:assets"
 import { Icon } from "astro-icon/components"
 import { getCollection } from "astro:content"
 
-import Layout from "@layouts/Layout.astro"
-import TransparentBorder from "@components/reusable/TransparentBorder.astro"
+import Layout from "@/layouts/Layout.astro"
+import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
 import { formatMonth } from "@/utils"
 
 const experiences = (await getCollection("experiences")).sort((a, b) => b.data.start.valueOf() - a.data.start.valueOf())
