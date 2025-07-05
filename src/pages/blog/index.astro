@@ -6,7 +6,7 @@ import { Icon } from "astro-icon/components"
 import Layout from "@layouts/Layout.astro"
 import BlogCard from "@components/cards/BlogCard.astro"
 import placeholderImage from "@images/placeholder.png"
-import { formatDate } from "~/utils"
+import { formatDate } from "@/utils"
 
 const blogs = (await getCollection("blogs", ({ data }) => data.isPublished && data.pubDate)).sort(
   (a, b) => b.data.pubDate!.valueOf() - a.data.pubDate!.valueOf(),

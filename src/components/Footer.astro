@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components"
 
 import TransparentDivider from "@components/reusable/TransparentDivider.svelte"
+import { accounts, socialLinks } from "@/utils/data"
 ---
 
 <!-- <div class="wave-divider bg-zinc-200 dark:bg-gray-900">
@@ -20,19 +21,23 @@ import TransparentDivider from "@components/reusable/TransparentDivider.svelte"
     <h3>Harsh Narayan Jha</h3>
     <p class="prose-sm leading-5">Let's create something amazing together</p>
     <div class="flex flex-row gap-2">
-      <a href="mailto:harshnj@proton.me" class="text-gray-800/50 dark:text-gray-300/50">
-        <Icon name="email" size={20} />
+      <a href="mailto:harshnj@proton.me" class="text-gray-800/50 dark:text-gray-300/50" data-tippy-content="Email Me">
+        <Icon name="email" size={22} />
       </a>
-      <a
-        href="https://github.com/HarshNarayanJha"
-        target="_blank"
-        class="cursor-newtab text-gray-800/50 dark:text-gray-300/50"
-      >
-        <Icon name="logos/github" size={20} />
-      </a>
-      <a href="#" class="cursor-newtab text-gray-800/50 dark:text-gray-300/50">
-        <Icon name="logos/linkedin" size={20} />
-      </a>
+      {
+        socialLinks.map((social) => (
+          <a
+            href={social.path}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-800/50 dark:text-gray-300/50"
+            data-tippy-content={`My ${social.name}`}
+          >
+            <Icon name={social.icon} size={22} />
+            <span class="sr-only">{social.name}</span>
+          </a>
+        ))
+      }
     </div>
   </div>
   <div class="grid grid-cols-3 gap-4 text-sm">
@@ -54,18 +59,15 @@ import TransparentDivider from "@components/reusable/TransparentDivider.svelte"
     </ul>
     <ul class="space-y-2">
       <li class="mb-2 text-gray-700/50 dark:text-gray-200/50">My Accounts</li>
-      <li>
-        <a href="https://codestats.net/users/harshnj" target="_blank" class="cursor-newtab"> Code::Stats </a>
-      </li>
-      <li>
-        <a href="https://tryhackme.com/p/harshnj1103" target="_blank" class="cursor-newtab"> TryHackMe </a>
-      </li>
-      <li>
-        <a href="https://leetcode.com/u/harshnarayanjha" target="_blank" class="cursor-newtab"> Leetcode </a>
-      </li>
-      <li>
-        <a href="https://cses.fi/user/345212" target="_blank" class="cursor-newtab"> CSES </a>
-      </li>
+      {
+        accounts.map((acc) => (
+          <li>
+            <a href={acc.path} target="_blank" rel="noopener noreferrer" class="cursor-newtab">
+              {acc.name}
+            </a>
+          </li>
+        ))
+      }
     </ul>
     <ul class="space-y-2">
       <li>Notes</li>

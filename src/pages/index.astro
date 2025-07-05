@@ -10,6 +10,8 @@ import FeaturedProjects from "@components/sections/FeaturedProjects.astro"
 import FeaturedTestimonials from "@components/sections/FeaturedTestimonials.astro"
 import Work from "@components/sections/Work.astro"
 import me from "@images/me.png"
+
+import { RESUME_DOC_URI } from "@/utils/data"
 ---
 
 <Layout>
@@ -130,9 +132,15 @@ import me from "@images/me.png"
       Grab my Resume and contact me. Let's create something Amazing together!
     </p>
 
-    <a href="/Resume.pdf" data-tippy-content="Download My Resume" download class="text-sm md:text-base">
+    <a
+      href={RESUME_DOC_URI}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-tippy-content="Get My Resume"
+      class="text-sm md:text-base"
+    >
       <button
-        class="border-opacity-40 group w-fit cursor-pointer rounded-xl border-2 border-slate-500/50 bg-transparent px-4 py-2 shadow-md transition-shadow hover:shadow-lg md:px-6"
+        class="border-opacity-40 group cursor-newtab w-fit rounded-xl border-2 border-slate-500/50 bg-transparent px-4 py-2 shadow-md transition-shadow hover:shadow-lg md:px-6"
       >
         <Icon
           name="download"

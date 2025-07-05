@@ -4,7 +4,7 @@ import { Image } from "astro:assets"
 
 import placeholderImage from "@images/placeholder.png"
 import BlogCard from "@components/cards/BlogCard.astro"
-import { formatDate } from "~/utils"
+import { formatDate } from "@/utils"
 
 const featuredBlogs = (
   await getCollection("blogs", ({ data }) => data.isPublished === true && data.pubDate !== undefined)

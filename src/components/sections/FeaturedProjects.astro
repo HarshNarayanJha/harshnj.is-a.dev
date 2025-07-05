@@ -38,10 +38,10 @@ const featuredProjects = await getCollection("projects", ({ data }) => data.feat
         </div>
         <div class="grid w-full grid-cols-2 gap-2" slot="button">
           {proj.data.url ? (
-            <a href={proj.data.url} target="_blank">
+            <a href={proj.data.url} target="_blank" rel="noopener noreferrer">
               <button
                 class:list={[
-                  "w-full cursor-pointer rounded-md bg-teal-500/50 py-2 font-semibold text-white outline outline-offset-2 outline-teal-500/25 dark:bg-teal-500/50 dark:outline-teal-600/50",
+                  "cursor-newtab w-full rounded-md bg-teal-500/50 py-2 font-semibold text-white outline outline-offset-2 outline-teal-500/25 dark:bg-teal-500/50 dark:outline-teal-600/50",
                   "transition-all hover:scale-95 hover:outline-offset-4",
                 ]}
                 tabindex="-1"
@@ -62,9 +62,9 @@ const featuredProjects = await getCollection("projects", ({ data }) => data.feat
             </div>
           )}
           {proj.data.github ? (
-            <a href={proj.data.github} target="_blank">
+            <a href={proj.data.github} target="_blank" rel="noopener noreferrer">
               <button
-                class="w-full cursor-pointer rounded-md bg-neutral-500 py-2 font-semibold text-white dark:bg-neutral-600"
+                class="cursor-newtab w-full rounded-md bg-neutral-500 py-2 font-semibold text-white dark:bg-neutral-600"
                 tabindex="-1"
               >
                 View Source

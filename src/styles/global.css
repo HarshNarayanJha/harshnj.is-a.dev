@@ -10,6 +10,12 @@
       pointer;
   }
 
+  a[target="_blank"] {
+    cursor:
+      url("/images/new-tab.png") 10 10,
+      pointer;
+  }
+
   span[data-tippy-content] {
     cursor: help;
     text-decoration-style: dotted;

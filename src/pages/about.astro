@@ -5,7 +5,7 @@ import { getCollection } from "astro:content"
 
 import Layout from "@layouts/Layout.astro"
 import TransparentBorder from "@components/reusable/TransparentBorder.astro"
-import { formatMonth } from "~/utils"
+import { formatMonth } from "@/utils"
 
 const experiences = (await getCollection("experiences")).sort((a, b) => b.data.start.valueOf() - a.data.start.valueOf())
 
@@ -126,7 +126,7 @@ const skills = [
                         href={exp.data.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="cursor-newtab font-medium hover:underline"
+                        class="font-medium hover:underline"
                       >
                         {exp.data.at}
                       </a>

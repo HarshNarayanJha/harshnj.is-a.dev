@@ -1,7 +1,7 @@
 ---
 import Footer from "@components/Footer.astro"
 import Navbar from "@components/Navbar.astro"
-import "~/styles/global.css"
+import "@/styles/global.css"
 
 import { getImage } from "astro:assets"
 import { ClientRouter } from "astro:transitions"
@@ -12,8 +12,8 @@ import "tippy.js/dist/backdrop.css"
 import "tippy.js/animations/shift-away.css"
 import "tippy.js/themes/translucent.css"
 
-import faviconSrc from "~/img/logo.png"
-import faviconSvgSrc from "~/img/logo.svg"
+import faviconSrc from "@/img/logo.png"
+import faviconSvgSrc from "@/img/logo.svg"
 
 const appleTouchIcon = await getImage({
   src: faviconSrc,
