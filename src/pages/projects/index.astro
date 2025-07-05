@@ -62,14 +62,15 @@ const description = "Harsh Narayan Jha's Projects"
                   </button>
                 </a>
               ) : (
-                <button
-                  class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
-                  tabindex="-1"
-                  title="Not yet Live!"
-                  disabled
-                >
-                  Not yet Live!
-                </button>
+                <div data-tippy-content="Not yet Live!" tabindex="-1">
+                  <button
+                    class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
+                    tabindex="-1"
+                    disabled
+                  >
+                    Not yet Live!
+                  </button>
+                </div>
               )}
               {proj.data.github ? (
                 <a href={proj.data.github} target="_blank">
@@ -82,14 +83,15 @@ const description = "Harsh Narayan Jha's Projects"
                   </button>
                 </a>
               ) : (
-                <button
-                  class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
-                  tabindex="-1"
-                  title="Not Public"
-                  disabled
-                >
-                  Not Public
-                </button>
+                <div data-tippy-content="I don't think I will make this public" tabindex="-1">
+                  <button
+                    class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
+                    tabindex="-1"
+                    disabled
+                  >
+                    Not Public
+                  </button>
+                </div>
               )}
             </div>
           </ProjectCard>

@@ -9,6 +9,15 @@
       url("/images/new-tab.png") 10 10,
       pointer;
   }
+
+  span[data-tippy-content] {
+    cursor: help;
+    text-decoration-style: dotted;
+    text-decoration-line: underline;
+    text-decoration-color: blue;
+    text-decoration-thickness: 1.5px;
+    font-weight: 500;
+  }
 }
 
 html {

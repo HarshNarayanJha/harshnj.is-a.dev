@@ -1,14 +1,19 @@
 ---
-import Footer from "../components/Footer.astro"
-import Navbar from "../components/Navbar.astro"
-import "../styles/global.css"
+import Footer from "@components/Footer.astro"
+import Navbar from "@components/Navbar.astro"
+import "~/styles/global.css"
 
 import { getImage } from "astro:assets"
 import { ClientRouter } from "astro:transitions"
 import { ThemeScript } from "astro-theme-toggle"
 
-import faviconSrc from "../img/logo.png"
-import faviconSvgSrc from "../img/logo.svg"
+import "tippy.js/dist/tippy.css"
+import "tippy.js/dist/backdrop.css"
+import "tippy.js/animations/shift-away.css"
+import "tippy.js/themes/translucent.css"
+
+import faviconSrc from "~/img/logo.png"
+import faviconSvgSrc from "~/img/logo.svg"
 
 const appleTouchIcon = await getImage({
   src: faviconSrc,
@@ -49,7 +54,42 @@ const ogDescription = description
 
     <ClientRouter fallback="swap" />
 
+    <!-- Light mode dark mode -->
     <ThemeScript />
+
+    <!-- tooltips -->
+    <script>
+      import tippy, { animateFill, createSingleton, type Instance } from "tippy.js"
+
+      document.addEventListener("astro:page-load", () => {
+        const tips = document.querySelectorAll("[data-tippy-content]")
+        let tippyInstances: Instance[] = []
+
+        tips.forEach((t) => {
+          // set tabindex only if not already set
+          if ((t.tagName === "SPAN" || t.tagName === "DIV") && t.getAttribute("tabIndex") === null) {
+            t.setAttribute("tabindex", "0")
+          }
+          const content = t.attributes.getNamedItem("data-tippy-content")?.textContent || ""
+
+          if (content) {
+            const tip = tippy(t, {
+              content,
+            })
+
+            tippyInstances.push(tip)
+          }
+        })
+
+        createSingleton(tippyInstances, {
+          animateFill: true,
+          plugins: [animateFill],
+          theme: "translucent",
+          delay: [25, 100],
+          duration: [300, 200],
+        })
+      })
+    </script>
   </head>
   <body class="bg-slate-50 text-neutral-800 dark:bg-gray-950 dark:text-slate-100">
     <Navbar />
