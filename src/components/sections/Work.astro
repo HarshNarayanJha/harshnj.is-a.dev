@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content"
-import { Image } from "astro:assets"
 
 import WorkCard from "@/components/cards/WorkCard.astro"
 import { formatMonth } from "@/utils"
@@ -13,12 +12,10 @@ const works = (await getCollection("experiences", ({ data }) => data.type == "wo
 <div class="flex flex-col items-center px-8 py-8 md:px-15 md:py-10">
   {
     works.map((work) => (
-      <WorkCard class="mx-auto my-4">
-        <Image src={work.data.logo!} alt={work.data.at} class="p-1" slot="image" />
-
+      <WorkCard class="mx-auto my-4" work={work.data}>
         <Fragment slot="title">
           <h3 class="text-2xl font-semibold">{work.data.at}</h3>
-          <h4 class="font-normal">{work.data.location}</h4>
+          <h4 class="font-normal italic">{work.data.location}</h4>
 
           <h4 class="mt-2 text-sm font-semibold">
             {formatMonth(work.data.start)} &mdash;{" "}

@@ -1,22 +1,31 @@
 ---
 import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
+import { Picture } from "astro:assets"
+import type { CollectionEntry } from "astro:content"
 
 interface Props {
   class: string
+  work: CollectionEntry<"experiences">["data"]
   [key: string]: any
 }
 
-const { class: className, ...rest } = Astro.props
+const { class: className, work, ...rest } = Astro.props
 ---
 
 <TransparentBorder class={className} {rest}>
   <div
-    class="flex h-full flex-col items-start justify-start gap-4 rounded-lg border-2 border-slate-300/50 bg-white p-4 shadow md:flex-row md:gap-8 md:p-2 dark:border-zinc-800/50 dark:bg-gray-950"
+    class="flex h-full flex-col items-start justify-start gap-4 rounded-lg border-2 border-slate-300/50 bg-white p-4 shadow md:flex-row md:gap-6 md:p-4 dark:border-zinc-800/50 dark:bg-gray-950"
   >
-    <div id="leading-image" class="self-center">
-      <slot name="image" />
+    <div class="self-center">
+      <Picture
+        src={work.logo!}
+        formats={["webp", "avif"]}
+        alt={work.at}
+        class:list={["rounded-2xl border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50"]}
+        layout="constrained"
+      />
     </div>
-    <div id="text-content" class="mt-2 w-full sm:mt-4">
+    <div class="mt-2 w-full sm:mt-4">
       <slot name="title" />
       <slot name="text" />
     </div>
