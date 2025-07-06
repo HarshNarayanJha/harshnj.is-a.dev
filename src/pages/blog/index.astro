@@ -23,7 +23,7 @@ const description = "Harsh Narayan Jha's Blogs"
       {
         blogs.map((blog) => (
           <a href={`/blog/${blog.slug}`} class="w-full">
-            <BlogCard class="w-full" blog={blog.data}>
+            <BlogCard class="w-full" blog={blog}>
               <h3 class="text-3xl font-semibold" slot="title">
                 {blog.data.title}
               </h3>

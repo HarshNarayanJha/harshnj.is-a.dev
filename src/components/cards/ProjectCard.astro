@@ -22,7 +22,8 @@ const { class: className, proj, ...rest } = Astro.props
         src={proj.img}
         formats={["webp", "avif"]}
         alt={proj.name}
-        class:list={["rounded-2xl border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50"]}
+        class="aspect-video rounded-2xl border-2 border-b-0 border-slate-200/50 object-cover object-center dark:border-slate-600/50"
+        width={400}
         layout="constrained"
       />
     </div>

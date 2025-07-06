@@ -4,6 +4,13 @@
 // see the documentation: https://zed.dev/docs/configuring-zed#settings-files
 {
   "languages": {
+    "CSS": {
+      "language_servers": [
+        "!biome",
+        "vscode-css-languageserver",
+        "..."
+      ]
+    },
     "Svelte": {
       "language_servers": [
         "!biome",
@@ -17,8 +24,8 @@
         "!biome",
         "vtsls",
         "..."
-      ],
-      "formatter": "language_server"
+      ]
+      // "formatter": "language_server"
     }
   }
 }

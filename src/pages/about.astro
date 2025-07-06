@@ -6,46 +6,12 @@ import { getCollection } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
 import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
 import { formatMonth } from "@/utils"
+import { skills } from "@/utils/data"
 
 const experiences = (await getCollection("experiences")).sort((a, b) => b.data.start.valueOf() - a.data.start.valueOf())
 
 const title = "About Me | Harsh Narayan Jha"
 const description = "Harsh Narayan Jha's About Page"
-
-const skills = [
-  {
-    name: "Python",
-    tooltip: "First Computer Language learnt. I can make anything with this. My favorite!",
-    logo: "skills/python",
-  },
-  { name: "Django", tooltip: "My goto web fullstack framework before NextJS", logo: "skills/django" },
-  { name: "Flutter", tooltip: "This is what I make mobile Apps in!", logo: "skills/flutter" },
-  {
-    name: "C++",
-    tooltip: "Super performant programming language for low level stuff, including C",
-    logo: "skills/cpp",
-  },
-  { name: "Rust", tooltip: "Learning Rust since it's awesome!", logo: "skills/rust" },
-  { name: "TypeScript", tooltip: "I think TypeScript is better than JavaScript", logo: "skills/ts" },
-  { name: "JavaScript", tooltip: "But JavaScript is also great!", logo: "skills/js" },
-  { name: "Unity", tooltip: "Used to use Unity, before it went downhill with stuff", logo: "skills/unity" },
-  { name: "Godot", tooltip: "I make games in Godot now", logo: "skills/godot" },
-  { name: "Next.js", tooltip: "It is just amazing, but not for everything!", logo: "skills/next" },
-  { name: "Vue.js", tooltip: "Vue is nice!", logo: "skills/vue" },
-  { name: "MongoDB", tooltip: "Just, used...", logo: "skills/mongo" },
-  { name: "Docker", tooltip: "Just used...", logo: "skills/docker" },
-  { name: "AWS", tooltip: "Too difficult to fully master", logo: "skills/aws" },
-  {
-    name: "Tailwind",
-    tooltip: "Before you actually use it, you think it will increase your work. But...",
-    logo: "skills/tailwind",
-  },
-  { name: "Supabase", tooltip: "It's Awesome, much better than AWS for simple stuff", logo: "skills/supabase" },
-  { name: "Blender", tooltip: "Made a lot of stuff in blender", logo: "skills/blender" },
-  { name: "Arch Linux", tooltip: "My primary Operating System. I love it", logo: "skills/arch" },
-  { name: "Git", tooltip: "Thank god Linux made this. Also thanks for Linux ❤️", logo: "skills/git" },
-  { name: "Zed", tooltip: "The IDE I use. Much better than VSCode", logo: "skills/zed" },
-]
 ---
 
 <Layout title={title} description={description}>
@@ -84,7 +50,7 @@ const skills = [
           skills.map((skill) => {
             return (
               <div class="inline-block" data-tippy-content={skill.tooltip}>
-                <Icon name={skill.logo} size={36} />
+                <Icon name={skill.logo} size={36} class="inline" />
               </div>
             )
           })

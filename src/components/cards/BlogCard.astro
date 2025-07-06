@@ -5,14 +5,18 @@ import type { CollectionEntry } from "astro:content"
 
 import placeholderImage from "@/img/placeholder.png"
 import { formatDate } from "@/utils"
+import { getReadingTime } from "@/utils/reading-time"
 
 interface Props {
   class: string
-  blog: CollectionEntry<"blogs">["data"]
+  blog: CollectionEntry<"blogs">
   [key: string]: any
 }
 
-const { class: className, blog, ...rest } = Astro.props
+const { class: className, blog: blogEntry, ...rest } = Astro.props
+const { data: blog, body } = blogEntry
+
+const readingTime = getReadingTime(body)
 ---
 
 <TransparentBorder class={className} enableHoverScale={true} {rest}>
@@ -22,7 +26,8 @@ const { class: className, blog, ...rest } = Astro.props
     <div class="flex h-full w-full flex-col items-start justify-start">
       <div>
         <time class="prose dark:prose-invert prose-sm" datetime={blog.pubDate?.toISOString()}>
-          {blog.pubDate ? formatDate(blog.pubDate) : "A long time ago"}
+          {blog.pubDate ? formatDate(blog.pubDate) : "A long time ago"}{" "}
+          {readingTime && <span>&CircleDot;&nbsp;{readingTime}</span>}
         </time>
         <slot name="title" />
         <slot name="text" />

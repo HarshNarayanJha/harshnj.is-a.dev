@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets"
+import { Picture } from "astro:assets"
 import { Icon } from "astro-icon/components"
 
 import Layout from "@/layouts/Layout.astro"
@@ -9,9 +9,10 @@ import FeaturedBlogs from "@/components/sections/FeaturedBlogs.astro"
 import FeaturedProjects from "@/components/sections/FeaturedProjects.astro"
 import FeaturedTestimonials from "@/components/sections/FeaturedTestimonials.astro"
 import Work from "@/components/sections/Work.astro"
-import me from "@/img/me.png"
 
 import { RESUME_DOC_URI } from "@/utils/data"
+
+import me from "@/img/me.png"
 ---
 
 <Layout>
@@ -19,12 +20,14 @@ import { RESUME_DOC_URI } from "@/utils/data"
     <Hero />
 
     <Card class="mx-auto my-16 w-11/12 md:my-8 md:w-10/12 lg:w-7/12">
-      <Image
+      <Picture
         src={me}
         class="aspect-square w-40 -rotate-6 rounded-[3.8rem] rounded-br-3xl border-2 border-slate-200/50 transition hover:-rotate-[18deg] md:w-52 dark:border-slate-700/50"
         alt="website owner"
         style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)"
-        loading={"eager"}
+        formats={["avif", "webp"]}
+        width={160}
+        priority
         slot="image"
       />
       <div class="text-3xl font-bold md:text-4xl" slot="title">Hello There</div>
