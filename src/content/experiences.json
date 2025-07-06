@@ -1,82 +1,80 @@
-{
-  "experiences": [
-    {
-      "id": 1,
-      "start": "2011-04-05",
-      "end": "2016-03-05",
-      "role": "Student",
-      "type": "education",
-      "level": 1,
-      "at": "Rose Public School",
-      "logo": "rps.png",
-      "location": "Darbhanga, Bihar, India",
-      "description": "Completed early schooling at Rose Public School, building a foundation in academics and communication skills over six years.",
-      "points": []
-    },
-    {
-      "id": 2,
-      "start": "2016-06-01",
-      "end": "2023-03-01",
-      "role": "Student",
-      "type": "education",
-      "level": 1,
-      "at": "Kendriya Vidyalaya No. 1",
-      "logo": "kvs.png",
-      "link": "https://no1darbhanga.kvs.ac.in/",
-      "location": "AFS Darbhanga, Bihar, India",
-      "description": "Completed 6 years of schooling under the CBSE (Central Board of Secondary Education) curriculum as part of the Kendriya Vidyalaya Sangathan — a nationwide network of central government schools. With the Science stream, securing over 90% in the Class 12 board examinations.",
-      "points": [
-        "Specialized in Physics, Chemistry, Mathematics (PCM) along with Computer Science as an elective.",
-        "Built a strong academic foundation in mathematics, logic, and problem-solving, preparing for technical higher education.",
-        "Gained early exposure to programming fundamentals, including basic OOP and Python.",
-        "Participated in school-level science exhibitions, Olympiads, and computer literacy initiatives.",
-        "Developed discipline, adaptability, and academic consistency in a nationally standardized school system.",
-        "Built a solid understanding of OOP, software design principles, and version control with Git/GitHub."
-      ]
-    },
-    {
-      "id": 3,
-      "start": "2023-09-05",
-      "end": "PRESENT",
-      "role": "Student",
-      "type": "education",
-      "level": 2,
-      "at": "Birla Institute of Technology",
-      "logo": "bit.png",
-      "link": "https://bitmesra.ac.in/",
-      "location": "Deoghar, Jharkhand, India",
-      "description": "Currently pursuing a 4-year undergraduate program in Computer Science and Engineering with current CGPA above 9.0. Gaining a strong foundation in software development, systems, and emerging technologies through academic and project-based learning. Core coursework includes Data Structures, Algorithms, Operating Systems, and Programming.",
-      "points": [
-        "Studied core subjects including Data Structures & Algorithms, Operating Systems, Computer Networks, and Database Management Systems.",
-        "Worked on academic and personal projects involving Web Development, App development, Open Source projects, REST API design, and Python-based applications.",
-        "Participated in coding competitions, hackathons, and peer programming sessions to strengthen problem-solving skills.",
-        "Actively exploring areas like cloud computing, machine learning, and full-stack development through self-learning and internships."
-      ]
-    },
-    {
-      "id": 4,
-      "start": "2025-03-05",
-      "end": "2025-07-05",
-      "role": "SDE Intern",
-      "type": "work",
-      "level": 1,
-      "at": "CoRider",
-      "logo": "corider.png",
-      "link": "https://corider.in/",
-      "location": "Bengaluru - Remote",
-      "description": "Developed and maintained RESTful APIs using Python (Flask) and MongoDB, supporting key backend features and CRUD operations. Implemented robust input validation, error handling, and unit testing to ensure reliability and maintainability. Deployed and monitored backend services using AWS, collaborating with frontend teams for seamless integration.",
-      "points": [
-        "Developed and maintained scalable RESTful APIs using Python (Flask) and MongoDB, enabling efficient CRUD operations and seamless front-end integration.",
-        "Designed Flask routes, services, and models aligned with REST standards and internal best practices.",
-        "Implemented robust data validation, error handling, and response management to ensure API reliability and user safety.",
-        "Optimized MongoDB queries to improve API response time and back-end performance.",
-        "Wrote unit tests to validate API functionality and ensure high code quality and coverage.",
-        "Integrated APIs with front-end components, collaborating closely with UI teams for end-to-end feature delivery.",
-        "Managed and monitored REST API deployments on AWS, contributing to deployment pipelines and cloud infrastructure.",
-        "Conducted API testing and participated in debugging and troubleshooting backend issues.",
-        "Suggested and implemented improvements to enhance code maintainability and performance.",
-        "Gained hands-on experience with Agile development practices, version control (Git), and cloud-based development tools."
-      ]
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "start": "2011-04-05",
+    "end": "2016-03-05",
+    "role": "Student",
+    "type": "education",
+    "level": 1,
+    "at": "Rose Public School",
+    "logo": "rps.png",
+    "location": "Darbhanga, Bihar, India",
+    "description": "Completed early schooling at Rose Public School, building a foundation in academics and communication skills over six years.",
+    "points": []
+  },
+  {
+    "id": 2,
+    "start": "2016-06-01",
+    "end": "2023-03-01",
+    "role": "Student",
+    "type": "education",
+    "level": 1,
+    "at": "Kendriya Vidyalaya No. 1",
+    "logo": "kvs.png",
+    "link": "https://no1darbhanga.kvs.ac.in/",
+    "location": "AFS Darbhanga, Bihar, India",
+    "description": "Completed 6 years of schooling under the CBSE (Central Board of Secondary Education) curriculum as part of the Kendriya Vidyalaya Sangathan — a nationwide network of central government schools. With the Science stream, securing over 90% in the Class 12 board examinations.",
+    "points": [
+      "Specialized in Physics, Chemistry, Mathematics (PCM) along with Computer Science as an elective.",
+      "Built a strong academic foundation in mathematics, logic, and problem-solving, preparing for technical higher education.",
+      "Gained early exposure to programming fundamentals, including basic OOP and Python.",
+      "Participated in school-level science exhibitions, Olympiads, and computer literacy initiatives.",
+      "Developed discipline, adaptability, and academic consistency in a nationally standardized school system.",
+      "Built a solid understanding of OOP, software design principles, and version control with Git/GitHub."
+    ]
+  },
+  {
+    "id": 3,
+    "start": "2023-09-05",
+    "end": "PRESENT",
+    "role": "Student",
+    "type": "education",
+    "level": 2,
+    "at": "Birla Institute of Technology",
+    "logo": "bit.png",
+    "link": "https://bitmesra.ac.in/",
+    "location": "Deoghar, Jharkhand, India",
+    "description": "Currently pursuing a 4-year undergraduate program in Computer Science and Engineering with current CGPA above 9.0. Gaining a strong foundation in software development, systems, and emerging technologies through academic and project-based learning. Core coursework includes Data Structures, Algorithms, Operating Systems, and Programming.",
+    "points": [
+      "Studied core subjects including Data Structures & Algorithms, Operating Systems, Computer Networks, and Database Management Systems.",
+      "Worked on academic and personal projects involving Web Development, App development, Open Source projects, REST API design, and Python-based applications.",
+      "Participated in coding competitions, hackathons, and peer programming sessions to strengthen problem-solving skills.",
+      "Actively exploring areas like cloud computing, machine learning, and full-stack development through self-learning and internships."
+    ]
+  },
+  {
+    "id": 4,
+    "start": "2025-03-05",
+    "end": "2025-07-05",
+    "role": "SDE Intern",
+    "type": "work",
+    "level": 1,
+    "at": "CoRider",
+    "logo": "corider.png",
+    "link": "https://corider.in/",
+    "location": "Bengaluru - Remote",
+    "description": "Developed and maintained RESTful APIs using Python (Flask) and MongoDB, supporting key backend features and CRUD operations. Implemented robust input validation, error handling, and unit testing to ensure reliability and maintainability. Deployed and monitored backend services using AWS, collaborating with frontend teams for seamless integration.",
+    "points": [
+      "Developed and maintained scalable RESTful APIs using Python (Flask) and MongoDB, enabling efficient CRUD operations and seamless front-end integration.",
+      "Designed Flask routes, services, and models aligned with REST standards and internal best practices.",
+      "Implemented robust data validation, error handling, and response management to ensure API reliability and user safety.",
+      "Optimized MongoDB queries to improve API response time and back-end performance.",
+      "Wrote unit tests to validate API functionality and ensure high code quality and coverage.",
+      "Integrated APIs with front-end components, collaborating closely with UI teams for end-to-end feature delivery.",
+      "Managed and monitored REST API deployments on AWS, contributing to deployment pipelines and cloud infrastructure.",
+      "Conducted API testing and participated in debugging and troubleshooting backend issues.",
+      "Suggested and implemented improvements to enhance code maintainability and performance.",
+      "Gained hands-on experience with Agile development practices, version control (Git), and cloud-based development tools."
+    ]
+  }
+]

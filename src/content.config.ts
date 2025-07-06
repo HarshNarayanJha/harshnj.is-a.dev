@@ -18,7 +18,7 @@ const projects = defineCollection({
 });
 
 const experiences = defineCollection({
-  loader: file("src/content/experiences.json", { parser: (text) => JSON.parse(text).experiences }),
+  loader: file("src/content/experiences.json"),
   schema: ({ image }) => z.object({
     id: z.number().int().positive(),
     start: z.coerce.date(),
