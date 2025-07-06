@@ -5,13 +5,27 @@ const projects = defineCollection({
   type: "data",
   schema: ({ image }) =>
     z.object({
-      img: z.preprocess(val => `@/img/projects/${val}`, image()),
+      img: z.preprocess(val => val ? `@/img/projects/${val}` : "", image()),
       name: z.string(),
       url: z.string().optional(),
       github: z.string().optional(),
       text: z.string(),
       tags: z.array(z.string()),
       featured: z.boolean().default(false),
+    }),
+});
+
+const testimonials = defineCollection({
+  type: "data",
+  schema: ({ image }) =>
+    z.object({
+      img: z.preprocess(val => val ? `@/img/testimonials/${val}` : "", image()),
+      name: z.string(),
+      at: z.string(),
+      position: z.string(),
+      title: z.string(),
+      text: z.string(),
+      isPublished: z.boolean().default(false)
     }),
 });
 
@@ -25,7 +39,7 @@ const experiences = defineCollection({
     type: z.enum(["work", "education"]),
     level: z.number().int().positive(),
     at: z.string(),
-    logo: z.preprocess(val => `@/img/work/${val}`, image()).optional(),
+    logo: z.preprocess(val => val ? `@/img/work/${val}` : "", image()).optional(),
     link: z.string().optional(),
     location: z.string(),
     description: z.string(),
@@ -42,10 +56,10 @@ const blogs = defineCollection({
       pubDate: z.date().optional(),
       description: z.string().max(70),
       author: z.string(),
-      image: z.preprocess(val => `@/img/blogs/${val}`, image()).optional(),
+      image: z.preprocess(val => val ? `@/img/blogs/${val}` : "", image()).optional(),
       tags: z.array(z.string()),
       theme: z.enum(["green", "blue", "normal"]).optional().default("normal")
     })
 })
 
-export const collections = { projects, experiences, blogs };
+export const collections = { projects, testimonials, experiences, blogs };

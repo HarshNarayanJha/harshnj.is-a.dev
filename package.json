@@ -12,12 +12,12 @@
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/svelte": "^7.1.0",
     "@popperjs/core": "^2.11.8",
-    "@tailwindcss/vite": "^4.1.10",
+    "@tailwindcss/vite": "^4.1.11",
     "astro": "5.11.0",
     "astro-icon": "^1.1.5",
     "astro-theme-toggle": "^0.6.1",
     "svelte": "^5.34.1",
-    "tailwindcss": "^4.1.10",
+    "tailwindcss": "^4.1.11",
     "tippy.js": "^6.3.7",
     "typescript": "^5.8.3"
   },
@@ -27,5 +27,8 @@
     "mdast-util-from-markdown": "^2.0.2",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0"
-  }
+  },
+  "trustedDependencies": [
+    "@tailwindcss/oxide"
+  ]
 }

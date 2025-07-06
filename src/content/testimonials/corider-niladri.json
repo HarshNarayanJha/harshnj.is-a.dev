@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../.astro/collections/testimonials.schema.json",
+  "img": "niladri.jpg",
+  "name": "Niladri Das Roy",
+  "at": "CoRider",
+  "position": "Founder",
+  "title": "A Respected and Highly Effective Backend Engineer",
+  "text": "Harsh has been an exceptional part of our backend team during his time with us. He is super dependable, detail-oriented, and fully committed. From taking ownership of features to delivering clean, tested code, and deploying to QA without fuss.\nHis clear, structured thinking stands out, especially in our technical discussions where he stayed calm and thoughtful.\nHe's sharp, collaborative, and genuinely enjoyable to work with. No ego, just results. I'll truly miss working with him, but I'm confident he'll excel wherever he goes.",
+  "isPublished": true
+}

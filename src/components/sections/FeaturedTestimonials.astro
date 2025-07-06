@@ -1,14 +1,28 @@
 ---
 import TestimonialCard from "@/components/cards/TestimonialCard.astro"
+import { render } from "astro:content"
+import { getCollection } from "astro:content"
+
+const testimonials = await getCollection("testimonials", (t) => t.data.isPublished === true)
 ---
 
 <div class="w-full">
-  <TestimonialCard class="mx-auto h-96 max-w-80">
-    <p class="prose dark:prose-invert leading-6" slot="text">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum nihil architecto, fugiat reiciendis blanditiis
-      iure nobis facilis sapiente a, voluptates dolores! Veritatis adipisci nihil excepturi!
-    </p>
-    <h4 class="text-md font-bold" slot="name">Link Link</h4>
-    <p class="text-sm text-gray-800/75 dark:text-gray-100/75" slot="at">Hero of Hyrule</p>
-  </TestimonialCard>
+  {
+    testimonials.map((t) => (
+      <TestimonialCard class="mx-auto max-w-[24rem]" testimonial={t.data}>
+        <h4 class="text-sm font-semibold text-neutral-50/90 uppercase" slot="title">
+          {t.data.title}
+        </h4>
+        <p class="prose dark:prose-invert leading-6 whitespace-pre-line" slot="text">
+          {t.data.text}
+        </p>
+        <h4 class="text-md font-bold" slot="name">
+          {t.data.name}
+        </h4>
+        <p class="text-sm text-gray-800/75 dark:text-gray-100/75" slot="at">
+          {t.data.at} &mdash; <span class="italic">{t.data.position}</span>
+        </p>
+      </TestimonialCard>
+    ))
+  }
 </div>
