@@ -1,7 +1,5 @@
 ---
 import { getCollection } from "astro:content"
-import { Image } from "astro:assets"
-import { Icon } from "astro-icon/components"
 
 import ProjectCard from "@/components/cards/ProjectCard.astro"
 
@@ -12,21 +10,12 @@ const featuredProjects = await getCollection("projects", ({ data }) => data.feat
 <div class="flex flex-col flex-wrap justify-center px-4 py-2 md:flex-row md:px-4 md:py-4">
   {
     featuredProjects.map((proj) => (
-      <ProjectCard class="m-auto my-4 w-full md:mx-8 md:w-96">
-        <Image
-          src={proj.data.img}
-          alt={proj.data.name}
-          class:list={[
-            "rounded-2xl border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50",
-            proj.data.img.src.includes("placeholder") && "dark:invert",
-          ]}
-          slot="image"
-        />
+      <ProjectCard class="m-auto my-4 w-full md:mx-8 md:w-96" proj={proj.data}>
         <h3 class="text-2xl font-semibold" slot="title">
           {proj.data.name}
         </h3>
         <div class="mt-2" slot="text">
-          <p class="prose dark:prose-invert text-[1rem] leading-6">{proj.data.text}</p>
+          <p class="prose dark:prose-invert leading-6">{proj.data.text}</p>
 
           <div class="my-4 flex flex-wrap gap-2">
             {proj.data.tags.map((tag) => (
@@ -35,53 +24,6 @@ const featuredProjects = await getCollection("projects", ({ data }) => data.feat
               </span>
             ))}
           </div>
-        </div>
-        <div class="grid w-full grid-cols-2 gap-2" slot="button">
-          {proj.data.url ? (
-            <a href={proj.data.url} target="_blank" rel="noopener noreferrer">
-              <button
-                class:list={[
-                  "cursor-newtab w-full rounded-md bg-teal-500/50 py-2 font-semibold text-white outline outline-offset-2 outline-teal-500/25 dark:bg-teal-500/50 dark:outline-teal-600/50",
-                  "transition-all hover:scale-95 hover:outline-offset-4",
-                ]}
-                tabindex="-1"
-              >
-                View Live
-                <Icon name="eye" class="inline" />
-              </button>
-            </a>
-          ) : (
-            <div data-tippy-content="Wait for me to deploy it!" tabindex="-1">
-              <button
-                class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
-                tabindex="-1"
-                disabled
-              >
-                Not yet Live!
-              </button>
-            </div>
-          )}
-          {proj.data.github ? (
-            <a href={proj.data.github} target="_blank" rel="noopener noreferrer">
-              <button
-                class="cursor-newtab w-full rounded-md bg-neutral-500 py-2 font-semibold text-white dark:bg-neutral-600"
-                tabindex="-1"
-              >
-                View Source
-                <Icon name="logos/github" class="inline" />
-              </button>
-            </a>
-          ) : (
-            <div data-tippy-content="I don't think I will make this public" tabindex="-1">
-              <button
-                class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
-                tabindex="-1"
-                disabled
-              >
-                Not Public
-              </button>
-            </div>
-          )}
         </div>
       </ProjectCard>
     ))
