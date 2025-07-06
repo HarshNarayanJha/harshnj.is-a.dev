@@ -22,7 +22,7 @@ const { class: className, testimonial, ...rest } = Astro.props
       <slot name="text" />
     </div>
 
-    <div class="flex flex-row items-center justify-start gap-2">
+    <div class="mt-2 flex flex-row items-center justify-start gap-2">
       <Image src={testimonial.img} alt={testimonial.name} width={96} class="inline-block h-10 w-10 rounded-full" />
       <div>
         <slot name="name" />
