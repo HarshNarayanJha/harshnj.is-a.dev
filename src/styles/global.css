@@ -3,6 +3,10 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --aspect-pi: 22 / 7;
+}
+
 @layer base {
   .cursor-newtab {
     cursor:

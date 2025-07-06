@@ -12,7 +12,10 @@
     },
     "TypeScript": {
       "language_servers": [
+        "!typescript-language-server",
+        "!eslint",
         "!biome",
+        "vtsls",
         "..."
       ],
       "formatter": "language_server"

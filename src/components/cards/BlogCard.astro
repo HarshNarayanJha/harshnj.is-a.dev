@@ -3,7 +3,7 @@ import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
 import { Picture } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
 
-import placeholderImage from "@/img/smartmed-graphs.png"
+import placeholderImage from "@/img/placeholder.png"
 import { formatDate } from "@/utils"
 
 interface Props {
@@ -28,7 +28,7 @@ const { class: className, blog, ...rest } = Astro.props
         <slot name="text" />
       </div>
       <div class="mt-auto">
-        <div class="prose dark:prose-invert items-center justify-start" slot="tags">
+        <div class="prose dark:prose-invert items-center justify-start">
           {blog.tags.map((tag) => <kbd>#{tag}</kbd>)}
         </div>
       </div>

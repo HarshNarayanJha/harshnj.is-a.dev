@@ -1,8 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { file } from "astro/loaders";
 
-
-
 const projects = defineCollection({
   type: "data",
   schema: ({ image }) =>
@@ -45,7 +43,8 @@ const blogs = defineCollection({
       description: z.string().max(70),
       author: z.string(),
       image: z.preprocess(val => `@/img/blogs/${val}`, image()).optional(),
-      tags: z.array(z.string())
+      tags: z.array(z.string()),
+      theme: z.enum(["green", "blue", "normal"]).optional().default("normal")
     })
 })
 

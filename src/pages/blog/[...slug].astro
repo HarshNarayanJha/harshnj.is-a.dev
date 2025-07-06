@@ -7,7 +7,9 @@ import type { CollectionEntry } from "astro:content"
 
 export async function getStaticPaths() {
   const blogs = await getCollection("blogs")
-  return blogs.map((blog) => ({ params: { slug: blog.slug }, props: blog }))
+  const publishedBlogs = blogs.filter((blog) => blog.data.isPublished === true)
+
+  return publishedBlogs.map((blog) => ({ params: { slug: blog.slug }, props: blog }))
 }
 
 type Props = CollectionEntry<"blogs">
