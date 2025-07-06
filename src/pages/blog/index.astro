@@ -1,12 +1,9 @@
 ---
 import { getCollection } from "astro:content"
-import { Image } from "astro:assets"
 import { Icon } from "astro-icon/components"
 
 import Layout from "@/layouts/Layout.astro"
 import BlogCard from "@/components/cards/BlogCard.astro"
-import placeholderImage from "@/img/placeholder.png"
-import { formatDate } from "@/utils"
 
 const blogs = (await getCollection("blogs", ({ data }) => data.isPublished && data.pubDate)).sort(
   (a, b) => b.data.pubDate!.valueOf() - a.data.pubDate!.valueOf(),
@@ -26,29 +23,7 @@ const description = "Harsh Narayan Jha's Blogs"
       {
         blogs.map((blog) => (
           <a href={`/blog/${blog.slug}`} class="w-full">
-            <BlogCard class="w-full">
-              {blog.data.image ? (
-                <Image
-                  src={blog.data.image}
-                  alt={blog.data.title}
-                  width={150}
-                  slot="image"
-                  class="rounded-2xl border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50"
-                />
-              ) : (
-                <Image
-                  src={placeholderImage}
-                  alt="blog image placeholder"
-                  width={150}
-                  class="rounded-2xl border-2 border-b-0 border-slate-200/50 dark:border-slate-600/50 dark:invert"
-                  slot="image"
-                />
-              )}
-
-              <time class="prose dark:prose-invert prose-sm" datetime={blog.data.pubDate?.toISOString()} slot="date">
-                {blog.data.pubDate ? formatDate(blog.data.pubDate) : "A long time ago"}
-              </time>
-
+            <BlogCard class="w-full" blog={blog.data}>
               <h3 class="text-3xl font-semibold" slot="title">
                 {blog.data.title}
               </h3>
@@ -56,12 +31,6 @@ const description = "Harsh Narayan Jha's Blogs"
               <p class="prose dark:prose-invert mt-2 line-clamp-4 md:line-clamp-2" slot="text">
                 {blog.data.description}
               </p>
-
-              <div class="prose dark:prose-invert items-center justify-start" slot="tags">
-                {blog.data.tags.map((tag) => (
-                  <kbd>#{tag}</kbd>
-                ))}
-              </div>
             </BlogCard>
           </a>
         ))
