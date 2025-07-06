@@ -24,8 +24,10 @@
     cursor: help;
     text-decoration-style: dotted;
     text-decoration-line: underline;
-    text-decoration-color: blue;
-    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2px;
+    /* make this once baseline */
+    /* text-decoration-color: attr(data-tippy-color type(<color>), inherit); */
+    text-decoration-thickness: 0.5px;
     font-weight: 500;
   }
 }
