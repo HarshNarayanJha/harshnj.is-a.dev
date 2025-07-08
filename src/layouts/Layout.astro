@@ -3,7 +3,7 @@ import Footer from "@/components/Footer.astro"
 import Navbar from "@/components/Navbar.astro"
 import "@/styles/global.css"
 
-import { getImage } from "astro:assets"
+import { Font, getImage } from "astro:assets"
 import { ClientRouter } from "astro:transitions"
 import { ThemeScript } from "astro-theme-toggle"
 
@@ -56,6 +56,13 @@ const ogDescription = description
 
     <!-- Light mode dark mode -->
     <ThemeScript />
+
+    <Font cssVariable="--font-plein" />
+    <Font cssVariable="--font-satoshi" />
+    <Font cssVariable="--font-switzer" />
+    <Font cssVariable="--font-array" />
+    <Font cssVariable="--font-architects-daughter" />
+    <Font cssVariable="--font-monaspace-argon" />
 
     <!-- tooltips -->
     <script>

@@ -31,13 +31,13 @@ const title = `${blogTitle} | Harsh Narayan Jha's Blog`
       )
     }
 
-    <div class="prose dark:prose-invert mt-4 flex flex-row gap-2">
+    <div class="prose dark:prose-invert mt-4 flex flex-row gap-2 font-mono">
       {tags.map((tag) => <kbd>#{tag}</kbd>)}
     </div>
 
     <h1
       class:list={[
-        "mt-2 text-4xl font-black md:text-6xl",
+        "font-hero mt-2 text-4xl font-black md:text-6xl",
         theme === "blue" && "text-sky-600 dark:text-cyan-300",
         theme === "green" && "text-teal-600 dark:text-emerald-300",
       ]}

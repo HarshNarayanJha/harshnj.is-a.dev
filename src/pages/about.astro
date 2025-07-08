@@ -22,9 +22,9 @@ const description = "Harsh Narayan Jha's About Page"
     </div>
 
     <div class="prose dark:prose-invert prose-lg prose-neutral mx-auto mt-16 md:mt-32">
-      <h1 class="not-prose text-3xl font-bold text-neutral-950 dark:text-white">Harsh Narayan Jha</h1>
-      <p class="mt-1 flex flex-row gap-1">
-        <Icon name="exp/education" size={24} class="inline-block" />
+      <h1 class="not-prose font-hero text-3xl font-bold text-neutral-950 dark:text-white">Harsh Narayan Jha</h1>
+      <p class="mt-1 flex flex-row items-center gap-1 font-semibold">
+        <Icon name="exp/education" size={24} class="inline" />
         <span> Student at Birla Institute of Technology </span>
       </p>
 
@@ -45,7 +45,7 @@ const description = "Harsh Narayan Jha's About Page"
       </p>
 
       <p>Here are some of the things I enjoy</p>
-      <div class="flex w-full flex-row flex-wrap gap-2">
+      <div class="flex w-full flex-row flex-wrap gap-1">
         {
           skills.map((skill) => {
             return (

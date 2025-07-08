@@ -33,7 +33,7 @@ const readingTime = getReadingTime(body)
         <slot name="text" />
       </div>
       <div class="mt-auto">
-        <div class="prose dark:prose-invert items-center justify-start">
+        <div class="prose dark:prose-invert items-center justify-start font-mono">
           {blog.tags.map((tag) => <kbd>#{tag}</kbd>)}
         </div>
       </div>
@@ -52,7 +52,7 @@ const readingTime = getReadingTime(body)
         ) : (
           <Picture
             src={placeholderImage}
-            alt="Blog Placeholder Image"
+            alt="Blog Placeholder"
             formats={["avif", "webp"]}
             class="aspect-video w-full rounded-2xl border-2 border-b-0 border-slate-200/50 object-cover md:aspect-square md:w-[200px] dark:border-slate-600/50"
             width={200}

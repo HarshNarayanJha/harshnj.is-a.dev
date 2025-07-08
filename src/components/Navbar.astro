@@ -25,20 +25,20 @@ const navLinks = [
     <div class="flex flex-row gap-4">
       {
         navLinks.map((link) => (
-          <a href={link.path} class="font-medium">
+          <a href={link.path} class="font-mono font-medium">
             {link.name}
           </a>
         ))
       }
     </div>
     <p id="nav-lead" class="text-xl font-bold tracking-wide opacity-85">
-      <a href="/"> harshnj.is-a.dev </a>
+      <a href="/" class="font-hero"> harshnj.is-a.dev </a>
     </p>
     <div id="nav-links" class="flex flex-row space-x-4">
       <ColorModeToggle />
       {
         socialLinks.map((link) => (
-          <a href={link.path} target="_blank">
+          <a href={link.path} target="_blank" data-tippy-content={link.name}>
             <Icon name={link.icon} class="inline-block" size={24} />
             <span class="sr-only">{link.name}</span>
           </a>
@@ -73,7 +73,7 @@ const navLinks = [
     </button>
 
     <p class="justify-self-center text-xl font-bold tracking-wide opacity-85">
-      <a href="/"> harshnj.is-a.dev </a>
+      <a href="/" class="font-hero"> harshnj.is-a.dev </a>
     </p>
 
     <ColorModeToggle class="my-4 justify-self-end" />
@@ -88,7 +88,7 @@ const navLinks = [
       <div class="my-2 flex flex-col gap-4">
         {
           navLinks.map((link) => (
-            <a href={link.path} class="block font-medium">
+            <a href={link.path} class="block font-mono font-medium">
               {link.name}
             </a>
           ))
@@ -98,7 +98,7 @@ const navLinks = [
       <div id="nav-links" class="mt-6 flex flex-row space-x-4">
         {
           socialLinks.map((social) => (
-            <a href={social.path} target="_blank">
+            <a href={social.path} target="_blank" data-tippy-content={social.name}>
               <Icon name={social.icon} class="inline-block" size={24} />
               <span class="sr-only">{social.name}</span>
             </a>

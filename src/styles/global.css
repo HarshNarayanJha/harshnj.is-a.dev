@@ -7,7 +7,25 @@
   --aspect-pi: 22 / 7;
 }
 
+@theme inline {
+  --font-hero: var(--font-plein);
+  --font-heading: var(--font-satoshi);
+  --font-sans: var(--font-switzer);
+  --font-array: var(--font-array);
+  --font-hand: var(--font-architects-daughter);
+  --font-mono: var(--font-monaspace-argon);
+}
+
 @layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
   .cursor-newtab {
     cursor:
       url("/images/new-tab.png") 10 10,
