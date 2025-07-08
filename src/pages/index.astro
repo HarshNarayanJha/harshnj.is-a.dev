@@ -24,12 +24,12 @@ import me from "@/img/me.png"
         src={me}
         class="aspect-square w-40 -rotate-6 rounded-[3.8rem] rounded-br-3xl border-2 border-slate-200/50 transition hover:-rotate-[18deg] md:w-52 dark:border-slate-700/50"
         alt="website owner"
-        style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)"
         formats={["avif", "webp"]}
         width={160}
         priority
         slot="image"
       />
+      <!-- style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)" -->
       <div class="text-3xl font-bold md:text-4xl" slot="title">Hello There</div>
       <div class="prose prose-lg dark:prose-invert mt-2 leading-7" slot="text">
         I like building things from the basic principles, and also play with the latest technologies and hack around
@@ -45,7 +45,7 @@ import me from "@/img/me.png"
       <h2 class="text-4xl font-bold sm:text-5xl">
         Featured
         <span
-          class="bg-teal-500 bg-gradient-to-r from-teal-500 via-cyan-300 via-50% to-sky-500 bg-clip-text text-transparent"
+          class="bg-teal-500 bg-gradient-to-r from-teal-500 via-cyan-400 via-50% to-sky-500 bg-clip-text text-transparent dark:via-cyan-300"
         >
           Blogs
         </span>
@@ -68,7 +68,7 @@ import me from "@/img/me.png"
       <h1 class="text-4xl font-bold sm:text-5xl">
         Exciting
         <span
-          class="bg-sky-500 bg-gradient-to-r from-sky-500 via-cyan-300 via-50% to-green-500 bg-clip-text text-transparent"
+          class="bg-sky-500 bg-gradient-to-r from-sky-500 via-cyan-400 via-50% to-green-500 bg-clip-text text-transparent dark:via-cyan-300"
         >
           Projects
         </span>
@@ -108,7 +108,7 @@ import me from "@/img/me.png"
     <div class="mb-2 ps-2 md:mb-8 md:ps-16">
       <h1 class="text-4xl font-bold sm:text-5xl">Experiences</h1>
       <p class="prose dark:prose-invert mt-2 text-[1rem] font-medium">
-        Here are some highlights of my professional experience and the impactful work I've done so far.
+        Some highlights of my professional experience and the impactful work I've done so far.
       </p>
     </div>
     <Work />

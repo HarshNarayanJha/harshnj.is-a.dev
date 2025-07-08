@@ -19,7 +19,7 @@ import { accounts, socialLinks } from "@/utils/data"
 >
   <div class="prose dark:prose-invert">
     <h3>Harsh Narayan Jha</h3>
-    <p class="prose-sm leading-5">Let's create something amazing together</p>
+    <p class="prose-sm leading-5 font-medium">Let's create something amazing together</p>
     <div class="flex flex-row gap-2">
       <a href="mailto:harshnj@proton.me" class="text-gray-800/50 dark:text-gray-300/50" data-tippy-content="Email Me">
         <Icon name="email" size={22} />
@@ -42,7 +42,7 @@ import { accounts, socialLinks } from "@/utils/data"
   </div>
   <div class="grid grid-cols-3 gap-4 text-sm">
     <ul class="space-y-2">
-      <li class="mb-2 text-gray-700/50 dark:text-gray-200/50">Main Stuff</li>
+      <li class="mb-2 font-semibold text-gray-700/50 dark:text-gray-200/50">Main Stuff</li>
       <li>
         <a href="/"> Home </a>
       </li>
@@ -58,7 +58,7 @@ import { accounts, socialLinks } from "@/utils/data"
       </li>
     </ul>
     <ul class="space-y-2">
-      <li class="mb-2 text-gray-700/50 dark:text-gray-200/50">My Accounts</li>
+      <li class="mb-2 font-semibold text-gray-700/50 dark:text-gray-200/50">My Accounts</li>
       {
         accounts.map((acc) => (
           <li>
@@ -70,23 +70,24 @@ import { accounts, socialLinks } from "@/utils/data"
       }
     </ul>
     <ul class="space-y-2">
-      <li class="mb-2 text-gray-700/50 dark:text-gray-200/50">Site Stuff</li>
+      <li class="mb-2 font-semibold text-gray-700/50 dark:text-gray-200/50">Site Stuff</li>
       <li>Notes</li>
       <li>RSS</li>
     </ul>
   </div>
   <div class="prose dark:prose-invert">
     <h4>Subscribe to my newsletter</h4>
-    <p class="prose-sm prose-gray leading-5">Whenever I post something, no spam!</p>
+    <p class="prose-sm prose-gray leading-5 font-medium">Whenever I post something, no spam!</p>
     <button
       class="border-opacity-40 group place-self-center self-center rounded-xl border-2 border-neutral-500 px-4 py-1"
+      data-tippy-content="Not yet Not yet..."
     >
       Subscribe Now
     </button>
   </div>
 </div>
 
-<TransparentDivider widthClass="md:w-1/2 mx-auto" />
+<TransparentDivider widthClass="md:w-2/3 mx-auto" />
 
 <div class="flex items-center justify-center py-8 md:py-4">
   <p class="prose dark:prose-invert prose-zinc/50 prose-sm text-center">
