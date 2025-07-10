@@ -32,4 +32,4 @@ jobs:
           publish_branch: main
           publish_dir: ./dist
           enable_jekyll: false
-          # personal_token: ${{ secrets.GH_PAT }}
+          personal_token: ${{ secrets.GH_PAT }}
