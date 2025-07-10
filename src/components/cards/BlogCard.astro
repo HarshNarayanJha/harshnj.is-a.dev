@@ -1,0 +1,65 @@
+---
+import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
+import { Picture } from "astro:assets"
+import type { CollectionEntry } from "astro:content"
+
+import placeholderImage from "@/img/placeholder.png"
+import { formatDate } from "@/utils"
+import { getReadingTime } from "@/utils/reading-time"
+
+interface Props {
+  class: string
+  blog: CollectionEntry<"blogs">
+  [key: string]: any
+}
+
+const { class: className, blog: blogEntry, ...rest } = Astro.props
+const { data: blog, body } = blogEntry
+
+const readingTime = getReadingTime(body)
+---
+
+<TransparentBorder class={className} enableHoverScale={true} {rest}>
+  <div
+    class="flex flex-col-reverse items-start justify-start gap-4 rounded-lg border-2 border-slate-300/50 bg-white p-4 pt-2 shadow transition-transform hover:scale-[98%] md:h-52 md:flex-row md:gap-8 md:px-8 md:py-4 dark:border-zinc-800/50 dark:bg-gray-950"
+  >
+    <div class="flex h-full w-full flex-col items-start justify-start">
+      <div>
+        <time class="prose dark:prose-invert prose-sm font-medium" datetime={blog.pubDate?.toISOString()}>
+          {blog.pubDate ? formatDate(blog.pubDate) : "A long time ago"}{" "}
+          {readingTime && <span>&CircleDot;&nbsp;{readingTime}</span>}
+        </time>
+        <slot name="title" />
+        <slot name="text" />
+      </div>
+      <div class="mt-auto">
+        <div class="prose dark:prose-invert items-center justify-start font-mono">
+          {blog.tags.map((tag) => <kbd>#{tag}</kbd>)}
+        </div>
+      </div>
+    </div>
+    <div class="self-center">
+      {
+        blog.image ? (
+          <Picture
+            src={blog.image}
+            alt={blog.title}
+            formats={["avif", "webp"]}
+            class="aspect-video w-full rounded-2xl border-2 border-b-0 border-slate-200/50 object-cover md:aspect-square md:w-[200px] dark:border-slate-600/50"
+            width={200}
+            layout="constrained"
+          />
+        ) : (
+          <Picture
+            src={placeholderImage}
+            alt="Blog Placeholder"
+            formats={["avif", "webp"]}
+            class="aspect-video w-full rounded-2xl border-2 border-b-0 border-slate-200/50 object-cover md:aspect-square md:w-[200px] dark:border-slate-600/50"
+            width={200}
+            layout="constrained"
+          />
+        )
+      }
+    </div>
+  </div>
+</TransparentBorder>

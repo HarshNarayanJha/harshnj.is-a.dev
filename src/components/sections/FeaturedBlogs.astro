@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content"
+
+import BlogCard from "@/components/cards/BlogCard.astro"
+
+const featuredBlogs = (
+  await getCollection("blogs", ({ data }) => data.isPublished === true && data.pubDate !== undefined)
+)
+  .sort((a, b) => b.data.pubDate!.valueOf() - a.data.pubDate!.valueOf())
+  .slice(0, 3)
+---
+
+<div class="m-auto flex max-w-5xl flex-col flex-wrap justify-center px-4 py-2 md:flex-row md:px-4 md:py-4">
+  {
+    featuredBlogs.map((blog) => (
+      <a href={`/blog/${blog.slug}`} class="w-full">
+        <BlogCard class="w-full" blog={blog}>
+          <h3 class="text-3xl font-semibold" slot="title">
+            {blog.data.title}
+          </h3>
+
+          <p class="prose dark:prose-invert mt-2 line-clamp-4 md:line-clamp-2" slot="text">
+            {blog.data.description}
+          </p>
+        </BlogCard>
+      </a>
+    ))
+  }
+</div>
+<div class="mt-8 text-center">
+  <a
+    href="/blog"
+    class="prose dark:prose-invert underline underline-offset-2 transition-colors duration-300 hover:text-gray-700 dark:hover:text-gray-100"
+  >
+    See more blogs &gtdot;
+  </a>
+</div>

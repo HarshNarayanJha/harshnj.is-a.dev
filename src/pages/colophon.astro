@@ -1,0 +1,119 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import { Icon } from "astro-icon/components"
+
+const fonts = [
+  { class: "font-hero font-bold text-2xl", text: "Plein Bold" },
+  { class: "font-heading font-semibold text-xl", text: "Satoshi Semibold" },
+  { class: "font-sans text-base", text: "Switzer Regular" },
+  { class: "font-array text-2xl", text: "Array Regular" },
+  { class: "font-hand", text: "Architects Daughter" },
+  { class: "font-mono text-sm", text: "Monaspace Argon" },
+]
+
+const inspirations = ["https://theodorusclarence.com", "https://jahir.dev", "https://rich.grundy.io"]
+
+const title = "Colophon | Harsh Narayan Jha"
+const description = "Colophon page of Harsh Narayan Jha's Website"
+---
+
+<Layout title={title} , description={description}>
+  <section class="mx-auto h-auto w-full max-w-5xl px-4 py-16 md:px-16 md:py-28">
+    <div class="mx-auto text-center">
+      <Icon name="colophon" class="m-2 inline" size={24} />
+      <h2 class="font-hero mt-2 text-center text-4xl font-semibold">Colophon</h2>
+      <p class="mt-2 text-center text-gray-900/50 dark:text-gray-50/50">A page about this website.</p>
+    </div>
+
+    <div class="prose dark:prose-invert prose-lg prose-neutral mt-16 max-w-none md:mt-32">
+      <!-- Tech Stack -->
+      <h3 class="text-2xl font-bold text-neutral-950 dark:text-white">Tech Stack</h3>
+      <p>
+        This website is fully handcrafted using
+        <a href="https://astro.build/" target="_blank" rel="">Astro</a>,
+        <a href="https://tailwindcss.com/" target="_blank" rel=""> TailwindCSS </a>, <a
+          href="https://mdxjs.com/"
+          target="_blank"
+          rel=""
+        >
+          MDX
+        </a>, <a href="https://svelte.dev/" target="_blank" rel="">Svelte</a>, and <a
+          href="https://github.com/atomiks/tippyjs/"
+          target="_blank"
+          rel=""
+        >
+          Tippy.js
+        </a>. The website's source code is fully open source on <a
+          href="https://github.com/HarshNarayanJha/harshnj.is-a.dev/"
+          target="_blank"
+          rel=""
+        >
+          GitHub
+        </a>, which is also the place where this site is <a href="https://pages.github.com/" target="_blank" rel="">
+          hosted
+        </a>.
+      </p>
+
+      <!-- Tool Stack -->
+      <h3 class="text-2xl font-bold text-neutral-950 dark:text-white">Tool Stack</h3>
+      <p>
+        I was able to handcraft this website thanks to
+        <a href="https://www.typescriptlang.org/" target="_blank" rel="">TypeScript</a> &mdash; Powerful Type safety,
+        <a href="https://bun.sh/" target="_blank" rel=""> Bun </a> &mdash; A fast runtime and tooling,
+        <a href="https://zed.dev/" target="_blank" rel=""> Zed </a> &mdash; Next level code editor that works for me.
+      </p>
+
+      <!-- Typography -->
+      <h3 class="text-2xl font-bold text-neutral-950 dark:text-white">Typography</h3>
+      <p>
+        I use a very wide range of typography for this website
+        <a href="https://fontshare.com/fonts/plein/" target="_blank" rel="">Plein</a> for big text,
+        <a href="https://fontshare.com/fonts/satoshi/" target="_blank" rel=""> Satoshi </a> for most of the headings,
+        <a href="https://fontshare.com/fonts/switzer/" target="_blank" rel=""> Switzer </a> as the sans body font,
+        <a href="https://fontshare.com/fonts/array/" target="_blank" rel=""> Array </a> for some special stuff.
+        <a href="https://fonts.google.com/specimen/Architects+Daughter/" target="_blank" rel="">
+          Architects Daughter
+        </a> for alternate stylistic text, and finally
+        <a href="https://monaspace.githubnext.com/" target="_blank" rel=""> Monaspace Argon </a> as the monospace font.
+
+        <div class="grid grid-cols-3 text-center">
+          {
+            fonts.map((font) => {
+              return (
+                <div class:list={["grid place-content-center border border-dotted px-4 py-6", font.class]}>
+                  {font.text}
+                </div>
+              )
+            })
+          }
+        </div>
+      </p>
+
+      <!-- Colors -->
+      <h3 class="text-2xl font-bold text-neutral-950 dark:text-white">Colors</h3>
+      <p>
+        I personally like <span class="text-green-600 dark:text-green-300">green</span> and
+        <span class="text-blue-600 dark:text-blue-300">blue</span> colors. That is what I use across the website wherever
+        a touch of color is needed. The colors are from tailwindcss' palette. I might design a color scheme in future.
+      </p>
+
+      <!-- Inspirations -->
+      <h3 class="text-2xl font-bold text-neutral-950 dark:text-white">Inspirations</h3>
+      <p>
+        This website has been highly inspired by
+        <ul>
+          {
+            inspirations.map((inspiration) => (
+              <li>
+                <a href={inspiration} target="_blank" rel="noopener noreferrer">
+                  {inspiration}
+                </a>
+              </li>
+            ))
+          }
+          <li>and more...</li>
+        </ul>
+      </p>
+    </div>
+  </section>
+</Layout>

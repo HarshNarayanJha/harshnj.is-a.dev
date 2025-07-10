@@ -1,0 +1,87 @@
+---
+import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
+import { Icon } from "astro-icon/components"
+import { Picture } from "astro:assets"
+import type { CollectionEntry } from "astro:content"
+
+interface Props {
+  class: string
+  proj: CollectionEntry<"projects">["data"]
+  [key: string]: any
+}
+
+const { class: className, proj, ...rest } = Astro.props
+---
+
+<TransparentBorder class={className} {rest}>
+  <div
+    class="flex h-full flex-col items-start justify-start gap-4 rounded-lg border-2 border-neutral-300/50 bg-white px-8 py-8 shadow-sm transition-shadow duration-75 hover:shadow-md sm:gap-8 md:px-6 dark:border-zinc-800/50 dark:bg-gray-950"
+  >
+    <div class="mx-auto flex flex-1 flex-col place-content-center">
+      <Picture
+        src={proj.img}
+        formats={["webp", "avif"]}
+        alt={proj.name}
+        class="aspect-video rounded-2xl border-2 border-b-0 border-slate-200/50 object-contain object-center dark:border-slate-600/50"
+        width={400}
+        layout="constrained"
+      />
+    </div>
+    <div class="mt-2 w-full sm:mt-4">
+      <slot name="title" />
+      <slot name="text" />
+    </div>
+
+    <div class="grid w-full grid-cols-2 gap-2">
+      {
+        proj.url ? (
+          <a href={proj.url} target="_blank" rel="noopener noreferrer">
+            <button
+              class:list={[
+                "cursor-newtab w-full rounded-md bg-teal-500/85 py-2 font-semibold text-white outline outline-offset-2 outline-teal-500/25 dark:bg-teal-500/85 dark:outline-teal-600/50",
+                "transition-all hover:scale-95 hover:outline-offset-4",
+              ]}
+              tabindex="-1"
+            >
+              View Live
+              <Icon name="eye" class="inline" />
+            </button>
+          </a>
+        ) : (
+          <div data-tippy-content="Wait for me to deploy it!" tabindex="-1">
+            <button
+              class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
+              tabindex="-1"
+              disabled
+            >
+              Not yet Live!
+            </button>
+          </div>
+        )
+      }
+      {
+        proj.github ? (
+          <a href={proj.github} target="_blank" rel="noopener noreferrer">
+            <button
+              class="cursor-newtab w-full rounded-md bg-neutral-500 py-2 font-semibold text-white dark:bg-neutral-600"
+              tabindex="-1"
+            >
+              View Source
+              <Icon name="logos/github" class="inline" />
+            </button>
+          </a>
+        ) : (
+          <div data-tippy-content="I don't think I will make this public" tabindex="-1">
+            <button
+              class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
+              tabindex="-1"
+              disabled
+            >
+              Not Public
+            </button>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</TransparentBorder>

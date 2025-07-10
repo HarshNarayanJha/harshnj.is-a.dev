@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets"
+import type { CollectionEntry } from "astro:content"
+
+import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
+
+interface Props {
+  class: string
+  testimonial: CollectionEntry<"testimonials">["data"]
+  [key: string]: any
+}
+
+const { class: className, testimonial, ...rest } = Astro.props
+---
+
+<TransparentBorder class={className} {rest}>
+  <div
+    class="flex h-full flex-col items-start justify-between gap-4 rounded-lg border-2 border-neutral-300/50 bg-white px-8 py-8 shadow-sm transition-shadow duration-75 hover:shadow-md md:px-6 dark:border-zinc-800/80 dark:bg-gray-950"
+  >
+    <slot name="title" />
+    <div class="w-full">
+      <slot name="text" />
+    </div>
+
+    <div class="mt-2 flex flex-row items-center justify-start gap-2">
+      <Image src={testimonial.img} alt={testimonial.name} width={96} class="inline-block h-10 w-10 rounded-full" />
+      <div>
+        <slot name="name" />
+        <slot name="at" />
+      </div>
+    </div>
+  </div>
+</TransparentBorder>

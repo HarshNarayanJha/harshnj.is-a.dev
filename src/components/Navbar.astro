@@ -1,0 +1,168 @@
+---
+import { Icon } from "astro-icon/components"
+import ColorModeToggle from "@/components/ColorModeToggle.astro"
+import { socialLinks } from "@/utils/data"
+
+const navLinks = [
+  { name: "Home", path: "/" },
+  { name: "Blog", path: "/blog" },
+  { name: "Projects", path: "/projects" },
+  // { name: "Snippets", path: "/snippets" },
+  { name: "About", path: "/about" },
+]
+---
+
+<header
+  class:list={[
+    "z-10 flex w-full flex-col items-start justify-center bg-gradient-to-b from-slate-200 dark:from-slate-950",
+    "md:sticky md:top-0 md:block md:backdrop-blur-sm",
+    "md:mask-linear-[black_60%,transparent]",
+  ]}
+>
+  <nav
+    class="m-auto hidden w-full place-content-center place-items-center p-2 md:grid md:grid-cols-3 md:grid-rows-1 md:p-6"
+  >
+    <div class="flex flex-row gap-4">
+      {
+        navLinks.map((link) => (
+          <a href={link.path} class="font-mono font-medium">
+            {link.name}
+          </a>
+        ))
+      }
+    </div>
+    <p id="nav-lead" class="text-xl font-bold tracking-wide opacity-85">
+      <a href="/" class="font-hero"> harshnj.is-a.dev </a>
+    </p>
+    <div id="nav-links" class="flex flex-row space-x-4">
+      <ColorModeToggle />
+      {
+        socialLinks.map((link) => (
+          <a href={link.path} target="_blank" data-tippy-content={link.name}>
+            <Icon name={link.icon} class="inline-block" size={24} />
+            <span class="sr-only">{link.name}</span>
+          </a>
+        ))
+      }
+    </div>
+    <!-- <button
+      class="border-opacity-40 group place-self-center self-center rounded-xl border-2 border-neutral-500 bg-transparent bg-gradient-to-b from-transparent to-neutral-200 px-4 py-1 md:col-span-1 dark:to-neutral-900"
+    >
+      <a href="/Resume_Simple.pdf" data-tippy-content="Download My Resume" download>
+        <Icon
+          name="download"
+          size={24}
+          class="inline translate-y-0 transition-transform duration-200 group-hover:translate-y-1"
+        />
+        <span class="sr-only">Download Resume</span>
+      </a>
+      <span class="mx-2 font-mono text-xl opacity-25">|</span>
+      <a href="/Resume_Simple.pdf" target="_blank" data-tippy-content="Open Resume in New Tab"> RESUME </a>
+    </button> -->
+  </nav>
+
+  <div class="grid w-full grid-cols-[1fr_2fr_1fr] items-center px-4 md:hidden">
+    <button
+      id="navbar-toggle"
+      class:list={[
+        "rounded-md border border-b-0 border-gray-500/50 border-t-gray-700/35 bg-sky-50/50 px-2 py-1 shadow-sm dark:border-gray-300/20 dark:border-t-gray-100/35 dark:bg-gray-900/50",
+        "justify-self-start",
+      ]}
+      aria-label="Navigation Menu"
+    >
+      <Icon name="menu" size={20} />
+    </button>
+
+    <p class="justify-self-center text-xl font-bold tracking-wide opacity-85">
+      <a href="/" class="font-hero"> harshnj.is-a.dev </a>
+    </p>
+
+    <ColorModeToggle class="my-4 justify-self-end" />
+
+    <div
+      id="navbar-menu"
+      class:list={[
+        "absolute top-12 left-4 mt-2 w-max rounded-md border border-neutral-500/25 bg-slate-50/50 px-4 py-2 text-gray-800 shadow-md backdrop-blur-sm dark:border-neutral-800/75 dark:border-t-neutral-300/70 dark:bg-slate-950/50 dark:text-gray-200/90",
+        "z-20 hidden",
+      ]}
+    >
+      <div class="my-2 flex flex-col gap-4">
+        {
+          navLinks.map((link) => (
+            <a href={link.path} class="block font-mono font-medium">
+              {link.name}
+            </a>
+          ))
+        }
+      </div>
+
+      <div id="nav-links" class="mt-6 flex flex-row space-x-4">
+        {
+          socialLinks.map((social) => (
+            <a href={social.path} target="_blank" data-tippy-content={social.name}>
+              <Icon name={social.icon} class="inline-block" size={24} />
+              <span class="sr-only">{social.name}</span>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- <button
+        class="border-opacity-40 group my-2 rounded-xl border-2 border-neutral-500 bg-transparent bg-gradient-to-b from-transparent to-neutral-200 px-4 py-1 md:col-span-1 dark:to-neutral-900"
+      >
+        <a href="/Resume_Simple.pdf" data-tippy-content="Download My Resume" download>
+          <Icon
+            name="download"
+            size={24}
+            class="inline translate-y-0 transition-transform duration-200 group-hover:translate-y-1"
+          />
+          <span class="sr-only">Download Resume</span>
+        </a>
+        <span class="mx-2 font-mono text-xl opacity-25">|</span>
+        <a href="/Resume_Simple.pdf" target="_blank" data-tippy-content="Open Resume in New Tab"> RESUME </a>
+      </button> -->
+    </div>
+  </div>
+</header>
+
+<style>
+  #navbar-menu {
+    transition:
+      opacity 0.2s ease-out,
+      display 0.2s ease-out allow-discrete;
+  }
+
+  #navbar-menu.hidden {
+    transition: none;
+  }
+
+  @starting-style {
+    #navbar-menu {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script is:inline>
+  const setupEventListeners = () => {
+    const menu = document.getElementById("navbar-menu")
+    const toggleBtn = document.getElementById("navbar-toggle")
+
+    toggleBtn.addEventListener("click", () => {
+      menu.classList.toggle("hidden")
+    })
+
+    document.addEventListener("click", (e) => {
+      if (!toggleBtn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add("hidden")
+      }
+    })
+
+    document.addEventListener("scroll", () => {
+      menu.classList.add("hidden")
+    })
+  }
+
+  document.addEventListener("astro:after-swap", setupEventListeners)
+  setupEventListeners()
+</script>

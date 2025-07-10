@@ -1,0 +1,23 @@
+---
+import { render } from "astro:content"
+import { getCollection } from "astro:content"
+
+import MarkdownBlog from "@/layouts/MarkdownBlog.astro"
+import type { CollectionEntry } from "astro:content"
+
+export async function getStaticPaths() {
+  const blogs = await getCollection("blogs")
+  const publishedBlogs = blogs.filter((blog) => blog.data.isPublished === true)
+
+  return publishedBlogs.map((blog) => ({ params: { slug: blog.slug }, props: blog }))
+}
+
+type Props = CollectionEntry<"blogs">
+
+const blog = Astro.props
+const { Content } = await render(blog)
+---
+
+<MarkdownBlog {...blog.data} body={blog.body}>
+  <Content />
+</MarkdownBlog>

@@ -1,0 +1,153 @@
+---
+import { Picture } from "astro:assets"
+import { Icon } from "astro-icon/components"
+
+import Layout from "@/layouts/Layout.astro"
+import Card from "@/components/cards/Card.astro"
+import Hero from "@/components/sections/Hero.astro"
+import FeaturedBlogs from "@/components/sections/FeaturedBlogs.astro"
+import FeaturedProjects from "@/components/sections/FeaturedProjects.astro"
+import FeaturedTestimonials from "@/components/sections/FeaturedTestimonials.astro"
+import Work from "@/components/sections/Work.astro"
+
+import { RESUME_DOC_URI } from "@/utils/data"
+
+import me from "@/img/me.png"
+---
+
+<Layout>
+  <section id="hero" class="md:p-8">
+    <Hero />
+
+    <Card class="mx-auto my-16 w-11/12 md:my-8 md:w-10/12 lg:w-7/12">
+      <Picture
+        src={me}
+        class="aspect-square w-40 -rotate-6 rounded-[3.8rem] rounded-br-3xl border-2 border-slate-200/50 transition hover:-rotate-[18deg] md:w-52 dark:border-slate-700/50"
+        alt="website owner"
+        formats={["avif", "webp"]}
+        width={160}
+        priority
+        slot="image"
+      />
+      <!-- style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)" -->
+      <h2 class="text-3xl font-bold md:text-4xl" slot="title">Hello There</h2>
+      <div class="prose prose-lg dark:prose-invert mt-2 leading-7" slot="text">
+        I like building things from the basic principles, and also play with the latest technologies and hack around
+        them. I like to work in the App, Web and Game ecosystems.
+      </div>
+    </Card>
+  </section>
+
+  <!-- something must exist here -->
+
+  <section id="featured-posts" class="px-2 py-8 md:p-32">
+    <div class="mb-2 ps-2 md:mb-8 md:ps-16">
+      <h2 class="text-4xl font-bold sm:text-5xl">
+        Featured
+        <span
+          class="bg-teal-500 bg-gradient-to-r from-teal-500 via-cyan-400 via-50% to-sky-500 bg-clip-text text-transparent dark:via-cyan-300"
+        >
+          Blogs
+        </span>
+      </h2>
+      <p class="prose dark:prose-invert mt-2">Some of my top writings.</p>
+    </div>
+    <FeaturedBlogs />
+  </section>
+
+  <!-- <div class="wave-divider bg-stone-100 dark:bg-gray-900">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        class="fill-slate-50 dark:fill-gray-950"></path>
+    </svg>
+  </div> -->
+
+  <section id="featured-projects" class="w-full px-2 py-8 md:p-32">
+    <div class="mb-2 ps-2 md:mb-8 md:ps-16">
+      <h1 class="text-4xl font-bold sm:text-5xl">
+        Exciting
+        <span
+          class="bg-sky-500 bg-gradient-to-r from-sky-500 via-cyan-400 via-50% to-green-500 bg-clip-text text-transparent dark:via-cyan-300"
+        >
+          Projects
+        </span>
+      </h1>
+      <p class="prose dark:prose-invert mt-2">Small selection of the projects I have worked on.</p>
+    </div>
+    <FeaturedProjects />
+  </section>
+
+  <!-- <div class="wave-divider bg-slate-50 dark:bg-gray-950">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        class="fill-stone-100 dark:fill-gray-900"></path>
+    </svg>
+  </div> -->
+
+  <section id="testimonials" class="bg-slate-50 px-2 py-8 md:p-24 dark:bg-gray-950">
+    <div class="mx-auto mb-4 md:mb-8">
+      <h1 class="font-hand text-center text-3xl font-medium">
+        Hear
+        <span class="underline"> about me </span>
+      </h1>
+    </div>
+    <FeaturedTestimonials />
+  </section>
+
+  <!-- <div class="wave-divider bg-stone-100 dark:bg-gray-900">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        class="fill-slate-50 dark:fill-gray-950"></path>
+    </svg>
+  </div> -->
+
+  <section id="work" class="px-2 py-8 md:p-32">
+    <div class="mb-2 ps-2 md:mb-8 md:ps-16">
+      <h1 class="text-4xl font-bold sm:text-5xl">Experiences</h1>
+      <p class="prose dark:prose-invert mt-2 max-w-none text-[1rem] font-medium">
+        Some highlights of my professional experience and the impactful work I've done so far.
+      </p>
+    </div>
+    <Work />
+  </section>
+
+  <!-- <div class="wave-divider bg-slate-50 dark:bg-gray-950">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        class="fill-stone-100 dark:fill-gray-900"></path>
+    </svg>
+  </div> -->
+
+  <div
+    class="my-10 flex min-h-[50svh] w-full flex-col place-items-center content-center justify-center space-y-8 p-4 text-center md:my-20 md:space-y-16 md:px-15 md:py-10"
+  >
+    <h1 class="font-hero text-4xl font-bold md:text-6xl lg:text-8xl">Ready to Work With Me?</h1>
+    <p class="font-heading px-4 text-lg font-medium md:px-0 md:text-2xl">
+      Grab my Resume and contact me. Let's create something Amazing together!
+    </p>
+
+    <a
+      href={RESUME_DOC_URI}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-tippy-content="Get My Resume"
+      class="text-sm md:text-base"
+    >
+      <button
+        class="border-opacity-40 group cursor-newtab w-fit rounded-xl border-2 border-slate-500/50 bg-transparent px-4 py-2 shadow-md transition-shadow hover:shadow-lg md:px-6"
+      >
+        <Icon
+          name="download"
+          class="inline translate-y-0 transition-transform duration-200 group-hover:translate-y-1"
+          size={24}
+        />
+        <span class="mx-2 font-mono text-xl opacity-25 md:text-2xl">|</span>
+        <span class="font-mono">GET MY <b>RESUME</b></span>
+      </button>
+    </a>
+  </div>
+</Layout>

@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "codestats.png",
+  "name": "Code::Stats Client",
+  "github": "https://github.com/HarshNarayanJha/codestats_client",
+  "text": "A sleek mobile client for viewing your Code::Stats analytics and tracking your coding journey.",
+  "featured": true,
+  "tags": [
+    "Flutter",
+    "Dart",
+    "REST APIs"
+  ]
+}

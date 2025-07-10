@@ -1,0 +1,114 @@
+---
+import Footer from "@/components/Footer.astro"
+import Navbar from "@/components/Navbar.astro"
+import "@/styles/global.css"
+
+import { Font, getImage } from "astro:assets"
+import { ClientRouter } from "astro:transitions"
+import { ThemeScript } from "astro-theme-toggle"
+
+import "tippy.js/dist/tippy.css"
+import "tippy.js/dist/backdrop.css"
+import "tippy.js/animations/shift-away.css"
+import "tippy.js/themes/translucent.css"
+
+import faviconSrc from "@/img/logo.png"
+import faviconSvgSrc from "@/img/logo.svg"
+
+const appleTouchIcon = await getImage({
+  src: faviconSrc,
+  width: 180,
+  height: 180,
+  format: "png",
+})
+const faviconSvg = await getImage({ src: faviconSvgSrc, format: "svg" })
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const { title = "Harsh Narayan Jha", description = "Harsh Narayan Jha's Personal Portfolio" } = Astro.props
+
+const ogTitle = title
+const ogDescription = description
+---
+
+<!doctype html>
+<html lang="en" transition:name="root" transition:animate="fade">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={appleTouchIcon.src} />
+
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <title>{title}</title>
+
+    <meta name="description" content={description} />
+
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+
+    <ClientRouter fallback="animate" />
+
+    <!-- Light mode dark mode -->
+    <ThemeScript />
+
+    <Font cssVariable="--font-plein" />
+    <Font cssVariable="--font-satoshi" />
+    <Font cssVariable="--font-switzer" />
+    <Font cssVariable="--font-array" />
+    <Font cssVariable="--font-architects-daughter" />
+    <Font cssVariable="--font-monaspace-argon" />
+
+    <!-- tooltips -->
+    <script>
+      import tippy, { animateFill, createSingleton, type Instance } from "tippy.js"
+
+      document.addEventListener("astro:page-load", () => {
+        const tips = document.querySelectorAll("[data-tippy-content]")
+        let tippyInstances: Instance[] = []
+
+        tips.forEach((t) => {
+          // set tabindex only if not already set
+          if ((t.tagName === "SPAN" || t.tagName === "DIV") && t.getAttribute("tabIndex") === null) {
+            t.setAttribute("tabindex", "0")
+          }
+          const content = t.attributes.getNamedItem("data-tippy-content")?.textContent || ""
+
+          if (content) {
+            const tip = tippy(t, {
+              content,
+            })
+
+            tippyInstances.push(tip)
+          }
+        })
+
+        createSingleton(tippyInstances, {
+          animateFill: true,
+          plugins: [animateFill],
+          theme: "translucent",
+          delay: [25, 100],
+          duration: [300, 200],
+        })
+      })
+    </script>
+  </head>
+  <body class="bg-slate-50 text-neutral-800 dark:bg-gray-950 dark:text-slate-100">
+    <Navbar />
+
+    <div class="min-h-svh min-w-full">
+      <slot />
+    </div>
+
+    <section id="footer" class="bg-slate-50 pt-8 md:px-40 dark:bg-gray-950">
+      <Footer />
+    </section>
+  </body>
+</html>

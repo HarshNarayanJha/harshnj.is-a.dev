@@ -1,0 +1,71 @@
+---
+import Layout from "./Layout.astro"
+import { Picture } from "astro:assets"
+
+import TransparentDivider from "@/components/reusable/TransparentDivider.svelte"
+import type { CollectionEntry } from "astro:content"
+import { formatDate } from "@/utils"
+import { getReadingTime } from "@/utils/reading-time"
+
+type Props = CollectionEntry<"blogs">["data"] & { body: string }
+
+const { title: blogTitle, description, image, author, pubDate, theme, tags, body } = Astro.props
+
+const readingTime = getReadingTime(body)
+
+const title = `${blogTitle} | Harsh Narayan Jha's Blog`
+---
+
+<Layout title={title} description={description}>
+  <main class="mx-auto h-auto max-w-6xl px-4 py-16 md:px-8 md:py-16">
+    {
+      image && (
+        <Picture
+          src={image}
+          alt={blogTitle}
+          class="md:aspect-pi aspect-video w-full object-cover object-center"
+          layout="constrained"
+          formats={["avif", "webp"]}
+          priority
+        />
+      )
+    }
+
+    <div class="prose dark:prose-invert mt-4 flex flex-row gap-2 font-mono">
+      {tags.map((tag) => <kbd>#{tag}</kbd>)}
+    </div>
+
+    <h1
+      class:list={[
+        "font-hero mt-2 text-4xl font-black md:text-6xl",
+        theme === "blue" && "text-sky-600 dark:text-cyan-300",
+        theme === "green" && "text-teal-600 dark:text-emerald-300",
+      ]}
+    >
+      {blogTitle}
+    </h1>
+    <p class="prose dark:prose-invert prose-gray prose-lg mt-4 font-semibold md:max-w-9/12">
+      {description}
+    </p>
+
+    <div class="mt-4 md:mt-12">
+      <h3 class="font-semibold">{author}</h3>
+      <p class="prose-sm font-medium">
+        {pubDate ? formatDate(pubDate) : "A long time ago"}{" "}
+        {readingTime && <span>&CircleDot;&nbsp;{readingTime}</span>}
+      </p>
+    </div>
+
+    <TransparentDivider />
+
+    <div
+      class:list={[
+        "prose dark:prose-invert prose-img:rounded-xl prose-neutral prose-lg md:max-w-9/12",
+        theme === "blue" && "prose-sky",
+        theme === "green" && "prose-emerald",
+      ]}
+    >
+      <slot />
+    </div>
+  </main>
+</Layout>

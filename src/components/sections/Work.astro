@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content"
+
+import WorkCard from "@/components/cards/WorkCard.astro"
+import { formatMonth } from "@/utils"
+
+const works = (await getCollection("experiences", ({ data }) => data.type == "work")).sort(
+  (a, b) => b.data.start.valueOf() - a.data.start.valueOf(),
+)
+---
+
+<div class="flex flex-col items-center px-8 py-8 md:px-15 md:py-10">
+  {
+    works.map((work) => (
+      <WorkCard class="mx-auto my-4" work={work.data}>
+        <Fragment slot="title">
+          <h3 class="text-2xl font-semibold">{work.data.at}</h3>
+          <h4 class="font-normal italic">{work.data.location}</h4>
+
+          <h4 class="mt-2 text-sm font-semibold">
+            {formatMonth(work.data.start)} &mdash;{" "}
+            {work.data.end === "PRESENT" ? "PRESENT" : formatMonth(work.data.end)}
+          </h4>
+        </Fragment>
+
+        <p class="prose dark:prose-invert my-4 line-clamp-4 text-justify leading-6 md:line-clamp-2" slot="text">
+          {work.data.description}
+        </p>
+      </WorkCard>
+    ))
+  }
+</div>
+<div class="mt-8 text-center">
+  <a
+    href="/about#about-experiences"
+    class="prose dark:prose-invert underline underline-offset-2 transition-colors duration-300 hover:text-gray-700 dark:hover:text-gray-100"
+  >
+    See more experiences &gtdot;
+  </a>
+</div>

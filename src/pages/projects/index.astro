@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content"
+import { Icon } from "astro-icon/components"
+
+import Layout from "@/layouts/Layout.astro"
+import ProjectCard from "@/components/cards/ProjectCard.astro"
+
+const projects = await getCollection("projects")
+
+const title = "Projects | Harsh Narayan Jha"
+const description = "Harsh Narayan Jha's Projects"
+---
+
+<Layout title={title} description={description}>
+  <section class="h-auto w-full px-4 py-16 md:px-16 md:py-28">
+    <div class="mx-auto text-center">
+      <Icon name="project" class="m-2 inline" size={24} />
+      <h2 class="mt-4 text-center text-4xl font-semibold">Selected Projects</h2>
+      <p class="mt-2 text-center text-gray-900/50 dark:text-gray-50/50">A showcase that I am proud of.</p>
+    </div>
+
+    <div class="mx-auto mt-8 grid max-w-6xl grid-cols-1 place-content-center justify-items-center gap-8 lg:grid-cols-3">
+      {
+        projects.map((proj) => (
+          <ProjectCard class="m-auto my-4 w-full md:mx-8 md:w-full" proj={proj.data}>
+            <h3 class="text-2xl font-semibold" slot="title">
+              {proj.data.name}
+            </h3>
+            <div class="mt-2" slot="text">
+              <p class="prose dark:prose-invert text-[1rem] leading-6">{proj.data.text}</p>
+
+              <div class="my-4 flex flex-wrap gap-2">
+                {proj.data.tags.map((tag) => (
+                  <span class="rounded-md border border-dashed border-green-500 bg-emerald-300/15 px-1 font-mono text-xs font-medium text-green-600 sm:px-3 sm:text-sm dark:bg-emerald-800/25 dark:text-emerald-100">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </ProjectCard>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "placeholder.png",
+  "name": "Placement Prediction",
+  "url": "https://placement-classify.streamlit.app/",
+  "github": "https://github.com/HarshNarayanJha/placement_prediction",
+  "text": "This project aims to predict college placements based on various factors. ",
+  "tags": [
+    "Machine Learning",
+    "Neural Networks",
+    "Prediction",
+    "Classification"
+  ]
+}

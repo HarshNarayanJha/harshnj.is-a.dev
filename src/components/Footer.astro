@@ -1,0 +1,116 @@
+---
+import { Icon } from "astro-icon/components"
+
+import TransparentDivider from "@/components/reusable/TransparentDivider.svelte"
+import { accounts, socialLinks } from "@/utils/data"
+
+const currentDate = new Date().toLocaleTimeString("en-IN", {
+  timeZone: "Asia/Kolkata",
+  hour12: true,
+  hour: "2-digit",
+  minute: "2-digit",
+  timeZoneName: "short",
+})
+---
+
+<!-- <div class="wave-divider bg-zinc-200 dark:bg-gray-900">
+  <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <path
+      d="M0,60 C150,80 250,50 400,70 C550,90 650,40 800,60 C950,80 1050,40 1200,60 L1200,0 L0,0 Z"
+      class="fill-slate-50 dark:fill-gray-950"></path>
+  </svg>
+</div> -->
+<TransparentDivider />
+
+<div
+  class="grid grid-cols-1 grid-rows-[1fr_2fr_1fr] gap-8 px-4 py-8 pb-16 md:grid-cols-[1fr_2fr_1fr] md:grid-rows-1 md:px-32"
+>
+  <div class="prose dark:prose-invert">
+    <h3 class="font-hero">Harsh Narayan Jha</h3>
+    <p class="prose-sm leading-5 font-medium">Let's create something amazing together</p>
+    <div class="flex flex-row gap-2">
+      <a
+        href="mailto:me@harshnj.is-a.dev?subject=Hey Harsh!"
+        class="text-gray-800/50 dark:text-gray-300/50"
+        data-tippy-content="Email Me"
+      >
+        <Icon name="email" size={22} />
+        <span class="sr-only">Email</span>
+      </a>
+      {
+        socialLinks.map((social) => (
+          <a
+            href={social.path}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-800/50 dark:text-gray-300/50"
+            data-tippy-content={`My ${social.name}`}
+          >
+            <Icon name={social.icon} size={22} />
+            <span class="sr-only">{social.name}</span>
+          </a>
+        ))
+      }
+    </div>
+    <div class="mt-8 font-mono text-xs text-neutral-700/75 dark:text-neutral-300/75">
+      🕐 {currentDate.toLocaleUpperCase()}
+    </div>
+  </div>
+  <div class="grid grid-cols-3 gap-4 text-sm">
+    <ul class="space-y-2">
+      <li class="mb-2 font-semibold text-gray-700/50 dark:text-gray-200/50">Main Stuff</li>
+      <li>
+        <a href="/"> Home </a>
+      </li>
+      <li>
+        <a href="/blog"> Blog </a>
+      </li>
+      <li>
+        <a href="/projects"> Projects </a>
+      </li>
+      <li>Snippets</li>
+      <li>
+        <a href="/about"> About </a>
+      </li>
+    </ul>
+    <ul class="space-y-2">
+      <li class="mb-2 font-semibold text-gray-700/50 dark:text-gray-200/50">My Accounts</li>
+      {
+        accounts.map((acc) => (
+          <li>
+            <a href={acc.path} target="_blank" rel="noopener noreferrer" class="cursor-newtab">
+              {acc.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <ul class="space-y-2">
+      <li class="mb-2 font-semibold text-gray-700/50 dark:text-gray-200/50">Site Stuff</li>
+      <li>
+        <a href="/colophon">Colophon</a>
+      </li>
+      <li>RSS</li>
+    </ul>
+  </div>
+  <div class="prose dark:prose-invert">
+    <h4>Subscribe to my newsletter</h4>
+    <p class="prose-sm prose-gray leading-5 font-medium">Whenever I post something, no spam!</p>
+    <button
+      class="border-opacity-40 group place-self-center self-center rounded-xl border-2 border-neutral-500 px-4 py-1"
+      data-tippy-content="Not yet Not yet..."
+    >
+      Subscribe Now
+    </button>
+  </div>
+</div>
+
+<TransparentDivider widthClass="md:w-2/3 mx-auto" />
+
+<div class="flex items-center justify-center py-8 md:py-4">
+  <p class="prose dark:prose-invert prose-zinc/50 prose-sm text-center">
+    Copyright &copy; 2025 Harsh Narayan Jha. All rights reserved.
+    <br />
+    <span class="text-xs md:text-sm"> Built with Astro &nbsp; 🚀 </span>
+  </p>
+</div>

@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "arcane-quest.png",
+  "name": "Arcane Quest",
+  "url": "https://harshnarayanjha.itch.io/arcane-quest",
+  "github": "https://github.com/HarshNarayanJha/arcane-quest",
+  "text": "My Submission for GitHub GameOff 2024",
+  "featured": true,
+  "tags": [
+    "Godot",
+    "Game Development",
+    "Game Design"
+  ]
+}

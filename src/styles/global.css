@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --aspect-pi: 22 / 7;
+}
+
+@theme inline {
+  --font-hero: var(--font-plein);
+  --font-heading: var(--font-satoshi);
+  --font-sans: var(--font-switzer);
+  --font-array: var(--font-array);
+  --font-hand: var(--font-architects-daughter);
+  --font-mono: var(--font-monaspace-argon);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  .cursor-newtab {
+    cursor:
+      url("/images/new-tab.png") 10 10,
+      pointer;
+  }
+
+  a[target="_blank"] {
+    cursor:
+      url("/images/new-tab.png") 10 10,
+      pointer;
+  }
+
+  span[data-tippy-content] {
+    cursor: help;
+    text-decoration-style: dotted;
+    text-decoration-line: underline;
+    text-underline-offset: 2px;
+    /* make this once baseline */
+    /* text-decoration-color: attr(data-tippy-color type(<color>), inherit); */
+    text-decoration-thickness: 0.5px;
+    font-weight: 500;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
