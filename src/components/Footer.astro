@@ -3,6 +3,14 @@ import { Icon } from "astro-icon/components"
 
 import TransparentDivider from "@/components/reusable/TransparentDivider.svelte"
 import { accounts, socialLinks } from "@/utils/data"
+
+const currentDate = new Date().toLocaleTimeString("en-IN", {
+  timeZone: "Asia/Kolkata",
+  hour12: true,
+  hour: "2-digit",
+  minute: "2-digit",
+  timeZoneName: "short",
+})
 ---
 
 <!-- <div class="wave-divider bg-zinc-200 dark:bg-gray-900">
@@ -21,7 +29,11 @@ import { accounts, socialLinks } from "@/utils/data"
     <h3 class="font-hero">Harsh Narayan Jha</h3>
     <p class="prose-sm leading-5 font-medium">Let's create something amazing together</p>
     <div class="flex flex-row gap-2">
-      <a href="mailto:harshnj@proton.me" class="text-gray-800/50 dark:text-gray-300/50" data-tippy-content="Email Me">
+      <a
+        href="mailto:me@harshnj.is-a.dev?subject=Hey Harsh!"
+        class="text-gray-800/50 dark:text-gray-300/50"
+        data-tippy-content="Email Me"
+      >
         <Icon name="email" size={22} />
         <span class="sr-only">Email</span>
       </a>
@@ -39,6 +51,9 @@ import { accounts, socialLinks } from "@/utils/data"
           </a>
         ))
       }
+    </div>
+    <div class="mt-8 font-mono text-xs text-neutral-700/75 dark:text-neutral-300/75">
+      🕐 {currentDate.toLocaleUpperCase()}
     </div>
   </div>
   <div class="grid grid-cols-3 gap-4 text-sm">
@@ -72,7 +87,9 @@ import { accounts, socialLinks } from "@/utils/data"
     </ul>
     <ul class="space-y-2">
       <li class="mb-2 font-semibold text-gray-700/50 dark:text-gray-200/50">Site Stuff</li>
-      <li>Notes</li>
+      <li>
+        <a href="/colophon">Colophon</a>
+      </li>
       <li>RSS</li>
     </ul>
   </div>
