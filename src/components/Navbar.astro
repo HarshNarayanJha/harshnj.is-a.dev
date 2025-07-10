@@ -38,7 +38,7 @@ const navLinks = [
       <ColorModeToggle />
       {
         socialLinks.map((link) => (
-          <a href={link.path} target="_blank" data-tippy-content={link.name}>
+          <a href={link.path} target="_blank" rel="noopener noreferrer" data-tippy-content={link.name}>
             <Icon name={link.icon} class="inline-block" size={24} />
             <span class="sr-only">{link.name}</span>
           </a>
@@ -99,7 +99,7 @@ const navLinks = [
       <div id="nav-links" class="mt-6 flex flex-row space-x-4">
         {
           socialLinks.map((social) => (
-            <a href={social.path} target="_blank" data-tippy-content={social.name}>
+            <a href={social.path} target="_blank" rel="noopener noreferrer" data-tippy-content={social.name}>
               <Icon name={social.icon} class="inline-block" size={24} />
               <span class="sr-only">{social.name}</span>
             </a>
