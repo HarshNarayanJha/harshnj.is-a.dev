@@ -44,7 +44,7 @@ export const skills = [
   { name: "Blender", tooltip: "Made a lot of stuff in blender", logo: "skills/blender" },
   { name: "Arch Linux", tooltip: "My primary Operating System, Arch Linux. I love it", logo: "skills/arch" },
   { name: "Git", tooltip: "Thank god Linus made git. Also thanks for Linux ❤️", logo: "skills/git" },
-  { name: "Zed", tooltip: "Zed, The IDE I use. Much better than VSCode", logo: "skills/zed" },
+  { name: "Zed", tooltip: "Zed, The IDE I use", logo: "skills/zed" },
 ]
 
 export const RESUME_DOC_URI = "https://docs.google.com/document/d/1lc73m1GYgfdQgenc_bOOsHIVTeNUh-HHB7NJ-QmjXII/edit?usp=sharing"
