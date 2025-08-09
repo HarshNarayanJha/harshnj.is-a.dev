@@ -44,7 +44,7 @@ export default defineConfig({
       {
         name: "Architects Daughter",
         cssVariable: "--font-architects-daughter",
-        provider: fontProviders.google(),
+        provider: fontProviders.fontsource(),
         weights: ["400"],
       },
       {
