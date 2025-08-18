@@ -9,24 +9,24 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "4.3.3",
-    "@astrojs/sitemap": "3.4.2",
+    "@astrojs/mdx": "4.3.4",
+    "@astrojs/sitemap": "3.5.0",
     "@astrojs/svelte": "^7.1.0",
     "@popperjs/core": "^2.11.8",
-    "@tailwindcss/vite": "^4.1.11",
-    "astro": "5.12.9",
+    "@tailwindcss/vite": "^4.1.12",
+    "astro": "5.13.2",
     "astro-font-picker": "^0.2.2",
     "astro-icon": "^1.1.5",
     "astro-theme-toggle": "^0.6.1",
     "remark-toc": "^9.0.0",
-    "svelte": "^5.34.1",
-    "tailwindcss": "^4.1.11",
+    "svelte": "^5.38.1",
+    "tailwindcss": "^4.1.12",
     "tippy.js": "^6.3.7",
     "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
-    "@types/bun": "^1.2.16",
+    "@types/bun": "^1.2.20",
     "mdast-util-from-markdown": "^2.0.2",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0"
