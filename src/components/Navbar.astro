@@ -7,6 +7,7 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "Blog", path: "/blog" },
   { name: "Projects", path: "/projects" },
+  { name: "Milestones", path: "/milestones" },
   // { name: "Snippets", path: "/snippets" },
   { name: "About", path: "/about" },
 ]
@@ -24,7 +25,7 @@ const navLinks = [
   >
     <div class="flex flex-row gap-4">
       {
-        navLinks.map((link) => (
+        navLinks.map(link => (
           <a href={link.path} class="font-mono font-medium">
             {link.name}
           </a>
@@ -37,8 +38,13 @@ const navLinks = [
     <div id="nav-links" class="flex flex-row space-x-4">
       <ColorModeToggle />
       {
-        socialLinks.map((link) => (
-          <a href={link.path} target="_blank" rel="noopener noreferrer" data-tippy-content={link.name}>
+        socialLinks.map(link => (
+          <a
+            href={link.path}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-tippy-content={link.name}
+          >
             <Icon name={link.icon} class="inline-block" size={24} />
             <span class="sr-only">{link.name}</span>
           </a>
@@ -88,7 +94,7 @@ const navLinks = [
     >
       <div class="my-2 flex flex-col gap-4">
         {
-          navLinks.map((link) => (
+          navLinks.map(link => (
             <a href={link.path} class="block font-mono font-medium">
               {link.name}
             </a>
@@ -98,8 +104,13 @@ const navLinks = [
 
       <div id="nav-links" class="mt-6 flex flex-row space-x-4">
         {
-          socialLinks.map((social) => (
-            <a href={social.path} target="_blank" rel="noopener noreferrer" data-tippy-content={social.name}>
+          socialLinks.map(social => (
+            <a
+              href={social.path}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-tippy-content={social.name}
+            >
               <Icon name={social.icon} class="inline-block" size={24} />
               <span class="sr-only">{social.name}</span>
             </a>
@@ -152,7 +163,7 @@ const navLinks = [
       menu.classList.toggle("hidden")
     })
 
-    document.addEventListener("click", (e) => {
+    document.addEventListener("click", e => {
       if (!toggleBtn.contains(e.target) && !menu.contains(e.target)) {
         menu.classList.add("hidden")
       }

@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content"
+import { Icon } from "astro-icon/components"
+
+import Layout from "@/layouts/Layout.astro"
+import MilestoneCard from "@/components/cards/MilestoneCard.astro"
+
+const milestones = await getCollection("milestones", ({ data }) => data.isPublished === true)
+
+const title = "Milestones | Harsh Narayan Jha"
+const description = "Harsh Narayan Jha's Milestones"
+---
+
+<Layout title={title} description={description}>
+  <section class="h-auto w-full px-4 py-16 md:px-16 md:py-28 md:pb-2">
+    <div class="mx-auto text-center">
+      <Icon name="milestones" class="m-1 inline" size={36} />
+      <h2 class="font-hero mt-4 text-center text-4xl font-medium">Milestones</h2>
+      <p class="mt-2 text-center text-gray-900/50 dark:text-gray-50/50">My Fun Achievements.</p>
+    </div>
+
+    <div
+      class="mx-auto mt-8 grid max-w-6xl grid-cols-1 place-content-center justify-items-center gap-8 lg:grid-cols-2"
+    >
+      {
+        milestones ? (
+          milestones.map(mile => (
+            <MilestoneCard class="m-auto my-4 w-full md:mx-8 md:w-full" milestone={mile.data} />
+          ))
+        ) : (
+          <div class="text-center text-gray-900/50 dark:text-gray-50/50">None yet.</div>
+        )
+      }
+    </div>
+
+    <p class="prose dark:prose-invert font-hand m-auto mt-32 text-center text-xl">
+      {milestones.length} milestones and still counting . . .
+    </p>
+  </section>
+</Layout>

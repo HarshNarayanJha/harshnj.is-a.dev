@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../.astro/collections/milestones.schema.json",
+  "title": "Honorable mention in SWIFF",
+  "description": "The Honorable mention Letter for the animation short, “The Cycle”, by the Student World Impact Film Festival.",
+  "theme": "blue",
+  "isPublished": true,
+  "urls": [
+    { "name": "Swiff website", "url": "https://swiff.org" },
+    { "name": "Animation Short on YouTube", "url": "https://www.youtube.com/watch?v=Jo_kj5O3V0U" }
+  ],
+  "thumbnail": "thecycle.png",
+  "document": "the-cycle-swiff.pdf"
+}

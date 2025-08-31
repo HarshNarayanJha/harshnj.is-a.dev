@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../.astro/collections/milestones.schema.json",
+  "title": "Harvard CS50X",
+  "description": "CS50's Introduction to Computer Science. Awarded from Cambridge, Massachusetts on completion of CS50.",
+  "theme": "blue",
+  "isPublished": true,
+  "urls": [
+    { "name": "cs50 website", "url": "https://cs50.harvard.edu" },
+    { "name": "My Final Project", "url": "https://github.com/HarshNarayanJha/xenigma" },
+    { "name": "Final Project Video", "url": "https://youtu.be/Nf8Cx3qXS-Y" }
+  ],
+  "thumbnail": "cs50.png",
+  "document": "cs50.pdf"
+}

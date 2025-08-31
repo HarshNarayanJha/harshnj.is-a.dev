@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../.astro/collections/milestones.schema.json",
+  "title": "Fullstackopen",
+  "description": "Awarded by the University of Helsinki on completion of 5 ECTS online course with grade 2",
+  "theme": "green",
+  "isPublished": true,
+  "urls": [
+    { "name": "Fullstackopen website", "url": "https://fullstackopen.com/en" },
+    { "name": "My repo", "url": "https://github.com/HarshNarayanJha/fullstackopen" }
+  ],
+  "thumbnail": "fso.png",
+  "document": "fso.pdf"
+}

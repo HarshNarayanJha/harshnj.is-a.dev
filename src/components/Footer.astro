@@ -22,15 +22,21 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
 </div> -->
 <TransparentDivider />
 
-<script is:inline data-astro-rerun>
-  const currentDate = new Date().toLocaleTimeString("en-IN", {
-    timeZone: "Asia/Kolkata",
-    hour12: true,
-    hour: "2-digit",
-    minute: "2-digit",
-    timeZoneName: "short",
-  })
-  document.getElementById("localTime").innerText = `🕐 ${currentDate.toLocaleUpperCase()}`
+<script is:inline>
+  function setFooterTime() {
+    const currentDate = new Date().toLocaleTimeString("en-IN", {
+      timeZone: "Asia/Kolkata",
+      hour12: true,
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZoneName: "short",
+    })
+
+    document.getElementById("localTime").innerText = `🕐 ${currentDate.toLocaleUpperCase()}`
+  }
+
+  document.addEventListener("astro:page-load", setFooterTime)
+  document.addEventListener("astro:after-swap", setFooterTime)
 </script>
 
 <div
@@ -49,7 +55,7 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
         <span class="sr-only">Email</span>
       </a>
       {
-        socialLinks.map((social) => (
+        socialLinks.map(social => (
           <a
             href={social.path}
             target="_blank"
@@ -81,13 +87,13 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
       </li>
       <li>Snippets</li>
       <li>
-        <a href="/about"> About </a>
+        <a href="/milestones">Milestones</a>
       </li>
     </ul>
     <ul class="space-y-2">
       <li class="mb-2 font-semibold text-gray-700/50 dark:text-gray-200/50">My Accounts</li>
       {
-        accounts.map((acc) => (
+        accounts.map(acc => (
           <li>
             <a href={acc.path} target="_blank" rel="noopener noreferrer" class="cursor-newtab">
               {acc.name}
@@ -102,6 +108,9 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
         <a href="/colophon">Colophon</a>
       </li>
       <li>RSS</li>
+      <li>
+        <a href="/about"> About </a>
+      </li>
     </ul>
   </div>
   <div class="prose dark:prose-invert">

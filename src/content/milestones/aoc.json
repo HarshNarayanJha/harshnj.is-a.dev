@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../.astro/collections/milestones.schema.json",
+  "title": "Advent of Code (AoC)",
+  "description": "Been doing AoC since 2022 without fail in Python, C++ and Rust. Have a total of 85 ⭐ with best rank of 322 in 2025.",
+  "theme": "green",
+  "isPublished": true,
+  "urls": [
+    { "name": "AoC Website", "url": "https://adventofcode.com" },
+    { "name": "My AoC Repo", "url": "https://github.com/HarshNarayanJha/AdventOfCode" }
+  ],
+  "thumbnail": "aoc.png"
+}
