@@ -28,7 +28,8 @@ interface Props {
   description?: string
 }
 
-const { title = "Harsh Narayan Jha", description = "Harsh Narayan Jha's Personal Portfolio" } = Astro.props
+const { title = "Harsh Narayan Jha", description = "Harsh Narayan Jha's Personal Portfolio" } =
+  Astro.props
 
 const ogTitle = title
 const ogDescription = description
@@ -66,6 +67,22 @@ const ogDescription = description
     <Font cssVariable="--font-architects-daughter" />
     <Font cssVariable="--font-monaspace-argon" />
 
+    <!-- click to copy -->
+    <script>
+      document.addEventListener("astro:page-load", () => {
+        const texts = document.querySelectorAll("[data-click-copy]")
+
+        texts.forEach(t => {
+          t.classList.add("cursor-pointer")
+
+          const content = t.attributes.getNamedItem("data-click-copy")?.textContent || ""
+          t.addEventListener("click", () => {
+            navigator.clipboard.writeText(content)
+          })
+        })
+      })
+    </script>
+
     <!-- tooltips -->
     <script>
       import tippy, { animateFill, createSingleton, type Instance } from "tippy.js"
@@ -74,9 +91,12 @@ const ogDescription = description
         const tips = document.querySelectorAll("[data-tippy-content]")
         let tippyInstances: Instance[] = []
 
-        tips.forEach((t) => {
+        tips.forEach(t => {
           // set tabindex only if not already set
-          if ((t.tagName === "SPAN" || t.tagName === "DIV") && t.getAttribute("tabIndex") === null) {
+          if (
+            (t.tagName === "SPAN" || t.tagName === "DIV") &&
+            t.getAttribute("tabIndex") === null
+          ) {
             t.setAttribute("tabindex", "0")
           }
           const content = t.attributes.getNamedItem("data-tippy-content")?.textContent || ""

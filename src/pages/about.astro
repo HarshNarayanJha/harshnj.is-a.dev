@@ -6,9 +6,11 @@ import { getCollection } from "astro:content"
 import Layout from "@/layouts/Layout.astro"
 import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
 import { formatMonth } from "@/utils"
-import { skills } from "@/utils/data"
+import { PGP_PUBLIC_KEY, PGP_PUBLIC_KEY_SIG, skills } from "@/utils/data"
 
-const experiences = (await getCollection("experiences")).sort((a, b) => b.data.start.valueOf() - a.data.start.valueOf())
+const experiences = (await getCollection("experiences")).sort(
+  (a, b) => b.data.start.valueOf() - a.data.start.valueOf(),
+)
 
 const title = "About Me | Harsh Narayan Jha"
 const description = "Harsh Narayan Jha's About Page"
@@ -22,32 +24,36 @@ const description = "Harsh Narayan Jha's About Page"
     </div>
 
     <div class="prose dark:prose-invert prose-lg prose-neutral mx-auto mt-16 md:mt-32">
-      <h1 class="not-prose font-hero text-3xl font-bold text-neutral-950 dark:text-white">Harsh Narayan Jha</h1>
+      <h1 class="not-prose font-hero text-3xl font-bold text-neutral-950 dark:text-white">
+        Harsh Narayan Jha
+      </h1>
       <p class="mt-1 flex flex-row items-center gap-1 font-semibold">
         <Icon name="exp/education" size={24} class="inline" />
         <span> Student at Birla Institute of Technology </span>
       </p>
 
       <p>
-        Hi There! I am Harsh, and I like to build things. I am currently a student at Birla Institute of Technology,
-        Deoghar, pursuing my BTech in Computer Science Engineering. I spend my time tinkering with things and
-        experimenting with.
+        Hi There! I am Harsh, and I like to build things. I am currently a student at Birla
+        Institute of Technology, Deoghar, pursuing my BTech in Computer Science Engineering. I spend
+        my time tinkering with things and experimenting with.
       </p>
       <p>
-        You can rely on me as an full-stack engineer, a game dev, or an app dev. I have a knack for problem-solving and
-        a passion for learning new technologies. I have expertise in various programming languages and frameworks,
-        including Python, JS/TS, React/NextJS, Svelte, Flutter, Unity/Godot, Kotlin, C++, Rust and more.
+        You can rely on me as an full-stack engineer, a game dev, or an app dev. I have a knack for
+        problem-solving and a passion for learning new technologies. I have expertise in various
+        programming languages and frameworks, including Python, JS/TS, React/NextJS, Svelte,
+        Flutter, Unity/Godot, Kotlin, C++, Rust and more.
       </p>
 
       <p>
-        I use Arch Linux and Hyprland as my daily driver, and carry an Android Phone. I don't hate windows, but it is
-        now horrible to use. I love making an contributing to open source projects.
+        I use Arch Linux and Hyprland as my daily driver, and carry an Android Phone. I don't hate
+        windows, but it is now horrible to use. I love making an contributing to open source
+        projects.
       </p>
 
       <p>Here are some of the things I enjoy</p>
       <div class="flex w-full flex-row flex-wrap gap-1">
         {
-          skills.map((skill) => {
+          skills.map(skill => {
             return (
               <div class="inline-block" data-tippy-content={skill.tooltip}>
                 <Icon name={skill.logo} size={36} class="inline" />
@@ -56,6 +62,19 @@ const description = "Harsh Narayan Jha's About Page"
           })
         }
       </div>
+
+      <p class="prose dark:prose-invert mt-8">
+        <Icon name="key" size={22} class="mb-2" />
+
+        My PGP Public Key is <code
+          data-click-copy={PGP_PUBLIC_KEY}
+          data-tippy-content="Click to copy Public Key"
+        >
+          {PGP_PUBLIC_KEY}
+        </code>
+        for all communication and sensitive purposes. It can be downloaded
+        <a href={`${Astro.url.origin}/${PGP_PUBLIC_KEY_SIG}`}> here </a>
+      </p>
     </div>
   </section>
 
@@ -67,12 +86,13 @@ const description = "Harsh Narayan Jha's About Page"
 
     <div class="mx-auto mt-16 flex flex-col gap-8 md:px-12 lg:px-40">
       {
-        experiences.map((exp) => {
+        experiences.map(exp => {
           return (
             <TransparentBorder class="p-4 md:border-0">
               <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-[1fr_2fr] md:gap-16">
                 <p class="prose dark:prose-invert prose-neutral mt-0 font-mono md:self-start md:justify-self-end">
-                  {formatMonth(exp.data.start)} - {exp.data.end === "PRESENT" ? "PRESENT" : formatMonth(exp.data.end)}
+                  {formatMonth(exp.data.start)} -{" "}
+                  {exp.data.end === "PRESENT" ? "PRESENT" : formatMonth(exp.data.end)}
                 </p>
                 <div class="md:self-start md:justify-self-start">
                   <div class="md:md-0 mt-2 flex flex-row items-center gap-1">
@@ -85,7 +105,12 @@ const description = "Harsh Narayan Jha's About Page"
                   </div>
                   <p class="mt-2 flex flex-row flex-wrap items-center gap-2 md:mt-2">
                     {exp.data.logo && (
-                      <Image src={exp.data.logo} alt={exp.data.at} width={28} class="inline-block h-7 w-7 rounded-md" />
+                      <Image
+                        src={exp.data.logo}
+                        alt={exp.data.at}
+                        width={28}
+                        class="inline-block h-7 w-7 rounded-md"
+                      />
                     )}
                     {exp.data.link ? (
                       <a
@@ -105,7 +130,7 @@ const description = "Harsh Narayan Jha's About Page"
                   <div class="prose dark:prose-invert prose-neutral">
                     <p class="mt-4">{exp.data.description}</p>
                     <ul class="">
-                      {exp.data.points.map((pt) => (
+                      {exp.data.points.map(pt => (
                         <li>{pt}</li>
                       ))}
                     </ul>

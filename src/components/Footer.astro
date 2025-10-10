@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components"
 
 import TransparentDivider from "@/components/reusable/TransparentDivider.svelte"
-import { accounts, socialLinks } from "@/utils/data"
+import { accounts, PGP_PUBLIC_KEY_SIG, socialLinks } from "@/utils/data"
 
 const currentDate = new Date().toLocaleTimeString("en-IN", {
   timeZone: "Asia/Kolkata",
@@ -68,6 +68,14 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
           </a>
         ))
       }
+      <a
+        href={`${Astro.url.origin}/${PGP_PUBLIC_KEY_SIG}`}
+        class="text-gray-800/50 dark:text-gray-300/50"
+        data-tippy-content="My PGP Public Key"
+      >
+        <Icon name="key" size={22} />
+        <span class="sr-only">My PGP Public Key</span>
+      </a>
     </div>
     <div class="mt-8 font-mono text-xs text-neutral-700/75 dark:text-neutral-300/75" id="localTime">
       🕐 {currentDate.toLocaleUpperCase()}
