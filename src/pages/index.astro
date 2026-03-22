@@ -10,7 +10,7 @@ import FeaturedProjects from "@/components/sections/FeaturedProjects.astro"
 import FeaturedTestimonials from "@/components/sections/FeaturedTestimonials.astro"
 import Work from "@/components/sections/Work.astro"
 
-import { RESUME_DOC_URI } from "@/utils/data"
+import { RESUME_PATH } from "@/utils/data"
 
 import me from "@/img/me.png"
 ---
@@ -32,8 +32,8 @@ import me from "@/img/me.png"
       <!-- style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)" -->
       <h2 class="text-3xl font-bold md:text-4xl" slot="title">Hello There</h2>
       <div class="prose prose-lg dark:prose-invert mt-2 leading-7" slot="text">
-        I like building things from the basic principles, and also play with the latest technologies and hack around
-        them. I like to work in the App, Web and Game ecosystems.
+        I like building things from the first principles, and also play with the latest technologies
+        and hack around them. I like to work in the App, Web and Game ecosystems.
       </div>
     </Card>
   </section>
@@ -131,7 +131,7 @@ import me from "@/img/me.png"
     </p>
 
     <a
-      href={RESUME_DOC_URI}
+      href={RESUME_PATH}
       target="_blank"
       rel="noopener noreferrer"
       data-tippy-content="Get My Resume"

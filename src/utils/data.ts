@@ -1,15 +1,15 @@
 export const socialLinks = [
   { name: "Github", path: "https://github.com/HarshNarayanJha", icon: "logos/github" },
-  { name: "Linkedin", path: "https://linkedin.com/in/HarshNarayanJha", icon: "logos/linkedin" },
-  { name: "Leetcode", path: "https://leetcode.com/u/HarshNarayanJha", icon: "logos/leetcode" },
+  { name: "Linkedin", path: "https://linkedin.com/in/harshnj", icon: "logos/linkedin" },
+  { name: "Leetcode", path: "https://leetcode.com/u/harshnj", icon: "logos/leetcode" },
 ]
 
 export const accounts = [
   { name: "Github", path: "https://github.com/HarshNarayanJha" },
-  { name: "Leetcode", path: "https://leetcode.com/u/HarshNarayanJha" },
+  { name: "Leetcode", path: "https://leetcode.com/u/harshnj" },
   { name: "Code::Stats", path: "https://codestats.net/users/harshnj" },
   { name: "CSES", path: "https://cses.fi/user/345212" },
-  { name: "TryHackMe", path: "https://tryhackme.com/p/harshnj1103" },
+  { name: "TryHackMe", path: "https://tryhackme.com/p/harshnj" },
 ]
 
 export const skills = [
@@ -79,6 +79,8 @@ export const skills = [
 
 export const RESUME_DOC_URI =
   "https://docs.google.com/document/d/1lc73m1GYgfdQgenc_bOOsHIVTeNUh-HHB7NJ-QmjXII/edit?usp=sharing"
+
+export const RESUME_PATH = "/resume.pdf"
 
 export const PGP_PUBLIC_KEY_SIG = "my-public-key.asc"
 export const PGP_PUBLIC_KEY = "3CADBCCC757BB7FAD06B544269DA8424ED6666F5"
