@@ -1,0 +1,35 @@
+---
+title: "The 3DS Activity Log - Part 1"
+isPublished: true
+pubDate: 2026-03-26
+author: "Harsh Narayan Jha"
+tags: ["3ds"]
+description: "Part 1 of the 3DS Activity Log series"
+theme: "green"
+---
+
+import { YouTube } from '@astro-community/astro-embed-youtube'
+
+## Prelude
+
+In the summer of 2025, I came across a YouTube [video](https://www.youtube.com/watch?v=HIF_BWJGWsg) on the Nintendo 3DS's Activity Log feature, how awesome it is and its impending death. The video titled "The 3DS Is Walking Away From The Past - Activity Log" by "James-Monkey" brilliantly covers how this small device records your steps, converting those into <span data-tippy-content="In-game currency earned by walking with the console.">_Play Coins_</span>, and how it records detailed playtime history for all the games you have played on it as well. This is an excellent feature, and none of the modern software shows stats this detailed (they _might_ be recording in much _more_ detail, though) to my knowledge.
+
+<YouTube id="https://youtu.be/HIF_BWJGWsg" title="The 3DS Is Walking Away From The Past - Activity Log" />
+
+However, this happiness has a decided lifetime. Someone at Nintendo decided to limit the file size of the activity log data files, despite having enough internal memory: the pedometer file is limited to `180KB` and the play history file to roughly `900KB`. Since each play and step entry consists of a fixed number of bytes, after approximately **10 years**, the 3DS starts erasing the oldest records to make room for new ones. Yes, you read it right: the file size is limited and the device will start to delete your 10-year-old data. Hopefully, my 3DS's 10th anniversary is in 2029, which leaves a lot of room for me to think... and so I started to think.
+
+## The Problem
+Recapping the issue we have, the 3DS will delete pedometer and play data more than 10 years old, and the software library is limited to 256 titles as well, deleting the title entry with the shortest playtime to make room. The mentioned video ends saying that while it's impossible to prevent data loss with normal use (since it's coded deep inside the OS), we can appreciate the memories made and look forward to making new ones.
+
+But, we are programmers, and we can command anything we wish (provided we have drivers for that), and while I really support the emphasized idea in the video, I don't think we should stop there without even trying.
+
+## The Absence
+I went ahead and looked for the obvious: "3DS playtime data exporter", "3DS play data backup", "3DS play data viewer", and "3DS pedometer export". I was surprised for the first time by the lack of actual results - no blog posts, no articles, no videos, and no POCs or prototypes. There were, however, the <span data-tippy-content="A community-driven wiki for 3DS documentation and reverse engineering.">[3dbrew](https://3dbrew.org/wiki/System_SaveData)</span> reference [pages](https://www.3dbrew.org/wiki/PTM_Savegame) written by the awesome homebrew community, which explain how the save data for playtime and the pedometer are saved and encoded. I also found one thread on <span data-tippy-content="A popular gaming and homebrew community forum.">GBATemp</span> where people were trying to figure out what the saved data looks like. Everyone there did a lot of research and even wrote a <span data-tippy-content="GodMode9 (GM9) is a powerful file system tool for the 3DS.">GM9 script</span> to extract the data files. One user in particular, [TollyH](https://gbatemp.net/threads/playhistory-dat-timestamp.580853/post-10297936), managed to figure out the complete data encoding format and updated the wiki with their findings. This clearly wouldn't have been possible to do by myself. Thanks to these awesome people for making these resources.
+
+## The Discovery
+With all these resources and some help from modern-day research tools known as LLMs, specifically Gemini in this case, I managed to figure out a streamlined process for extracting the data from the 3DS, parsing it, and converting it into a CSV. I then created a visualizer web app in SvelteKit to view the data. This app will be designed to look and feel like the 3DS UI while providing a modern way of viewing timeline based stats.
+
+## Conclusion
+This was the part 1 of the blog series about 3DS Activity Log. The next part will explain what is the save data format, how I managed to extract it and the streamlined process I figured out. I will share the progress on the main web app, and hopefully the 3ds homebrew application to export the playdata.
+
+Thanks for reading!
