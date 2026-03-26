@@ -7,9 +7,11 @@ const featuredProjects = await getCollection("projects", ({ data }) => data.feat
 ---
 
 <!-- a bento grid, please 🥹 -->
-<div class="flex flex-col flex-wrap items-center justify-center px-4 py-2 md:flex-row md:px-4 md:py-4">
+<div
+  class="flex flex-col flex-wrap items-center justify-center px-4 py-2 md:flex-row md:px-4 md:py-4"
+>
   {
-    featuredProjects.map((proj) => (
+    featuredProjects.map(proj => (
       <ProjectCard class="m-auto my-4 w-full md:mx-8 md:w-96" proj={proj.data}>
         <h3 class="text-2xl font-semibold" slot="title">
           {proj.data.name}
@@ -18,7 +20,7 @@ const featuredProjects = await getCollection("projects", ({ data }) => data.feat
           <p class="prose dark:prose-invert leading-6">{proj.data.text}</p>
 
           <div class="my-4 flex flex-wrap gap-2">
-            {proj.data.tags.map((tag) => (
+            {proj.data.tags.map(tag => (
               <span class="rounded-md border border-dashed border-green-500 bg-emerald-300/15 px-1 font-mono text-xs font-medium text-green-600 sm:px-3 sm:text-sm dark:bg-emerald-800/25 dark:text-emerald-100">
                 {tag}
               </span>

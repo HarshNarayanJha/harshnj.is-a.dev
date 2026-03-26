@@ -2,7 +2,9 @@
 const roles = ["Developer", "Problem Solver", "Open-Source contributor"]
 ---
 
-<main class="mt-32 flex min-h-[50svh] w-full flex-col items-center justify-start p-8 text-center md:mt-[20svh]">
+<main
+  class="mt-32 flex min-h-[50svh] w-full flex-col items-center justify-start p-8 text-center md:mt-[20svh]"
+>
   <div
     id="hero-blob"
     class="absolute m-auto aspect-square w-4/6 rounded-full bg-teal-500 opacity-30 blur-xl md:w-2/6 md:opacity-20 md:blur-[96px]"
@@ -26,7 +28,7 @@ const roles = ["Developer", "Problem Solver", "Open-Source contributor"]
     style="mask: linear-gradient(transparent, black 25%, black 75%, transparent)"
   >
     {
-      roles.map((role) => (
+      roles.map(role => (
         <span>
           {role} <br />
         </span>

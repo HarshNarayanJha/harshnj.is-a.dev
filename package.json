@@ -9,20 +9,20 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "4.3.4",
+    "@astrojs/mdx": "5.0.2",
     "@astrojs/sitemap": "3.7.1",
-    "@astrojs/svelte": "^7.2.5",
+    "@astrojs/svelte": "8.0.3",
     "@popperjs/core": "^2.11.8",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "5.13.2",
+    "astro": "6.0.8",
     "astro-font-picker": "^0.2.2",
     "astro-icon": "^1.1.5",
-    "astro-theme-toggle": "^0.6.1",
+    "astro-theme-toggle": "^0.8.0",
     "remark-toc": "^9.0.0",
-    "svelte": "^5.54.1",
+    "svelte": "^5.55.0",
     "tailwindcss": "^4.2.2",
     "tippy.js": "^6.3.7",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",

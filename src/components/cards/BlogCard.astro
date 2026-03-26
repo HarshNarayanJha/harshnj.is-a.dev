@@ -16,7 +16,7 @@ interface Props {
 const { class: className, blog: blogEntry, ...rest } = Astro.props
 const { data: blog, body } = blogEntry
 
-const readingTime = getReadingTime(body)
+const readingTime = getReadingTime(body ?? "")
 ---
 
 <TransparentBorder class={className} enableHoverScale={true} {rest}>
@@ -25,7 +25,10 @@ const readingTime = getReadingTime(body)
   >
     <div class="flex h-full w-full flex-col items-start justify-start">
       <div>
-        <time class="prose dark:prose-invert prose-sm font-medium" datetime={blog.pubDate?.toISOString()}>
+        <time
+          class="prose dark:prose-invert prose-sm font-medium"
+          datetime={blog.pubDate?.toISOString()}
+        >
           {blog.pubDate ? formatDate(blog.pubDate) : "A long time ago"}{" "}
           {readingTime && <span>&CircleDot;&nbsp;{readingTime}</span>}
         </time>
@@ -34,7 +37,7 @@ const readingTime = getReadingTime(body)
       </div>
       <div class="mt-auto">
         <div class="prose dark:prose-invert items-center justify-start font-mono">
-          {blog.tags.map((tag) => <kbd>#{tag}</kbd>)}
+          {blog.tags.map(tag => <kbd>#{tag}</kbd>)}
         </div>
       </div>
     </div>
@@ -45,7 +48,7 @@ const readingTime = getReadingTime(body)
             src={blog.image}
             alt={blog.title}
             formats={["avif", "webp"]}
-            class="aspect-video w-full rounded-2xl border-2 border-b-0 border-slate-200/50 object-cover md:aspect-square md:w-[200px] dark:border-slate-600/50"
+            class="aspect-video w-full rounded-2xl border-2 border-b-0 border-slate-200/50 object-cover md:aspect-square md:w-50 dark:border-slate-600/50"
             width={200}
             layout="constrained"
           />
@@ -54,7 +57,7 @@ const readingTime = getReadingTime(body)
             src={placeholderImage}
             alt="Blog Placeholder"
             formats={["avif", "webp"]}
-            class="aspect-video w-full rounded-2xl border-2 border-b-0 border-slate-200/50 object-cover md:aspect-square md:w-[200px] dark:border-slate-600/50"
+            class="aspect-video w-full rounded-2xl border-2 border-b-0 border-slate-200/50 object-cover md:aspect-square md:w-50 dark:border-slate-600/50"
             width={200}
             layout="constrained"
           />

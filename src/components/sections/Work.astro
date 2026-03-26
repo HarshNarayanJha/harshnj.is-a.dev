@@ -11,7 +11,7 @@ const works = (await getCollection("experiences", ({ data }) => data.type == "wo
 
 <div class="flex flex-col items-center px-8 py-8 md:px-15 md:py-10">
   {
-    works.map((work) => (
+    works.map(work => (
       <WorkCard class="mx-auto my-4" work={work.data}>
         <Fragment slot="title">
           <h3 class="text-2xl font-semibold">{work.data.at}</h3>
@@ -23,7 +23,10 @@ const works = (await getCollection("experiences", ({ data }) => data.type == "wo
           </h4>
         </Fragment>
 
-        <p class="prose dark:prose-invert my-4 line-clamp-4 text-justify leading-6 md:line-clamp-2" slot="text">
+        <p
+          class="prose dark:prose-invert my-4 line-clamp-4 text-justify leading-6 md:line-clamp-2"
+          slot="text"
+        >
           {work.data.description}
         </p>
       </WorkCard>

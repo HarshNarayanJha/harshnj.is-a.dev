@@ -24,7 +24,7 @@ const description = "Harsh Narayan Jha's Blogs"
     <div class="mx-auto mt-16 flex max-w-4xl flex-col items-center justify-start gap-2 px-4">
       {
         blogs.map(blog => (
-          <a href={`/blog/${blog.slug}`} class="w-full">
+          <a href={`/blog/${blog.id}`} class="w-full">
             <BlogCard class="w-full" blog={blog}>
               <h3 class="text-3xl font-semibold" slot="title">
                 {blog.data.title}

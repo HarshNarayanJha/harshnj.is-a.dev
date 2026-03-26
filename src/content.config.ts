@@ -1,8 +1,9 @@
-import { file } from "astro/loaders"
-import { defineCollection, z } from "astro:content"
+import { glob, file } from "astro/loaders"
+import { defineCollection } from "astro:content"
+import { z } from "astro/zod"
 
 const projects = defineCollection({
-  type: "data",
+  loader: glob({ base: "./src/content/projects", pattern: "*.json" }),
   schema: ({ image }) =>
     z.object({
       img: z.preprocess(val => (val ? `@/img/projects/${val}` : ""), image()),
@@ -16,7 +17,7 @@ const projects = defineCollection({
 })
 
 const testimonials = defineCollection({
-  type: "data",
+  loader: glob({ base: "./src/content/testimonials", pattern: "*.json" }),
   schema: ({ image }) =>
     z.object({
       img: z.preprocess(val => (val ? `@/img/testimonials/${val}` : ""), image()),
@@ -49,7 +50,7 @@ const experiences = defineCollection({
 })
 
 const blogs = defineCollection({
-  type: "content",
+  loader: glob({ base: "./src/content/blogs", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -64,7 +65,7 @@ const blogs = defineCollection({
 })
 
 const milestones = defineCollection({
-  type: "data",
+  loader: glob({ base: "./src/content/milestones", pattern: "*.json" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
