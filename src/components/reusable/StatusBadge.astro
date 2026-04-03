@@ -1,0 +1,36 @@
+---
+interface Props {
+  color?: "green" | "yellow" | "red" | "orange"
+  [key: string]: any
+}
+
+const { class: className = "", color = "green", ...rest } = Astro.props
+
+const variants: Record<string, { container: string; dot: string }> = {
+  green: {
+    container: "bg-green-100 text-green-800 dark:bg-green-800/30 dark:text-green-200",
+    dot: "bg-green-600 dark:bg-green-400",
+  },
+  yellow: {
+    container: "bg-yellow-100 text-yellow-800 dark:bg-yellow-800/30 dark:text-yellow-200",
+    dot: "bg-yellow-600 dark:bg-yellow-400",
+  },
+  red: {
+    container: "bg-red-100 text-red-800 dark:bg-red-800/30 dark:text-red-200",
+    dot: "bg-red-600 dark:bg-red-400",
+  },
+  orange: {
+    container: "bg-orange-100 text-orange-800 dark:bg-orange-800/30 dark:text-orange-200",
+    dot: "bg-orange-600 dark:bg-orange-400",
+  },
+}
+
+const v = variants[color as string] ?? variants.green
+const base =
+  "inline-flex items-center gap-2 rounded-full px-2 py-0.5 font-mono text-xs font-semibold"
+---
+
+<span class={`${base} ${v.container} ${className}`} {...rest}>
+  <span class={`inline-block h-2 w-2 rounded-full ${v.dot}`}></span>
+  <slot />
+</span>

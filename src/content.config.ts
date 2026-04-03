@@ -41,6 +41,7 @@ const experiences = defineCollection({
       type: z.enum(["work", "education"]),
       level: z.number().int().positive(),
       at: z.string(),
+      current: z.boolean().optional(),
       logo: z.preprocess(val => (val ? `@/img/work/${val}` : ""), image()).optional(),
       link: z.string().optional(),
       location: z.string(),

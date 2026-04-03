@@ -41,6 +41,7 @@
     "type": "education",
     "level": 2,
     "at": "Birla Institute of Technology",
+    "current": true,
     "logo": "bit.png",
     "link": "https://bitmesra.ac.in/",
     "location": "Deoghar, Jharkhand, India",
@@ -49,7 +50,7 @@
       "Studied core subjects including Data Structures & Algorithms, Operating Systems, Computer Networks, and Database Management Systems.",
       "Worked on academic and personal projects involving Web Development, App development, Open Source projects, REST API design, and Python-based applications.",
       "Participated in coding competitions, hackathons, and peer programming sessions to strengthen problem-solving skills.",
-      "Actively exploring areas like cloud computing, machine learning, llms and ai agents, and full-stack development through self-learning and internships."
+      "Actively exploring areas like Machine Learning, LLMs and AI agents, Low Level Programming, and full-stack development through self-learning and internships."
     ]
   },
   {
@@ -63,18 +64,21 @@
     "logo": "corider.png",
     "link": "https://corider.in/",
     "location": "Bengaluru - Remote",
-    "description": "Developed and maintained RESTful APIs using Python (Flask) and MongoDB, supporting key backend features and CRUD operations. Implemented robust input validation, error handling, and unit testing to ensure reliability and maintainability. Deployed and monitored backend services using AWS, collaborating with frontend teams for seamless integration.",
+    "description": "Developed and maintained scalable RESTful APIs using Python (Flask), MongoDB, and MySQL, supporting core car-sharing platform features such as DMs, Ask to Verify, and Recurring Trips for 500+ users. Implemented robust input validation, error handling, and unit testing to ensure reliability, safety, and maintainability. Deployed and monitored backend services on AWS, optimizing performance, reducing latency by 40%, and lowering infrastructure costs by 15%, while collaborating closely with frontend teams for seamless integration.",
     "points": [
-      "Developed and maintained scalable RESTful APIs using Python (Flask) and MongoDB, enabling efficient CRUD operations and seamless front-end integration.",
+      "Developed and deployed core car-sharing features, including direct messaging (DMs), Ask to Verify, and Recurring Trips, improving user safety and retention across a platform with 500+ downloads.",
+      "Architected scalable backend services using Python (Flask), MongoDB, and MySQL, reducing API latency by 40% and infrastructure costs by 15% on AWS.",
+      "Designed and maintained RESTful APIs enabling efficient CRUD operations and seamless front-end integration.",
+      "Optimized ride-hosting workflows, reducing listing time by 30% and improving search-to-match efficiency by 20% through a redesigned Connections and date-filtering system.",
       "Designed Flask routes, services, and models aligned with REST standards and internal best practices.",
       "Implemented robust data validation, error handling, and response management to ensure API reliability and user safety.",
-      "Optimized MongoDB queries to improve API response time and back-end performance.",
+      "Optimized MongoDB queries to enhance API response time and backend performance.",
       "Wrote unit tests to validate API functionality and ensure high code quality and coverage.",
-      "Integrated APIs with front-end components, collaborating closely with UI teams for end-to-end feature delivery.",
-      "Managed and monitored REST API deployments on AWS, contributing to deployment pipelines and cloud infrastructure.",
-      "Conducted API testing and participated in debugging and troubleshooting backend issues.",
-      "Suggested and implemented improvements to enhance code maintainability and performance.",
-      "Gained hands-on experience with Agile development practices, version control (Git), and cloud-based development tools."
+      "Collaborated closely with frontend teams to integrate APIs with UI components for end-to-end feature delivery.",
+      "Managed, deployed, and monitored backend services on AWS, contributing to CI/CD pipelines and cloud infrastructure improvements.",
+      "Conducted API testing and debugging to resolve backend issues efficiently.",
+      "Suggested and implemented improvements to enhance code maintainability, scalability, and performance.",
+      "Worked in Agile development environments using Git and modern cloud-based development tools."
     ]
   }
 ]

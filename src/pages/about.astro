@@ -7,6 +7,7 @@ import Layout from "@/layouts/Layout.astro"
 import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
 import { formatMonth } from "@/utils"
 import { KEYBASE_ACCOUNT_URI, PGP_PUBLIC_KEY, PGP_PUBLIC_KEY_SIG, skills } from "@/utils/data"
+import StatusBadge from "@/components/reusable/StatusBadge.astro"
 
 const experiences = (await getCollection("experiences")).sort(
   (a, b) => b.data.start.valueOf() - a.data.start.valueOf(),
@@ -51,12 +52,21 @@ const description = "Harsh Narayan Jha's About Page"
       </p>
 
       <p>Here are some of the things I enjoy</p>
-      <div class="flex w-full flex-row flex-wrap gap-1">
+      <div class="grid w-full grid-cols-5 sm:grid-cols-6 lg:grid-cols-8">
         {
           skills.map(skill => {
             return (
-              <div class="inline-block" data-tippy-content={skill.tooltip}>
-                <Icon name={skill.logo} size={36} class="inline" />
+              <div
+                style={{ "--hover-color": skill.color, "--hover-dark-color": skill.darkColor }}
+                class="group flex aspect-square items-center justify-center overflow-x-clip bg-transparent transition-colors hover:bg-gray-200/70 hover:dark:bg-gray-700/70"
+                data-tippy-content={skill.tooltip}
+              >
+                <Icon
+                  name={skill.logo}
+                  title={skill.name}
+                  size={42}
+                  class="inline text-neutral-700/60 group-hover:text-(--hover-color) dark:text-neutral-300/60 group-hover:dark:text-(--hover-dark-color)"
+                />
               </div>
             )
           })
@@ -92,11 +102,13 @@ const description = "Harsh Narayan Jha's About Page"
       {
         experiences.map(exp => {
           return (
-            <TransparentBorder class="p-4 md:border-0">
+            <TransparentBorder class="border-0 p-4">
               <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-[1fr_2fr] md:gap-16">
                 <p class="prose dark:prose-invert prose-neutral mt-0 font-mono md:self-start md:justify-self-end">
                   {formatMonth(exp.data.start)} -{" "}
                   {exp.data.end === "PRESENT" ? "PRESENT" : formatMonth(exp.data.end)}
+                  <br />
+                  {exp.data.current && <StatusBadge color="green">CURRENT</StatusBadge>}
                 </p>
                 <div class="md:self-start md:justify-self-start">
                   <div class="md:md-0 mt-2 flex flex-row items-center gap-1">
@@ -133,7 +145,7 @@ const description = "Harsh Narayan Jha's About Page"
                   </p>
                   <div class="prose dark:prose-invert prose-neutral">
                     <p class="mt-4">{exp.data.description}</p>
-                    <ul class="">
+                    <ul>
                       {exp.data.points.map(pt => (
                         <li>{pt}</li>
                       ))}
