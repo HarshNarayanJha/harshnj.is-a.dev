@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/harshnj
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://harshnj.is-a.dev
+  * I am harshnj (https://keybase.io/harshnj) on keybase.
+  * I have a public key ASBoXJgezJHbUHLIS-a6r8M809vakhf-c8D73X4IMxNNswo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120685c981ecc91db5072c84be6baafc33cd3dbda9217fe73c0fbdd7e0833134db30a",
+      "host": "keybase.io",
+      "kid": "0120685c981ecc91db5072c84be6baafc33cd3dbda9217fe73c0fbdd7e0833134db30a",
+      "uid": "de1524899f9c0314bf77c176d33a3919",
+      "username": "harshnj"
+    },
+    "merkle_root": {
+      "ctime": 1775225635,
+      "hash": "208ec47074b94e885a6e6e85748f35a4b5632b981959142520bc870608988c3cfe22f9ab0d4d3a5ba6ee5d59d3211a8c297b2d91c7c65893d6d20187c2827400",
+      "hash_meta": "dd8569f742d2d7cbd25f0725305e58eb06a4b3827e52f1716085886720906e7e",
+      "seqno": 27506556
+    },
+    "service": {
+      "entropy": "XR8a8mgbKXkW2/3sn/ohPCL2",
+      "hostname": "harshnj.is-a.dev",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "6.6.0"
+  },
+  "ctime": 1775225934,
+  "expire_in": 504576000,
+  "prev": "129d21d7125b139a6b85c565efe20231ea9b875b475a74533791fe5674d239be",
+  "seqno": 11,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgaFyYHsyR21ByyEvmuq/DPNPb2pIX/nPA+91+CDMTTbMKp3BheWxvYWTESpcCC8QgEp0h1xJbE5prhcVl7+ICMeqbh1tHWnRTN5H+VnTSOb7EIL/PH8W7K8xmkdHCVH9r2JzxjT74aFxD/b5vpcllQxIGAgHCo3NpZ8RA4gqiIIkiXfkub34aQp/HRuSY9Abh1ysI6YcKN8dxmpMeOa8++X76Ycpz7zAKaIml/CtZA4/trmj5GNGcMHw0BKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIAJv4dKbhFCY6FHQoj3wwrmL12wBieP5/5fTycP+vwxKo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/harshnj
+
+==================================================================

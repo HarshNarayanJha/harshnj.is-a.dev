@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components"
 
 import TransparentDivider from "@/components/reusable/TransparentDivider.svelte"
-import { accounts, PGP_PUBLIC_KEY_SIG, socialLinks } from "@/utils/data"
+import { accounts, KEYBASE_ACCOUNT_URI, PGP_PUBLIC_KEY_SIG, socialLinks } from "@/utils/data"
 
 const currentDate = new Date().toLocaleTimeString("en-IN", {
   timeZone: "Asia/Kolkata",
@@ -69,12 +69,14 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
         ))
       }
       <a
-        href={`${Astro.url.origin}/${PGP_PUBLIC_KEY_SIG}`}
-        class="text-gray-800/50 dark:text-gray-300/50"
-        data-tippy-content="My PGP Public Key"
+        href={KEYBASE_ACCOUNT_URI}
+        class="cursor-newtab text-gray-800/50 dark:text-gray-300/50"
+        data-tippy-content="My Keybase"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <Icon name="key" size={22} />
-        <span class="sr-only">My PGP Public Key</span>
+        <span class="sr-only">My Keybase</span>
       </a>
     </div>
     <div class="mt-8 font-mono text-xs text-neutral-700/75 dark:text-neutral-300/75" id="localTime">
@@ -137,7 +139,7 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
 
 <div class="flex items-center justify-center py-8 md:py-4">
   <p class="prose dark:prose-invert prose-zinc/50 prose-sm text-center">
-    Copyright &copy; 2025 Harsh Narayan Jha. All rights reserved.
+    Copyright &copy; 2026 Harsh Narayan Jha. All rights reserved.
     <br />
     <span class="text-xs md:text-sm"> Built with Astro &nbsp; 🚀 </span>
   </p>

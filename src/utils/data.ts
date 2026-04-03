@@ -84,3 +84,4 @@ export const RESUME_PATH = "/resume.pdf"
 
 export const PGP_PUBLIC_KEY_SIG = "my-public-key.asc"
 export const PGP_PUBLIC_KEY = "3CADBCCC757BB7FAD06B544269DA8424ED6666F5"
+export const KEYBASE_ACCOUNT_URI = "https://keybase.io/harshnj"
