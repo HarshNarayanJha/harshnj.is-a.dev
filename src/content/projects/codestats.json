@@ -3,11 +3,10 @@
   "img": "codestats.png",
   "name": "Code::Stats Client",
   "github": "https://github.com/HarshNarayanJha/codestats_client",
-  "text": "A sleek mobile client for viewing your Code::Stats analytics and tracking your coding journey.",
+  "text": "A sleek mobile client built with Dart and Flutter for viewing Code::Stats programming analytics, tracking coding journeys, and visualizing top languages.",
+  "domains": ["Mobile"],
+  "tags": ["Flutter", "Dart", "API"],
   "featured": true,
-  "tags": [
-    "Flutter",
-    "Dart",
-    "REST APIs"
-  ]
+  "year": 2025,
+  "status": "Active"
 }

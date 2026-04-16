@@ -4,11 +4,10 @@
   "name": "Arcane Quest",
   "url": "https://harshnarayanjha.itch.io/arcane-quest",
   "github": "https://github.com/HarshNarayanJha/arcane-quest",
-  "text": "My Submission for GitHub GameOff 2024",
+  "text": "A 2D top-down action-adventure RPG built in Godot for the GitHub Game Off 2024, featuring a complete combat system and interactive environments.",
+  "domains": ["Game Dev"],
+  "tags": ["Godot", "GDScript", "C#"],
   "featured": true,
-  "tags": [
-    "Godot",
-    "Game Development",
-    "Game Design"
-  ]
+  "year": 2024,
+  "status": "Completed"
 }

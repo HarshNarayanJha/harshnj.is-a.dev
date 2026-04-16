@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "placeholder.png",
+  "name": "HyprMotion",
+  "url": "https://harshnj.is-a.dev/HyprMotion/",
+  "github": "https://github.com/HarshNarayanJha/HyprMotion",
+  "text": "A static SvelteKit web app that runs entirely on-device to help users visualize and edit Hyprland desktop animations via interactive bezier curves.",
+  "domains": ["Web", "Systems"],
+  "tags": ["Svelte", "TypeScript", "Linux Tools"],
+  "featured": true,
+  "year": 2025,
+  "status": "Active"
+}

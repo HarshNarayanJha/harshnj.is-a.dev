@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "placeholder.png",
+  "name": "3DS-ActivityLog",
+  "url": "http://harshnj.is-a.dev/3DS-ActivityLog/",
+  "github": "https://github.com/HarshNarayanJha/3DS-ActivityLog",
+  "text": "A tool to parse and explore Nintendo 3DS System SaveData (PlayHistory.dat and Pedometer.dat) to analyze playtime activity and step counts.",
+  "domains": ["Systems"],
+  "tags": ["Nintendo 3DS", "Reverse Engineering", "Save Data"],
+  "featured": false,
+  "year": 2025,
+  "status": "WIP"
+}

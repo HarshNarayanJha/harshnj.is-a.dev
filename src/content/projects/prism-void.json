@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "placeholder.png",
+  "name": "Prism Void",
+  "url": "https://harshnarayanjha.itch.io/prism-void",
+  "github": "https://github.com/HarshNarayanJha/prism_void_brackeys_jam",
+  "text": "A 2.5D pixel art adventure built in Godot for the Brackeys 2026.1 Game Jam, featuring magic combat and levitation mechanics.",
+  "domains": ["Game Dev"],
+  "tags": ["Godot", "GDScript", "Game Jam"],
+  "featured": false,
+  "year": 2026,
+  "status": "Completed"
+}

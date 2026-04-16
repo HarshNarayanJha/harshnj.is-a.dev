@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "placeholder.png",
+  "name": "Converge",
+  "github": "https://github.com/HarshNarayanJha/converge",
+  "text": "A seamless, real-time video calling application built with Vue, TypeScript, and WebRTC technologies.",
+  "domains": ["Web"],
+  "tags": ["Vue.js", "TypeScript", "WebRTC"],
+  "featured": false,
+  "year": 2025,
+  "status": "Completed"
+}

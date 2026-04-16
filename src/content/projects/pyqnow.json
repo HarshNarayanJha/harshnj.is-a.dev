@@ -4,11 +4,10 @@
   "name": "PYQNow",
   "url": "https://pyqnow.netlify.app",
   "github": "https://github.com/HarshNarayanJha/pyqnow",
+  "text": "A full-stack Vue and Python platform providing students with instant, one-click access to university past year question papers, featuring automated scraping scripts.",
+  "domains": ["Web"],
+  "tags": ["Vue.js", "Python", "TypeScript", "Fullstack"],
   "featured": true,
-  "text": "A web app that helps students to quickly open Past Year Question papers, without wasting time and focus on solving papers right before the exam.",
-  "tags": [
-    "VueJS",
-    "JSON",
-    "Netlify"
-  ]
+  "year": 2024,
+  "status": "Completed"
 }

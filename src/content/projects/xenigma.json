@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "placeholder.png",
+  "name": "Xenigma",
+  "github": "https://github.com/HarshNarayanJha/xenigma",
+  "text": "A lightweight C CLI utility providing fast XOR cipher encryption and decryption for text and binary files.",
+  "domains": ["Systems"],
+  "tags": ["C", "Cryptography", "CLI"],
+  "featured": false,
+  "year": 2024,
+  "status": "Completed"
+}

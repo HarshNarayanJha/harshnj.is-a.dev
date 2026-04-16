@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "placeholder.png",
+  "name": "energi",
+  "github": "https://github.com/HarshNarayanJha/energi",
+  "text": "A lightweight, laptop battery monitor for non-DE Linux setups. Built with Rust, Tauri, and TypeScript to visualize historical usage patterns.",
+  "domains": ["Desktop", "Systems"],
+  "tags": ["Rust", "Tauri", "TypeScript", "Linux Tools"],
+  "featured": false,
+  "year": 2025,
+  "status": "WIP"
+}

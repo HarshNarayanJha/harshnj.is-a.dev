@@ -4,10 +4,9 @@
   "name": "School Management",
   "github": "https://github.com/HarshNarayanJha/School-Management-Project",
   "text": "The de-facto School Management Project, with features like Marks entry and Result Card generation. A collaborative project with my Abhijeet Sir!",
-  "tags": [
-    "Django",
-    "Python",
-    "Django REST API",
-    "PythonAnywhere"
-  ]
+  "domains": ["Web"],
+  "tags": ["Django", "Python", "Django REST API", "PythonAnywhere", "Fullstack"],
+  "featured": false,
+  "year": 2022,
+  "status": "Completed"
 }

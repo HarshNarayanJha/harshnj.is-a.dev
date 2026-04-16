@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "placeholder.png",
+  "name": "Marble Momentum",
+  "url": "https://harshnarayanjha.itch.io/marble-momentum",
+  "github": "https://github.com/HarshNarayanJha/marble_momentum",
+  "text": "A 3D physics puzzle game built in Godot for Shovel Jam 2025, where players manipulate tracks and fans to guide a marble to its goal.",
+  "domains": ["Game Dev"],
+  "tags": ["Godot", "GDScript", "3D", "Game Jam"],
+  "featured": false,
+  "year": 2025,
+  "status": "Completed"
+}

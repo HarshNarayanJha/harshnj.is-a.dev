@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "placeholder.png",
+  "name": "Kepler-Zero",
+  "github": "https://github.com/HarshNarayanJha/kepler-zero",
+  "text": "A high-precision machine learning binary classifier for identifying exoplanets from NASA data using Random Forest and FastAPI.",
+  "domains": ["AI/ML"],
+  "tags": ["Data Science", "Python", "FastAPI"],
+  "featured": true,
+  "year": 2026,
+  "status": "Completed"
+}

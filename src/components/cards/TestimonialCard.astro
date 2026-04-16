@@ -13,9 +13,12 @@ interface Props {
 const { class: className, testimonial, ...rest } = Astro.props
 ---
 
-<TransparentBorder class={className} {rest}>
+<TransparentBorder class:list={[className, "border-0"]} {rest}>
   <div
-    class="flex h-full flex-col items-start justify-between gap-4 rounded-lg border-2 border-neutral-300/50 bg-white px-8 py-8 shadow-sm transition-shadow duration-75 hover:shadow-md md:px-6 dark:border-zinc-800/80 dark:bg-gray-950"
+    class:list={[
+      "flex h-full flex-col items-start justify-between gap-4 bg-white px-8 py-8 md:px-6 dark:bg-gray-950",
+      // "rounded-lg border-2 border-neutral-300/50 shadow-sm transition-shadow duration-75 hover:shadow-md dark:border-zinc-800/80",
+    ]}
   >
     <slot name="title" />
     <div class="w-full">

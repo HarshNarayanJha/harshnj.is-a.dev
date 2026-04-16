@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "placeholder.png",
+  "name": "3ds-typer",
+  "github": "https://github.com/HarshNarayanJha/3ds-typer",
+  "text": "A homebrew typing game for the Nintendo 3DS written in C++ using the DevKitPro toolkit and citro2d.",
+  "domains": ["Game Dev", "Systems"],
+  "tags": ["C++", "Homebrew", "Nintendo 3DS"],
+  "featured": false,
+  "year": 2025,
+  "status": "Completed"
+}

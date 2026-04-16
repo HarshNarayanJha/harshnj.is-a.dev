@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../.astro/collections/projects.schema.json",
+  "img": "placeholder.png",
+  "name": "KabuAI",
+  "url": "https://kabuai.onrender.com",
+  "github": "https://github.com/HarshNarayanJha/KabuAI",
+  "text": "A multi-agent AI assistant for stock market analysis. Built with LangGraph and FastAPI, it routes queries to specialized agents for live stock data, news, and financial analysis.",
+  "domains": ["AI/ML", "Web"],
+  "tags": ["Python", "FastAPI", "Streamlit", "LangChain"],
+  "featured": true,
+  "year": 2025,
+  "status": "Completed"
+}

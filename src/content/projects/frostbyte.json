@@ -4,10 +4,10 @@
   "name": "Frostbyte",
   "url": "https://harshnarayanjha.itch.io/frostbyte",
   "github": "https://github.com/HarshNarayanJha/frostbyte",
-  "text": "My Submission for 1-Bit #5 Game Jam ",
-  "tags": [
-    "Godot",
-    "Game Development",
-    "Game Design"
-  ]
+  "text": "A winter-themed platformer utilizing a strict two-color palette. Submitted for the 1-Bit #5 Game Jam. Ranked #20 out of 206 entries.",
+  "domains": ["Game Dev"],
+  "tags": ["Godot", "GDScript", "Game Jam", "1-Bit"],
+  "featured": false,
+  "year": 2025,
+  "status": "Completed"
 }

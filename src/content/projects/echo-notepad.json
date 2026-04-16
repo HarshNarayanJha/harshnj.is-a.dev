@@ -2,12 +2,11 @@
   "$schema": "../../../.astro/collections/projects.schema.json",
   "img": "placeholder.png",
   "name": "Echo - Notepad",
-  "url": "https://echo-notepad.netlify.app",
-  "github": "https://github.com/HarshNarayanJha/echo-server",
-  "text": "Realtime private notepad for you and your friends to write in sync",
-  "tags": [
-    "Vuejs",
-    "SocketIO",
-    "Javascript"
-  ]
+  "github": "https://github.com/HarshNarayanJha/echo-client",
+  "text": "A real-time synchronized notepad built with Vue, TypeScript, and Socket.io, featuring live client-server text synchronization.",
+  "domains": ["Web"],
+  "tags": ["Vue.js", "TypeScript", "Socket.io"],
+  "featured": false,
+  "year": 2024,
+  "status": "Completed"
 }

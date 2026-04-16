@@ -4,13 +4,10 @@
   "name": "SmartMed",
   "url": "https://smartmed-wli7.onrender.com/",
   "github": "https://github.com/HarshNarayanJha/smartmed",
-  "featured": true,
-  "text": "A web application that helps doctors manage their patients, readings and reports with the help of AI, providing personalized insights and recommendations.",
-  "tags": [
-    "Next.js",
-    "Supabase",
-    "Google Gemini",
-    "Prisma",
-    "Tailwind"
-  ]
+  "text": "A medical management web app built with Next.js and Supabase, designed to help doctors manage patient medical records and appointments.",
+  "domains": ["Web"],
+  "tags": ["Next.js", "TypeScript", "Supabase", "Fullstack"],
+  "featured": false,
+  "year": 2025,
+  "status": "Completed"
 }

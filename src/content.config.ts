@@ -11,8 +11,12 @@ const projects = defineCollection({
       url: z.string().optional(),
       github: z.string().optional(),
       text: z.string(),
+      domains: z.array(z.enum(["Web", "Mobile", "Desktop", "Game Dev", "Systems", "AI/ML"])),
       tags: z.array(z.string()),
       featured: z.boolean().default(false),
+      year: z.number().int().optional(),
+      status: z.enum(["Active", "Completed", "Archived", "WIP"]).default("WIP"),
+      visible: z.boolean().default(true),
     }),
 })
 
@@ -57,7 +61,7 @@ const blogs = defineCollection({
       title: z.string(),
       isPublished: z.boolean().default(false),
       pubDate: z.date().optional(),
-      description: z.string().max(70),
+      description: z.string().max(160),
       author: z.string(),
       image: z.preprocess(val => (val ? `@/img/blogs/${val}` : ""), image()).optional(),
       tags: z.array(z.string()),
