@@ -12,6 +12,7 @@ export const accounts = [
   { name: "TryHackMe", path: "https://tryhackme.com/p/harshnj" },
 ]
 
+// https://simpleicons.org
 export const skills = [
   // languages
   {
@@ -62,6 +63,13 @@ export const skills = [
     tooltip: "Now this is what I make mobile Apps in!",
     logo: "skills/kotlin",
     color: "#7F52FF",
+    darkColor: "#A78BFA",
+  },
+  {
+    name: "C#",
+    tooltip: "Very fun language to write, been exploring .NET, it's fun.",
+    logo: "skills/csharp",
+    color: "#79288d",
     darkColor: "#A78BFA",
   },
 
