@@ -10,6 +10,8 @@ import Hero from "@/components/sections/Hero.astro"
 import Work from "@/components/sections/Work.astro"
 import Layout from "@/layouts/Layout.astro"
 
+import SkillsBoard from "@/components/sections/SkillsBoard.astro"
+
 import { RESUME_PATH } from "@/utils/data"
 
 import me from "@/img/me.png"
@@ -38,7 +40,10 @@ import me from "@/img/me.png"
     </Card>
   </section>
 
-  <!-- something must exist here -->
+  <!-- Skills section -->
+  <section id="skills" class="w-full px-2 py-8 md:p-16">
+    <SkillsBoard />
+  </section>
 
   <section id="featured-posts" class="px-2 py-8 md:p-16">
     <div class="mb-2 ps-2 md:mb-8 md:ps-16">

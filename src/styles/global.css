@@ -9,6 +9,9 @@
   --foreground: #050505;
   --card: #fff;
   --card-foreground: #101010;
+  --card-muted: #f0f0f0;
+  --card-muted-foreground: #202020;
+  --muted: #6b7280;
 }
 
 .dark {
@@ -16,7 +19,10 @@
   --background: #050505;
   --foreground: #f9f9f9;
   --card: #111111;
-  --card-foreground: #eeeeee;
+  --card-foreground: #eee;
+  --card-muted: #2e2e2e;
+  --card-muted-foreground: #ddd;
+  --muted: #9ca3af;
 }
 
 @theme inline {
@@ -34,6 +40,9 @@
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  --color-card-muted: var(--card-muted);
+  --color-card-muted-foreground: var(--card-muted-foreground);
+  --color-muted: var(--muted);
 }
 
 @layer base {

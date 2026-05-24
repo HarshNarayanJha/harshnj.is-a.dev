@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content"
-
-import WorkCard from "@/components/cards/WorkCard.astro"
+import { Icon } from "astro-icon/components"
+import { Picture } from "astro:assets"
 import { formatMonth } from "@/utils"
 
 const works = (await getCollection("experiences", ({ data }) => data.type == "work")).sort(
@@ -9,34 +9,103 @@ const works = (await getCollection("experiences", ({ data }) => data.type == "wo
 )
 ---
 
-<div class="mx-auto flex max-w-5xl flex-col items-center px-8 py-8 md:px-15 md:py-10">
-  {
-    works.map(work => (
-      <WorkCard class="mx-auto my-4" work={work.data}>
-        <Fragment slot="title">
-          <h3 class="text-2xl font-semibold">{work.data.at}</h3>
-          <h4 class="font-normal italic">{work.data.location}</h4>
+<div class="mx-auto max-w-4xl px-4 py-8">
+  <div
+    class="relative space-y-8 border-l-2 border-dashed border-neutral-200 py-2 pl-6 md:pl-8 dark:border-neutral-800"
+  >
+    {
+      works.map(work => {
+        const durationStr = `${formatMonth(work.data.start)} — ${
+          work.data.end === "PRESENT" ? "PRESENT" : formatMonth(work.data.end)
+        }`
 
-          <h4 class="mt-2 text-sm font-semibold">
-            {formatMonth(work.data.start)} &mdash;{" "}
-            {work.data.end === "PRESENT" ? "PRESENT" : formatMonth(work.data.end)}
-          </h4>
-        </Fragment>
+        return (
+          <div class="group relative">
+            {/* Timeline node */}
+            <span class="bg-background ring-background absolute top-1.5 -left-7.75 flex h-4 w-4 items-center justify-center rounded-full border-2 border-teal-500 ring-4 transition-colors duration-300 group-hover:bg-teal-500 md:-left-9.75">
+              <span class="group-hover:bg-background h-1.5 w-1.5 rounded-full bg-teal-500 transition-colors duration-300" />
+            </span>
 
-        <p
-          class="prose dark:prose-invert my-4 line-clamp-4 max-w-none! text-justify leading-6 md:line-clamp-2"
-          slot="text"
-        >
-          {work.data.description}
-        </p>
-      </WorkCard>
-    ))
-  }
+            {/* collapsible git log */}
+            <details class="group/details bg-card text-card-foreground overflow-hidden rounded-xl border border-neutral-200/60 shadow-xs transition-all duration-300 dark:border-neutral-800/80">
+              <summary class="flex cursor-pointer list-none flex-col gap-2 p-4 select-none hover:bg-neutral-50/50 dark:hover:bg-neutral-900/20 [&::-webkit-details-marker]:hidden">
+                {/* Row 1: Company Logo, Link & Duration */}
+                <div class="flex w-full items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    {work.data.logo && (
+                      <Picture
+                        src={work.data.logo}
+                        formats={["webp", "avif"]}
+                        alt={work.data.at}
+                        width={24}
+                        height={24}
+                        class="h-6 w-6 shrink-0 rounded-md border border-neutral-200/50 object-contain dark:border-neutral-800/80"
+                      />
+                    )}
+
+                    <div class="font-heading flex items-center gap-1 text-sm font-semibold">
+                      {work.data.link ? (
+                        <a
+                          href={work.data.link}
+                          target="_blank"
+                          class="flex items-center gap-0.5 text-teal-500 hover:underline dark:text-teal-400"
+                        >
+                          {work.data.at}
+                          <Icon name="link" class="inline h-3.5 w-3.5" />
+                        </a>
+                      ) : (
+                        <span class="text-teal-500 dark:text-teal-400">{work.data.at}</span>
+                      )}
+                    </div>
+                  </div>
+
+                  <span class="text-muted shrink-0 rounded-md bg-neutral-100 px-2.5 py-1 font-mono text-xs font-semibold dark:bg-neutral-900">
+                    {durationStr}
+                  </span>
+                </div>
+
+                {/* Row 2: Role & Location */}
+                <div class="mt-0.5 flex w-full items-center justify-between pl-8.5">
+                  <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">
+                    {work.data.role}
+                  </span>
+
+                  <div class="flex items-center gap-3">
+                    <span class="text-muted font-mono text-xs italic">{work.data.location}</span>
+
+                    <Icon
+                      name="menu"
+                      class="text-muted h-4 w-4 transition-transform duration-300 group-open/details:rotate-90 group-hover/details:text-neutral-600 dark:group-hover/details:text-neutral-400"
+                    />
+                  </div>
+                </div>
+              </summary>
+
+              <div class="space-y-4 border-t border-neutral-100 px-5 pt-1 pb-5 font-sans text-sm text-neutral-700 dark:border-neutral-900/60 dark:text-neutral-300">
+                <p class="text-justify leading-relaxed">{work.data.description}</p>
+
+                {work.data.points && work.data.points.length > 0 && (
+                  <ul class="ml-1 space-y-2 border-l border-neutral-200 pl-4 dark:border-neutral-800">
+                    {work.data.points.map(pt => (
+                      <li class="before:text-muted relative pl-7 text-xs leading-relaxed before:absolute before:left-1.5 before:font-mono before:content-['├─'] md:text-sm">
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </details>
+          </div>
+        )
+      })
+    }
+  </div>
 </div>
-<div class="text-center">
+
+<div class="mt-6 text-center">
   <a
     href="/about#about-experiences"
-    class="prose dark:prose-invert underline underline-offset-2 transition-colors duration-300 hover:text-neutral-700 dark:hover:text-neutral-100"
+    class="prose dark:prose-invert text-sm font-semibold underline underline-offset-4 transition-colors duration-300 hover:text-teal-500 dark:hover:text-teal-400"
   >
     See more experiences &gtdot;
   </a>
