@@ -24,7 +24,7 @@ const featuredBlogs = (
       class="grid grid-cols-12 gap-4 border-b border-neutral-200/60 bg-neutral-50/50 px-5 py-3 font-mono text-xs font-bold tracking-wider text-neutral-400 uppercase select-none dark:border-neutral-800/60 dark:bg-neutral-900/10 dark:text-neutral-500"
     >
       <div class="col-span-3 sm:col-span-2">Date</div>
-      <div class="col-span-9 sm:col-span-8">Blog Title & Tags</div>
+      <div class="col-span-9 sm:col-span-8">Title</div>
       <div class="hidden text-right sm:col-span-2 sm:block">Read Time</div>
     </div>
 
@@ -36,9 +36,8 @@ const featuredBlogs = (
           const tagsStr = blog.data.tags.map(t => `#${t}`).join(" ")
 
           return (
-            <a
-              href={`/blog/${blog.id}`}
-              class="blog-hover-row grid grid-cols-12 items-center gap-4 px-5 py-4 transition-all duration-200 hover:bg-neutral-50/50 dark:hover:bg-neutral-900/20"
+            <div
+              class="blog-hover-row grid grid-cols-12 items-center gap-4 px-5 py-4 transition-all duration-200 hover:bg-neutral-50/50 dark:hover:bg-neutral-900/20 cursor-help"
               data-title={blog.data.title}
               data-desc={blog.data.description}
               data-img={imageSrc}
@@ -50,16 +49,19 @@ const featuredBlogs = (
               </div>
 
               <div class="col-span-9 flex flex-col gap-2 sm:col-span-8 sm:flex-row sm:items-center">
-                <span class="font-heading line-clamp-1 font-semibold text-neutral-800 transition-colors duration-200 hover:text-teal-500 dark:text-neutral-200 dark:hover:text-teal-400">
+                <a
+                  href={`/blog/${blog.id}`}
+                  class="font-heading line-clamp-1 font-semibold text-neutral-800 transition-colors duration-200 hover:text-teal-500 dark:text-neutral-200 dark:hover:text-teal-400"
+                >
                   {blog.data.title}
-                </span>
+                </a>
                 <span class="text-muted text-xs">{tagsStr}</span>
               </div>
 
               <div class="text-muted hidden text-right font-mono text-xs sm:col-span-2 sm:block">
                 {readingTime}
               </div>
-            </a>
+            </div>
           )
         })
       }

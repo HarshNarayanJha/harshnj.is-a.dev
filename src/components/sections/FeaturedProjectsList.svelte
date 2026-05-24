@@ -38,6 +38,68 @@ function getStatusColor(status: string) {
       return "border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400"
   }
 }
+
+// Hover card logic
+let hoverCard: HTMLElement | null = $state(null)
+let cardTitle: HTMLElement | null = $state(null)
+let cardDesc: HTMLElement | null = $state(null)
+let cardImg: HTMLImageElement | null = $state(null)
+let cardTags: HTMLElement | null = $state(null)
+let cardTime: HTMLElement | null = $state(null)
+
+$effect(() => {
+  hoverCard = document.getElementById("project-hover-card")
+  if (hoverCard) {
+    cardTitle = hoverCard.querySelector("[data-hover-title]")
+    cardDesc = hoverCard.querySelector("[data-hover-desc]")
+    cardImg = hoverCard.querySelector("[data-hover-img]")
+    cardTags = hoverCard.querySelector("[data-hover-tags]")
+    cardTime = hoverCard.querySelector("[data-hover-time]")
+  }
+})
+
+function showPreview(proj: Project) {
+  if (!hoverCard || !cardTitle || !cardDesc || !cardImg || !cardTags || !cardTime) return
+
+  cardTitle.textContent = proj.name
+  cardDesc.textContent = proj.text
+  cardTags.textContent =
+    proj.domains.map(d => `@${d}`).join(" ") + " " + proj.tags.map(t => `#${t}`).join(" ")
+  // cardTime.textContent = proj.year ? String(proj.year) : ""
+
+  const fallbackImg = "/_astro/placeholder.png"
+  const imageSrc = proj.img || fallbackImg
+  cardImg.src = imageSrc
+  cardImg.classList.remove("hidden")
+
+  hoverCard.classList.remove("opacity-0", "scale-95")
+  hoverCard.classList.add("opacity-100", "scale-100")
+}
+
+function movePreview(e: MouseEvent) {
+  if (!hoverCard) return
+  const cardWidth = hoverCard.offsetWidth || 320
+  const cardHeight = hoverCard.offsetHeight || 220
+
+  let x = e.clientX + 20
+  let y = e.clientY + 20
+
+  if (x + cardWidth > window.innerWidth) {
+    x = e.clientX - cardWidth - 20
+  }
+  if (y + cardHeight > window.innerHeight) {
+    y = e.clientY - cardHeight - 20
+  }
+
+  hoverCard.style.left = `${x}px`
+  hoverCard.style.top = `${y}px`
+}
+
+function hidePreview() {
+  if (!hoverCard) return
+  hoverCard.classList.remove("opacity-100", "scale-100")
+  hoverCard.classList.add("opacity-0", "scale-95")
+}
 </script>
 
 <div class="mx-auto max-w-4xl px-4 py-4 space-y-6">
@@ -68,18 +130,28 @@ function getStatusColor(status: string) {
     <div
       class="grid grid-cols-12 gap-4 px-5 py-3 items-center border-b border-neutral-200/60 dark:border-neutral-800/60 bg-neutral-50/50 dark:bg-neutral-900/10 text-xs font-mono font-bold text-muted uppercase tracking-wider select-none"
     >
-      <div class="col-span-12 md:col-span-4">Name</div>
-      <div class="hidden md:block md:col-span-5">Description</div>
-      <div class="hidden md:block md:col-span-3 text-right">Links</div>
+      <div class="col-span-12 md:col-span-4">Repository / Name</div>
+      <div class="hidden md:block md:col-span-5">Tagline, Domains & Stack</div>
+      <div class="hidden md:block md:col-span-3 text-right">Outbound / Source</div>
     </div>
 
     <!-- Rows -->
     <div class="divide-y divide-neutral-100 dark:divide-neutral-900/60">
       {#each filteredProjects as proj (proj.id)}
+        <!-- svelte-ignore a11y_mouse_events_have_key_events -->
         <div
           class="flex flex-col md:grid md:grid-cols-12 gap-4 px-5 py-4 md:items-center hover:bg-neutral-50/30 dark:hover:bg-neutral-900/10 transition-colors duration-200 group"
         >
-          <div class="col-span-12 md:col-span-4 flex items-center gap-3">
+          <!-- Column 1: Icon & Name & Badges -->
+          <div
+            class="col-span-12 md:col-span-4 flex items-center gap-3 cursor-help select-none"
+            onmouseenter={() => showPreview(proj)}
+            onmousemove={movePreview}
+            onmouseleave={hidePreview}
+            role="button"
+            tabindex="0"
+            onkeydown={e => e.key === "Enter" && showPreview(proj)}
+          >
             <span
               class="text-teal-500 bg-teal-500/10 dark:bg-teal-500/5 p-2 rounded-lg group-hover:scale-105 transition-transform duration-200 flex items-center justify-center shrink-0"
             >
@@ -125,7 +197,16 @@ function getStatusColor(status: string) {
             </div>
           </div>
 
-          <div class="col-span-12 md:col-span-5 space-y-1.5 pr-2 md:pl-0 pl-11">
+          <!-- Column 2: Tagline, Domains & Stack (visible everywhere with responsive sizes and margins) -->
+          <div
+            class="col-span-12 md:col-span-5 space-y-1.5 pr-2 md:pl-0 pl-11 cursor-help"
+            onmouseenter={() => showPreview(proj)}
+            onmousemove={movePreview}
+            onmouseleave={hidePreview}
+            role="button"
+            tabindex="0"
+            onkeydown={e => e.key === "Enter" && showPreview(proj)}
+          >
             <p class="text-xs leading-relaxed text-muted line-clamp-2 md:line-clamp-1">
               {proj.text}
             </p>
@@ -147,6 +228,7 @@ function getStatusColor(status: string) {
             </div>
           </div>
 
+          <!-- Column 3: Outbound / Source Links -->
           <div
             class="col-span-12 md:col-span-3 flex md:justify-end gap-2.5 md:mt-0 select-none md:pl-0 pl-11"
           >
@@ -187,7 +269,7 @@ function getStatusColor(status: string) {
                 href={proj.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800/80 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-850 transition-colors duration-200 dark:hover:bg-neutral-900"
+                class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800/80 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-850 transition-colors duration-200 dark:hover:bg-neutral-800"
               >
                 <span>Source</span>
                 <!-- Github icon SVG -->
@@ -209,7 +291,7 @@ function getStatusColor(status: string) {
               </a>
             {:else}
               <span
-                class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-neutral-400 dark:text-neutral-600 border border-dashed border-neutral-200 dark:border-neutral-800 rounded-lg cursor-not-allowed select-none"
+                class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-neutral-400 dark:text-neutral-600 border border-dashed border-neutral-200 dark:border-neutral-800 rounded-lg cursor-not-allowed select-none dark:bg-neutral-800"
               >
                 <span>Private</span>
               </span>

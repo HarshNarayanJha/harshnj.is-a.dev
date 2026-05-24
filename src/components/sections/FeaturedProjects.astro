@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content"
 import FeaturedProjectsList from "./FeaturedProjectsList.svelte"
+import HoverCard from "@/components/reusable/HoverCard.astro"
 
 const featuredProjects = await getCollection("projects", ({ data }) => data.featured)
 
@@ -23,11 +24,13 @@ const projectsData = sortedProjects.map(proj => ({
 
 <FeaturedProjectsList client:load projects={projectsData} />
 
+<HoverCard id="project-hover-card" />
+
 <div class="mt-6 text-center">
   <a
     href="/projects"
     class="prose dark:prose-invert text-sm font-semibold underline underline-offset-4 transition-colors duration-300 hover:text-teal-500 dark:hover:text-teal-400"
   >
-    Analyze more projects &gtdot;
+    See more projects &gtdot;
   </a>
 </div>
