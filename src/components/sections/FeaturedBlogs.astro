@@ -18,24 +18,26 @@ const featuredBlogs = (
 >
   {
     featuredBlogs.map(blog => (
-      <a href={`/blog/${blog.id}`} class="w-full">
-        <BlogCard class="mb-8 w-full" blog={blog}>
-          <h3 class="text-3xl font-semibold" slot="title">
-            {blog.data.title}
-          </h3>
+      <BlogCard class="mx-auto mb-8 w-full max-w-4xl" blog={blog}>
+        <h3 class="mt-2 text-3xl font-semibold" slot="title">
+          {blog.data.title}
+        </h3>
 
-          <p class="prose dark:prose-invert mt-2 line-clamp-4 md:line-clamp-2" slot="text">
-            {blog.data.description}
-          </p>
-        </BlogCard>
-      </a>
+        <p class="prose dark:prose-invert mt-0 line-clamp-4 md:line-clamp-2" slot="text">
+          {blog.data.description}
+          &nbsp;
+          <a class="text-sm" href={`/blog/${blog.id}`}>
+            Keep Reading &ShortRightArrow;
+          </a>
+        </p>
+      </BlogCard>
     ))
   }
 </div>
-<div class="mt-8 text-center">
+<div class="text-center">
   <a
     href="/blog"
-    class="prose dark:prose-invert underline underline-offset-2 transition-colors duration-300 hover:text-gray-700 dark:hover:text-gray-100"
+    class="prose dark:prose-invert underline underline-offset-2 transition-colors duration-300 hover:text-neutral-700 dark:hover:text-neutral-100"
   >
     See more blogs &gtdot;
   </a>

@@ -1,9 +1,9 @@
 ---
-import { getCollection } from "astro:content"
 import { Icon } from "astro-icon/components"
+import { getCollection } from "astro:content"
 
-import Layout from "@/layouts/Layout.astro"
 import ProjectCard from "@/components/cards/ProjectCard.astro"
+import Layout from "@/layouts/Layout.astro"
 
 const projects = await getCollection("projects")
 
@@ -12,11 +12,11 @@ const description = "Harsh Narayan Jha's Projects"
 ---
 
 <Layout title={title} description={description}>
-  <section class="h-auto w-full px-4 py-16 md:px-16 md:py-28">
+  <section class="h-auto w-full px-4 py-16 md:px-16 md:py-16">
     <div class="mx-auto text-center">
       <Icon name="project" class="m-2 inline" size={24} />
       <h2 class="mt-4 text-center text-4xl font-semibold">Selected Projects</h2>
-      <p class="mt-2 text-center text-gray-900/50 dark:text-gray-50/50">
+      <p class="mt-2 text-center text-neutral-900/50 dark:text-neutral-50/50">
         A showcase that I am proud of.
       </p>
     </div>

@@ -1,5 +1,8 @@
 ---
-const roles = ["Developer", "Problem Solver", "Open-Source contributor"]
+import Glyphs from "../reusable/Ghlyps.astro"
+
+// const roles = ["Developer", "Problem Solver", "Open-Source contributor"]
+const roles = ["Systems", "AI Engineering", "Full-Stack"]
 ---
 
 <main
@@ -10,21 +13,47 @@ const roles = ["Developer", "Problem Solver", "Open-Source contributor"]
     class="absolute m-auto aspect-square w-4/6 rounded-full bg-teal-500 opacity-30 blur-xl md:w-2/6 md:opacity-20 md:blur-[96px]"
   >
   </div>
+
+  <!-- Grid BG -->
+  <div
+    class="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-30 dark:opacity-25"
+    style="background-image: radial-gradient(var(--color-primary) 1px, transparent 1px); background-size: 24px 24px;"
+  >
+  </div>
+
   <h1
     id="hero-name"
-    class="font-hero z-10 mt-10 transform-gpu bg-gradient-to-r from-zinc-200 via-slate-600 via-40% bg-clip-text py-4 text-6xl font-black tracking-wide text-transparent sm:text-7xl md:text-8xl md:backdrop-blur-sm dark:from-stone-700 dark:via-zinc-200 dark:via-30% dark:to-zinc-50"
+    class="font-hero z-10 mt-10 transform-gpu bg-linear-to-r from-zinc-200 via-neutral-600 via-40% bg-clip-text py-4 text-6xl font-black tracking-wide text-transparent sm:text-7xl md:text-8xl md:backdrop-blur-sm dark:from-stone-700 dark:via-zinc-200 dark:via-30% dark:to-zinc-50"
     style="mask: linear-gradient(transparent, black 15%, black 85%, transparent)"
   >
     This is
     <span
-      class="bg-gradient-to-br from-green-500 from-20% via-sky-500 via-70% to-transparent bg-clip-text text-transparent md:drop-shadow-[0_0_8px_lightblue] dark:drop-shadow-[0_0_8px_black]"
+      class="bg-linear-to-br from-green-500 from-20% via-sky-500 via-70% to-transparent bg-clip-text text-transparent md:drop-shadow-[0_0_8px_lightblue] dark:drop-shadow-[0_0_8px_black]"
     >
       Harsh Narayan Jha
     </span>
   </h1>
-  <h2
+
+  <!-- <Glyphs /> -->
+
+  <div
+    class="font-array z-10 mt-8 hidden items-center gap-4 text-lg tracking-wider text-zinc-500 md:flex dark:text-zinc-400"
+  >
+    {
+      roles.map((role, index) => {
+        return (
+          <>
+            <span>{role.toUpperCase()}</span>
+            {index < roles.length - 1 && <span class="font-array text-emerald-500">x</span>}
+          </>
+        )
+      })
+    }
+  </div>
+  <!-- getting rid of "hero" tags for now -->
+  <!-- <h2
     id="hero-tags"
-    class="font-array z-10 mt-4 animate-pulse py-4 text-xl font-semibold text-slate-700 opacity-90 md:mt-8 md:text-2xl md:backdrop-blur dark:text-slate-300"
+    class="font-array z-10 mt-4 animate-pulse py-4 text-xl font-semibold text-neutral-700 opacity-90 md:mt-8 md:text-2xl md:backdrop-blur dark:text-neutral-300"
     style="mask: linear-gradient(transparent, black 25%, black 75%, transparent)"
   >
     {
@@ -34,5 +63,5 @@ const roles = ["Developer", "Problem Solver", "Open-Source contributor"]
         </span>
       ))
     }
-  </h2>
+  </h2> -->
 </main>

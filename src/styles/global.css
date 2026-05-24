@@ -3,17 +3,37 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-  --aspect-pi: 22 / 7;
+:root {
+  --primary: #00a0e9;
+  --background: #fafafa;
+  --foreground: #050505;
+  --card: #fff;
+  --card-foreground: #101010;
+}
+
+.dark {
+  --primary: #00a0e9;
+  --background: #050505;
+  --foreground: #f9f9f9;
+  --card: #111111;
+  --card-foreground: #eeeeee;
 }
 
 @theme inline {
+  --aspect-pi: 22 / 7;
+
   --font-hero: var(--font-plein);
   --font-heading: var(--font-satoshi);
   --font-sans: var(--font-switzer);
   --font-array: var(--font-array);
   --font-hand: var(--font-architects-daughter);
   --font-mono: var(--font-monaspace-argon);
+
+  --color-primary: var(--primary);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
 }
 
 @layer base {
@@ -48,14 +68,18 @@
     text-decoration-thickness: 0.5px;
     font-weight: 500;
   }
-}
 
-html {
-  scroll-behavior: smooth;
-}
+  body {
+    @apply bg-background text-foreground;
+  }
 
-@media (prefers-reduced-motion: reduce) {
   html {
-    scroll-behavior: auto;
+    @apply scroll-smooth font-sans;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      @apply scroll-auto;
+    }
   }
 }

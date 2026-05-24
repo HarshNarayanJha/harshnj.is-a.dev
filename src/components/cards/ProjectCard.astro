@@ -16,8 +16,8 @@ const { class: className, proj, ...rest } = Astro.props
 <TransparentBorder class:list={[className, "border-0"]} {rest}>
   <div
     class:list={[
-      "flex h-full flex-col items-start justify-start gap-4 bg-white px-8 py-8 sm:gap-8 md:px-6 dark:bg-gray-950",
-      // "rounded-lg border-2 border-neutral-300/50 shadow-sm transition-shadow duration-75 hover:shadow-md dark:border-zinc-800/50",
+      "bg-card text-card-foreground flex h-full flex-col items-start justify-start gap-4 rounded-lg px-8 py-8 sm:gap-8 md:px-6",
+      // "shadow-neutral-600/50 drop-shadow-sm",
     ]}
   >
     <div class="mx-auto flex flex-1 flex-col place-content-center">
@@ -25,7 +25,7 @@ const { class: className, proj, ...rest } = Astro.props
         src={proj.img}
         formats={["webp", "avif"]}
         alt={proj.name}
-        class="aspect-video rounded-2xl border-2 border-b-0 border-slate-200/50 object-contain object-center dark:border-slate-600/50"
+        class="aspect-video rounded-2xl border-2 border-b-0 border-neutral-200/50 object-contain object-center dark:border-neutral-600/50"
         width={400}
         layout="constrained"
       />
@@ -38,7 +38,7 @@ const { class: className, proj, ...rest } = Astro.props
     <div class="grid w-full grid-cols-2 gap-2">
       {
         proj.url ? (
-          <a href={proj.url} target="_blank" rel="noopener noreferrer">
+          <a href={proj.url} target="_blank">
             <button
               class:list={[
                 "cursor-newtab w-full rounded-md bg-teal-500/85 py-2 font-semibold text-white outline outline-offset-2 outline-teal-500/25 dark:bg-teal-500/85 dark:outline-teal-600/50",
@@ -64,7 +64,7 @@ const { class: className, proj, ...rest } = Astro.props
       }
       {
         proj.github ? (
-          <a href={proj.github} target="_blank" rel="noopener noreferrer">
+          <a href={proj.github} target="_blank">
             <button
               class="cursor-newtab w-full rounded-md bg-neutral-500 py-2 font-semibold text-white dark:bg-neutral-600"
               tabindex="-1"

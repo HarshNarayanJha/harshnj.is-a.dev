@@ -12,8 +12,7 @@ const { class: className, ...rest } = Astro.props
 <TransparentBorder class:list={[className, "border-0"]} {rest}>
   <div
     class:list={[
-      "flex h-full flex-col items-center justify-start gap-8 bg-white p-12 will-change-transform md:flex-row md:p-4 dark:bg-gray-950",
-      // "rounded-lg border-2 border-slate-300/50 shadow-lg dark:border-zinc-700/50 ",
+      "bg-card/80 text-card-foreground flex h-full flex-col items-center justify-start gap-8 rounded-lg p-12 backdrop-blur-xs will-change-transform md:flex-row md:p-4",
     ]}
   >
     <div class="self-center">

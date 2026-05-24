@@ -17,7 +17,7 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
   <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
     <path
       d="M0,60 C150,80 250,50 400,70 C550,90 650,40 800,60 C950,80 1050,40 1200,60 L1200,0 L0,0 Z"
-      class="fill-slate-50 dark:fill-gray-950"></path>
+      class="fill-neutral-50 dark:fill-gray-950"></path>
   </svg>
 </div> -->
 <TransparentDivider />
@@ -48,7 +48,7 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
     <div class="flex flex-row gap-2">
       <a
         href="mailto:me@harshnj.is-a.dev?subject=Hey Harsh!"
-        class="text-gray-800/50 dark:text-gray-300/50"
+        class="text-neutral-800/50 dark:text-neutral-300/50"
         data-tippy-content="Email Me"
       >
         <Icon name="email" size={22} />
@@ -59,8 +59,7 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
           <a
             href={social.path}
             target="_blank"
-            rel="noopener noreferrer"
-            class="text-gray-800/50 dark:text-gray-300/50"
+            class="text-neutral-800/50 dark:text-neutral-300/50"
             data-tippy-content={`My ${social.name}`}
           >
             <Icon name={social.icon} size={22} />
@@ -70,10 +69,9 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
       }
       <a
         href={KEYBASE_ACCOUNT_URI}
-        class="cursor-newtab text-gray-800/50 dark:text-gray-300/50"
+        class="cursor-newtab text-neutral-800/50 dark:text-neutral-300/50"
         data-tippy-content="My Keybase"
         target="_blank"
-        rel="noopener noreferrer"
       >
         <Icon name="key" size={22} />
         <span class="sr-only">My Keybase</span>
@@ -85,7 +83,7 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
   </div>
   <div class="grid grid-cols-3 gap-4 text-sm">
     <ul class="space-y-2">
-      <li class="mb-2 font-semibold text-gray-700/50 dark:text-gray-200/50">Main Stuff</li>
+      <li class="mb-2 font-semibold text-neutral-700/50 dark:text-neutral-200/50">Main Stuff</li>
       <li>
         <a href="/"> Home </a>
       </li>
@@ -101,11 +99,11 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
       </li>
     </ul>
     <ul class="space-y-2">
-      <li class="mb-2 font-semibold text-gray-700/50 dark:text-gray-200/50">My Accounts</li>
+      <li class="mb-2 font-semibold text-neutral-700/50 dark:text-neutral-200/50">My Accounts</li>
       {
         accounts.map(acc => (
           <li>
-            <a href={acc.path} target="_blank" rel="noopener noreferrer" class="cursor-newtab">
+            <a href={acc.path} target="_blank" class="cursor-newtab">
               {acc.name}
             </a>
           </li>
@@ -113,7 +111,7 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
       }
     </ul>
     <ul class="space-y-2">
-      <li class="mb-2 font-semibold text-gray-700/50 dark:text-gray-200/50">Site Stuff</li>
+      <li class="mb-2 font-semibold text-neutral-700/50 dark:text-neutral-200/50">Site Stuff</li>
       <li>
         <a href="/colophon">Colophon</a>
       </li>

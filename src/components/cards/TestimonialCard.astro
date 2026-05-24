@@ -16,8 +16,8 @@ const { class: className, testimonial, ...rest } = Astro.props
 <TransparentBorder class:list={[className, "border-0"]} {rest}>
   <div
     class:list={[
-      "flex h-full flex-col items-start justify-between gap-4 bg-white px-8 py-8 md:px-6 dark:bg-gray-950",
-      // "rounded-lg border-2 border-neutral-300/50 shadow-sm transition-shadow duration-75 hover:shadow-md dark:border-zinc-800/80",
+      "bg-card text-card-foreground flex h-full flex-col items-start justify-between gap-4 rounded-lg px-8 py-8 md:px-6",
+      // "shadow-neutral-600/50 drop-shadow-sm",
     ]}
   >
     <slot name="title" />

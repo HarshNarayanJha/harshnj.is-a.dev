@@ -1,13 +1,13 @@
 ---
-import { Image } from "astro:assets"
 import { Icon } from "astro-icon/components"
+import { Image } from "astro:assets"
 import { getCollection } from "astro:content"
 
-import Layout from "@/layouts/Layout.astro"
+import StatusBadge from "@/components/reusable/StatusBadge.astro"
 import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
+import Layout from "@/layouts/Layout.astro"
 import { formatMonth } from "@/utils"
 import { KEYBASE_ACCOUNT_URI, PGP_PUBLIC_KEY, PGP_PUBLIC_KEY_SIG, skills } from "@/utils/data"
-import StatusBadge from "@/components/reusable/StatusBadge.astro"
 
 const experiences = (await getCollection("experiences")).sort(
   (a, b) => b.data.start.valueOf() - a.data.start.valueOf(),
@@ -58,7 +58,7 @@ const description = "Harsh Narayan Jha's About Page"
             return (
               <div
                 style={{ "--hover-color": skill.color, "--hover-dark-color": skill.darkColor }}
-                class="group flex aspect-square items-center justify-center overflow-x-clip bg-transparent transition-colors hover:bg-gray-200/70 hover:dark:bg-gray-700/70"
+                class="group flex aspect-square items-center justify-center overflow-x-clip bg-transparent transition-colors hover:bg-neutral-200/70 hover:dark:bg-neutral-700/70"
                 data-tippy-content={skill.tooltip}
               >
                 <Icon
@@ -87,7 +87,7 @@ const description = "Harsh Narayan Jha's About Page"
 
         <br /><br />
         My keybase account is
-        <a href={KEYBASE_ACCOUNT_URI} target="_blank" rel="noopener noreferrer"> @harshnj </a>.
+        <a href={KEYBASE_ACCOUNT_URI} target="_blank"> @harshnj </a>.
       </p>
     </div>
   </section>
@@ -132,7 +132,6 @@ const description = "Harsh Narayan Jha's About Page"
                       <a
                         href={exp.data.link}
                         target="_blank"
-                        rel="noopener noreferrer"
                         class="font-medium underline decoration-neutral-400/75 underline-offset-2 transition-colors hover:decoration-inherit"
                       >
                         {exp.data.at}

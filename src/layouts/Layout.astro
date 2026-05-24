@@ -51,7 +51,6 @@ const ogDescription = description
     <title>{title}</title>
 
     <meta name="description" content={description} />
-
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
 
@@ -121,14 +120,14 @@ const ogDescription = description
       })
     </script>
   </head>
-  <body class="bg-slate-50 text-neutral-800 dark:bg-gray-950 dark:text-slate-100">
+  <body class="bg-background text-foreground">
     <Navbar />
 
     <div class="min-h-svh min-w-full">
       <slot />
     </div>
 
-    <section id="footer" class="bg-slate-50 pt-8 md:px-40 dark:bg-gray-950">
+    <section id="footer" class="bg-background pt-8 md:px-40">
       <Footer />
     </section>
   </body>
