@@ -5,7 +5,9 @@ import { getCollection } from "astro:content"
 import ProjectCard from "@/components/cards/ProjectCard.astro"
 import Layout from "@/layouts/Layout.astro"
 
-const projects = await getCollection("projects")
+const projects = (await getCollection("projects", ({ data }) => data.visible)).sort(
+  (a, b) => b.data.year!.valueOf() - a.data.year!.valueOf(),
+)
 
 const title = "Projects | Harsh Narayan Jha"
 const description = "Harsh Narayan Jha's Projects"
