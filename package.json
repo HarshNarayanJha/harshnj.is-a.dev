@@ -10,24 +10,24 @@
   },
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.10",
-    "@astrojs/mdx": "5.0.3",
+    "@astrojs/mdx": "5.0.6",
     "@astrojs/sitemap": "3.7.2",
-    "@astrojs/svelte": "8.0.4",
+    "@astrojs/svelte": "8.1.1",
     "@popperjs/core": "^2.11.8",
-    "@tailwindcss/vite": "^4.2.2",
-    "astro": "6.1.3",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "6.3.7",
     "astro-font-picker": "^0.2.2",
     "astro-icon": "^1.1.5",
-    "astro-theme-toggle": "^0.8.0",
+    "astro-theme-toggle": "^0.8.1",
     "remark-toc": "^9.0.0",
-    "svelte": "^5.55.1",
-    "tailwindcss": "^4.2.2",
+    "svelte": "^5.55.9",
+    "tailwindcss": "^4.3.0",
     "tippy.js": "^6.3.7",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
-    "@types/bun": "^1.3.11",
+    "@types/bun": "^1.3.14",
     "mdast-util-from-markdown": "^2.0.3",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0"
