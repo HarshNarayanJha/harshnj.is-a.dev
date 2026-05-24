@@ -21,6 +21,7 @@ export const skills = [
     logo: "skills/python",
     color: "#3776AB",
     darkColor: "#5A9FD4",
+    skillType: "fullstack",
   },
   {
     name: "TypeScript",
@@ -28,6 +29,7 @@ export const skills = [
     logo: "skills/ts",
     color: "#2563EB",
     darkColor: "#60A5FA",
+    skillType: "fullstack",
   },
   {
     name: "JavaScript",
@@ -35,6 +37,7 @@ export const skills = [
     logo: "skills/js",
     color: "#EAB308",
     darkColor: "#FACC15",
+    skillType: "fullstack",
   },
   {
     name: "Rust",
@@ -42,6 +45,7 @@ export const skills = [
     logo: "skills/rust",
     color: "#1C1C1C",
     darkColor: "#F97316",
+    skillType: "systems",
   },
   {
     name: "Golang",
@@ -49,6 +53,7 @@ export const skills = [
     logo: "skills/golang",
     color: "#00ADD8",
     darkColor: "#008BBF",
+    skillType: "systems",
   },
   {
     name: "C++",
@@ -57,6 +62,7 @@ export const skills = [
     logo: "skills/cpp",
     color: "#00599C",
     darkColor: "#3B82F6",
+    skillType: "systems",
   },
   {
     name: "Kotlin",
@@ -64,6 +70,7 @@ export const skills = [
     logo: "skills/kotlin",
     color: "#7F52FF",
     darkColor: "#A78BFA",
+    skillType: "intelligence",
   },
   {
     name: "C#",
@@ -71,6 +78,7 @@ export const skills = [
     logo: "skills/csharp",
     color: "#79288d",
     darkColor: "#A78BFA",
+    skillType: "intelligence",
   },
 
   // frontend
@@ -80,6 +88,7 @@ export const skills = [
     logo: "skills/svelte",
     color: "#FF3E00",
     darkColor: "#FF6A3D",
+    skillType: "fullstack",
   },
   {
     name: "React",
@@ -87,6 +96,7 @@ export const skills = [
     logo: "skills/react",
     color: "#0EA5E9",
     darkColor: "#67E8F9",
+    skillType: "fullstack",
   },
   {
     name: "Next.js",
@@ -94,6 +104,7 @@ export const skills = [
     logo: "skills/next",
     color: "#111111",
     darkColor: "#E5E7EB",
+    skillType: "fullstack",
   },
   {
     name: "Vue.js",
@@ -101,6 +112,7 @@ export const skills = [
     logo: "skills/vue",
     color: "#059669",
     darkColor: "#6EE7B7",
+    skillType: "fullstack",
   },
   {
     name: "Tailwind",
@@ -108,6 +120,7 @@ export const skills = [
     logo: "skills/tailwind",
     color: "#0891B2",
     darkColor: "#67E8F9",
+    skillType: "fullstack",
   },
 
   // backend & apis
@@ -117,6 +130,7 @@ export const skills = [
     logo: "skills/django",
     color: "#0F3E2E",
     darkColor: "#1C7C54",
+    skillType: "fullstack",
   },
   {
     name: "FastAPI",
@@ -124,6 +138,7 @@ export const skills = [
     logo: "skills/fastapi",
     color: "#009688",
     darkColor: "#00796B",
+    skillType: "fullstack",
   },
   {
     name: "Drizzle",
@@ -131,6 +146,7 @@ export const skills = [
     logo: "skills/drizzle",
     color: "#6AA21A",
     darkColor: "#A0E83F",
+    skillType: "fullstack",
   },
 
   // databases
@@ -140,6 +156,7 @@ export const skills = [
     logo: "skills/postgresql",
     color: "#4169E1",
     darkColor: "#87CEEB",
+    skillType: "fullstack",
   },
   {
     name: "MongoDB",
@@ -147,6 +164,7 @@ export const skills = [
     logo: "skills/mongo",
     color: "#16A34A",
     darkColor: "#4ADE80",
+    skillType: "fullstack",
   },
 
   // devops & cloud
@@ -156,6 +174,7 @@ export const skills = [
     logo: "skills/docker",
     color: "#0284C7",
     darkColor: "#38BDF8",
+    skillType: "systems",
   },
   {
     name: "Podman",
@@ -163,6 +182,7 @@ export const skills = [
     logo: "skills/podman",
     color: "#7C3AED",
     darkColor: "#C084FC",
+    skillType: "systems",
   },
   {
     name: "Supabase",
@@ -170,6 +190,7 @@ export const skills = [
     logo: "skills/supabase",
     color: "#16A34A",
     darkColor: "#4ADE80",
+    skillType: "fullstack",
   },
   {
     name: "AWS",
@@ -177,6 +198,7 @@ export const skills = [
     logo: "skills/aws",
     color: "#D97706",
     darkColor: "#FBBF24",
+    skillType: "systems",
   },
   {
     name: "GitHub Actions",
@@ -184,6 +206,7 @@ export const skills = [
     logo: "skills/githubactions",
     color: "#2088FF",
     darkColor: "#E5E7EB",
+    skillType: "fullstack",
   },
 
   // tools & systems
@@ -193,6 +216,7 @@ export const skills = [
     logo: "skills/git",
     color: "#DC2626",
     darkColor: "#F87171",
+    skillType: "systems",
   },
   {
     name: "Arch Linux",
@@ -201,6 +225,7 @@ export const skills = [
     logo: "skills/arch",
     color: "#0EA5E9",
     darkColor: "#0EA5E9",
+    skillType: "systems",
   },
   {
     name: "Zed",
@@ -208,6 +233,7 @@ export const skills = [
     logo: "skills/zed",
     color: "#1D4ED8",
     darkColor: "#D1D5DB",
+    skillType: "systems",
   },
   {
     name: "Hyprland",
@@ -215,6 +241,7 @@ export const skills = [
     logo: "skills/hyprland",
     color: "#06B6D4",
     darkColor: "#67E8F9",
+    skillType: "systems",
   },
 
   // ml / data
@@ -224,6 +251,7 @@ export const skills = [
     logo: "skills/pytorch",
     color: "#EE4C2C",
     darkColor: "#FF6A3D",
+    skillType: "intelligence",
   },
 
   // creative / game dev
@@ -233,6 +261,7 @@ export const skills = [
     logo: "skills/godot",
     color: "#3B82F6",
     darkColor: "#60A5FA",
+    skillType: "intelligence",
   },
   {
     name: "Unity",
@@ -240,6 +269,7 @@ export const skills = [
     logo: "skills/unity",
     color: "#111111",
     darkColor: "#D1D5DB",
+    skillType: "intelligence",
   },
   {
     name: "Blender",
@@ -247,6 +277,7 @@ export const skills = [
     logo: "skills/blender",
     color: "#EA580C",
     darkColor: "#FB923C",
+    skillType: "intelligence",
   },
 
   // personal / niche tools
@@ -256,6 +287,7 @@ export const skills = [
     logo: "skills/obsidian",
     color: "#7C3AED",
     darkColor: "#A78BFA",
+    skillType: "intelligence",
   },
   {
     name: "Typst",
@@ -263,6 +295,7 @@ export const skills = [
     logo: "skills/typst",
     color: "#239DAD",
     darkColor: "#4FD1E0",
+    skillType: "intelligence",
   },
 ]
 

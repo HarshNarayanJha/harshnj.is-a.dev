@@ -1,7 +1,10 @@
 ---
 import { getCollection } from "astro:content"
+import { formatDate } from "@/utils"
+import { getReadingTime } from "@/utils/reading-time"
+import placeholderImage from "@/img/placeholder.png"
 
-import BlogCard from "@/components/cards/BlogCard.astro"
+import HoverCard from "@/components/reusable/HoverCard.astro"
 
 const featuredBlogs = (
   await getCollection(
@@ -13,32 +16,135 @@ const featuredBlogs = (
   .slice(0, 3)
 ---
 
-<div
-  class="m-auto flex max-w-6xl flex-col flex-wrap justify-center px-4 py-2 md:flex-row md:px-4 md:py-4"
->
-  {
-    featuredBlogs.map(blog => (
-      <BlogCard class="mx-auto mb-8 w-full max-w-4xl" blog={blog}>
-        <h3 class="mt-2 text-3xl font-semibold" slot="title">
-          {blog.data.title}
-        </h3>
+<div class="relative mx-auto max-w-4xl px-4 py-6 font-mono text-sm">
+  <div
+    class="bg-card text-card-foreground overflow-hidden rounded-xl border border-neutral-200/60 shadow-xs dark:border-neutral-800/80"
+  >
+    <div
+      class="grid grid-cols-12 gap-4 border-b border-neutral-200/60 bg-neutral-50/50 px-5 py-3 font-mono text-xs font-bold tracking-wider text-neutral-400 uppercase select-none dark:border-neutral-800/60 dark:bg-neutral-900/10 dark:text-neutral-500"
+    >
+      <div class="col-span-3 sm:col-span-2">Date</div>
+      <div class="col-span-9 sm:col-span-8">Title</div>
+      <div class="hidden text-right sm:col-span-2 sm:block">Read Time</div>
+    </div>
 
-        <p class="prose dark:prose-invert mt-0 line-clamp-4 md:line-clamp-2" slot="text">
-          {blog.data.description}
-          &nbsp;
-          <a class="text-sm" href={`/blog/${blog.id}`}>
-            Keep Reading &ShortRightArrow;
-          </a>
-        </p>
-      </BlogCard>
-    ))
-  }
+    <div class="divide-y divide-neutral-100 font-mono text-sm dark:divide-neutral-900/60">
+      {
+        featuredBlogs.map(blog => {
+          const readingTime = getReadingTime(blog.body ?? "")
+          const imageSrc = blog.data.image ? blog.data.image.src : placeholderImage.src
+          const tagsStr = blog.data.tags.map(t => `#${t}`).join(" ")
+
+          return (
+            <div
+              class="blog-hover-row grid grid-cols-12 items-center gap-4 px-5 py-4 transition-all duration-200 hover:bg-neutral-50/50 dark:hover:bg-neutral-900/20 cursor-help"
+              data-title={blog.data.title}
+              data-desc={blog.data.description}
+              data-img={imageSrc}
+              data-tags={tagsStr}
+              data-time={readingTime}
+            >
+              <div class="text-muted col-span-3 text-xs font-semibold sm:col-span-2">
+                {blog.data.pubDate ? formatDate(blog.data.pubDate) : "Draft"}
+              </div>
+
+              <div class="col-span-9 flex flex-col gap-2 sm:col-span-8 sm:flex-row sm:items-center">
+                <a
+                  href={`/blog/${blog.id}`}
+                  class="font-heading line-clamp-1 font-semibold text-neutral-800 transition-colors duration-200 hover:text-teal-500 dark:text-neutral-200 dark:hover:text-teal-400"
+                >
+                  {blog.data.title}
+                </a>
+                <span class="text-muted text-xs">{tagsStr}</span>
+              </div>
+
+              <div class="text-muted hidden text-right font-mono text-xs sm:col-span-2 sm:block">
+                {readingTime}
+              </div>
+            </div>
+          )
+        })
+      }
+    </div>
+  </div>
 </div>
-<div class="text-center">
+
+<HoverCard id="blog-hover-card" />
+
+<div class="mt-6 text-center">
   <a
     href="/blog"
-    class="prose dark:prose-invert underline underline-offset-2 transition-colors duration-300 hover:text-neutral-700 dark:hover:text-neutral-100"
+    class="prose dark:prose-invert text-sm font-semibold underline underline-offset-4 transition-colors duration-300 hover:text-teal-500 dark:hover:text-teal-400"
   >
-    See more blogs &gtdot;
+    Read more blogs &gtdot;
   </a>
 </div>
+
+<script>
+  function initHoverPreview() {
+    const hoverRows = document.querySelectorAll(".blog-hover-row")
+    const hoverCard = document.getElementById("blog-hover-card")
+    if (!hoverCard) return
+
+    const cardTitle = hoverCard.querySelector("[data-hover-title]")
+    const cardDesc = hoverCard.querySelector("[data-hover-desc]")
+    const cardImg = hoverCard.querySelector("[data-hover-img]") as HTMLImageElement
+    const cardTags = hoverCard.querySelector("[data-hover-tags]")
+    const cardTime = hoverCard.querySelector("[data-hover-time]")
+
+    if (!cardTitle || !cardDesc || !cardImg || !cardTags || !cardTime) return
+
+    hoverRows.forEach(row => {
+      row.addEventListener("mouseenter", () => {
+        const title = row.getAttribute("data-title") || ""
+        const desc = row.getAttribute("data-desc") || ""
+        const img = row.getAttribute("data-img") || ""
+        const tags = row.getAttribute("data-tags") || ""
+        const time = row.getAttribute("data-time") || ""
+
+        cardTitle.textContent = title
+        cardDesc.textContent = desc
+        cardTags.textContent = tags
+        cardTime.textContent = time
+
+        if (img) {
+          cardImg.src = img
+          cardImg.classList.remove("hidden")
+        } else {
+          cardImg.classList.add("hidden")
+        }
+
+        hoverCard.classList.remove("opacity-0", "scale-95")
+        hoverCard.classList.add("opacity-100", "scale-100")
+      })
+
+      row.addEventListener("mousemove", (e: Event) => {
+        const mouseEvent = e as MouseEvent
+        const cardWidth = hoverCard.offsetWidth || 320
+        const cardHeight = hoverCard.offsetHeight || 220
+
+        let x = mouseEvent.clientX + 20
+        let y = mouseEvent.clientY + 20
+
+        // boundary checks
+        if (x + cardWidth > window.innerWidth) {
+          x = mouseEvent.clientX - cardWidth - 20
+        }
+        if (y + cardHeight > window.innerHeight) {
+          y = mouseEvent.clientY - cardHeight - 20
+        }
+
+        hoverCard.style.left = `${x}px`
+        hoverCard.style.top = `${y}px`
+      })
+
+      row.addEventListener("mouseleave", () => {
+        hoverCard.classList.remove("opacity-100", "scale-100")
+        hoverCard.classList.add("opacity-0", "scale-95")
+      })
+    })
+  }
+
+  // Bind on page load & across view transitions
+  document.addEventListener("astro:page-load", initHoverPreview)
+</script>

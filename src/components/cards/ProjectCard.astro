@@ -11,76 +11,120 @@ interface Props {
 }
 
 const { class: className, proj, ...rest } = Astro.props
+
+const getStatusColor = (status: string) => {
+  switch (status) {
+    case "Active":
+      return "border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+    case "Completed":
+      return "border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400"
+    case "Archived":
+      return "border-neutral-500/30 bg-neutral-500/10 text-neutral-500 dark:text-neutral-400"
+    case "WIP":
+    default:
+      return "border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400"
+  }
+}
 ---
 
 <TransparentBorder class:list={[className, "border-0"]} {rest}>
   <div
     class:list={[
-      "bg-card text-card-foreground flex h-full flex-col items-start justify-start gap-4 rounded-lg px-8 py-8 sm:gap-8 md:px-6",
-      // "shadow-neutral-600/50 drop-shadow-sm",
+      "bg-card text-card-foreground relative flex h-full flex-col items-start justify-start gap-4 overflow-hidden rounded-xl p-5",
     ]}
   >
-    <div class="mx-auto flex flex-1 flex-col place-content-center">
+    <div
+      class="mx-auto flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-neutral-200/40 bg-neutral-50/50 dark:border-neutral-800/50 dark:bg-neutral-900/40"
+    >
       <Picture
         src={proj.img}
         formats={["webp", "avif"]}
         alt={proj.name}
-        class="aspect-video rounded-2xl border-2 border-b-0 border-neutral-200/50 object-contain object-center dark:border-neutral-600/50"
+        class="h-full w-full object-cover transition-transform duration-500"
         width={400}
         layout="constrained"
       />
     </div>
-    <div class="mt-2 w-full sm:mt-4">
+
+    <div class="flex items-center gap-2 select-none">
+      {
+        proj.year && (
+          <span class="bg-card-muted text-card-muted-foreground rounded px-2 py-0.5 font-mono text-xs">
+            {proj.year}
+          </span>
+        )
+      }
+      <span
+        class:list={[
+          "rounded border px-2 py-0.5 font-mono text-sm font-semibold",
+          getStatusColor(proj.status),
+        ]}
+      >
+        {proj.status}
+      </span>
+    </div>
+
+    <div class="w-full flex-1 space-y-2">
       <slot name="title" />
+
+      <div class="flex flex-wrap gap-1.5 py-1">
+        {
+          proj.domains.map(dom => (
+            <span class="rounded border border-teal-500/20 bg-teal-500/10 px-2 py-0.5 font-mono text-xs font-semibold text-teal-600 dark:bg-teal-500/5 dark:text-teal-400">
+              {dom}
+            </span>
+          ))
+        }
+      </div>
+
       <slot name="text" />
     </div>
 
-    <div class="grid w-full grid-cols-2 gap-2">
+    <div class="mt-4 grid w-full grid-cols-2 gap-2 select-none">
       {
         proj.url ? (
-          <a href={proj.url} target="_blank">
+          <a href={proj.url} target="_blank" class="w-full">
             <button
               class:list={[
-                "cursor-newtab w-full rounded-md bg-teal-500/85 py-2 font-semibold text-white outline outline-offset-2 outline-teal-500/25 dark:bg-teal-500/85 dark:outline-teal-600/50",
-                "transition-all hover:scale-95 hover:outline-offset-4",
+                "cursor-newtab flex w-full items-center justify-center gap-1.5 rounded-lg bg-teal-500 px-3 py-2 text-xs font-semibold text-white transition-all hover:bg-teal-600",
               ]}
               tabindex="-1"
             >
-              View Live
-              <Icon name="eye" class="inline" />
+              Live
+              <Icon name="eye" class="h-3.5 w-3.5" />
             </button>
           </a>
         ) : (
-          <div data-tippy-content="Wait for me to deploy it!" tabindex="-1">
+          <div data-tippy-content="Wait for me to deploy it!" class="w-full">
             <button
-              class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
+              class="w-full cursor-not-allowed rounded-lg border border-dashed border-neutral-200 bg-transparent py-2 text-xs font-semibold text-neutral-400 opacity-60 select-none dark:border-neutral-800"
               tabindex="-1"
               disabled
             >
-              Not yet Live!
+              Offline
             </button>
           </div>
         )
       }
       {
         proj.github ? (
-          <a href={proj.github} target="_blank">
+          <a href={proj.github} target="_blank" class="w-full">
             <button
-              class="cursor-newtab w-full rounded-md bg-neutral-500 py-2 font-semibold text-white dark:bg-neutral-600"
+              class="cursor-newtab flex w-full items-center justify-center gap-1.5 rounded-lg bg-neutral-100 px-3 py-2 text-xs font-semibold text-neutral-700 transition-all hover:bg-neutral-200 dark:bg-neutral-800/80 dark:text-neutral-300 dark:hover:bg-neutral-800"
               tabindex="-1"
             >
-              View Source
-              <Icon name="logos/github" class="inline" />
+              Source
+              <Icon name="logos/github" class="h-3.5 w-3.5" />
             </button>
           </a>
         ) : (
-          <div data-tippy-content="I don't think I will make this public" tabindex="-1">
+          <div data-tippy-content="I don't think I will make this public" class="w-full">
             <button
-              class="w-full cursor-wait rounded-md border-2 border-dashed border-neutral-300 bg-transparent py-2 text-sm font-semibold opacity-45"
+              class="w-full cursor-not-allowed rounded-lg border border-dashed border-neutral-200 bg-transparent py-2 text-xs font-semibold text-neutral-400 opacity-60 select-none dark:border-neutral-800"
               tabindex="-1"
               disabled
             >
-              Not Public
+              Private
             </button>
           </div>
         )

@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
-
 import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
 
 interface Props {
@@ -16,23 +15,37 @@ const { class: className, testimonial, ...rest } = Astro.props
 <TransparentBorder class:list={[className, "border-0"]} {rest}>
   <div
     class:list={[
-      "bg-card text-card-foreground flex h-full flex-col items-start justify-between gap-4 rounded-lg px-8 py-8 md:px-6",
-      // "shadow-neutral-600/50 drop-shadow-sm",
+      "bg-card text-card-foreground overflow-hidden rounded-xl p-6 md:p-8",
+      "relative flex h-full flex-col items-start justify-between gap-6 md:flex-row md:items-center",
+      "shadow-xs transition-all duration-300 hover:shadow-md",
     ]}
   >
-    <slot name="title" />
-    <div class="w-full">
-      <slot name="text" />
+    <div
+      class="bg-primary/25 pointer-events-none absolute -right-24 -bottom-24 h-48 w-48 rounded-full blur-lg md:blur-3xl"
+    >
     </div>
 
-    <div class="mt-2 flex flex-row items-center justify-start gap-2">
+    <div class="flex flex-1 flex-col justify-start gap-4">
+      <div class="flex items-center gap-2 select-none">
+        <span class="text-primary font-mono text-xs font-bold"> /** TESTIMONIAL */ </span>
+      </div>
+
+      <div class="space-y-2">
+        <slot name="title" />
+        <slot name="text" />
+      </div>
+    </div>
+
+    <div
+      class="flex shrink-0 flex-row items-center justify-start gap-3 select-none md:w-48 md:flex-col md:justify-center md:pl-8 md:text-center"
+    >
       <Image
         src={testimonial.img}
         alt={testimonial.name}
         width={96}
-        class="inline-block h-10 w-10 rounded-full"
+        class="h-10 w-10 shrink-0 rounded-full object-cover md:h-24 md:w-24"
       />
-      <div>
+      <div class="flex flex-col gap-0.5 md:w-full md:gap-1">
         <slot name="name" />
         <slot name="at" />
       </div>

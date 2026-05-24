@@ -1,0 +1,39 @@
+---
+interface Props {
+  id?: string
+}
+
+const { id = "hover-card" } = Astro.props
+---
+
+<div
+  id={id}
+  class="pointer-events-none fixed z-50 flex w-72 scale-95 flex-col gap-3 rounded-xl border border-neutral-200/80 bg-white/95 p-4 opacity-0 shadow-2xl backdrop-blur-md transition-all duration-300 md:w-80 dark:border-neutral-800/80 dark:bg-neutral-950/95"
+>
+  <img
+    data-hover-img
+    src=""
+    alt="Preview"
+    class="aspect-video w-full rounded-lg border border-neutral-200/50 object-contain dark:border-neutral-800/50"
+  />
+  <div class="space-y-1">
+    <div class="flex items-center justify-between">
+      <span
+        data-hover-tags
+        class="font-mono text-[10px] tracking-wider text-teal-500 uppercase dark:text-teal-400"
+      ></span>
+      <span data-hover-time class="font-mono text-[10px] text-neutral-400 dark:text-neutral-500"
+      ></span>
+    </div>
+    <h4
+      data-hover-title
+      class="font-heading line-clamp-1 text-sm font-semibold text-neutral-800 dark:text-neutral-100"
+    >
+    </h4>
+    <p
+      data-hover-desc
+      class="line-clamp-4 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400"
+    >
+    </p>
+  </div>
+</div>

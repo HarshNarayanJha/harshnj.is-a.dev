@@ -1,0 +1,96 @@
+---
+import { skills } from "@/utils/data"
+import { Icon } from "astro-icon/components"
+
+const systemsCore = skills.filter(s => s.skillType === "systems")
+const fullstackWeb = skills.filter(s => s.skillType === "fullstack")
+const intelligenceGraphics = skills.filter(s => s.skillType === "intelligence")
+
+const categories = [
+  {
+    code: "0x01",
+    title: "SYSTEMS & INFRASTRUCTURE",
+    items: systemsCore,
+  },
+  {
+    code: "0x02",
+    title: "FULL-STACK & WEB",
+    items: fullstackWeb,
+  },
+  {
+    code: "0x03",
+    title: "INTELLIGENCE & DATA",
+    items: intelligenceGraphics,
+  },
+]
+---
+
+<div
+  class="bg-card text-card-foreground relative w-full overflow-hidden rounded-xl border-2 border-neutral-200/50 p-6 font-mono text-sm shadow-sm dark:border-neutral-800/50"
+>
+  <div
+    class="mb-6 flex items-center justify-between border-b border-neutral-200/50 pb-4 dark:border-neutral-800/50"
+  >
+    <div class="flex items-center gap-2">
+      <span class="h-3 w-3 rounded-full bg-red-500/80"></span>
+      <span class="h-3 w-3 rounded-full bg-yellow-500/80"></span>
+      <span class="h-3 w-3 rounded-full bg-green-500/80"></span>
+      <span class="ml-2 font-mono text-xs text-neutral-400 dark:text-neutral-500">
+        harshnj@arch:~
+      </span>
+    </div>
+    <span class="font-mono text-xs text-neutral-400 dark:text-neutral-500">LANGS & TOOLS</span>
+  </div>
+
+  <div class="space-y-6">
+    {
+      categories.map(cat => (
+        <div class="relative">
+          <div class="mb-3 flex items-center font-bold text-neutral-800 select-none dark:text-neutral-200">
+            <span class="mr-2 text-teal-500">[{cat.code}]</span>
+            <span>{cat.title}</span>
+          </div>
+
+          <div class="ml-4 flex flex-wrap gap-2.5 border-l border-dashed border-neutral-300 py-1 pl-4 dark:border-neutral-800">
+            {cat.items.map(skill => (
+              <div
+                data-tippy-content={skill.tooltip}
+                class="skill-badge group flex cursor-help items-center gap-2 rounded-lg border border-neutral-200/60 bg-neutral-50/50 px-3 py-1.5 transition-all duration-300 dark:border-neutral-800/80 dark:bg-neutral-900/30"
+                style={`--hover-color: ${skill.color}; --hover-dark-color: ${skill.darkColor || skill.color};`}
+              >
+                {skill.logo && (
+                  <Icon name={skill.logo} class="h-4 w-4 transition-transform duration-300" />
+                )}
+                <span class="skill-name-label text-xs font-semibold text-neutral-600 transition-colors duration-300 dark:text-neutral-400">
+                  {skill.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .skill-badge:hover {
+    border-color: var(--hover-color) !important;
+    box-shadow:
+      0 0 10px rgba(0, 0, 0, 0.05),
+      inset 0 0 2px var(--hover-color);
+  }
+  /*.skill-badge:hover .skill-name-label {
+    color: var(--hover-color) !important;
+  }
+*/
+  .dark .skill-badge:hover {
+    border-color: var(--hover-dark-color) !important;
+    box-shadow:
+      0 0 12px rgba(var(--hover-dark-color), 0.15),
+      inset 0 0 4px var(--hover-dark-color);
+  }
+  /*.dark .skill-badge:hover .skill-name-label {
+    color: var(--hover-dark-color) !important;
+  }*/
+</style>
