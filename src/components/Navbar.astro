@@ -12,7 +12,9 @@ const navLinks = [
   { name: "About", path: "/about" },
 ]
 
-const currentPath = Astro.url.pathname
+let currentPath = Astro.url.pathname
+const normalizePath = (p: string) => p.replace(/\/$/, "") || "/"
+currentPath = normalizePath(currentPath)
 ---
 
 <header
@@ -28,7 +30,7 @@ const currentPath = Astro.url.pathname
     <div class="flex flex-row gap-4">
       {
         navLinks.map(link => {
-          const active = link.path === currentPath
+          const active = normalizePath(link.path) === currentPath
 
           return (
             <a
@@ -56,7 +58,7 @@ const currentPath = Astro.url.pathname
               transition:animate="fade"
               transition:name="title-path"
             >
-              / {currentPath.substring(1)}
+              / {currentPath.replace(/^\/|\/$/g, "")}
             </span>
           )
         }
