@@ -38,8 +38,8 @@ currentPath = normalizePath(currentPath)
               class:list={[
                 "relative px-1 py-2 font-mono text-sm",
                 active
-                  ? "link-active font-extrabold text-emerald-400"
-                  : "font-medium text-neutral-950/85 hover:text-neutral-950 dark:text-neutral-50/85 dark:hover:text-neutral-50",
+                  ? "link-active text-secondary font-extrabold"
+                  : "text-foreground-soft hover:text-foreground font-medium",
               ]}
             >
               {link.name}
@@ -49,12 +49,15 @@ currentPath = normalizePath(currentPath)
       }
     </div>
     <p id="nav-lead" class="text-xl font-bold tracking-wide opacity-85">
-      <a href="/" class:list={["font-hero", currentPath === "/" ? "link-active" : ""]}>
+      <a
+        href="/"
+        class:list={["font-hero", currentPath === "/" ? "text-foreground" : "text-foreground-soft"]}
+      >
         harshnj.is-a.dev
         {
           currentPath != "/" && (
             <span
-              class="font-hand text-sm text-neutral-700/85 dark:text-neutral-400"
+              class="font-hand text-muted text-sm"
               transition:animate="fade"
               transition:name="title-path"
             >
@@ -95,7 +98,7 @@ currentPath = normalizePath(currentPath)
     <button
       id="navbar-toggle"
       class:list={[
-        "rounded-md border border-b-0 border-gray-500/50 border-t-gray-700/35 bg-sky-50/50 px-2 py-1 shadow-sm dark:border-gray-300/20 dark:border-t-gray-100/35 dark:bg-gray-900/50",
+        "border-border/50 border-t-border/35 bg-surface/50 rounded-md border border-b-0 px-2 py-1 shadow-sm",
         "justify-self-start",
       ]}
       aria-label="Navigation Menu"
@@ -104,9 +107,7 @@ currentPath = normalizePath(currentPath)
     </button>
 
     <p class="justify-self-center text-xl font-bold tracking-wide opacity-85">
-      <a href="/" class:list={["font-hero", currentPath === "/" && "link-active"]}>
-        harshnj.is-a.dev
-      </a>
+      <a href="/" class:list={["font-hero", currentPath === "/" && ""]}> harshnj.is-a.dev </a>
     </p>
 
     <ColorModeToggle class="my-4 justify-self-end" />
@@ -114,7 +115,7 @@ currentPath = normalizePath(currentPath)
     <div
       id="navbar-menu"
       class:list={[
-        "absolute top-12 left-4 mt-2 w-max rounded-md border border-neutral-500/25 bg-neutral-50/50 px-4 py-2 text-gray-800 shadow-md backdrop-blur-sm dark:border-neutral-800/75 dark:border-t-neutral-300/70 dark:bg-neutral-950/50 dark:text-gray-200/90",
+        "border-border/25 bg-surface/50 absolute top-12 left-4 mt-2 w-max rounded-md border px-4 py-2 shadow-md backdrop-blur-sm",
         "z-20 hidden",
       ]}
     >

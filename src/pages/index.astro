@@ -24,18 +24,23 @@ import me from "@/img/me.png"
     <Card class="mx-auto my-16 w-11/12 max-w-7xl md:my-8 md:w-10/12 lg:w-7/12">
       <Picture
         src={me}
-        class="aspect-square w-40 -rotate-6 rounded-[3.8rem] rounded-br-3xl border-2 border-neutral-200/50 transition hover:-rotate-18 md:w-52 dark:border-neutral-700/50"
-        alt="website owner"
+        class:list={[
+          "aspect-square w-40 rounded-[3.8rem] rounded-br-3xl md:w-52",
+          "-rotate-6 transition hover:-rotate-18",
+          "border-2 shadow-sm",
+        ]}
+        alt="website-owner"
         formats={["avif", "webp"]}
         width={160}
         priority
         slot="image"
       />
       <!-- style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)" -->
-      <h2 class="text-3xl font-bold md:text-4xl" slot="title">Hello There</h2>
-      <div class="prose prose-lg dark:prose-invert mt-2 leading-7" slot="text">
-        I like building systems from first principles, and also play with AI engineering and hack
-        around them. I like to work in the Full-Stack, Native and Cloud ecosystems.
+      <h2 class="text-2xl font-bold md:text-3xl" slot="title">Hello There</h2>
+      <div class="prose prose-lg dark:prose-invert mt-2" slot="text">
+        I like building systems from the first principles and exploring the possibilities of AI
+        engineering. I love experimenting with new technologies and specialize in building creative
+        products with great attention to detail across full-stack, native and cloud environments.
       </div>
     </Card>
   </section>
@@ -45,9 +50,9 @@ import me from "@/img/me.png"
     <div class="flex w-full flex-col items-start gap-10 lg:flex-row">
       <!-- Left Column: Experiences -->
       <div class="flex w-full flex-col">
-        <div class="mb-6 pl-2 md:pl-6">
-          <h3 class="text-4xl font-bold sm:text-3xl">Experiences</h3>
-          <p class="text-muted mt-2 text-sm font-medium">
+        <div class="mb-6">
+          <h3 class="text-4xl font-semibold sm:text-3xl">Experiences</h3>
+          <p class="prose dark:prose-invert">
             Some highlights of my professional experience and work.
           </p>
         </div>
@@ -56,11 +61,9 @@ import me from "@/img/me.png"
 
       <!-- Right Column: Skills Board -->
       <div class="flex w-full flex-col">
-        <div class="mb-6 pl-2 md:pl-6">
-          <h3 class="text-4xl font-bold sm:text-3xl">Skills</h3>
-          <p class="text-muted mt-2 text-sm font-medium">
-            What I love working with and I'm good at.
-          </p>
+        <div class="mb-6">
+          <h3 class="text-4xl font-semibold sm:text-3xl">Skills</h3>
+          <p class="prose dark:prose-invert">What I love working with and I'm good at.</p>
         </div>
         <SkillsBoard />
       </div>
@@ -69,30 +72,30 @@ import me from "@/img/me.png"
 
   <section id="featured-posts" class="mx-auto w-full max-w-7xl px-4 py-6 md:px-16 md:py-16">
     <div class="mb-2 md:mb-8">
-      <h2 class="text-4xl font-bold sm:text-5xl">
+      <h2 class="text-3xl font-bold sm:text-4xl">
         Featured
         <span
-          class="bg-teal-500 bg-linear-to-r from-teal-500 via-cyan-400 via-50% to-sky-500 bg-clip-text text-transparent dark:via-cyan-300"
+          class="bg-secondary from-primary to-secondary bg-linear-to-r bg-clip-text text-transparent"
         >
           Blogs
         </span>
       </h2>
-      <p class="prose dark:prose-invert mt-2">Some of my top writings.</p>
+      <p class="prose dark:prose-invert">Some of my top writings.</p>
     </div>
     <FeaturedBlogs />
   </section>
 
   <section id="featured-projects" class="mx-auto w-full max-w-7xl px-4 py-6 md:px-16 md:py-16">
     <div class="mb-2 md:mb-8">
-      <h2 class="text-4xl font-bold sm:text-5xl">
+      <h2 class="text-3xl font-bold sm:text-4xl">
         Exciting
         <span
-          class="bg-sky-500 bg-linear-to-r from-sky-500 via-cyan-400 via-50% to-green-500 bg-clip-text text-transparent dark:via-cyan-300"
+          class="bg-secondary from-secondary to-secondary bg-linear-to-r bg-clip-text text-transparent"
         >
           Projects
         </span>
       </h2>
-      <p class="prose dark:prose-invert mt-2">Small selection of the projects I have worked on.</p>
+      <p class="prose dark:prose-invert">Small selection of the projects I have worked on.</p>
     </div>
     <FeaturedProjects />
   </section>
@@ -108,14 +111,22 @@ import me from "@/img/me.png"
   </section>
 
   <div
-    class="my-10 flex min-h-[50svh] w-full flex-col place-items-center content-center justify-center space-y-8 p-4 text-center md:my-20 md:space-y-16 md:px-15 md:py-10"
+    class="relative my-10 flex min-h-[50svh] w-full flex-col place-items-center content-center justify-center space-y-8 p-4 text-center md:my-20 md:space-y-16 md:px-15 md:py-10"
   >
-    <h1 class="font-hero text-4xl font-bold md:text-6xl lg:text-8xl">Ready to Work With Me?</h1>
+    <div
+      id="hero-blob"
+      class="bg-primary pointer-events-none absolute m-auto aspect-square w-4/6 rounded-full opacity-10 blur-xl select-none md:w-2/6 md:blur-[96px] dark:opacity-15"
+    >
+    </div>
+
+    <h1 class="font-hero text-foreground/80 text-4xl font-bold md:text-6xl lg:text-8xl">
+      Ready to Work With Me?
+    </h1>
     <p class="font-heading px-4 text-lg font-medium md:px-0 md:text-2xl">
       Grab my Resume and contact me. Let's create something Amazing together!
     </p>
 
-    <div class="flex flex-col items-center justify-center gap-4">
+    <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
       <a
         href={RESUME_PATH}
         target="_blank"
@@ -123,7 +134,7 @@ import me from "@/img/me.png"
         class="text-sm md:text-base"
       >
         <button
-          class="border-opacity-40 group cursor-newtab w-fit rounded-xl border-2 border-neutral-500/50 bg-transparent px-4 py-2 shadow-md transition-shadow hover:shadow-lg md:px-6"
+          class="border-opacity-40 group cursor-newtab w-fit rounded-xl border-2 bg-transparent px-4 py-2 text-sm shadow-md transition-shadow hover:shadow-lg md:px-6 md:text-base"
         >
           <Icon
             name="download"
@@ -135,9 +146,10 @@ import me from "@/img/me.png"
         </button>
       </a>
 
-      <!-- <button
-        class="border-opacity-40 group cursor-newtab w-fit rounded-xl border-2 border-neutral-500/50 bg-transparent px-4 py-2 shadow-md transition-shadow hover:shadow-lg md:px-6"
-        onclick="navigator.clipboard.writeText('me@harshnj.is-a.dev')"
+      <button
+        id="copy-email-btn"
+        class="border-opacity-40 group w-fit cursor-pointer rounded-xl border-2 bg-transparent px-4 py-2 text-sm shadow-md transition-all hover:shadow-lg md:px-6 md:text-base"
+        data-tippy-content="Copy Email Address"
       >
         <Icon
           name="copy"
@@ -145,8 +157,34 @@ import me from "@/img/me.png"
           size={24}
         />
         <span class="mx-2 font-mono text-xl opacity-25 md:text-2xl">|</span>
-        <span class="font-mono">COPY MY <b>EMAIL</b></span>
-      </button> -->
+        <span id="copy-email-text" class="font-mono">COPY MY <b>EMAIL</b></span>
+      </button>
     </div>
   </div>
 </Layout>
+
+<script>
+  function setupCopyEmail() {
+    const btn = document.getElementById("copy-email-btn")
+    const text = document.getElementById("copy-email-text")
+    if (!btn || !text) return
+
+    let timeout: number | null = null
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText("me@harshnj.is-a.dev")
+        text.innerHTML = "EMAIL <b>COPIED!</b>"
+        btn.classList.add("border-secondary/50", "text-secondary")
+        if (timeout) clearTimeout(timeout)
+        timeout = setTimeout(() => {
+          text.innerHTML = "COPY MY <b>EMAIL</b>"
+          btn.classList.remove("border-secondary/50", "text-secondary")
+        }, 2000) as unknown as number
+      } catch (err) {
+        console.error("Failed to copy: ", err)
+      }
+    })
+  }
+
+  document.addEventListener("astro:page-load", setupCopyEmail)
+</script>

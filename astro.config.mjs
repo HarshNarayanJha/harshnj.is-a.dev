@@ -13,6 +13,10 @@ import icon from "astro-icon"
 // https://astro.build/config
 export default defineConfig({
   integrations: [svelte(), icon(), mdx(), fontPicker(), sitemap()],
+  prefetch: {
+    defaultStrategy: "hover",
+    prefetchAll: true,
+  },
   server: {
     allowedHosts: ["harshnj-garuda.tailf85ff4.ts.net"],
   },

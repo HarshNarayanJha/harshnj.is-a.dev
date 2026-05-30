@@ -1,8 +1,8 @@
 ---
-import { getCollection } from "astro:content"
+import { formatMonth } from "@/utils"
 import { Icon } from "astro-icon/components"
 import { Picture } from "astro:assets"
-import { formatMonth } from "@/utils"
+import { getCollection } from "astro:content"
 
 const works = (await getCollection("experiences", ({ data }) => data.type == "work")).sort(
   (a, b) => b.data.start.valueOf() - a.data.start.valueOf(),
@@ -10,9 +10,7 @@ const works = (await getCollection("experiences", ({ data }) => data.type == "wo
 ---
 
 <div class="w-full">
-  <div
-    class="relative space-y-8 border-l-2 border-dashed border-neutral-200 py-2 pl-6 md:pl-8 dark:border-neutral-800"
-  >
+  <div class="relative space-y-8 border-l-2 border-dashed py-2 pl-6 md:pl-8">
     {
       works.map(work => {
         const durationStr = `${formatMonth(work.data.start)} — ${
@@ -22,13 +20,13 @@ const works = (await getCollection("experiences", ({ data }) => data.type == "wo
         return (
           <div class="group relative">
             {/* Timeline node */}
-            <span class="bg-background ring-background absolute top-1.5 -left-7.75 flex h-4 w-4 items-center justify-center rounded-full border-2 border-teal-500 ring-4 transition-colors duration-300 group-hover:bg-teal-500 md:-left-9.75">
-              <span class="group-hover:bg-background h-1.5 w-1.5 rounded-full bg-teal-500 transition-colors duration-300" />
+            <span class="bg-background ring-background border-accent group-hover:bg-accent absolute top-1.5 -left-7.75 flex h-4 w-4 items-center justify-center rounded-full border-2 ring-4 transition-colors duration-300 md:-left-9.75">
+              <span class="group-hover:bg-background bg-accent h-1.5 w-1.5 rounded-full transition-colors duration-300" />
             </span>
 
             {/* collapsible git log */}
-            <details class="group/details bg-card text-card-foreground overflow-hidden rounded-xl border border-neutral-200/60 shadow-xs transition-all duration-300 dark:border-neutral-800/80">
-              <summary class="flex cursor-pointer list-none flex-col gap-2 p-4 select-none hover:bg-neutral-50/50 dark:hover:bg-neutral-900/20 [&::-webkit-details-marker]:hidden">
+            <details class="group/details bg-surface overflow-hidden rounded-xl border shadow-xs transition-all duration-300">
+              <summary class="flex cursor-pointer list-none flex-col gap-0 p-4 [&::-webkit-details-marker]:hidden">
                 {/* Row 1: Company Logo, Link & Duration */}
                 <div class="flex w-full items-center justify-between">
                   <div class="flex items-center gap-2.5">
@@ -39,50 +37,50 @@ const works = (await getCollection("experiences", ({ data }) => data.type == "wo
                         alt={work.data.at}
                         width={24}
                         height={24}
-                        class="h-6 w-6 shrink-0 rounded-md border border-neutral-200/50 object-contain dark:border-neutral-800/80"
+                        class="h-6 w-6 shrink-0 rounded-md border object-contain"
                       />
                     )}
 
-                    <div class="font-heading flex items-center gap-1 text-sm font-semibold">
+                    <div class="font-heading flex items-center gap-1 font-semibold">
                       {work.data.link ? (
                         <a
                           href={work.data.link}
                           target="_blank"
-                          class="flex items-center gap-0.5 text-teal-500 hover:underline dark:text-teal-400"
+                          class="text-secondary text-md flex items-center gap-0.5 hover:underline"
                         >
                           {work.data.at}
-                          <Icon name="link" class="inline h-3.5 w-3.5" />
+                          <Icon name="link" class="inline size-3.5" />
                         </a>
                       ) : (
-                        <span class="text-teal-500 dark:text-teal-400">{work.data.at}</span>
+                        <span class="text-secondary text-md">{work.data.at}</span>
                       )}
                     </div>
                   </div>
 
-                  <span class="text-muted shrink-0 rounded-md bg-neutral-100 px-2.5 py-1 font-mono text-xs font-semibold dark:bg-neutral-900">
+                  <span class="text-muted shrink-0 px-2.5 py-1 font-mono text-xs font-semibold">
                     {durationStr}
                   </span>
                 </div>
 
                 {/* Row 2: Role & Location */}
                 <div class="mt-0.5 flex w-full items-center justify-between pl-8.5">
-                  <span class="text-sm font-medium text-neutral-800 dark:text-neutral-200">
-                    {work.data.role}
-                  </span>
+                  <span class="text-foreground-soft font-medium">{work.data.role}</span>
 
                   <div class="flex items-center gap-3">
-                    <span class="text-muted font-mono text-xs italic">{work.data.location}</span>
+                    <span class="text-foreground-soft font-mono text-xs">{work.data.location}</span>
 
                     <Icon
                       name="menu"
-                      class="text-muted h-4 w-4 transition-transform duration-300 group-open/details:rotate-90 group-hover/details:text-neutral-600 dark:group-hover/details:text-neutral-400"
+                      class="text-muted group-hover/details:text-foreground-soft h-4 w-4 transition-transform duration-300 group-open/details:rotate-90"
                     />
                   </div>
                 </div>
               </summary>
 
-              <div class="space-y-4 border-t border-neutral-100 px-5 pt-1 pb-5 font-sans text-sm text-neutral-700 dark:border-neutral-900/60 dark:text-neutral-200">
-                <p class="leading-relaxed">{work.data.description}</p>
+              <div class="space-y-4 border-t px-5 pt-1 pb-5">
+                <p class="prose dark:prose-invert prose-sm text-foreground-soft mt-2 leading-relaxed">
+                  {work.data.description}
+                </p>
               </div>
             </details>
           </div>
@@ -95,7 +93,7 @@ const works = (await getCollection("experiences", ({ data }) => data.type == "wo
 <div class="mt-6 text-center">
   <a
     href="/about#about-experiences"
-    class="prose dark:prose-invert text-sm font-semibold underline underline-offset-4 transition-colors duration-300 hover:text-teal-500 dark:hover:text-teal-400"
+    class="hover:text-primary text-sm font-semibold underline underline-offset-4 transition-colors duration-300"
   >
     Experience more experiences &gtdot;
   </a>

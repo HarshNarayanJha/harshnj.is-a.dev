@@ -22,14 +22,14 @@ const projectsData = sortedProjects.map(proj => ({
 }))
 ---
 
-<FeaturedProjectsList client:load projects={projectsData} />
+<FeaturedProjectsList client:visible projects={projectsData} />
 
 <HoverCard id="project-hover-card" />
 
 <div class="mt-6 text-center">
   <a
     href="/projects"
-    class="prose dark:prose-invert text-sm font-semibold underline underline-offset-4 transition-colors duration-300 hover:text-teal-500 dark:hover:text-teal-400"
+    class="hover:text-primary text-sm font-semibold underline underline-offset-4 transition-colors duration-300"
   >
     See more projects &gtdot;
   </a>

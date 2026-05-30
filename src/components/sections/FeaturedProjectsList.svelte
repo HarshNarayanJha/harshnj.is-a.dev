@@ -28,14 +28,14 @@ let filteredProjects = $derived(
 function getStatusColor(status: string) {
   switch (status) {
     case "Active":
-      return "border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+      return "border-primary/30 bg-primary/10 text-primary"
     case "Completed":
-      return "border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400"
+      return "border-secondary/30 bg-secondary/10 text-secondary"
     case "Archived":
-      return "border-neutral-500/30 bg-neutral-500/10 text-neutral-500 dark:text-neutral-400"
+      return "border-muted/30 bg-muted/10 text-muted"
     case "WIP":
     default:
-      return "border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400"
+      return "border-tertiary/30 bg-tertiary/10 text-tertiary"
   }
 }
 
@@ -105,17 +105,17 @@ function hidePreview() {
 <div class="mx-auto max-w-4xl px-4 py-4 space-y-6">
   <!-- Interactive filter bar -->
   <div
-    class="flex flex-wrap items-center gap-2 text-xs font-mono select-none bg-neutral-50/50 dark:bg-neutral-900/20 p-3 rounded-xl border border-neutral-200/60 dark:border-neutral-800"
+    class="flex flex-wrap items-center gap-2 text-xs font-mono select-none bg-surface-2 p-3 rounded-xl border border-border/60"
   >
     <span class="text-muted mr-2 uppercase font-bold">Filter:</span>
     {#each allDomains as domain}
       <button
         type="button"
         onclick={() => (selectedDomain = domain)}
-        class="px-3 py-1.5 rounded-lg border transition-all duration-200 cursor-pointer font-semibold uppercase tracking-wider
+        class="px-3 py-1.5 rounded-lg border transition-all cursor-pointer font-semibold uppercase tracking-wider
           {selectedDomain === domain
-          ? 'bg-teal-500 border-teal-500 text-white'
-          : 'border-neutral-200/60 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-900/60'}"
+          ? 'bg-secondary/60'
+          : 'border-border text-foreground  hover:bg-secondary/20'}"
       >
         {domain}
       </button>
@@ -123,12 +123,10 @@ function hidePreview() {
   </div>
 
   <!-- Projects repository list -->
-  <div
-    class="border border-neutral-200/60 dark:border-neutral-800/80 rounded-xl bg-card text-card-foreground shadow-xs overflow-hidden"
-  >
+  <div class="border border-border/80 rounded-xl bg-surface shadow-xs overflow-hidden">
     <!-- Header of Repository List (CLI aesthetic) -->
     <div
-      class="grid grid-cols-12 gap-4 px-5 py-3 items-center border-b border-neutral-200/60 dark:border-neutral-800/60 bg-neutral-50/50 dark:bg-neutral-900/10 text-xs font-mono font-bold text-muted uppercase tracking-wider select-none"
+      class="grid grid-cols-12 gap-4 px-5 py-3 items-center border-b border-border/60 bg-surface-2 text-xs font-mono font-bold text-muted uppercase tracking-wider select-none"
     >
       <div class="col-span-12 md:col-span-4">Repository / Name</div>
       <div class="hidden md:block md:col-span-5">Tagline, Domains & Stack</div>
@@ -136,11 +134,10 @@ function hidePreview() {
     </div>
 
     <!-- Rows -->
-    <div class="divide-y divide-neutral-100 dark:divide-neutral-900/60">
+    <div class="divide-y divide-border/80">
       {#each filteredProjects as proj (proj.id)}
-        <!-- svelte-ignore a11y_mouse_events_have_key_events -->
         <div
-          class="flex flex-col md:grid md:grid-cols-12 gap-4 px-5 py-4 md:items-center hover:bg-neutral-50/30 dark:hover:bg-neutral-900/10 transition-colors duration-200 group"
+          class="flex flex-col md:grid md:grid-cols-12 gap-4 px-5 py-4 md:items-center hover:bg-surface-2/70 transition-colors group"
         >
           <!-- Column 1: Icon & Name & Badges -->
           <div
@@ -153,7 +150,7 @@ function hidePreview() {
             onkeydown={e => e.key === "Enter" && showPreview(proj)}
           >
             <span
-              class="text-teal-500 bg-teal-500/10 dark:bg-teal-500/5 p-2 rounded-lg group-hover:scale-105 transition-transform duration-200 flex items-center justify-center shrink-0"
+              class="text-secondary bg-secondary/10 p-2 rounded-lg group-hover:scale-105 transition-transform flex items-center justify-center shrink-0"
             >
               <!-- Folder SVG -->
               <svg
@@ -173,16 +170,14 @@ function hidePreview() {
             </span>
             <div class="flex flex-col gap-2">
               <h3
-                class="text-sm font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-teal-500 dark:group-hover:text-teal-400 transition-colors duration-200 font-heading"
+                class="text-sm font-semibold group-hover:text-secondary dark:group-hover:text-secondary transition-colors font-heading"
               >
                 {proj.name}
               </h3>
 
               <div class="flex items-center flex-wrap gap-1.5">
                 {#if proj.year}
-                  <span
-                    class="bg-card-muted text-card-muted-foreground rounded px-2 py-0.5 font-mono text-xs"
-                  >
+                  <span class="bg-surface-2 rounded px-2 py-0.5 font-mono text-xs">
                     {proj.year}
                   </span>
                 {/if}
@@ -207,20 +202,20 @@ function hidePreview() {
             tabindex="0"
             onkeydown={e => e.key === "Enter" && showPreview(proj)}
           >
-            <p class="text-xs leading-relaxed text-muted line-clamp-2 md:line-clamp-1">
+            <p class="line-clamp-2 md:line-clamp-1 prose dark:prose-invert prose-sm">
               {proj.text}
             </p>
             <div class="flex flex-wrap gap-1.5 items-center select-none">
               {#each proj.domains as dom}
                 <span
-                  class="font-mono text-xs text-teal-600 dark:text-teal-400 bg-teal-500/10 dark:bg-teal-500/5 px-1.5 py-0.5 rounded border border-teal-500/20"
+                  class="font-mono text-xs font-semibold text-secondary bg-secondary/10 dark:bg-secondary/15 px-1.5 py-0.5 rounded border border-border/20"
                 >
                   {dom}
                 </span>
               {/each}
               {#each proj.tags as tag}
                 <span
-                  class="font-mono text-xs font-medium bg-card-muted text-card-muted-foreground px-2 py-0.5 rounded border border-neutral-200/40 dark:border-neutral-800/40"
+                  class="font-mono text-xs font-medium bg-surface-3 px-2 py-0.5 rounded border border-border/40"
                 >
                   {tag}
                 </span>
@@ -236,7 +231,7 @@ function hidePreview() {
               <a
                 href={proj.url}
                 target="_blank"
-                class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-teal-500 dark:bg-teal-600 rounded-lg hover:bg-teal-600 dark:hover:bg-teal-500 transition-colors duration-200"
+                class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-secondary/50 rounded-lg hover:bg-secondary/80 transition-colors"
               >
                 <span>Live</span>
                 <!-- Eye SVG -->
@@ -258,7 +253,7 @@ function hidePreview() {
               </a>
             {:else}
               <span
-                class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-neutral-400 dark:text-neutral-600 border border-dashed border-neutral-200 dark:border-neutral-800 rounded-lg cursor-not-allowed select-none"
+                class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold border border-dashed rounded-lg cursor-not-allowed select-none"
               >
                 <span>Offline</span>
               </span>
@@ -268,8 +263,7 @@ function hidePreview() {
               <a
                 href={proj.github}
                 target="_blank"
-                rel="noopener noreferrer"
-                class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800/80 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-850 transition-colors duration-200 dark:hover:bg-neutral-800"
+                class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors bg-surface-3 hover:bg-background"
               >
                 <span>Source</span>
                 <!-- Github icon SVG -->
@@ -291,7 +285,7 @@ function hidePreview() {
               </a>
             {:else}
               <span
-                class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-neutral-400 dark:text-neutral-600 border border-dashed border-neutral-200 dark:border-neutral-800 rounded-lg cursor-not-allowed select-none dark:bg-neutral-800"
+                class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold border border-dashed rounded-lg cursor-not-allowed select-none"
               >
                 <span>Private</span>
               </span>

@@ -24,8 +24,8 @@ const description = "Harsh Narayan Jha's About Page"
       <h2 class="mt-2 text-center text-4xl font-semibold">About Me</h2>
     </div>
 
-    <div class="prose dark:prose-invert prose-lg prose-neutral mx-auto mt-16 md:mt-32">
-      <h1 class="not-prose font-hero text-3xl font-bold text-neutral-950 dark:text-white">
+    <div class="prose dark:prose-invert prose-lg text-foreground-soft mx-auto mt-16 md:mt-32">
+      <h1 class="not-prose font-hero text-3xl font-bold text-black dark:text-white">
         Harsh Narayan Jha
       </h1>
       <p class="mt-1 flex flex-row items-center gap-1 font-semibold">
@@ -102,57 +102,55 @@ const description = "Harsh Narayan Jha's About Page"
       {
         experiences.map(exp => {
           return (
-            <TransparentBorder class="border-0 p-4">
-              <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-[1fr_2fr] md:gap-16">
-                <p class="prose dark:prose-invert prose-neutral mt-0 font-mono md:self-start md:justify-self-end">
-                  {formatMonth(exp.data.start)} -{" "}
-                  {exp.data.end === "PRESENT" ? "PRESENT" : formatMonth(exp.data.end)}
-                  <br />
-                  {exp.data.current && <StatusBadge color="green">CURRENT</StatusBadge>}
+            <div class="grid grid-cols-1 items-start gap-4 md:grid-cols-[1fr_2fr] md:gap-16">
+              <p class="prose dark:prose-invert text-foreground-soft mt-0 font-mono md:self-start md:justify-self-end">
+                {formatMonth(exp.data.start)} -{" "}
+                {exp.data.end === "PRESENT" ? "PRESENT" : formatMonth(exp.data.end)}
+                <br />
+                {exp.data.current && <StatusBadge color="green">CURRENT</StatusBadge>}
+              </p>
+              <div class="md:self-start md:justify-self-start">
+                <div class="md:md-0 flex flex-row items-center gap-1">
+                  {Array(exp.data.level)
+                    .fill(0)
+                    .map(() => (
+                      <Icon name={`exp/${exp.data.type}`} class="inline-block" size={24} />
+                    ))}
+                  <h4 class="inline-block font-semibold">{exp.data.role}</h4>
+                </div>
+                <p class="mt-2 flex flex-row flex-wrap items-center gap-2 md:mt-2">
+                  {exp.data.logo && (
+                    <Image
+                      src={exp.data.logo}
+                      alt={exp.data.at}
+                      width={28}
+                      class="inline-block h-7 w-7 rounded-md"
+                    />
+                  )}
+                  {exp.data.link ? (
+                    <a
+                      href={exp.data.link}
+                      target="_blank"
+                      class="decoration-border font-medium underline underline-offset-2 transition-colors hover:decoration-inherit"
+                    >
+                      {exp.data.at}
+                    </a>
+                  ) : (
+                    <span class="font-medium">{exp.data.at}</span>
+                  )}
+                  &mdash;
+                  <span class="text-muted italic">{exp.data.location}</span>
                 </p>
-                <div class="md:self-start md:justify-self-start">
-                  <div class="md:md-0 mt-2 flex flex-row items-center gap-1">
-                    {Array(exp.data.level)
-                      .fill(0)
-                      .map(() => (
-                        <Icon name={`exp/${exp.data.type}`} class="inline-block" size={24} />
-                      ))}
-                    <h4 class="inline-block font-semibold">{exp.data.role}</h4>
-                  </div>
-                  <p class="mt-2 flex flex-row flex-wrap items-center gap-2 md:mt-2">
-                    {exp.data.logo && (
-                      <Image
-                        src={exp.data.logo}
-                        alt={exp.data.at}
-                        width={28}
-                        class="inline-block h-7 w-7 rounded-md"
-                      />
-                    )}
-                    {exp.data.link ? (
-                      <a
-                        href={exp.data.link}
-                        target="_blank"
-                        class="font-medium underline decoration-neutral-400/75 underline-offset-2 transition-colors hover:decoration-inherit"
-                      >
-                        {exp.data.at}
-                      </a>
-                    ) : (
-                      <span class="font-medium">{exp.data.at}</span>
-                    )}
-                    &mdash;
-                    <span class="italic">{exp.data.location}</span>
-                  </p>
-                  <div class="prose dark:prose-invert prose-neutral">
-                    <p class="mt-4">{exp.data.description}</p>
-                    <ul>
-                      {exp.data.points.map(pt => (
-                        <li>{pt}</li>
-                      ))}
-                    </ul>
-                  </div>
+                <div class="prose dark:prose-invert text-foreground-soft">
+                  <p class="mt-4">{exp.data.description}</p>
+                  <ul>
+                    {exp.data.points.map(pt => (
+                      <li>{pt}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-            </TransparentBorder>
+            </div>
           )
         })
       }

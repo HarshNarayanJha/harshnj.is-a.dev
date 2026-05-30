@@ -12,16 +12,27 @@ export const accounts = [
   { name: "TryHackMe", path: "https://tryhackme.com/p/harshnj" },
 ]
 
+interface Skill {
+  name: string
+  tooltip: string
+  logo: `skills/${string}`
+  color: string
+  darkColor: string
+  skillType: "languages" | "systems" | "frameworks" | "intelligence"
+}
+
 // https://simpleicons.org
-export const skills = [
-  // languages
+export const skills: Skill[] = [
+  // ==========================================
+  // LANGUAGES
+  // ==========================================
   {
     name: "Python",
     tooltip: "First Computer Language learnt. I can make anything with this. My favorite!",
     logo: "skills/python",
     color: "#3776AB",
     darkColor: "#5A9FD4",
-    skillType: "fullstack",
+    skillType: "languages",
   },
   {
     name: "TypeScript",
@@ -29,7 +40,7 @@ export const skills = [
     logo: "skills/ts",
     color: "#2563EB",
     darkColor: "#60A5FA",
-    skillType: "fullstack",
+    skillType: "languages",
   },
   {
     name: "JavaScript",
@@ -37,7 +48,7 @@ export const skills = [
     logo: "skills/js",
     color: "#EAB308",
     darkColor: "#FACC15",
-    skillType: "fullstack",
+    skillType: "languages",
   },
   {
     name: "Rust",
@@ -45,15 +56,15 @@ export const skills = [
     logo: "skills/rust",
     color: "#1C1C1C",
     darkColor: "#F97316",
-    skillType: "systems",
+    skillType: "languages",
   },
   {
     name: "Golang",
-    tooltip: "Leaning concurrency...",
+    tooltip: "Learning concurrency...",
     logo: "skills/golang",
     color: "#00ADD8",
     darkColor: "#008BBF",
-    skillType: "systems",
+    skillType: "languages",
   },
   {
     name: "C++",
@@ -62,7 +73,7 @@ export const skills = [
     logo: "skills/cpp",
     color: "#00599C",
     darkColor: "#3B82F6",
-    skillType: "systems",
+    skillType: "languages",
   },
   {
     name: "Kotlin",
@@ -70,7 +81,7 @@ export const skills = [
     logo: "skills/kotlin",
     color: "#7F52FF",
     darkColor: "#A78BFA",
-    skillType: "intelligence",
+    skillType: "languages",
   },
   {
     name: "C#",
@@ -78,96 +89,12 @@ export const skills = [
     logo: "skills/csharp",
     color: "#79288d",
     darkColor: "#A78BFA",
-    skillType: "intelligence",
+    skillType: "languages",
   },
 
-  // frontend
-  {
-    name: "SvelteKit",
-    tooltip: "My goto web framework for the future",
-    logo: "skills/svelte",
-    color: "#FF3E00",
-    darkColor: "#FF6A3D",
-    skillType: "fullstack",
-  },
-  {
-    name: "React",
-    tooltip: "React is a great library for building user interfaces",
-    logo: "skills/react",
-    color: "#0EA5E9",
-    darkColor: "#67E8F9",
-    skillType: "fullstack",
-  },
-  {
-    name: "Next.js",
-    tooltip: "It is just amazing, but not for everything!",
-    logo: "skills/next",
-    color: "#111111",
-    darkColor: "#E5E7EB",
-    skillType: "fullstack",
-  },
-  {
-    name: "Vue.js",
-    tooltip: "Vue is nice!",
-    logo: "skills/vue",
-    color: "#059669",
-    darkColor: "#6EE7B7",
-    skillType: "fullstack",
-  },
-  {
-    name: "Tailwind",
-    tooltip: "Before you actually use it, you think it will increase your work. But...",
-    logo: "skills/tailwind",
-    color: "#0891B2",
-    darkColor: "#67E8F9",
-    skillType: "fullstack",
-  },
-
-  // backend & apis
-  {
-    name: "Django",
-    tooltip: "My goto web fullstack framework before SvelteKit",
-    logo: "skills/django",
-    color: "#0F3E2E",
-    darkColor: "#1C7C54",
-    skillType: "fullstack",
-  },
-  {
-    name: "FastAPI",
-    tooltip: "Nice fast api servers...",
-    logo: "skills/fastapi",
-    color: "#009688",
-    darkColor: "#00796B",
-    skillType: "fullstack",
-  },
-  {
-    name: "Drizzle",
-    tooltip: "Awesome ORM for the web",
-    logo: "skills/drizzle",
-    color: "#6AA21A",
-    darkColor: "#A0E83F",
-    skillType: "fullstack",
-  },
-
-  // databases
-  {
-    name: "PostgreSQL",
-    tooltip: "Pretty awesome database, has so many features...",
-    logo: "skills/postgresql",
-    color: "#4169E1",
-    darkColor: "#87CEEB",
-    skillType: "fullstack",
-  },
-  {
-    name: "MongoDB",
-    tooltip: "Nice NoSQL storage...",
-    logo: "skills/mongo",
-    color: "#16A34A",
-    darkColor: "#4ADE80",
-    skillType: "fullstack",
-  },
-
-  // devops & cloud
+  // ==========================================
+  // SYSTEMS & INFRASTRUCTURE
+  // ==========================================
   {
     name: "Docker",
     tooltip: "Awesome stuff, reproducible environments...",
@@ -185,14 +112,6 @@ export const skills = [
     skillType: "systems",
   },
   {
-    name: "Supabase",
-    tooltip: "Supabase is Awesome, much better than AWS for simple stuff",
-    logo: "skills/supabase",
-    color: "#16A34A",
-    darkColor: "#4ADE80",
-    skillType: "fullstack",
-  },
-  {
     name: "AWS",
     tooltip: "Too difficult to fully master",
     logo: "skills/aws",
@@ -200,16 +119,6 @@ export const skills = [
     darkColor: "#FBBF24",
     skillType: "systems",
   },
-  {
-    name: "GitHub Actions",
-    tooltip: "Automating builds, tests, and deployments",
-    logo: "skills/githubactions",
-    color: "#2088FF",
-    darkColor: "#E5E7EB",
-    skillType: "fullstack",
-  },
-
-  // tools & systems
   {
     name: "Git",
     tooltip: "Thank god Linus made git. Also thanks for Linux ❤️",
@@ -228,14 +137,6 @@ export const skills = [
     skillType: "systems",
   },
   {
-    name: "Zed",
-    tooltip: "Zed, The IDE I use, pretty simple",
-    logo: "skills/zed",
-    color: "#1D4ED8",
-    darkColor: "#D1D5DB",
-    skillType: "systems",
-  },
-  {
     name: "Hyprland",
     tooltip: "My favorite WM that I use, Hyprland",
     logo: "skills/hyprland",
@@ -243,8 +144,150 @@ export const skills = [
     darkColor: "#67E8F9",
     skillType: "systems",
   },
+  {
+    name: "PostgreSQL",
+    tooltip: "Pretty awesome database, has so many features...",
+    logo: "skills/postgresql",
+    color: "#4169E1",
+    darkColor: "#87CEEB",
+    skillType: "systems",
+  },
+  {
+    name: "MongoDB",
+    tooltip: "Nice NoSQL storage...",
+    logo: "skills/mongo",
+    color: "#16A34A",
+    darkColor: "#4ADE80",
+    skillType: "systems",
+  },
 
-  // ml / data
+  // ==========================================
+  // FRAMEWORKS & TOOLS
+  // ==========================================
+  {
+    name: "SvelteKit",
+    tooltip: "My goto web framework for the future",
+    logo: "skills/svelte",
+    color: "#FF3E00",
+    darkColor: "#FF6A3D",
+    skillType: "frameworks",
+  },
+  {
+    name: "React",
+    tooltip: "React is a great library for building user interfaces",
+    logo: "skills/react",
+    color: "#0EA5E9",
+    darkColor: "#67E8F9",
+    skillType: "frameworks",
+  },
+  {
+    name: "Next.js",
+    tooltip: "It is just amazing, but not for everything!",
+    logo: "skills/next",
+    color: "#111111",
+    darkColor: "#E5E7EB",
+    skillType: "frameworks",
+  },
+  {
+    name: "Vue.js",
+    tooltip: "Vue is nice!",
+    logo: "skills/vue",
+    color: "#059669",
+    darkColor: "#6EE7B7",
+    skillType: "frameworks",
+  },
+  {
+    name: "Tailwind",
+    tooltip: "Before you actually use it, you think it will increase your work. But...",
+    logo: "skills/tailwind",
+    color: "#0891B2",
+    darkColor: "#67E8F9",
+    skillType: "frameworks",
+  },
+  {
+    name: "Django",
+    tooltip: "My goto web fullstack framework before SvelteKit",
+    logo: "skills/django",
+    color: "#0F3E2E",
+    darkColor: "#1C7C54",
+    skillType: "frameworks",
+  },
+  {
+    name: "FastAPI",
+    tooltip: "Nice fast api servers...",
+    logo: "skills/fastapi",
+    color: "#009688",
+    darkColor: "#00796B",
+    skillType: "frameworks",
+  },
+  {
+    name: "Drizzle",
+    tooltip: "Awesome ORM for the web",
+    logo: "skills/drizzle",
+    color: "#6AA21A",
+    darkColor: "#A0E83F",
+    skillType: "frameworks",
+  },
+  {
+    name: "Supabase",
+    tooltip: "Supabase is Awesome, much better than AWS for simple stuff",
+    logo: "skills/supabase",
+    color: "#16A34A",
+    darkColor: "#4ADE80",
+    skillType: "frameworks",
+  },
+  {
+    name: "GitHub Actions",
+    tooltip: "Automating builds, tests, and deployments",
+    logo: "skills/githubactions",
+    color: "#2088FF",
+    darkColor: "#E5E7EB",
+    skillType: "frameworks",
+  },
+  {
+    name: "Godot",
+    tooltip: "I make games in Godot now",
+    logo: "skills/godot",
+    color: "#3B82F6",
+    darkColor: "#60A5FA",
+    skillType: "frameworks",
+  },
+  {
+    name: "Unity",
+    tooltip: "Used to use Unity, before it went downhill with stuff",
+    logo: "skills/unity",
+    color: "#111111",
+    darkColor: "#D1D5DB",
+    skillType: "frameworks",
+  },
+  {
+    name: "Blender",
+    tooltip: "Made a lot of stuff in blender",
+    logo: "skills/blender",
+    color: "#EA580C",
+    darkColor: "#FB923C",
+    skillType: "frameworks",
+  },
+  {
+    name: "Obsidian",
+    tooltip: "My note taking app of choice",
+    logo: "skills/obsidian",
+    color: "#7C3AED",
+    darkColor: "#A78BFA",
+    skillType: "frameworks",
+  },
+  {
+    name: "Typst",
+    tooltip: "Modern LaTeX alternative for me, my resume is built in typst.",
+    logo: "skills/typst",
+    color: "#239DAD",
+    darkColor: "#4FD1E0",
+    skillType: "frameworks",
+  },
+
+  // ==========================================
+  // INTELLIGENCE & AI TOOLS
+  // ==========================================
   {
     name: "PyTorch",
     tooltip: "Learning this go-to library for ML and deep-learning",
@@ -253,48 +296,44 @@ export const skills = [
     darkColor: "#FF6A3D",
     skillType: "intelligence",
   },
-
-  // creative / game dev
   {
-    name: "Godot",
-    tooltip: "I make games in Godot now",
-    logo: "skills/godot",
-    color: "#3B82F6",
-    darkColor: "#60A5FA",
+    name: "Cursor",
+    tooltip: "AI-first code editor of choice for rapid iteration loops.",
+    logo: "skills/cursor",
+    color: "#0052FF",
+    darkColor: "#38BDF8",
     skillType: "intelligence",
   },
   {
-    name: "Unity",
-    tooltip: "Used to use Unity, before it went downhill with stuff",
-    logo: "skills/unity",
-    color: "#111111",
+    name: "Claude",
+    tooltip: "Advanced text reasoning, logical code generation, and systems context mapping.",
+    logo: "skills/claude",
+    color: "#D97706",
+    darkColor: "#F59E0B",
+    skillType: "intelligence",
+  },
+  {
+    name: "Gemini",
+    tooltip: "Native multimodal integration and massive context window parsing.",
+    logo: "skills/gemini",
+    color: "#1A73E8",
+    darkColor: "#669DF2",
+    skillType: "intelligence",
+  },
+  // {
+  //   name: "Antigravity",
+  //   tooltip: "Python's secret Easter egg built-in fly module (`import antigravity`).",
+  //   logo: "skills/antigravity",
+  //   color: "#10B981",
+  //   darkColor: "#34D399",
+  //   skillType: "intelligence",
+  // },
+  {
+    name: "Zed",
+    tooltip: "Zed, The high-performance engine IDE I use, pretty simple.",
+    logo: "skills/zed",
+    color: "#1D4ED8",
     darkColor: "#D1D5DB",
-    skillType: "intelligence",
-  },
-  {
-    name: "Blender",
-    tooltip: "Made a lot of stuff in blender",
-    logo: "skills/blender",
-    color: "#EA580C",
-    darkColor: "#FB923C",
-    skillType: "intelligence",
-  },
-
-  // personal / niche tools
-  {
-    name: "Obsidian",
-    tooltip: "My note taking app of choice",
-    logo: "skills/obsidian",
-    color: "#7C3AED",
-    darkColor: "#A78BFA",
-    skillType: "intelligence",
-  },
-  {
-    name: "Typst",
-    tooltip: "Modern LaTex alternative for me, my resume is built in typst.",
-    logo: "skills/typst",
-    color: "#239DAD",
-    darkColor: "#4FD1E0",
     skillType: "intelligence",
   },
 ]

@@ -4,25 +4,49 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --primary: #00a0e9;
+  /* Accent colors */
+  --primary: #3aa0ff;
+  --secondary: #4cbfa6;
+  --tertiary: #906103;
+  --accent: #4cbfa6;
+
+  /* Backgrounds */
   --background: #fafafa;
-  --foreground: #050505;
-  --card: #fff;
-  --card-foreground: #101010;
-  --card-muted: #f0f0f0;
-  --card-muted-foreground: #202020;
-  --muted: #6b7280;
+  --surface: #fefefe;
+  --surface-2: #f5f8f7;
+  --surface-3: #edf3f1;
+
+  /* Text */
+  --foreground: #11181a;
+  --foreground-soft: #5b666f;
+  --foreground-muted: #88939d;
+
+  /* UI */
+  --border: #d8e0dd;
+  --ring: rgba(58, 160, 255, 0.35);
 }
 
 .dark {
-  --primary: #00a0e9;
-  --background: #050505;
-  --foreground: #f9f9f9;
-  --card: #111111;
-  --card-foreground: #eee;
-  --card-muted: #2e2e2e;
-  --card-muted-foreground: #ddd;
-  --muted: #9ca3af;
+  /* Accent colors */
+  --primary: #5ab2ff;
+  --secondary: #63d1ba;
+  --tertiary: #c2ccff;
+  --accent: #ffc985;
+
+  /* Backgrounds */
+  --background: #0c120c;
+  --surface: #131918;
+  --surface-2: #1a2220;
+  --surface-3: #222d2a;
+
+  /* Text */
+  --foreground: #f7faf8;
+  --foreground-soft: #d2dbd7;
+  --foreground-muted: #98a49f;
+
+  /* UI */
+  --border: #2b3532;
+  --ring: rgb(90, 178, 255);
 }
 
 @theme inline {
@@ -36,16 +60,42 @@
   --font-mono: var(--font-monaspace-argon);
 
   --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
+  --color-accent: var(--accent);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-card-muted: var(--card-muted);
-  --color-card-muted-foreground: var(--card-muted-foreground);
-  --color-muted: var(--muted);
+  --color-foreground-soft: var(--foreground-soft);
+  --color-muted: var(--foreground-muted);
+
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+
+  --color-border: var(--border);
+  --color-ring: var(--ring);
 }
 
 @layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    @apply scroll-smooth font-sans;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      @apply scroll-auto;
+    }
+  }
+
   h1,
   h2,
   h3,
@@ -78,17 +128,14 @@
     font-weight: 500;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  .scrollbar-hide {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
   }
 
-  html {
-    @apply scroll-smooth font-sans;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      @apply scroll-auto;
-    }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Webkit browsers */
   }
 }
