@@ -2,7 +2,8 @@
 import { Icon } from "astro-icon/components"
 import { getCollection } from "astro:content"
 
-import ProjectCard from "@/components/cards/ProjectCard.astro"
+import ProjectGridCard from "@/components/cards/ProjectGridCard.astro"
+import ProjectListCard from "@/components/cards/ProjectListCard.astro"
 import Layout from "@/layouts/Layout.astro"
 
 const projects = (await getCollection("projects", ({ data }) => data.visible)).sort(
@@ -15,18 +16,57 @@ const description = "Harsh Narayan Jha's Projects"
 
 <Layout title={title} description={description}>
   <section class="h-auto w-full px-4 py-16 md:px-16 md:py-16">
-    <div class="mx-auto text-center">
-      <Icon name="project" class="m-2 inline" size={24} />
-      <h2 class="mt-4 text-center text-4xl font-semibold">Selected Projects</h2>
-      <p class="text-foreground-soft mt-2 text-center">A showcase that I am proud of.</p>
+    <div
+      class="border-border/40 relative mx-auto mb-8 flex max-w-5xl flex-col justify-between gap-4 border-b pb-6 text-center md:flex-row md:items-end"
+    >
+      <div class="text-left">
+        <div class="flex items-center gap-2">
+          <Icon name="project" class="text-primary inline md:mr-2" size={24} />
+          <h2 class="text-2xl font-bold tracking-tight md:text-3xl">Selected Projects</h2>
+        </div>
+        <p class="text-foreground-soft mt-1 text-sm md:text-base">
+          A showcase of the systems and engineering builds I am proud of.
+        </p>
+      </div>
+
+      <!-- View Toggle -->
+      <div
+        class="flex items-center justify-start self-start select-none md:justify-end md:self-auto"
+      >
+        <div class="border-border/40 bg-surface inline-flex rounded-lg border p-1 shadow-xs">
+          <button
+            id="view-mode-list"
+            class="cursor-pointer rounded-md px-3 py-1.5 text-xs font-semibold"
+            aria-label="List View"
+          >
+            <Icon name="list" class="inline" size={16} />
+            <span class="sr-only">List</span>
+          </button>
+          <button
+            id="view-mode-grid"
+            class="cursor-pointer rounded-md px-3 py-1.5 text-xs font-semibold"
+            aria-label="Grid View"
+          >
+            <Icon name="grid" class="inline" size={16} />
+            <span class="sr-only">Grid</span>
+          </button>
+        </div>
+      </div>
     </div>
 
+    <!-- LIST CONTAINER (Default) -->
+    <div id="projects-list-container" class="mx-auto flex max-w-5xl flex-col gap-5">
+      {projects.map(proj => <ProjectListCard proj={proj.data} />)}
+    </div>
+
+    <!-- GRID CONTAINER -->
     <div
-      class="mx-auto mt-8 grid max-w-6xl grid-cols-1 place-content-center justify-items-center gap-8 lg:grid-cols-3"
+      id="projects-grid-container"
+      class="mx-auto mt-8 hidden max-w-6xl grid-cols-1 place-content-center justify-items-center gap-8 lg:grid-cols-3"
     >
       {
         projects.map(proj => (
-          <ProjectCard class="m-auto my-4 w-full md:mx-8 md:w-full" proj={proj.data}>
+          <ProjectGridCard class="m-auto my-4 w-full md:mx-8 md:w-full" proj={proj.data}>
             <h3 class="text-2xl font-semibold" slot="title">
               {proj.data.name}
             </h3>
@@ -41,9 +81,60 @@ const description = "Harsh Narayan Jha's Projects"
                 ))}
               </div>
             </div>
-          </ProjectCard>
+          </ProjectGridCard>
         ))
       }
     </div>
   </section>
 </Layout>
+
+<script>
+  function setupProjectViewSwitcher() {
+    const listBtn = document.getElementById("view-mode-list")
+    const gridBtn = document.getElementById("view-mode-grid")
+    const listContainer = document.getElementById("projects-list-container")
+    const gridContainer = document.getElementById("projects-grid-container")
+
+    if (!listBtn || !gridBtn || !listContainer || !gridContainer) return
+
+    const currentView = localStorage.getItem("projects-view-mode") || "list"
+    applyViewMode(currentView)
+
+    listBtn.addEventListener("click", () => {
+      applyViewMode("list")
+      localStorage.setItem("projects-view-mode", "list")
+    })
+
+    gridBtn.addEventListener("click", () => {
+      applyViewMode("grid")
+      localStorage.setItem("projects-view-mode", "grid")
+    })
+
+    function applyViewMode(mode: string) {
+      if (mode === "grid") {
+        listContainer?.classList.add("hidden")
+
+        gridContainer?.classList.remove("hidden")
+        gridContainer?.classList.add("grid")
+
+        listBtn?.classList.remove("bg-surface-3", "text-secondary", "border", "border-border/30")
+        listBtn?.classList.add("text-foreground-soft/70")
+
+        gridBtn?.classList.add("bg-surface-3", "text-secondary", "border", "border-border/30")
+        gridBtn?.classList.remove("text-foreground-soft/70")
+      } else {
+        gridContainer?.classList.add("hidden")
+        gridContainer?.classList.remove("grid")
+        listContainer?.classList.remove("hidden")
+
+        gridBtn?.classList.remove("bg-surface-3", "text-secondary", "border", "border-border/30")
+        gridBtn?.classList.add("text-foreground-soft/70")
+
+        listBtn?.classList.add("bg-surface-3", "text-secondary", "border", "border-border/30")
+        listBtn?.classList.remove("text-foreground-soft/70")
+      }
+    }
+  }
+
+  document.addEventListener("astro:page-load", setupProjectViewSwitcher)
+</script>

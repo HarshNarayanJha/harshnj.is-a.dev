@@ -1,0 +1,140 @@
+---
+import { Icon } from "astro-icon/components"
+import { Picture } from "astro:assets"
+import type { CollectionEntry } from "astro:content"
+
+interface Props {
+  proj: CollectionEntry<"projects">["data"]
+  class?: string
+}
+
+const { proj, class: className = "" } = Astro.props
+
+function getStatusColor(status: string) {
+  switch (status) {
+    case "Active":
+      return "border-primary/30 bg-primary/10 text-primary"
+    case "Completed":
+      return "border-secondary/30 bg-secondary/10 text-secondary"
+    case "Archived":
+      return "border-muted/30 bg-muted/10 text-muted"
+    case "WIP":
+    default:
+      return "border-tertiary/30 bg-tertiary/10 text-tertiary"
+  }
+}
+---
+
+<div
+  class:list={[
+    "bg-surface group flex flex-col items-start gap-5 overflow-hidden rounded-xl p-4 shadow-xs transition-all hover:shadow-sm md:flex-row md:items-stretch md:p-5",
+    className,
+  ]}
+>
+  <div
+    class="border-border/40 bg-surface-2/50 flex aspect-video w-full shrink-0 items-center justify-center self-center overflow-hidden rounded-lg border md:w-64 md:self-auto"
+  >
+    <Picture
+      src={proj.img}
+      formats={["webp", "avif"]}
+      alt={proj.name}
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-103"
+      width={176}
+      layout="constrained"
+    />
+  </div>
+
+  <div class="flex w-full flex-1 flex-col justify-between gap-4">
+    <div class="space-y-2">
+      <div class="flex flex-wrap items-center gap-2 select-none">
+        {
+          proj.year && (
+            <span class="bg-surface-2 text-foreground-soft/80 rounded px-2 py-0.5 font-mono text-[0.7rem]">
+              {proj.year}
+            </span>
+          )
+        }
+        <span
+          class={`rounded border px-2 py-0.5 font-mono text-[0.7rem] font-bold ${getStatusColor(proj.status)}`}
+        >
+          {proj.status}
+        </span>
+        <div class="flex flex-wrap gap-1">
+          {
+            proj.domains.map(dom => (
+              <span class="text-tertiary bg-tertiary/10 dark:bg-tertiary/15 border-border/10 rounded border px-1.5 py-0.5 font-mono text-[0.7rem] font-semibold">
+                {dom}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+
+      <h3
+        class="text-foreground group-hover:text-primary text-md font-semibold transition-colors md:text-lg"
+      >
+        {proj.name}
+      </h3>
+      <p
+        class="prose dark:prose-invert text-foreground-soft md:text-md line-clamp-2 max-w-4xl text-sm leading-relaxed"
+      >
+        {proj.text}
+      </p>
+    </div>
+
+    <div class="flex flex-col justify-between gap-4 pt-2 sm:flex-row sm:items-center">
+      <div class="flex flex-wrap gap-1.5 select-none">
+        {
+          proj.tags.map(tag => (
+            <span class="bg-surface-3 border-border/30 text-foreground-soft/90 rounded border px-2 py-0.5 font-mono text-[0.7rem] font-medium">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+
+      <div class="flex min-w-40 items-center gap-2 self-end select-none sm:self-auto">
+        {
+          proj.url ? (
+            <a href={proj.url} target="_blank" class="w-20">
+              <button
+                class="cursor-newtab bg-secondary/40 hover:bg-secondary/60 flex w-full cursor-pointer items-center justify-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-semibold transition-colors"
+                tabindex="-1"
+              >
+                Live
+                <Icon name="eye" class="h-3 w-3" />
+              </button>
+            </a>
+          ) : (
+            <button
+              class="w-20 cursor-not-allowed rounded-lg border border-dashed bg-transparent py-1.5 text-xs font-semibold opacity-50 select-none"
+              disabled
+            >
+              Offline
+            </button>
+          )
+        }
+        {
+          proj.github ? (
+            <a href={proj.github} target="_blank" class="w-20">
+              <button
+                class="cursor-newtab bg-surface-3 hover:bg-surface-4 border-border/35 flex w-full cursor-pointer items-center justify-center gap-1 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-colors"
+                tabindex="-1"
+              >
+                Source
+                <Icon name="logos/github" class="h-3 w-3" />
+              </button>
+            </a>
+          ) : (
+            <button
+              class="w-20 cursor-not-allowed rounded-lg border border-dashed py-1.5 text-xs font-semibold opacity-50 select-none"
+              disabled
+            >
+              Private
+            </button>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</div>

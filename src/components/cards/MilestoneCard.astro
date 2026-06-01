@@ -1,5 +1,4 @@
 ---
-import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
 import { Icon } from "astro-icon/components"
 import { Picture } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
@@ -15,13 +14,13 @@ interface Props {
 const { class: className, milestone, ...rest } = Astro.props
 ---
 
-<!-- <TransparentBorder class:list={[className, "border-0"]} enableHoverScale={false} {rest}> -->
 <div
   class:list={[
     "bg-surface flex h-full flex-col justify-between gap-4 rounded-lg p-4 pt-2 md:min-h-52 md:px-8 md:py-4",
+    "shadow-xs transition-all hover:shadow-sm",
     className,
-    // "shadow-neutral-600/50 drop-shadow-sm",
   ]}
+  {...rest}
 >
   <div class="flex flex-col-reverse items-start justify-start gap-4 md:flex-row md:gap-8">
     <div class="flex h-full w-full flex-col items-start justify-start">
@@ -92,4 +91,3 @@ const { class: className, milestone, ...rest } = Astro.props
     }
   </div>
 </div>
-<!-- </TransparentBorder> -->
