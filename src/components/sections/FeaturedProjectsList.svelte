@@ -1,31 +1,21 @@
 <script lang="ts">
-interface Project {
-  id: string
-  name: string
-  text: string
-  url?: string
-  github?: string
-  domains: string[]
-  tags: string[]
-  year?: number
-  status: "Active" | "Completed" | "Archived" | "WIP"
-  img?: string
-}
+import placeholderImage from "@/img/placeholder.png"
+import type { ProjectData, ProjectDataDomains } from "@/lib/types"
 
 interface Props {
-  projects: Project[]
+  projects: ProjectData[]
 }
 
 let { projects }: Props = $props()
 
-let selectedDomain = $state("All")
+let selectedDomain = $state<ProjectDataDomains | null>(null)
 
-const allDomains = $derived(["All", ...Array.from(new Set(projects.flatMap(p => p.domains)))])
+const allDomains = $derived(Array.from(new Set(projects.flatMap(p => p.domains))))
 let filteredProjects = $derived(
-  selectedDomain === "All" ? projects : projects.filter(p => p.domains.includes(selectedDomain)),
+  selectedDomain !== null ? projects.filter(p => p.domains.includes(selectedDomain!)) : projects,
 )
 
-function getStatusColor(status: string) {
+function getStatusColor(status: ProjectData["status"]) {
   switch (status) {
     case "Active":
       return "border-primary/30 bg-primary/10 text-primary"
@@ -39,7 +29,6 @@ function getStatusColor(status: string) {
   }
 }
 
-// Hover card logic
 let hoverCard: HTMLElement | null = $state(null)
 let cardTitle: HTMLElement | null = $state(null)
 let cardDesc: HTMLElement | null = $state(null)
@@ -58,7 +47,7 @@ $effect(() => {
   }
 })
 
-function showPreview(proj: Project) {
+function showPreview(proj: ProjectData) {
   if (!hoverCard || !cardTitle || !cardDesc || !cardImg || !cardTags || !cardTime) return
 
   cardTitle.textContent = proj.name
@@ -67,9 +56,8 @@ function showPreview(proj: Project) {
     proj.domains.map(d => `@${d}`).join(" ") + " " + proj.tags.map(t => `#${t}`).join(" ")
   // cardTime.textContent = proj.year ? String(proj.year) : ""
 
-  const fallbackImg = "/_astro/placeholder.png"
-  const imageSrc = proj.img || fallbackImg
-  cardImg.src = imageSrc
+  const image = (proj.img || placeholderImage) as unknown as string
+  cardImg.src = image
   cardImg.classList.remove("hidden")
 
   hoverCard.classList.remove("opacity-0", "scale-95")
@@ -103,43 +91,39 @@ function hidePreview() {
 </script>
 
 <div class="mx-auto max-w-4xl px-4 py-4 space-y-6">
-  <!-- Interactive filter bar -->
+  <!-- filter bar -->
   <div
-    class="flex flex-wrap items-center gap-2 text-xs font-mono select-none bg-surface-2 p-3 rounded-xl border border-border/60"
+    class="flex flex-wrap items-center gap-2 text-xs font-mono select-none bg-surface-2 p-3 rounded-xl border border-border/40"
   >
-    <span class="text-muted mr-2 uppercase font-bold">Filter:</span>
-    {#each allDomains as domain}
+    {#each [null, ...allDomains] as domain}
       <button
         type="button"
         onclick={() => (selectedDomain = domain)}
         class="px-3 py-1.5 rounded-lg border transition-all cursor-pointer font-semibold uppercase tracking-wider
           {selectedDomain === domain
           ? 'bg-secondary/60'
-          : 'border-border text-foreground  hover:bg-secondary/20'}"
+          : 'border-border/40 text-foreground hover:bg-secondary/20'}"
       >
-        {domain}
+        {domain ?? "All"}
       </button>
     {/each}
   </div>
 
-  <!-- Projects repository list -->
-  <div class="border border-border/80 rounded-xl bg-surface shadow-xs overflow-hidden">
-    <!-- Header of Repository List (CLI aesthetic) -->
+  <!-- projects list -->
+  <div class="border border-border/50 rounded-xl bg-surface shadow-xs overflow-hidden">
     <div
-      class="grid grid-cols-12 gap-4 px-5 py-3 items-center border-b border-border/60 bg-surface-2 text-xs font-mono font-bold text-muted uppercase tracking-wider select-none"
+      class="grid grid-cols-12 gap-4 px-5 py-3 items-center border-b border-border/40 bg-surface-2 text-xs font-mono font-bold text-muted uppercase tracking-wider select-none"
     >
-      <div class="col-span-12 md:col-span-4">Repository / Name</div>
-      <div class="hidden md:block md:col-span-5">Tagline, Domains & Stack</div>
-      <div class="hidden md:block md:col-span-3 text-right">Outbound / Source</div>
+      <div class="col-span-12 md:col-span-4">Name</div>
+      <div class="hidden md:block md:col-span-5">Description</div>
+      <div class="hidden md:block md:col-span-3 text-right">Links</div>
     </div>
 
-    <!-- Rows -->
     <div class="divide-y divide-border/80">
       {#each filteredProjects as proj (proj.id)}
         <div
           class="flex flex-col md:grid md:grid-cols-12 gap-4 px-5 py-4 md:items-center hover:bg-surface-2/70 transition-colors group"
         >
-          <!-- Column 1: Icon & Name & Badges -->
           <div
             class="col-span-12 md:col-span-4 flex items-center gap-3 cursor-help select-none"
             onmouseenter={() => showPreview(proj)}
@@ -149,50 +133,33 @@ function hidePreview() {
             tabindex="0"
             onkeydown={e => e.key === "Enter" && showPreview(proj)}
           >
-            <span
-              class="text-secondary bg-secondary/10 p-2 rounded-lg group-hover:scale-105 transition-transform flex items-center justify-center shrink-0"
-            >
-              <!-- Folder SVG -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-4 h-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"
-                />
-              </svg>
-            </span>
             <div class="flex flex-col gap-2">
-              <h3
-                class="text-sm font-semibold group-hover:text-secondary dark:group-hover:text-secondary transition-colors font-heading"
-              >
-                {proj.name}
-              </h3>
-
-              <div class="flex items-center flex-wrap gap-1.5">
-                {#if proj.year}
-                  <span class="bg-surface-2 rounded px-2 py-0.5 font-mono text-xs">
-                    {proj.year}
-                  </span>
-                {/if}
-                <span
-                  class="text-xs font-mono font-semibold border px-1.5 py-0.5 rounded {getStatusColor(
-                    proj.status,
-                  )}"
+              <div class="flex flex-row gap-2 items-center">
+                <h3
+                  class="text-lg font-medium group-hover:text-secondary dark:group-hover:text-secondary transition-colors font-heading"
                 >
-                  {proj.status}
-                </span>
+                  {proj.name}
+                </h3>
+
+                {#each proj.domains as dom}
+                  <kbd
+                    class="font-mono mr-2 text-xs font-medium text-secondary bg-secondary/10 dark:bg-secondary/15 px-1.5 py-0.5 rounded border border-border/20"
+                  >
+                    {dom}
+                  </kbd>
+                {/each}
+              </div>
+
+              <div class="flex flex-wrap gap-1.5 items-center select-none">
+                {#each proj.tags as tag}
+                  <kbd class="font-mono text-xs text-foreground-soft">
+                    #{tag}
+                  </kbd>
+                {/each}
               </div>
             </div>
           </div>
 
-          <!-- Column 2: Tagline, Domains & Stack (visible everywhere with responsive sizes and margins) -->
           <div
             class="col-span-12 md:col-span-5 space-y-1.5 pr-2 md:pl-0 pl-11 cursor-help"
             onmouseenter={() => showPreview(proj)}
@@ -202,28 +169,11 @@ function hidePreview() {
             tabindex="0"
             onkeydown={e => e.key === "Enter" && showPreview(proj)}
           >
-            <p class="line-clamp-2 md:line-clamp-1 prose dark:prose-invert prose-sm">
+            <p class="line-clamp-1 prose dark:prose-invert prose-sm">
               {proj.text}
             </p>
-            <div class="flex flex-wrap gap-1.5 items-center select-none">
-              {#each proj.domains as dom}
-                <span
-                  class="font-mono text-xs font-semibold text-secondary bg-secondary/10 dark:bg-secondary/15 px-1.5 py-0.5 rounded border border-border/20"
-                >
-                  {dom}
-                </span>
-              {/each}
-              {#each proj.tags as tag}
-                <span
-                  class="font-mono text-xs font-medium bg-surface-3 px-2 py-0.5 rounded border border-border/40"
-                >
-                  {tag}
-                </span>
-              {/each}
-            </div>
           </div>
 
-          <!-- Column 3: Outbound / Source Links -->
           <div
             class="col-span-12 md:col-span-3 flex md:justify-end gap-2.5 md:mt-0 select-none md:pl-0 pl-11"
           >
@@ -234,7 +184,6 @@ function hidePreview() {
                 class="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold bg-secondary/50 rounded-lg hover:bg-secondary/80 transition-colors"
               >
                 <span>Live</span>
-                <!-- Eye SVG -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="w-3.5 h-3.5"

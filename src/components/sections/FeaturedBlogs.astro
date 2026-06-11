@@ -7,26 +7,23 @@ import placeholderImage from "@/img/placeholder.png"
 import HoverCard from "@/components/reusable/HoverCard.astro"
 
 const featuredBlogs = (
-  await getCollection(
-    "blogs",
-    ({ data }) => data.isPublished === true && data.pubDate !== undefined,
-  )
+  await getCollection("blogs", ({ data }) => data.isPublished && data.pubDate && data.isVisible)
 )
   .sort((a, b) => b.data.pubDate!.valueOf() - a.data.pubDate!.valueOf())
   .slice(0, 3)
 ---
 
 <div class="relative mx-auto max-w-4xl px-4 py-6 font-mono text-sm">
-  <div class="bg-surface border-opacity-60 overflow-hidden rounded-xl border shadow-xs">
+  <div class="bg-surface border-border/40 overflow-hidden rounded-xl border shadow-xs">
     <div
-      class="border-border/60 text-muted grid grid-cols-12 gap-4 border-b px-5 py-3 font-mono text-xs font-bold tracking-wider uppercase select-none"
+      class="border-border/40 text-muted grid grid-cols-12 gap-4 border-b px-5 py-3 font-mono text-xs font-bold tracking-wider uppercase select-none"
     >
       <div class="col-span-3 sm:col-span-2">Date</div>
       <div class="col-span-9 sm:col-span-8">Title</div>
       <div class="hidden text-right sm:col-span-2 sm:block">Read Time</div>
     </div>
 
-    <div class="divide-border/60 divide-y font-mono text-sm">
+    <div class="divide-border/40 divide-y font-mono text-sm">
       {
         featuredBlogs.map(blog => {
           const readingTime = getReadingTime(blog.body ?? "")
@@ -53,7 +50,7 @@ const featuredBlogs = (
                 >
                   {blog.data.title}
                 </a>
-                <span class="text-secondary/75 text-xs">{tagsStr}</span>
+                <kbd class="prose dark:prose-invert ms-4 font-mono text-xs">{tagsStr}</kbd>
               </div>
 
               <div class="text-muted hidden text-right font-mono text-xs sm:col-span-2 sm:block">

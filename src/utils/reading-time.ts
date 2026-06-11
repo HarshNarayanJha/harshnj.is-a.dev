@@ -10,8 +10,7 @@ export const getReadingTime = (text: string): string | undefined => {
     if (minutes && minutes > 0) {
       return `${Math.ceil(minutes)} min read`
     }
-    return undefined
   } catch (e) {
-    return undefined
+    console.error(e)
   }
 }

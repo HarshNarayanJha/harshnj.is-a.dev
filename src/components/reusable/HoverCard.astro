@@ -18,11 +18,10 @@ const { id = "hover-card" } = Astro.props
   />
   <div class="space-y-1">
     <div class="flex items-center justify-between">
-      <span data-hover-tags class="text-secondary font-mono text-xs tracking-wider uppercase"
-      ></span>
+      <kbd data-hover-tags class="prose dark:prose-invert font-mono text-xs"></kbd>
       <span data-hover-time class="text-muted font-mono text-xs"></span>
     </div>
     <h4 data-hover-title class="font-heading line-clamp-1 text-sm font-semibold"></h4>
-    <p data-hover-desc class="text-foreground-soft line-clamp-4 text-sm leading-relaxed"></p>
+    <p data-hover-desc class="text-foreground-soft line-clamp-3 text-sm leading-relaxed"></p>
   </div>
 </div>

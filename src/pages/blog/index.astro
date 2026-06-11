@@ -5,9 +5,9 @@ import { Icon } from "astro-icon/components"
 import Layout from "@/layouts/Layout.astro"
 import BlogCard from "@/components/cards/BlogCard.astro"
 
-const blogs = (await getCollection("blogs", ({ data }) => data.isPublished && data.pubDate)).sort(
-  (a, b) => b.data.pubDate!.valueOf() - a.data.pubDate!.valueOf(),
-)
+const blogs = (
+  await getCollection("blogs", ({ data }) => data.isPublished && data.pubDate && data.isVisible)
+).sort((a, b) => b.data.pubDate!.valueOf() - a.data.pubDate!.valueOf())
 
 const title = "Blog | Harsh Narayan Jha"
 const description = "Harsh Narayan Jha's Blogs"

@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components"
 
 import TransparentDivider from "@/components/reusable/TransparentDivider.svelte"
-import { accounts, KEYBASE_ACCOUNT_URI, PGP_PUBLIC_KEY_SIG, socialLinks } from "@/utils/data"
+import { accounts, KEYBASE_ACCOUNT_URI, socialLinks } from "@/utils/data"
 
 const currentDate = new Date().toLocaleTimeString("en-IN", {
   timeZone: "Asia/Kolkata",
@@ -13,13 +13,6 @@ const currentDate = new Date().toLocaleTimeString("en-IN", {
 })
 ---
 
-<!-- <div class="wave-divider bg-zinc-200 dark:bg-gray-900">
-  <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-    <path
-      d="M0,60 C150,80 250,50 400,70 C550,90 650,40 800,60 C950,80 1050,40 1200,60 L1200,0 L0,0 Z"
-      class="fill-neutral-50 dark:fill-gray-950"></path>
-  </svg>
-</div> -->
 <TransparentDivider />
 
 <script is:inline>

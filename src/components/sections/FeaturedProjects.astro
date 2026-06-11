@@ -1,9 +1,12 @@
 ---
+import HoverCard from "@/components/reusable/HoverCard.astro"
 import { getCollection } from "astro:content"
 import FeaturedProjectsList from "./FeaturedProjectsList.svelte"
-import HoverCard from "@/components/reusable/HoverCard.astro"
 
-const featuredProjects = await getCollection("projects", ({ data }) => data.featured)
+const featuredProjects = await getCollection(
+  "projects",
+  ({ data }) => data.featured && data.visible,
+)
 
 // Sort by year in reverse
 const sortedProjects = featuredProjects.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0))

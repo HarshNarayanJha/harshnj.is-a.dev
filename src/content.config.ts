@@ -13,9 +13,11 @@ const projects = defineCollection({
       text: z.string(),
       domains: z.array(z.enum(["Web", "Mobile", "Desktop", "Game Dev", "Systems", "AI/ML"])),
       tags: z.array(z.string()),
+      // shows on the home page
       featured: z.boolean().default(false),
       year: z.number().int().optional(),
       status: z.enum(["Active", "Completed", "Archived", "WIP"]).default("WIP"),
+      // decides actual visibility
       visible: z.boolean().default(true),
     }),
 })
@@ -66,6 +68,9 @@ const blogs = defineCollection({
       image: z.preprocess(val => (val ? `@/img/blogs/${val}` : ""), image()).optional(),
       tags: z.array(z.string()),
       theme: z.enum(["green", "blue", "normal"]).optional().default("normal"),
+      // visible blogs are listed, hidden blogs are not listed, but are accessible via direct URL
+      // unpublished ones are not accessible anyhow
+      isVisible: z.boolean().optional().default(true),
     }),
 })
 
