@@ -1,39 +1,23 @@
 ---
-import HoverCard from "@/components/reusable/HoverCard.astro"
 import { getCollection } from "astro:content"
-import FeaturedProjectsList from "./FeaturedProjectsList.svelte"
+import ProjectListCard from "@/components/cards/ProjectListCard.astro"
 
-const featuredProjects = await getCollection(
-  "projects",
-  ({ data }) => data.featured && data.visible,
+const featuredProjects = (
+  await getCollection("projects", ({ data }) => data.featured && data.visible)
 )
-
-// Sort by year in reverse
-const sortedProjects = featuredProjects.sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0))
-
-const projectsData = sortedProjects.map(proj => ({
-  id: proj.id,
-  name: proj.data.name,
-  text: proj.data.text,
-  url: proj.data.url,
-  github: proj.data.github,
-  domains: proj.data.domains,
-  tags: proj.data.tags,
-  year: proj.data.year,
-  status: proj.data.status,
-  img: proj.data.img ? proj.data.img.src : "",
-}))
+  .sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0))
+  .slice(0, 3)
 ---
 
-<FeaturedProjectsList client:visible projects={projectsData} />
-
-<HoverCard id="project-hover-card" />
+<div class="divide-y divide-border/30">
+  {featuredProjects.map(proj => <ProjectListCard proj={proj.data} transparent />)}
+</div>
 
 <div class="mt-6 text-center">
   <a
     href="/projects"
-    class="hover:text-primary text-sm font-semibold underline underline-offset-4 transition-colors duration-300"
+    class="text-muted hover:text-primary text-sm font-semibold underline underline-offset-4 transition-colors duration-300"
   >
-    See more projects &gtdot;
+    View all projects &gtdot;
   </a>
 </div>

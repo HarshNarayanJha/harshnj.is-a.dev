@@ -7,10 +7,9 @@ import FeaturedBlogs from "@/components/sections/FeaturedBlogs.astro"
 import FeaturedProjects from "@/components/sections/FeaturedProjects.astro"
 import FeaturedTestimonials from "@/components/sections/FeaturedTestimonials.astro"
 import Hero from "@/components/sections/Hero.astro"
+import SkillsBoard from "@/components/sections/SkillsBoard.astro"
 import Work from "@/components/sections/Work.astro"
 import Layout from "@/layouts/Layout.astro"
-
-import SkillsBoard from "@/components/sections/SkillsBoard.astro"
 
 import { RESUME_PATH } from "@/utils/data"
 
@@ -18,89 +17,92 @@ import me from "@/img/me.png"
 ---
 
 <Layout>
+  <!-- hero -->
   <section id="hero" class="relative overflow-hidden md:p-16">
     <Hero />
 
     <Card class="mx-auto my-16 w-11/12 max-w-7xl md:my-8 md:w-10/12 lg:w-7/12">
-      <Picture
-        src={me}
-        class:list={[
-          "aspect-square w-40 rounded-[3.8rem] rounded-br-3xl md:w-52",
-          "-rotate-6 transition hover:-rotate-18",
-          "border-2 shadow-sm",
-        ]}
-        alt="website-owner"
-        formats={["avif", "webp"]}
-        width={160}
-        priority
-        slot="image"
-      />
-      <!-- style="mask-image: radial-gradient(circle at 85% 15%, transparent 5%, black 5%)" -->
-      <h2 class="text-2xl font-bold md:text-3xl" slot="title">Hello There</h2>
-      <div class="prose prose-lg dark:prose-invert mt-2" slot="text">
-        I like building systems from the first principles and exploring the possibilities of AI
-        engineering. I love experimenting with new technologies and specialize in building creative
-        products with great attention to detail across full-stack, native and cloud environments.
+      <div class="flex h-full flex-col items-center justify-start gap-8 p-8 backdrop-blur-xs md:flex-row md:p-3">
+        <div class="self-center">
+          <Picture
+            src={me}
+            class:list={[
+              "aspect-square w-40 rounded-[3.8rem] rounded-br-3xl md:w-52",
+              "-rotate-6 transition hover:-rotate-18",
+              "border-2 shadow-sm",
+            ]}
+            alt="website-owner"
+            formats={["avif", "webp"]}
+            width={160}
+            priority
+          />
+        </div>
+        <div class="mt-2">
+          <h2 class="text-2xl font-bold md:text-3xl">Hello There</h2>
+          <div class="prose prose-lg dark:prose-invert mt-2">
+            I like building systems from the first principles and exploring the possibilities of AI
+            engineering. I love experimenting with new technologies and specialize in building
+            creative products with great attention to detail across full-stack, native and cloud
+            environments.
+          </div>
+          <div class="mt-4 flex flex-wrap items-center gap-4 mb-2">
+            <a
+              href={RESUME_PATH}
+              target="_blank"
+              class="font-heading bg-surface-2 hover:bg-surface-3 border-border/60 inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-semibold transition-colors"
+            >
+              <Icon name="download" class="size-3.5" />
+              Resume
+            </a>
+            <a
+              href="/about"
+              class="text-foreground-soft hover:text-foreground text-sm font-semibold underline underline-offset-4 transition-colors"
+            >
+              More about me &gtdot;
+            </a>
+          </div>
+        </div>
       </div>
     </Card>
   </section>
 
-  <!-- Experience & Skills side-by-side section -->
-  <section id="experience-skills" class="mx-auto w-full max-w-7xl px-4 py-6 md:px-16 md:py-16">
-    <div class="flex w-full flex-col items-start gap-10 lg:flex-row">
-      <!-- Left Column: Experiences -->
-      <div class="flex w-full flex-col">
-        <div class="mb-6">
-          <h3 class="text-4xl font-semibold sm:text-3xl">Experiences</h3>
-          <p class="prose dark:prose-invert">
-            Some highlights of my professional experience and work.
-          </p>
-        </div>
-        <Work />
-      </div>
-
-      <!-- Right Column: Skills Board -->
-      <div class="flex w-full flex-col">
-        <div class="mb-6">
-          <h3 class="text-4xl font-semibold sm:text-3xl">Skills</h3>
-          <p class="prose dark:prose-invert">What I love working with and I'm good at.</p>
-        </div>
-        <SkillsBoard />
-      </div>
-    </div>
-  </section>
-
-  <section id="featured-posts" class="mx-auto w-full max-w-7xl px-4 py-6 md:px-16 md:py-16">
-    <div class="mb-2 md:mb-8">
-      <h2 class="text-3xl font-bold sm:text-4xl">
-        Featured
-        <span
-          class="bg-secondary from-primary to-secondary bg-linear-to-r bg-clip-text text-transparent"
-        >
-          Blogs
-        </span>
-      </h2>
-      <p class="prose dark:prose-invert">Some of my top writings.</p>
-    </div>
-    <FeaturedBlogs />
-  </section>
-
-  <section id="featured-projects" class="mx-auto w-full max-w-7xl px-4 py-6 md:px-16 md:py-16">
-    <div class="mb-2 md:mb-8">
-      <h2 class="text-3xl font-bold sm:text-4xl">
-        Exciting
-        <span
-          class="bg-secondary from-secondary to-secondary bg-linear-to-r bg-clip-text text-transparent"
-        >
-          Projects
-        </span>
-      </h2>
-      <p class="prose dark:prose-invert">Small selection of the projects I have worked on.</p>
+  <!-- projects -->
+  <section id="featured-projects" class="mx-auto w-full max-w-6xl px-4 py-10 md:px-8 md:py-16">
+    <div class="mb-6">
+      <h2 class="font-heading text-2xl font-bold">Projects</h2>
+      <p class="text-foreground-soft mt-1">A selection of things I've built.</p>
     </div>
     <FeaturedProjects />
   </section>
 
-  <section id="testimonials" class="mx-auto w-full max-w-7xl px-4 py-6 md:px-16 md:py-16">
+  <!-- experiences -->
+  <section id="experience" class="mx-auto w-full max-w-6xl px-4 py-10 md:px-8 md:py-16">
+    <div class="mb-6">
+      <h2 class="font-heading text-2xl font-bold">Experience</h2>
+      <p class="text-foreground-soft mt-1">Where I've worked.</p>
+    </div>
+    <Work />
+  </section>
+
+  <!-- blogs -->
+  <section id="featured-posts" class="mx-auto w-full max-w-6xl px-4 py-10 md:px-8 md:py-16">
+    <div class="mb-6">
+      <h2 class="font-heading text-2xl font-bold">Writing</h2>
+      <p class="text-foreground-soft mt-1">Some of my top writings.</p>
+    </div>
+    <FeaturedBlogs />
+  </section>
+
+  {/* ── Skills ── */}
+  <section id="skills" class="mx-auto w-full max-w-6xl px-4 py-10 md:px-8 md:py-16">
+    <div class="mb-6">
+      <h2 class="font-heading text-2xl font-bold">Skills</h2>
+      <p class="text-foreground-soft mt-1">What I love working with.</p>
+    </div>
+    <SkillsBoard />
+  </section>
+
+  <section id="testimonials" class="mx-auto w-full max-w-6xl px-4 py-10 md:px-8 md:py-16">
     <div class="mx-auto mb-4 md:mb-8">
       <h2 class="font-hand text-center text-3xl font-medium">
         Hear

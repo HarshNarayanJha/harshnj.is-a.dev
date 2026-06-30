@@ -1,0 +1,73 @@
+---
+import { Picture } from "astro:assets"
+
+interface Props {
+  /** Render as an anchor tag. Omit to render as a plain div (non-clickable). */
+  href?: string
+  title: string
+  description?: string
+  /** Optional logo image src passed through astro:assets */
+  logo?: ImageMetadata
+  /** Alt text for the logo */
+  logoAlt?: string
+  logoClass?: string
+  logoWidth?: number
+  logoHeight?: number
+  class?: string
+  [key: string]: any
+}
+
+const {
+  href,
+  title,
+  description,
+  logo,
+  logoAlt = "",
+  logoClass,
+  logoWidth = 40,
+  logoHeight = 40,
+  class: className,
+  ...rest
+} = Astro.props
+
+const Tag = href ? "a" : "div"
+---
+
+<Tag
+  href={href}
+  class:list={[
+    "flex items-start gap-4 rounded-xl px-3 py-4 hover:bg-surface-2/70",
+    className,
+  ]}
+  {...rest}
+>
+  {logo && (
+    <Picture
+      src={logo}
+      formats={["webp", "avif"]}
+      alt={logoAlt}
+      width={logoWidth}
+      height={logoHeight}
+      class:list={[
+        logoClass || "mt-0.5 h-10 w-10 shrink-0 rounded-md border object-contain"
+      ]}
+    />
+  )}
+
+  {/* Main content */}
+  <div class="min-w-0 flex-1">
+    <slot name="header" />
+
+    <h3 class="font-heading text-foreground mt-0.5 line-clamp-1 text-base font-semibold">
+      {title}
+    </h3>
+
+    {description && (
+      <p class="text-foreground-soft mt-0.5 line-clamp-2 text-sm leading-relaxed">
+        {description}
+      </p>
+    )}
+
+    <slot name="footer" />
+  </div>
+</Tag>

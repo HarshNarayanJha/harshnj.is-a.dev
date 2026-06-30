@@ -1,6 +1,7 @@
 ---
 import { skills } from "@/utils/data"
 import { Icon } from "astro-icon/components"
+import Card from "@/components/cards/Card.astro"
 
 const systems = skills.filter(s => s.skillType === "systems")
 const frameworks = skills.filter(s => s.skillType === "frameworks")
@@ -31,19 +32,7 @@ const categories = [
 ]
 ---
 
-<div
-  class="bg-surface relative w-full overflow-hidden rounded-xl border p-4 font-mono text-sm shadow-sm"
->
-  <div class="mb-6 flex items-center justify-between border-b pb-4">
-    <div class="flex items-center gap-2">
-      <span class="h-3 w-3 rounded-full bg-red-500/80"></span>
-      <span class="h-3 w-3 rounded-full bg-yellow-500/80"></span>
-      <span class="h-3 w-3 rounded-full bg-green-500/80"></span>
-      <span class="text-foreground-soft ml-2 font-mono text-xs"> harshnj@arch:~ </span>
-    </div>
-    <span class="text-muted font-mono text-xs">LANGS & TOOLS</span>
-  </div>
-
+<Card class="p-4 font-mono text-sm">
   <div class="space-y-6">
     {
       categories.map(cat => (
@@ -77,4 +66,4 @@ const categories = [
       ))
     }
   </div>
-</div>
+</Card>

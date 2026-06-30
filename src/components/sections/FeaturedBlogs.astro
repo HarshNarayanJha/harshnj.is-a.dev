@@ -2,9 +2,8 @@
 import { getCollection } from "astro:content"
 import { formatDate } from "@/utils"
 import { getReadingTime } from "@/utils/reading-time"
+import CompactRow from "@/components/cards/CompactRow.astro"
 import placeholderImage from "@/img/placeholder.png"
-
-import HoverCard from "@/components/reusable/HoverCard.astro"
 
 const featuredBlogs = (
   await getCollection("blogs", ({ data }) => data.isPublished && data.pubDate && data.isVisible)
@@ -13,133 +12,42 @@ const featuredBlogs = (
   .slice(0, 3)
 ---
 
-<div class="relative mx-auto max-w-4xl px-4 py-6 font-mono text-sm">
-  <div class="bg-surface border-border/40 overflow-hidden rounded-xl border shadow-xs">
-    <div
-      class="border-border/40 text-muted grid grid-cols-12 gap-4 border-b px-5 py-3 font-mono text-xs font-bold tracking-wider uppercase select-none"
-    >
-      <div class="col-span-3 sm:col-span-2">Date</div>
-      <div class="col-span-9 sm:col-span-8">Title</div>
-      <div class="hidden text-right sm:col-span-2 sm:block">Read Time</div>
-    </div>
+<div class="divide-y divide-border/30">
+  {
+    featuredBlogs.map(blog => {
+      const readingTime = getReadingTime(blog.body ?? "")
+      const tagsStr = blog.data.tags.map(t => `#${t}`).join("  ")
+      const dateStr = blog.data.pubDate ? formatDate(blog.data.pubDate) : "Draft"
 
-    <div class="divide-border/40 divide-y font-mono text-sm">
-      {
-        featuredBlogs.map(blog => {
-          const readingTime = getReadingTime(blog.body ?? "")
-          const imageSrc = blog.data.image ? blog.data.image.src : placeholderImage.src
-          const tagsStr = blog.data.tags.map(t => `#${t}`).join(" ")
-
-          return (
-            <div
-              class="blog-hover-row hover:bg-surface-2 grid cursor-help grid-cols-12 items-center gap-4 px-5 py-4 transition-all"
-              data-title={blog.data.title}
-              data-desc={blog.data.description}
-              data-img={imageSrc}
-              data-tags={tagsStr}
-              data-time={readingTime}
-            >
-              <div class="text-muted col-span-3 text-xs font-semibold sm:col-span-2">
-                {blog.data.pubDate ? formatDate(blog.data.pubDate) : "Draft"}
-              </div>
-
-              <div class="col-span-9 flex flex-col gap-2 sm:col-span-8 sm:flex-row sm:items-center">
-                <a
-                  href={`/blog/${blog.id}`}
-                  class="font-heading hover:text-secondary line-clamp-1 font-semibold transition-colors"
-                >
-                  {blog.data.title}
-                </a>
-                <kbd class="prose dark:prose-invert ms-4 font-mono text-xs">{tagsStr}</kbd>
-              </div>
-
-              <div class="text-muted hidden text-right font-mono text-xs sm:col-span-2 sm:block">
-                {readingTime}
-              </div>
-            </div>
-          )
-        })
-      }
-    </div>
-  </div>
+      return (
+        <CompactRow
+          href={`/blog/${blog.id}`}
+          title={blog.data.title}
+          description={blog.data.description}
+          logo={blog.data.image ?? placeholderImage}
+          logoAlt={blog.data.title}
+          logoWidth={96}
+          logoHeight={64}
+          logoClass="border-border/40 hidden h-16 w-24 shrink-0 overflow-hidden rounded-lg border sm:block object-cover"
+        >
+          <span slot="header" class="text-muted font-mono text-xs font-semibold">
+            {dateStr}
+          </span>
+          <div slot="footer" class="flex justify-between items-center text-muted font-mono text-xs mt-2">
+            <span>{readingTime}</span>
+            <span>{tagsStr}</span>
+          </div>
+        </CompactRow>
+      )
+    })
+  }
 </div>
-
-<HoverCard id="blog-hover-card" />
 
 <div class="mt-6 text-center">
   <a
     href="/blog"
-    class="hover:text-primary text-sm font-semibold underline underline-offset-4 transition-colors duration-300"
+    class="text-muted hover:text-primary text-sm font-semibold underline underline-offset-4 transition-colors duration-300"
   >
     Read more blogs &gtdot;
   </a>
 </div>
-
-<script>
-  function initHoverPreview() {
-    const hoverRows = document.querySelectorAll(".blog-hover-row")
-    const hoverCard = document.getElementById("blog-hover-card")
-    if (!hoverCard) return
-
-    const cardTitle = hoverCard.querySelector("[data-hover-title]")
-    const cardDesc = hoverCard.querySelector("[data-hover-desc]")
-    const cardImg = hoverCard.querySelector("[data-hover-img]") as HTMLImageElement
-    const cardTags = hoverCard.querySelector("[data-hover-tags]")
-    const cardTime = hoverCard.querySelector("[data-hover-time]")
-
-    if (!cardTitle || !cardDesc || !cardImg || !cardTags || !cardTime) return
-
-    hoverRows.forEach(row => {
-      row.addEventListener("mouseenter", () => {
-        const title = row.getAttribute("data-title") || ""
-        const desc = row.getAttribute("data-desc") || ""
-        const img = row.getAttribute("data-img") || ""
-        const tags = row.getAttribute("data-tags") || ""
-        const time = row.getAttribute("data-time") || ""
-
-        cardTitle.textContent = title
-        cardDesc.textContent = desc
-        cardTags.textContent = tags
-        cardTime.textContent = time
-
-        if (img) {
-          cardImg.src = img
-          cardImg.classList.remove("hidden")
-        } else {
-          cardImg.classList.add("hidden")
-        }
-
-        hoverCard.classList.remove("opacity-0", "scale-95")
-        hoverCard.classList.add("opacity-100", "scale-100")
-      })
-
-      row.addEventListener("mousemove", (e: Event) => {
-        const mouseEvent = e as MouseEvent
-        const cardWidth = hoverCard.offsetWidth || 320
-        const cardHeight = hoverCard.offsetHeight || 220
-
-        let x = mouseEvent.clientX + 20
-        let y = mouseEvent.clientY + 20
-
-        // boundary checks
-        if (x + cardWidth > window.innerWidth) {
-          x = mouseEvent.clientX - cardWidth - 20
-        }
-        if (y + cardHeight > window.innerHeight) {
-          y = mouseEvent.clientY - cardHeight - 20
-        }
-
-        hoverCard.style.left = `${x}px`
-        hoverCard.style.top = `${y}px`
-      })
-
-      row.addEventListener("mouseleave", () => {
-        hoverCard.classList.remove("opacity-100", "scale-100")
-        hoverCard.classList.add("opacity-0", "scale-95")
-      })
-    })
-  }
-
-  // Bind on page load & across view transitions
-  document.addEventListener("astro:page-load", initHoverPreview)
-</script>

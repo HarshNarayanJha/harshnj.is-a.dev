@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets"
 import type { CollectionEntry } from "astro:content"
-import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
 
 interface Props {
   class: string
@@ -12,7 +11,6 @@ interface Props {
 const { class: className, testimonial, ...rest } = Astro.props
 ---
 
-<!-- <TransparentBorder class:list={[className, "border-0"]} {rest}> -->
 <div
   class:list={[
     "bg-surface overflow-hidden rounded-xl p-6 md:p-8",
@@ -20,21 +18,16 @@ const { class: className, testimonial, ...rest } = Astro.props
     "shadow-xs transition-all duration-300 hover:shadow-md",
     className,
   ]}
+  {...rest}
 >
   <div
     class="bg-primary/25 pointer-events-none absolute -right-24 -bottom-24 h-48 w-48 rounded-full blur-lg md:blur-3xl"
   >
   </div>
 
-  <div class="flex flex-1 flex-col justify-start gap-4">
-    <div class="flex items-center gap-2 select-none">
-      <span class="text-primary font-mono text-xs font-bold"> /** TESTIMONIAL */ </span>
-    </div>
-
-    <div class="space-y-2">
+  <div class="space-y-2">
       <slot name="title" />
       <slot name="text" />
-    </div>
   </div>
 
   <div
@@ -52,4 +45,3 @@ const { class: className, testimonial, ...rest } = Astro.props
     </div>
   </div>
 </div>
-<!-- </TransparentBorder> -->

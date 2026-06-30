@@ -1,28 +1,15 @@
 ---
-import TransparentBorder from "@/components/reusable/TransparentBorder.astro"
-
 interface Props {
-  class: string
+  class?: string
   [key: string]: any
 }
 
 const { class: className, ...rest } = Astro.props
 ---
 
-<!-- <TransparentBorder class:list={[className, "border-0"]} {rest}> -->
 <div
-  class:list={[
-    "bg-surface/90 flex h-full flex-col items-center justify-start gap-8 rounded-lg p-8 backdrop-blur-xs will-change-transform md:flex-row md:p-3",
-    "drop-shadow-sm",
-    className,
-  ]}
+  class:list={["bg-surface overflow-hidden rounded-xl border shadow-xs", className]}
+  {...rest}
 >
-  <div class="self-center">
-    <slot name="image" />
-  </div>
-  <div class="mt-2">
-    <slot name="title" />
-    <slot name="text" />
-  </div>
+  <slot />
 </div>
-<!-- </TransparentBorder> -->

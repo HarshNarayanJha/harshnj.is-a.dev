@@ -5,10 +5,11 @@ import type { CollectionEntry } from "astro:content"
 
 interface Props {
   proj: CollectionEntry<"projects">["data"]
+  transparent?: boolean
   class?: string
 }
 
-const { proj, class: className = "" } = Astro.props
+const { proj, transparent = false, class: className = "" } = Astro.props
 
 function getStatusColor(status: string) {
   switch (status) {
@@ -27,7 +28,10 @@ function getStatusColor(status: string) {
 
 <div
   class:list={[
-    "bg-surface group flex flex-col items-start gap-5 overflow-hidden rounded-xl p-4 shadow-xs transition-all hover:shadow-sm md:flex-row md:items-stretch md:p-5",
+    "group flex flex-col items-start gap-5 overflow-hidden p-4 md:flex-row md:items-stretch md:p-5",
+    transparent
+      ? "rounded-xl px-3 py-4 hover:bg-surface-2/70"
+      : "bg-surface rounded-xl border border-border/30 shadow-xs",
     className,
   ]}
 >
@@ -38,7 +42,7 @@ function getStatusColor(status: string) {
       src={proj.img}
       formats={["webp", "avif"]}
       alt={proj.name}
-      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-103"
+      class="h-full w-full object-cover"
       width={176}
       layout="constrained"
     />
@@ -71,7 +75,7 @@ function getStatusColor(status: string) {
       </div>
 
       <h3
-        class="text-foreground group-hover:text-primary text-md font-semibold transition-colors md:text-lg"
+        class="text-foreground text-md font-semibold md:text-lg"
       >
         {proj.name}
       </h3>
