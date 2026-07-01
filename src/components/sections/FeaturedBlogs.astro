@@ -12,7 +12,7 @@ const featuredBlogs = (
   .slice(0, 3)
 ---
 
-<div class="divide-y divide-border/30">
+<div class="divide-border/30 divide-y">
   {
     featuredBlogs.map(blog => {
       const readingTime = getReadingTime(blog.body ?? "")
@@ -33,7 +33,10 @@ const featuredBlogs = (
           <span slot="header" class="text-muted font-mono text-xs font-semibold">
             {dateStr}
           </span>
-          <div slot="footer" class="flex justify-between items-center text-muted font-mono text-xs mt-2">
+          <div
+            slot="footer"
+            class="text-muted mt-2 flex items-center justify-between font-mono text-xs"
+          >
             <span>{readingTime}</span>
             <span>{tagsStr}</span>
           </div>

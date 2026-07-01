@@ -37,7 +37,7 @@ const categories = [
 const totalSkillsHex = "0x" + currentOffset.toString(16).padStart(2, "0")
 ---
 
-<div class="font-mono text-sm py-4">
+<div class="py-4 font-mono text-sm">
   <div class="space-y-6">
     {
       categories.map(cat => (
@@ -51,7 +51,7 @@ const totalSkillsHex = "0x" + currentOffset.toString(16).padStart(2, "0")
             {cat.items.map(skill => (
               <div
                 title={skill.tooltip}
-                class="group flex items-center gap-2 rounded-lg border-2 border-border/50 px-3 py-1.5 transition-colors hover:border-(--icon-color) hover:bg-surface-2 dark:hover:border-(--icon-dark-color)"
+                class="group border-border/50 hover:bg-surface-2 flex items-center gap-2 rounded-lg border-2 px-3 py-1.5 transition-colors hover:border-(--icon-color) dark:hover:border-(--icon-dark-color)"
                 style={{
                   "--icon-color": skill.color,
                   "--icon-dark-color": skill.darkColor || skill.color,
@@ -72,7 +72,9 @@ const totalSkillsHex = "0x" + currentOffset.toString(16).padStart(2, "0")
     }
 
     {/* EOF Address Indicator */}
-    <div class="text-muted flex items-center text-xs font-bold tracking-wider uppercase select-none">
+    <div
+      class="text-muted flex items-center text-xs font-bold tracking-wider uppercase select-none"
+    >
       <span class="text-secondary/80 mr-1.5">[{totalSkillsHex}]</span>
       <span>EOF</span>
     </div>

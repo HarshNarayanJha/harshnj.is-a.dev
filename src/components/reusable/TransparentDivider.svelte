@@ -1,11 +1,11 @@
 <script lang="ts">
-interface TransparentDividerProps {
-  vertical?: boolean
-  heightClass?: string
-  widthClass?: string
-}
+  interface TransparentDividerProps {
+    vertical?: boolean
+    heightClass?: string
+    widthClass?: string
+  }
 
-let { vertical = false, heightClass, widthClass }: TransparentDividerProps = $props()
+  let { vertical = false, heightClass, widthClass }: TransparentDividerProps = $props()
 </script>
 
 {#if vertical}

@@ -1,6 +1,7 @@
 // @ts-check
 
 import { defineConfig, fontProviders } from "astro/config"
+import { satteri } from "@astrojs/markdown-satteri"
 
 import mdx from "@astrojs/mdx"
 import sitemap from "@astrojs/sitemap"
@@ -59,6 +60,10 @@ export default defineConfig({
       weights: ["400", "500", "600", "700", "800"],
     },
   ],
+
+  markdown: {
+    processor: satteri(),
+  },
 
   // markdown: {
   //   // remarkPlugins: [[remarkToc, { heading: "In this Blog", maxDepth: 3 }]]

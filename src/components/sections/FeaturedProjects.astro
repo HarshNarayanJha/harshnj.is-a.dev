@@ -9,7 +9,7 @@ const featuredProjects = (
   .slice(0, 3)
 ---
 
-<div class="divide-y divide-border/30">
+<div class="divide-border/30 divide-y">
   {featuredProjects.map(proj => <ProjectListCard proj={proj.data} transparent />)}
 </div>
 

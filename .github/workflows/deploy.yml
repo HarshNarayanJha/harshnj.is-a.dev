@@ -15,20 +15,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
-        uses: actions/checkout@v5
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
 
       - name: Build with Astro
-        uses: withastro/action@v5
+        uses: withastro/action@b7d53628f8b666036b0238aadb0b984a2a489f26
         # with:
         # path: . # The root location of your Astro project inside the repository. (optional)
-        # node-version: 24 # The specific version of Node that should be used to build your site. Defaults to 22. (optional)
+        # node-version: 24 # The specific version of Node that should be used to build your site. Defaults to 24. (optional)
         # package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
         # build-cmd: pnpm run build # The command to run to build your site. Runs the package build script/task by default. (optional)
-        # env:
-        # PUBLIC_POKEAPI: 'https://pokeapi.co/api/v2' # Use single quotation marks for the variable value. (optional)
+        # out-dir: dist # The output directory created by the build command. Defaults to dist. (optional)
 
       - name: Deploy to harshnarayanjha.github.io
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@1ef5a1b1df4c63fe21a2242edbee6cac921ece01
         with:
           external_repository: HarshNarayanJha/HarshNarayanJha.github.io
           publish_branch: main

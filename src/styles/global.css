@@ -6,7 +6,7 @@
 :root {
   /* Accent colors */
   --primary: oklch(0.6925 0.1675 250.43);
-  --secondary: oklch(0.8086 0.136 169.32);
+  --secondary: oklch(0.6543 0.1295 170.0194);
   --tertiary: oklch(0.65 0.11 276.11);
   --accent: oklch(0.75 0.14 75.56);
 
