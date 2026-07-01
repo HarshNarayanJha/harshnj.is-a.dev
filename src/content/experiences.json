@@ -80,5 +80,26 @@
       "Suggested and implemented improvements to enhance code maintainability, scalability, and performance.",
       "Worked in Agile development environments using Git and modern cloud-based development tools."
     ]
+  },
+  {
+    "id": 5,
+    "start": "2026-05-01",
+    "end": "PRESENT",
+    "role": "Fullstack Engineer",
+    "type": "work",
+    "level": 2,
+    "at": "InPracSys",
+    "current": true,
+    "logo": "inpracsys.png",
+    "link": "https://inpracsys.com",
+    "location": "Minneapolis, United States - Remote",
+    "description": "Modernizing legacy healthcare IT infrastructure by migrating critical business logic to modern stacks and engineering automated cloud cost management tools. Focused on architecting scalable, zero-downtime feature rollouts and optimizing CI/CD workflows for production-grade healthcare applications.",
+    "points": [
+      "Modernized legacy applications by migrating to a containerized microservices architecture, improving system maintainability and deployment reliability.",
+      "Engineered an automated cloud cost monitoring system, providing granular visibility into infrastructure spend and enabling data-driven budget optimizations.",
+      "Architected zero-downtime feature migrations using dual-write techniques to preserve production data integrity during large-scale system transitions.",
+      "Streamlined development cycles by implementing automated CI/CD pipelines and optimized Docker configurations across Azure cloud services.",
+      "Collaborated with senior leadership to translate complex business requirements into scalable technical designs and production-ready code."
+    ]
   }
 ]

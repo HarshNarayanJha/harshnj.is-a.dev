@@ -35,24 +35,21 @@ const Tag = href ? "a" : "div"
 
 <Tag
   href={href}
-  class:list={[
-    "flex items-start gap-4 rounded-xl px-3 py-4 hover:bg-surface-2/70",
-    className,
-  ]}
+  class:list={["hover:bg-surface-2/70 flex items-start gap-4 rounded-xl px-3 py-4", className]}
   {...rest}
 >
-  {logo && (
-    <Picture
-      src={logo}
-      formats={["webp", "avif"]}
-      alt={logoAlt}
-      width={logoWidth}
-      height={logoHeight}
-      class:list={[
-        logoClass || "mt-0.5 h-10 w-10 shrink-0 rounded-md border object-contain"
-      ]}
-    />
-  )}
+  {
+    logo && (
+      <Picture
+        src={logo}
+        formats={["webp", "avif"]}
+        alt={logoAlt}
+        width={logoWidth}
+        height={logoHeight}
+        class:list={[logoClass || "mt-0.5 h-10 w-10 shrink-0 rounded-md border object-contain"]}
+      />
+    )
+  }
 
   {/* Main content */}
   <div class="min-w-0 flex-1">
@@ -62,11 +59,13 @@ const Tag = href ? "a" : "div"
       {title}
     </h3>
 
-    {description && (
-      <p class="text-foreground-soft mt-0.5 line-clamp-2 text-sm leading-relaxed">
-        {description}
-      </p>
-    )}
+    {
+      description && (
+        <p class="text-foreground-soft mt-0.5 line-clamp-2 text-sm leading-relaxed">
+          {description}
+        </p>
+      )
+    }
 
     <slot name="footer" />
   </div>

@@ -85,7 +85,7 @@ const milestones = defineCollection({
         .array(
           z.object({
             name: z.string(),
-            url: z.string().url(),
+            url: z.url(),
           }),
         )
         .max(5)

@@ -30,8 +30,8 @@ function getStatusColor(status: string) {
   class:list={[
     "group flex flex-col items-start gap-5 overflow-hidden p-4 md:flex-row md:items-stretch md:p-5",
     transparent
-      ? "rounded-xl px-3 py-4 hover:bg-surface-2/70"
-      : "bg-surface rounded-xl border border-border/30 shadow-xs",
+      ? "hover:bg-surface-2/70 rounded-xl px-3 py-4"
+      : "bg-surface border-border/30 rounded-xl border shadow-xs",
     className,
   ]}
 >
@@ -74,9 +74,7 @@ function getStatusColor(status: string) {
         </div>
       </div>
 
-      <h3
-        class="text-foreground text-md font-semibold md:text-lg"
-      >
+      <h3 class="text-foreground text-md font-semibold md:text-lg">
         {proj.name}
       </h3>
       <p

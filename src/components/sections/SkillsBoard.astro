@@ -1,38 +1,43 @@
 ---
 import { skills } from "@/utils/data"
 import { Icon } from "astro-icon/components"
-import Card from "@/components/cards/Card.astro"
 
 const systems = skills.filter(s => s.skillType === "systems")
 const frameworks = skills.filter(s => s.skillType === "frameworks")
 const languages = skills.filter(s => s.skillType === "languages")
 const intelligence = skills.filter(s => s.skillType === "intelligence")
 
+let currentOffset = 0
 const categories = [
   {
-    code: "0x01",
     title: "Systems",
     items: systems,
   },
   {
-    code: "0x02",
     title: "Frameworks",
     items: frameworks,
   },
   {
-    code: "0x03",
     title: "Languages",
     items: languages,
   },
   {
-    code: "0x04",
     title: "Intelligence",
     items: intelligence,
   },
-]
+].map(cat => {
+  const hexCode = "0x" + currentOffset.toString(16).padStart(2, "0")
+  currentOffset += cat.items.length
+  return {
+    ...cat,
+    code: hexCode,
+  }
+})
+
+const totalSkillsHex = "0x" + currentOffset.toString(16).padStart(2, "0")
 ---
 
-<Card class="p-4 font-mono text-sm">
+<div class="font-mono text-sm py-4">
   <div class="space-y-6">
     {
       categories.map(cat => (
@@ -46,7 +51,7 @@ const categories = [
             {cat.items.map(skill => (
               <div
                 title={skill.tooltip}
-                class="group group-hover:bg-surface-2 border-border/50 flex items-center gap-2 rounded-lg border-2 px-3 py-1.5 transition-colors hover:border-(--icon-color) dark:hover:border-(--icon-dark-color)"
+                class="group flex items-center gap-2 rounded-lg border-2 border-border/50 px-3 py-1.5 transition-colors hover:border-(--icon-color) hover:bg-surface-2 dark:hover:border-(--icon-dark-color)"
                 style={{
                   "--icon-color": skill.color,
                   "--icon-dark-color": skill.darkColor || skill.color,
@@ -65,5 +70,11 @@ const categories = [
         </div>
       ))
     }
+
+    {/* EOF Address Indicator */}
+    <div class="text-muted flex items-center text-xs font-bold tracking-wider uppercase select-none">
+      <span class="text-secondary/80 mr-1.5">[{totalSkillsHex}]</span>
+      <span>EOF</span>
+    </div>
   </div>
-</Card>
+</div>
