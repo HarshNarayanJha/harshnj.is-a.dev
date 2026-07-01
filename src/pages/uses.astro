@@ -1,0 +1,81 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import { Icon } from "astro-icon/components"
+
+const title = "Uses | Harsh Narayan Jha"
+const description = "Uses page of Harsh Narayan Jha's Website"
+---
+
+<Layout title={title} , description={description}>
+  <section class="mx-auto h-auto w-full max-w-5xl px-4 py-16 md:px-16 md:py-14">
+    <div class="mx-auto text-center">
+      <Icon name="colophon" class="m-2 inline" size={24} />
+      <h2 class="font-hero mt-2 text-center text-4xl font-semibold">Uses</h2>
+      <p class="text-muted mt-2 text-center">
+        A non-exhaustive list of stuff I use. Know more about /uses <a
+          href="https://uses.tech/"
+          class="prose dark:prose-invert"
+        >
+          here
+        </a>
+      </p>
+    </div>
+
+    <div class="prose dark:prose-invert prose-lg text-foreground-soft mt-16 max-w-none md:mt-32">
+      <h3 class="text-2xl font-bold">Hardware</h3>
+      <ul>
+        <li>
+          An <code>HP</code> laptop for daily work and studies, with 16GiB of DDR4 memory and 512GiB for
+          NVMe SSD.
+        </li>
+        <li><code>Portronics Combo</code> for Keyboard and Mouse</li>
+        <li>A low-end <code>Samsung</code> as my Android smartphone</li>
+        <li>
+          An <code>Apple iPad</code> for note-taking, brainstorming ideas and swift programming
+        </li>
+        <li>
+          A <code>New Nintendo 3DS XL</code> as my portable gaming console, other than my phone and laptop.
+        </li>
+        <li>
+          A 1TiB external SSD for backups and external storage, combined with another old 1TiB HDD
+          for full laptop backups thanks ro BTRFS
+        </li>
+      </ul>
+
+      <h3 class="text-2xl font-bold">Software</h3>
+      <ul>
+        <li>I use <code>Arch btw</code>, running Hyprland on it as my WM of choice.</li>
+        <li>
+          <code>Zen Browser</code> as the web browser because it's (i) based on Firefox (ii) looks cool
+          (iii) has a bunch of great features for my usecase.
+        </li>
+        <li>
+          <code>Zed</code> as my code editor, it's fast and minimal. Plus I already have a web browser.
+        </li>
+        <li><code>Obsidian</code> for desktop note taking.</li>
+        <li>
+          <code>Godot</code> for making lightweight games. Yes, I still take part in game jams.
+        </li>
+      </ul>
+
+      <h3 class="text-2xl font-bold">Tech Stack</h3>
+      <ul>
+        <li>
+          If it has to be a website <code>HTML/CSS</code>, <code>Astro</code> or
+          <code> SvelteKit </code> depending on the usecase. <code>Next.js</code> or
+          <code> React </code> if needed.
+        </li>
+        <li>
+          If it's an mobile app, Native <code>Jetpack compose</code> or <code>CMP</code>. I don't
+          like putting websites into mobile applications.
+        </li>
+        <li>
+          If a backend is needed, <code>Django / Flask</code> is the best fit. been exploring
+          <code>Golang</code> and <code>Rust</code> as well. I can write <code>Express</code> if needed.
+        </li>
+        <li><code>C++</code> and <code>C</code> for low level and fast stuff</li>
+        <li><code>Python</code> for almost everything else.</li>
+      </ul>
+    </div>
+  </section>
+</Layout>

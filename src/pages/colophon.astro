@@ -11,6 +11,31 @@ const fonts = [
   { class: "font-mono text-sm", text: "Monaspace Argon" },
 ]
 
+const colors = {
+  bg: [
+    { class: "bg-primary" },
+    { class: "bg-secondary" },
+    { class: "bg-tertiary" },
+    { class: "bg-accent" },
+    { class: "bg-background" },
+    { class: "bg-surface" },
+    { class: "bg-surface-2" },
+    { class: "bg-surface-3" },
+    { class: "bg-border" },
+    { class: "bg-ring" },
+  ],
+  text: [
+    { class: "text-primary", text: "Primary" },
+    { class: "text-secondary", text: "Secondary" },
+    { class: "text-tertiary", text: "Tertiary" },
+    { class: "text-accent", text: "Accent" },
+    { class: "text-foreground", text: "Foreground" },
+    { class: "text-foreground-soft", text: "FG Soft" },
+    { class: "text-foreground-muted", text: "FG Muted" },
+    { class: "text-on-accent", text: "On Accent" },
+  ],
+}
+
 const inspirations = [
   "https://theodorusclarence.com",
   "https://jahir.dev",
@@ -108,9 +133,33 @@ const description = "Colophon page of Harsh Narayan Jha's Website"
       <p>
         I personally like <span class="text-secondary">green</span> and
         <span class="text-primary">blue</span> colors. That is what I use across the website wherever
-        a touch of color is needed. The colors are from tailwindcss' palette. I might design a color scheme
-        in future.
+        a touch of color is needed. I have designed a custom color palette for the website.
       </p>
+
+      <div class="grid grid-cols-6">
+        {
+          colors["bg"].map(color => {
+            return (
+              <div
+                class:list={[
+                  "grid place-content-center border-2 border-dashed border-black px-4 py-6 dark:border-white",
+                  color.class,
+                ]}
+              />
+            )
+          })
+        }
+      </div>
+
+      <div class="mt-2 grid grid-cols-6">
+        {
+          colors["text"].map(color => {
+            return (
+              <span class:list={["border px-4 py-2 text-center", color.class]}>{color.text}</span>
+            )
+          })
+        }
+      </div>
 
       <!-- Inspirations -->
       <h3 class="text-2xl font-bold">Inspirations</h3>

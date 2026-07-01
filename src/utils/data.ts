@@ -298,7 +298,7 @@ export const skills: Skill[] = [
   },
   {
     name: "Cursor",
-    tooltip: "AI-first code editor of choice for rapid iteration loops.",
+    tooltip: "They have indeed developed some nice code review features.",
     logo: "skills/cursor",
     color: "#0052FF",
     darkColor: "#38BDF8",
@@ -306,7 +306,7 @@ export const skills: Skill[] = [
   },
   {
     name: "Claude",
-    tooltip: "Advanced text reasoning, logical code generation, and systems context mapping.",
+    tooltip: "Best for writing code and UI's I believe, but not better than humans.",
     logo: "skills/claude",
     color: "#D97706",
     darkColor: "#F59E0B",
@@ -314,7 +314,7 @@ export const skills: Skill[] = [
   },
   {
     name: "Gemini",
-    tooltip: "Native multimodal integration and massive context window parsing.",
+    tooltip: "They have some nice models as well",
     logo: "skills/gemini",
     color: "#1A73E8",
     darkColor: "#669DF2",
