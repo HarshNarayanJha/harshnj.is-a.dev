@@ -6,6 +6,7 @@ import "@/styles/global.css"
 import { Font, getImage } from "astro:assets"
 import { ClientRouter } from "astro:transitions"
 import { ThemeScript } from "astro-theme-toggle"
+import { SimpleAnalytics } from "astro-simpleanalytics-plugin"
 
 import "tippy.js/dist/tippy.css"
 import "tippy.js/dist/backdrop.css"
@@ -130,5 +131,7 @@ const ogDescription = description
     <section id="footer" class="bg-background pt-8 md:px-40">
       <Footer />
     </section>
+
+    <SimpleAnalytics collectDNT={true} />
   </body>
 </html>
