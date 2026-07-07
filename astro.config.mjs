@@ -21,6 +21,9 @@ export default defineConfig({
   server: {
     allowedHosts: ["harshnj-garuda.tailf85ff4.ts.net"],
   },
+  image: {
+    layout: "constrained",
+  },
   site: "https://harshnj.is-a.dev",
   fonts: [
     {

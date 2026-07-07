@@ -43,7 +43,6 @@ const { class: className, milestone, ...rest } = Astro.props
             formats={["avif", "webp"]}
             class="border-border/50 aspect-video w-full rounded-2xl border-2 border-b-0 object-contain md:aspect-square md:w-50"
             width={200}
-            layout="constrained"
           />
         ) : (
           <Picture
@@ -52,7 +51,6 @@ const { class: className, milestone, ...rest } = Astro.props
             formats={["avif", "webp"]}
             class="border-border/50 aspect-video w-full rounded-2xl border-2 border-b-0 object-cover md:aspect-square md:w-50"
             width={100}
-            layout="constrained"
           />
         )
       }
