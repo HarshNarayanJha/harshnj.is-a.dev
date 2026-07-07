@@ -1,0 +1,119 @@
+---
+title: "The 3DS Activity Log - Part 2"
+isPublished: true
+pubDate: 2026-07-07
+author: "Harsh Narayan Jha"
+tags: ["3ds"]
+description: "Part 2 of the 3DS Activity Log series"
+theme: "green"
+
+---
+
+import { Image } from 'astro:assets';
+
+import homepage from "./img/3ds/homepage.png"
+import playhistory from "./img/3ds/app-history.png"
+import library from "./img/3ds/app-library.png"
+import parsingErrors from "./img/3ds/app-parsing-errors.png"
+
+Hello, it's been quite some time since the [last post](/blog/3ds-activity-log-1) on this topic. I have been lucky enough to find some time to work on this project once in a while. Not a lot of progress has been made since, but I think I have something to share. First, let's cover some technical part.
+
+## Save Data Format
+
+Let's first tackle the thing we are trying to parse, the Play Time Management (PTM) module save data. The awesome people on [GBATemp](https://gbatemp.net/threads/playhistory-dat-timestamp.580853/post-10297936) and resources on [3DBrew](https://www.3dbrew.org/wiki/PTM_Savegame) were a big help in reverse engineering the files and writing the parser.
+
+I looked up the [wiki page](https://3dbrew.org/wiki/System_SaveData) outlining the location of every system save file location. In case of PTM, it is located at `nand://data/ID0/sysdata/00010022/`. By reading, I am expecting two files from this, `PlayHistory.dat` and `Pedometer.dat`. There are syscalls for reading these right on the console, so it might be something for the future.
+
+### PlayHistory.dat
+
+As on the 3dbrew wiki article
+
+> This contains the play log for every title (including the Home Menu and some system applets) launched on the system. The first entry in the file is the oldest, the last entry is the newest. The file is always `0xD5DE8` bytes long, regardless of how many entries are in the file. There can be no more than `0x11D28` entries. Speaking in plain english, it is about `876kB`, with a max limit of `73000` entries. Each entry is of `12B`
+
+This is the whole reason for self-deleting history issue covered in the previous post, the save file acts like a Ring Buffer. The structure of this binary file is as follows:
+
+| Offset | Size | Description |
+| -- | -- | -- |
+| `0x0` | `0x4` | Start entry index. |
+| `0x4` | `0x4` | Total PlayHistory entries. |
+| `0x8` | `0xD5DE0` | 0x11D28 PlayHistory entries, 0xC-bytes each.|
+
+Looking at each of the 73k entries, the Entry structure
+
+| Offset | Size | Description |
+| -- | -- | -- |
+| `0x0` | `0x4` | TitleID-high |
+| `0x4` | `0x4` | TitleID-low |
+| `0x8` | `0x4` | Log info (Bits 1-4) and Timestamp (Bits 5-32) |
+
+The first 4 bits in each entry after the TitleID are used for holding information relating to what the log event represents. After this, all log entries are marked with a 28-bit timestamp, measuring the number of minutes since 2000-01-01, yes minutes since year 2000, classic Nintendo move. The theoretical maximum timestamp value is 2510-05-20 12:15:00. Nintendo took great precautions about the YK28 problem, and made theirs literally unreachable.
+
+The C structs representing this, and what I used for the parser, looks like this
+
+```c
+struct Index {
+  uint32_t start_entry;
+  uint32_t num_entries;
+} __attribute__((packed));
+
+struct PlayEntry {
+  uint32_t tidhigh;
+  uint32_t tidlow;
+  uint32_t extra;
+} __attribute__((packed));
+```
+
+in the parser, we read the Index first, then sequentially read `index.num_entries` entries from the cursor. Reading the title id is trivial, while Log info and timestamp requires some hex tricks and maths, respectively
+
+```c
+uint8_t log_info = entry.extra & 0x0000000F;
+uint32_t timestamp = (entry.extra >> 4) * 60 + 946684800;
+```
+
+It extracts the 4 bits for the log info, then right shifts by 4 to get the timestamp bits. Multiplying by 60 and adding the Unix timestamp of 2000-01-01 gives us the Unix timestamp, which we can easily convert to a human-readable date (and use with everything else today). After that we just to parse the timestamp into the user's timezone. This is because the 3DS had no concept of timezone, user's need to set the time manually.
+
+The log info bits are a bit more interesting. Below is the table for each of lower 3 bits. The 4th bit is always 0 when the tid is some valid title ID. The bits below are from least to most significant.
+
+| Bit | General Meaning | When 0 | When 1 |
+|---|---|---|---|
+|1 | Whether the event represents an opening of something or the closing. | opening | closing |
+|2 | Whether the app in question is a Home Menu applet (e.g. the menu itself, game notes, etc.) or a full application (e.g. any game, system settings, etc). | full application | applet |
+|3 | Whether the event corresponds to a resume/suspend or a launch/quit (suspend meaning going to the Home Menu without fully quitting an app). | launch/quit | resume/suspend |
+
+Entries with title ID `0xFFFFFFFFFFFFFFFF` are special log events in regard to the whole system, and the log_info bits do not mean the usual, plus they are not single bits anymore, the whole number means one thing, such as sleep more, shutdown, system clock changes and DSi mode etc. The timestamp is still the same. You can read more about the different combinations about these special events can be found in the PTM Savegame [page](https://3dbrew.org/wiki/PTM_Savegame) on 3dbrew wiki.
+
+### Pedometer.dat
+
+This contains the log of the total steps taken per day. Each entry contains an `u32` timestamp and an `u16` for the total steps. Despite this fact, I have not been able to parse meaningful information out of this file. I am currently focusing on parsing and showing play history instead.
+
+## Extraction and Parsing
+
+I decided upon using a `.csv` file for the user friendly format of the play time data. JSON will get too big, and another binary format is not good as well. CSVs are perfect.
+
+Writing this parser in C was a great coding exercise, but I am sure a lot of people will not prefer compiling and running the C binary. That is why I wrote a parser in Python, making it easy to run the script and get your `PlayHistory.csv` file. My initial process of extracting the `.dat` files was a bit involved and error prone. It is outlined in the `docs/data-extraction/ptm-legacy.md` file in the project repo. I will soon publish the docs somewhere. It involved copying the DISA archive from the 3DS using GodMode9 and extracting it using [3ds-save-tool](https://github.com/wwylele/3ds-save-tool.git), and then running my parser on the files to get the CSVs.
+
+I soon found a new way to get these files directly, using JKSM save manager instead, which is outlined in `docs/data-extraction/ptm.md`, which directly dumps the `.dat` files, which you can directly copy. I soon plan to write a 3DS homebrew application instead to automate the parsing to get the `.csv` directly, as well a web based parser baked into the web application.
+
+## 3DS Activity Log
+
+<Image src={homepage} alt="3DS Activity Log homepage" width="800" />
+
+I designed the homepage of the application to look like the 3DS home menu, with a drag and drop file interface for uploading the `PlayHistory.csv` file, as well the home menu bgm playing (can be paused). However vgmtreasurechest seems to have removed the track, I might need to replace the url. Following this we have the Activity Log application homescreen, which is not document and I will rather not taken any measures to document it here. The history screen looks something like this.
+
+<Image src={playhistory} alt="3DS Activity Log play history" width="800" />
+
+It is still in early stages, I just list the parsed data out mimicking the Activity Log, and I also plan to add a timeline view since we have app launch and boot data as well. The Activity Log music plays on these screens.
+
+<Image src={library} alt="3DS Activity Log library" width="800" />
+
+The title library is again much like the Activity Log, listing title icons by recency on the bottom screen and information on the top. This highlights once of the biggest problems I have faced. I swear **I haven't played "System Settings" for 66 thousand hours**! Trust me, only the Music player has minigames. While my parser is not perfect, the PTM save data, and in turn the csv file, contains _missing_ records, and some records being _out of order_. I just remember an application being opened, and when its closed, accumulate the number of minutes, since the 3DS can only launch a single application at once (except for applets) and which seems to be failing (as highlighted by the parsing errors my parser caught). There are entries of application launching while it is only running (resume events exists).
+
+<Image src={parsingErrors} alt="3DS Activity Log parsing errors" width="800" />
+
+However, this is better than nothing, I can parse and display Playtime History data outside of the 3DS. But it's a long journey before I get anything meaningful out of it. I might have some luck with the `pld.dat` save data. It's the save data of the Activity Log application itself, and it seems like it pulls from it PTM save data to keep updating its own data. Initially I avoided touching `pld.dat` for 2 reasons. First, it was less documented compared to PTM, and second, I thought going for the source of the data itself was a better idea. But as we can see, it was probably not.
+
+## Conclusion
+
+This was part 2 of the blog series about 3DS Activity Log. The next part will explain the new `pld.dat`, its data format and introduce the new parser, how I managed to extract it. Next time the application will hopefully improve and use the new parser.
+
+Thanks for reading!
