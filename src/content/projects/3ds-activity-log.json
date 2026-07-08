@@ -7,7 +7,7 @@
   "text": "A tool to parse and explore Nintendo 3DS System SaveData (PlayHistory.dat and Pedometer.dat) to analyze playtime activity and step counts.",
   "domains": ["Systems"],
   "tags": ["Nintendo 3DS", "Reverse Engineering", "Save Data"],
-  "featured": false,
+  "featured": true,
   "year": 2025,
   "status": "WIP"
 }

@@ -1,6 +1,6 @@
 {
   "$schema": "../../../.astro/collections/projects.schema.json",
-  "img": "placeholder.png",
+  "img": "marble-momentum.png",
   "name": "Marble Momentum",
   "url": "https://harshnarayanjha.itch.io/marble-momentum",
   "github": "https://github.com/HarshNarayanJha/marble_momentum",

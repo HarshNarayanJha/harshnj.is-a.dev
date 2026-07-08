@@ -1,6 +1,6 @@
 {
   "$schema": "../../../.astro/collections/projects.schema.json",
-  "img": "placeholder.png",
+  "img": "kepler-zero.png",
   "name": "Kepler-Zero",
   "github": "https://github.com/HarshNarayanJha/kepler-zero",
   "url": "https://kepler-zero.onrender.com/",

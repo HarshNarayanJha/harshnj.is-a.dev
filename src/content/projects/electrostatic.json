@@ -1,6 +1,6 @@
 {
   "$schema": "../../../.astro/collections/projects.schema.json",
-  "img": "placeholder.png",
+  "img": "electrostatic.png",
   "name": "Electrostatic Simulation",
   "github": "https://github.com/HarshNarayanJha/Electrostatic-Simulation",
   "text": "A modern C++23 physics simulation using Raylib and CMake to visualize electrostatic fields and complex particle interactions.",
