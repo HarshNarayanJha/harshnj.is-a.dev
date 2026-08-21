@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../.astro/collections/testimonials.schema.json",
+  "img": "apurv.jpg",
+  "name": "Apurv Mishra",
+  "at": "InPracSys",
+  "position": "Associate Developer",
+  "title": "A Quick Learner and Dedicated Engineer",
+  "text": "Harsh is a quick learner, hardworking, and someone who truly demonstrates what it means to be a student of Abhijeet.\nHe has contributed across many areas, and I’m genuinely looking forward to seeing all that he goes on to achieve.\n\nAll the very best for your future endeavours, Harsh!",
+  "isPublished": true
+}
